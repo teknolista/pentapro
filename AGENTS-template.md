@@ -35,8 +35,8 @@ Use the generic owners according to the requested work; optional implementation/
 
 | Skill | When to use it | Expected result and boundary |
 | --- | --- | --- |
-| `penta-pro` | Explore, create, resume, update, or review requirements and software specifications | Five pillar documents for a new specification by default. Review the written artifacts and record scope, findings and next action in PROCESS when specification writing is authorized. |
-| `ui-design` | Specify, refine, review, or implement screens and user flows | Maintain the established screen specification, defaulting to `docs/ui-design.md`, when documentation is in scope. A localized implementation follows the existing contract. Product-code changes require implementation authority. |
+| `penta-pro` | Explore, create, resume, update, or review requirements and software specifications | Repository-root `pentapro/` with topic files under five pillar directories. Review the written artifacts and record scope, findings and next action in PROCESS when specification writing is authorized. |
+| `ui-design` | Specify, refine, review, or implement screens and user flows | Maintain the established screen specification, defaulting to `pentapro/product/experience.md` in a PentaPRO project, when documentation is in scope. A localized implementation follows the existing contract. Product-code changes require implementation authority. |
 | `peer-review` | Review implementation changes and relevant tests, or re-review fixes | Evidence-backed findings, checks and coverage limits for the selected snapshot. Review alone does not authorize fixes. Prefer a fresh reviewer when available; disclose self-review and any unmet independence requirement. |
 | `cybersec` | Model threats, assess security controls, implement authorized hardening, or check security readiness | Scoped threats, controls, findings, evidence and residual risks. Save reports when requested or required by the workflow; live testing and security changes need authority for their actual effects. |
 | `production-operations` | Plan or configure hosted infrastructure, or deploy, operate and recover a backend | Scoped plan or configuration, authorized effects and evidence from the target environment. Use credential references and keep operation evidence with its actual revision and target. |
@@ -55,16 +55,16 @@ Identify the authoritative records for this scope before writing new specificati
 
 | Document | Canonical responsibility |
 | --- | --- |
-| `docs/product.md` | Users, outcomes, requirements, business permissions and feature acceptance criteria. |
-| `docs/project.md` | Architecture, contracts, constraints, decisions, risks, assumptions and open questions. |
-| `docs/production.md` | Configuration, distribution, migrations, operations, support and recovery. |
-| `docs/proof.md` | Planned checks, traceability, actual verification evidence and its limitations. |
-| `docs/process.md` | Shared specification state, coverage, tasks, authority, revision history and next action. |
-| `docs/ui-design.md` | Detailed screen/flow contracts, visual rules, interaction states and screen-specific acceptance; links to governing requirements and existing design-system sources. |
+| `pentapro/product/` | Users, outcomes, domain, requirements, business permissions, experience, quality and feature acceptance criteria. |
+| `pentapro/project/` | Architecture, contracts, security, constraints, decisions, risks, assumptions and open questions. |
+| `pentapro/production/` | Configuration, distribution, migrations, operations, support and recovery. |
+| `pentapro/proof/` | Planned checks, traceability, actual verification evidence and its limitations. |
+| `pentapro/process/` | Shared specification state, coverage, tasks, authority, revision history and next action. |
+| `pentapro/product/experience.md` | Screen/flow inventory, visual rules, interaction states and screen-specific acceptance; link detailed screen files and assets within PRODUCT. Existing UI contracts remain valid until reconciled. |
 
-PentaPRO uses PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS for initial detail and presentation. Capture consequential operating conditions and acceptance criteria in PRODUCT before choosing a solution; detail operation and checks after the design. Track authority and resumption throughout. This order does not impose sequential implementation phases. The UI document supplements the five pillars when visual interfaces are in scope.
+PentaPRO uses PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS for initial detail and presentation. Capture consequential operating conditions and acceptance criteria in PRODUCT before choosing a solution; detail operation and checks after the design. Track authority and resumption throughout. This order does not impose sequential implementation phases. PRODUCT owns visual experience and links screen files and assets when visual interfaces are in scope.
 
-On resumption, read the relevant next-action record in `docs/process.md` or the established tracker, then the affected requirements, contracts, checks and screens. Load only the records and dependencies needed for the task. If documents do not yet exist, use the available brief and project evidence; create them when specification work is requested rather than manufacturing a full specification for every small edit.
+On resumption, read the relevant next-action record in `pentapro/process/index.md` or the established tracker, then the affected requirements, contracts, checks and screens. Load only the records and dependencies needed for the task. If documents do not yet exist, use the available brief and project evidence; create them when specification work is requested rather than manufacturing a full specification for every small edit.
 
 Within authorized documentation work, preserve stable IDs, accepted decisions and unrelated content. Update each fact in its canonical home and reconcile affected references. A screen proposal cannot silently change business permissions, retention or acceptance. Record conflicting sources and block only dependent work until resolved. Save partial drafts and pending reconciliation in the relevant resume record; report incomplete writes accurately.
 

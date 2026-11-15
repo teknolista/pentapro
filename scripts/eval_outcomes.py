@@ -14,7 +14,17 @@ GRADERS = {"receipts", "openspec-receipts", "copy", "read-only", "spec-draft", "
 RECEIPT_PATHS = {"receipts.py", "test_receipts.py"}
 TASKS = "openspec/changes/tenant-receipts/tasks.md"
 TASK_LINE = re.compile(rb"(?m)^[ \t]*[-*+] \[([ xX])\] ([^\r\n]+)")
-PILLARS = {f"docs/{name}.md" for name in ("product", "project", "production", "proof", "process")}
+PILLARS = {
+    "pentapro/README.md",
+    "pentapro/assets/README.md",
+    *(f"pentapro/{pillar}/{name}" for pillar, names in {
+        "product": ("overview.md", "domain.md", "features.md", "experience.md", "quality.md"),
+        "project": ("architecture.md", "decisions.md", "security.md", "delivery.md"),
+        "production": ("environments.md", "operations.md", "evolution.md"),
+        "proof": ("traceability.md", "verification.md", "validation.md"),
+        "process": ("index.md", "change-control.md", "execution.md"),
+    }.items() for name in names),
+}
 
 
 def load_cases(evals, packages):

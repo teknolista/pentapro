@@ -1,6 +1,6 @@
 # Android and Kotlin Multiplatform specification overlay
 
-Apply alongside the mobile/offline profile when Android or KMP is in scope. Record answers in the existing five pillar files, using the preferred PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS order. These prompts do not mandate Compose, MVI, Clean Architecture, Koin, Ktor, Room, a module per layer, iOS support or a fixed SDK/library version.
+Apply alongside the mobile/offline profile when Android or KMP is in scope. Record answers in the five pillar directories, using the preferred PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS order. These prompts do not mandate Compose, MVI, Clean Architecture, Koin, Ktor, Room, a module per layer, iOS support or a fixed SDK/library version.
 
 ## PRODUCT
 

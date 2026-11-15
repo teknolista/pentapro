@@ -252,3 +252,12 @@ On 2026-11-14, reviewed the 22 entrypoints against their stated scope, the routi
 The collection validator reported 145 Markdown files, 795 local links and anchors, and 22 matching catalog versions. The 22 entrypoints passed the standalone metadata check, the 15 evaluation cases passed manifest validation, and all 100 local tests passed. Vercel Skills CLI 1.8.1 copied 22 packages into an isolated project and all 148 installed files matched their sources. Codex CLI 0.160.0 listed all 22 as enabled. The installed UI prototype sample built three states and checked six declared token pairs. The installed PR Quiz rendered its sample using dry-run.
 
 This pass verifies the local installation and discovery path plus the declared helper checks. Behavior on other agent hosts and models, Android device results, and GitHub publication and grading with live permissions still depend on the target environment.
+
+
+## PentaPRO directory transition
+
+2026-11-15. Reviewed the five-pillar coverage against the supplied PentaPRO idea analysis. Kept the five dimensions and mapped domain knowledge, experience, protection, quality, cost, operations, verification and governance to topic files and links. PentaPRO 3.0.0 initializes repository-root pentapro/ with separate files in all five pillars and an assets index. UI Design 1.6.0 routes detailed screen records into PRODUCT when PentaPRO is selected. Document maintenance distinguishes the maintained specification from OpenSpec change artifacts and describes migration, revision-bound evidence and reconciliation after changes. The initializer preserves existing files and rejects a non-root destination or symlinked specification directory.
+
+Castas and Yo-Fi received the initial directory structure and project-specific navigation. Castas still needs reconciliation of its existing pillar records and conflicting toolchain instructions; Yo-Fi still needs product decisions before its scaffold can be accepted as a complete specification. Their OpenSpec directories remain separate. Previous PDF guides are dated teaching editions, and the README points users to the current skill for the new layout.
+
+The current collection validator, 22 entrypoint structural checks, evaluator isolation probe and offline suites passed locally. Structural and local execution checks do not establish that another agent, project or platform will recreate a software build identically. Projects must pin relevant inputs and verify their own outputs.

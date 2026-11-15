@@ -2,7 +2,7 @@
 
 **Entirely fictional.** This abbreviated example illustrates drafting and traceability; it is not a real project, research result, executed test, default policy, or complete production specification. IDs and numeric input values illustrate one behavior, not universal targets. Start real work from the [five pillar templates](../assets/penta-pro-template.md).
 
-The example is displayed together for comparison. In a generated project, place each pillar in its matching `docs/` file and the shared state below in `docs/process.md`. Keep the product summary and glossary in `docs/product.md`.
+The example is displayed together for comparison. In a generated project, place each record in its owning `pentapro/` topic file and the shared state below in `pentapro/process/index.md`. Keep the product summary in `pentapro/product/overview.md` and the glossary in `pentapro/product/domain.md`.
 
 ## Scenario and document state
 

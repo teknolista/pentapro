@@ -36,14 +36,4 @@ Use this order for initial detail and presentation. Capture consequential operat
 
 ## Output files
 
-For a first specification using the default layout, adapt these five templates into `docs/` relative to the project root. This index is an authoring resource. The generated specification consists of the five pillar files.
-
-| Template | Project destination | Canonical content |
-| --- | --- | --- |
-| [PRODUCT](product.md) | `docs/product.md` | Summary, domain glossary, outcomes, requirements, and acceptance criteria. |
-| [PROJECT](project.md) | `docs/project.md` | Design, contracts, delivery constraints, risks, questions, and decisions. |
-| [PRODUCTION](production.md) | `docs/production.md` | Distribution, configuration, operation, support, and recovery. |
-| [PROOF](proof.md) | `docs/proof.md` | Verification plans, traceability, actual evidence, and outcome evaluation. |
-| [PROCESS](process.md) | `docs/process.md` | Shared document state, coverage, identifiers, history, resume state, tasks, and authority. |
-
-Use one integrated interview and populate supported content across the set. Keep a concise disposition in a pillar even when little detail applies. Preserve existing project documents and requested locations. Read [document maintenance](../references/document-maintenance.md) for updates, partial writes, or migration.
+Initialize the project-root pentapro/ with scripts/init_pentapro.py, then use these five detailed templates to populate the corresponding topic files. The templates are authoring references and are not copied wholesale into a project. A topic can be split into smaller linked records as the specification grows. See [document maintenance](../references/document-maintenance.md) for canonical ownership, migration, and OpenSpec reconciliation.

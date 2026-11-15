@@ -1,6 +1,6 @@
 # Specification Patterns
 
-Use a form below only when the [pillar templates](../assets/penta-pro-template.md) need more detail for a consequential contract, decision, or operational procedure. Fill supported fields automatically with source references; leave unresolved choices `Pending` and recommendations `Proposed`. Incorporate applicable detail into its owning pillar or link an existing authoritative artifact; these forms do not require additional output files.
+Use a form below only when the [pillar templates](../assets/penta-pro-template.md) need more detail for a consequential contract, decision, or operational procedure. Fill supported fields automatically with source references; leave unresolved choices `Pending` and recommendations `Proposed`. Incorporate applicable detail into its owning pillar or link an existing authoritative artifact; these forms belong in the applicable topic files.
 
 Keep each record in its existing authoritative location and link it from the specification. Copy only applicable fields; explain non-applicability when it could otherwise look like an omission. Native schemas, headers, trackers, or runbooks can replace these forms. The [worked example](worked-example.md) demonstrates linked records without executed evidence.
 

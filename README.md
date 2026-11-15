@@ -72,10 +72,10 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [PentaPRO](#pentapro) | 2.9.2 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
+| [PentaPRO](#pentapro) | 3.0.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.3 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
-| [UI Design](#ui-design) | 1.5.9 | Specify, refine, review, and implement web and Android screens. Maintain `docs/ui-design.md` when screen documentation is in scope. |
+| [UI Design](#ui-design) | 1.6.0 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
 | [Diagnose Defect](#diagnose-defect) | 1.1.0 | Reproduce unclear failures, distinguish causes, and verify authorized fixes. |
 | [Behavior Testing](#behavior-testing) | 1.2.0 | Author behavior and regression tests or use a requested test-first workflow outside native Android. |
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
@@ -127,7 +127,7 @@ If you require the entire selected scope specified before coding, say so in the 
 
 1. Choose one maintained repository or a new project's first useful slice. Record the intended user outcome, relevant boundary, and one check that exercises it. [Adapt the project instructions](AGENTS-template.md) to the actual stack, commands, and authorities.
 2. Install the primary skill and any specialist the work needs. For direct work, start with the agreed behavior and focused check. For vibe coding, define what the isolated experiment should demonstrate. Use the [prototype promotion example](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype) if it will become maintained code.
-3. When using SDD with OpenSpec, identify the selected schema and accepted change. Link its scenarios to checks through the actual product entry point. Use the [delivery example](software-delivery/references/change-contracts.md#worked-example-with-openspec) and, when maintaining five pillars, the [PentaPRO ownership example](penta-pro/references/document-maintenance.md#example-with-an-accepted-openspec-change).
+3. When using SDD with OpenSpec, identify the selected schema and accepted change. Link its scenarios to checks through the actual product entry point. Use the [delivery example](software-delivery/references/change-contracts.md#worked-example-with-openspec) and, when maintaining five pillars, the [PentaPRO ownership example](penta-pro/references/document-maintenance.md#change-and-openspec-ownership).
 4. Run a working control and a meaningful failure check where the risk warrants it. Record the command, revision, result and any required check still pending in the project's existing PR or verification record. For consequential changes, follow the project's review, security and release gates. Record what a new session would need to resume.
 5. Use the [pilot measurement procedure](SKILL-EVALUATION.md#score-the-outputs) to compare outcomes and record friction or failures. See the [adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md) for the rationale and sequence.
 
@@ -272,7 +272,7 @@ An exploration-only request stays in the conversation until the user asks to cap
 
 The preferred order for initial detail and document presentation is PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS. Establish behavior, acceptance criteria, and consequential conditions of real use in PRODUCT. Choose a feasible solution in PROJECT, detail its operation in PRODUCTION, then define complete checks and evidence in PROOF. Maintain PROCESS authority and resume state throughout. Reconcile affected pillars as decisions change; the order does not impose sequential development phases.
 
-The template connects product strategy and stopping criteria to discovery evidence, outcomes, requirements, contracts, verification, and post-release learning. It includes a consolidated identifier and status model, increment readiness, decision and uncertainty records, privacy and accessibility considerations, delivery dependencies, documentation, launch and support readiness, and operational recovery evidence. Conditional profiles cover services, installed/offline apps, CLI tools, infrastructure, libraries, data/scientific workloads, AI features, embedded systems, interactive media, and commercial launch. For Android/KMP projects, an [additional overlay](penta-pro/references/android-kmp.md) details cross-platform contracts, test boundaries, state retention, dependency lifetimes and release evidence within the five pillar files. Combine profiles for hybrid products; they are not an exhaustive taxonomy.
+The template connects product strategy and stopping criteria to discovery evidence, outcomes, requirements, contracts, verification, and post-release learning. It includes a consolidated identifier and status model, increment readiness, decision and uncertainty records, privacy and accessibility considerations, delivery dependencies, documentation, launch and support readiness, and operational recovery evidence. Conditional profiles cover services, installed/offline apps, CLI tools, infrastructure, libraries, data/scientific workloads, AI features, embedded systems, interactive media, and commercial launch. For Android/KMP projects, an [additional overlay](penta-pro/references/android-kmp.md) details cross-platform contracts, test boundaries, state retention, dependency lifetimes and release evidence within the five pillar directories. Combine profiles for hybrid products; they are not an exhaustive taxonomy.
 
 Discovery resolves ambiguous domain terms with examples and counterexamples, compares material alternatives, and records the authority behind decisions. Binding principles become verifiable requirements. The selected increment includes a useful outcome and a check that can demonstrate it before later features exist. Detailed patterns address uncertain completion, retries, concurrent actions, access changes during queued work, and migration coexistence.
 
@@ -281,26 +281,20 @@ Discovery resolves ambiguous domain terms with examples and counterexamples, com
 ```text
 Use $penta-pro to explore options for offline editing before we write the specification.
 Use $penta-pro to interview me and create a specification for this project.
-Use $penta-pro to resume the interview from docs/process.md.
+Use $penta-pro to resume the interview from pentapro/process/index.md.
 Use $penta-pro to update the specification with these new requirements: ...
 Use $penta-pro to review whether the first increment is ready for development.
 ```
 
 ### Output and working boundaries
 
-By default, a first specification uses five files in the project's `docs/` directory. Each file owns its pillar and links related records in the others. One integrated interview populates the set, and the initial draft records pending decisions so the interview can resume.
+A first specification uses repository-root `pentapro/` with small topic files under its five pillar directories, plus `pentapro/assets/` for supporting media. Run the packaged initializer from the target repository root and populate the relevant files with project facts, IDs and links. For example, run `python3 .agents/skills/penta-pro/scripts/init_pentapro.py .` in a project using a copied Codex installation. The initializer preserves existing files. Its generated Pending text must be replaced or resolved before the specification is accepted. PROCESS owns status and the next action. See [document maintenance](penta-pro/references/document-maintenance.md) for migration and OpenSpec coordination.
 
-- `docs/product.md` covers users, scope, requirements, and acceptance criteria.
-- `docs/project.md` covers design, constraints, contracts, and decisions.
-- `docs/production.md` covers distribution, operation, and recovery.
-- `docs/proof.md` covers planned checks, traceability, and actual evidence.
-- `docs/process.md` covers the workflow, shared status, coverage, revision history, and next interview action.
+Existing PentaPRO specifications require an inventory and reconciliation before the new topic files become authoritative. Preserve legacy paths as redirects when callers need them.
 
-Existing single-file specifications and explicitly requested locations remain supported. Migration is performed when requested.
+PentaPRO maintains the product-wide specification while OpenSpec retains its separate change and task records. Link active changes and reconcile accepted behavior into the applicable PentaPRO files after implementation and verification. [Integration guidance](penta-pro/references/document-maintenance.md#change-and-openspec-ownership) distinguishes the current baseline, an accepted/proposed change, verification and actual deployment without imposing another framework.
 
-When the project already assigns normative requirements or implementation tasks to an existing change/specification system, PentaPRO keeps the five pillars as global context and navigation. It links the authoritative records instead of copying complete requirements or maintaining another task list. [Integration guidance](penta-pro/references/document-maintenance.md#existing-change-and-specification-workflows) distinguishes the current baseline, an accepted/proposed change, verification and actual deployment without imposing another framework.
-
-Creation saves the first draft in the selected format and location before pausing for answers. The default split saves all five drafts. Later rounds update the affected records, with stable IDs or locators and links to authoritative definitions. PROCESS records `In progress` for material updates across files and `Consistent` after reconciliation. Resumption inspects actual contents and completes any interrupted update. Proposed changes retain their baseline, compatibility commitments, and separate status until settled.
+Creation saves the first draft in the selected format and location before pausing for answers. The initializer creates linked topic drafts across all five pillars. Later rounds update the affected records, with stable IDs or locators and links to authoritative definitions. PROCESS records `In progress` for material updates across files and `Consistent` after reconciliation. Resumption inspects actual contents and completes any interrupted update. Proposed changes retain their baseline, compatibility commitments, and separate status until settled.
 
 For consequential ideas, PentaPRO records a working hypothesis and challenges it from the perspectives that could change the decision. Before handoff or authorized implementation, it reviews the consolidated specification by reconstructing a representative journey from the artifacts, comparing that reading with confirmed intent, and tracing material dependencies through the pillars. PROCESS holds the scoped review result, open items and next action. The author can run this review directly. Fresh independent review is available when authorized and supported by the host. [Specification review](penta-pro/references/specification-review.md)
 
@@ -344,7 +338,7 @@ Use Peer Review for backend services, frontend applications, Android software, a
 ```text
 Use $peer-review to review all my uncommitted changes, including new files.
 Use $peer-review to review this branch against origin/main, including the local edits.
-Use $peer-review to review the selected PR against the requirements and checks in docs/product.md and docs/proof.md.
+Use $peer-review to review the selected PR against the requirements and checks in pentapro/product/overview.md and pentapro/proof/traceability.md.
 Use $peer-review to review the changed tests for assertions that would miss the regressions they claim to detect.
 Use $peer-review to review the Android release changes, focusing on lifecycle and data migration.
 Use $peer-review to re-review the fixes for CR-001 and CR-002 on the current revision.
@@ -442,7 +436,7 @@ Live scans, exploitation, fuzzing, credential tests, shared-system testing, prod
 
 ```text
 Use $cybersec to assess this repository's security controls and report findings and unreviewed areas. Keep the source unchanged.
-Use $cybersec to threat-model the architecture in docs/project.md, including abuse cases and verification plans.
+Use $cybersec to threat-model the architecture in pentapro/project/architecture.md, including abuse cases and verification plans.
 Use $cybersec to map this project's relevant threats to controls, tests, and gaps, including cross-component attack chains. Save the assessment to docs/security-assessment.md.
 Use $cybersec to review this desktop app's IPC, local-file access, installer, and update boundaries.
 Use $cybersec to review the Android and iOS release configuration and API trust boundaries.
@@ -494,16 +488,16 @@ Use UI Design to discover, specify, refine, review, or implement screens and mul
 ### Examples and output
 
 ```text
-Use $ui-design to interview me about this Android app's onboarding and home screens and save the specification to docs/ui-design.md.
+Use $ui-design to interview me about this Android app's onboarding and home screens and save the specification to pentapro/product/experience.md.
 Use $ui-design to add the offline editing flow to the existing screen specification, preserving accepted decisions.
-Use $ui-design to review this web checkout's keyboard interaction, errors and responsive layout; record findings in docs/ui-design.md.
-Use $ui-design to implement UI-S03 using the project's existing components, verify the affected flow and update docs/ui-design.md.
-Use $ui-design to compare two visual directions for the same search screen and create an optional offline state gallery, keeping docs/ui-design.md authoritative.
+Use $ui-design to review this web checkout's keyboard interaction, errors and responsive layout; record findings in pentapro/product/experience.md.
+Use $ui-design to implement UI-S03 using the project's existing components, verify the affected flow and update pentapro/product/experience.md.
+Use $ui-design to compare two visual directions for the same search screen and create an optional offline state gallery, keeping pentapro/product/experience.md authoritative.
 ```
 
 Feedback guidance chooses field, form, transient, persistent, content-area or decision surfaces by task consequence, retaining usable content and truthful recovery. Compose guidance covers component contracts, state ownership, previews and shared/platform resources without imposing MVI or a DI library.
 
-When screen documentation is in scope, maintain the target project's cumulative **`docs/ui-design.md`** with screen contracts, decisions, acceptance scenarios, verification evidence and a resume pointer. Save partial specification iterations and preserve the project's established document location. For a localized implementation, use the existing contract and update it when the authorized change affects it. Return read-only review findings in the response unless the user requests a document.
+When screen documentation is in scope, maintain **`pentapro/product/experience.md`** and linked screen files in a PentaPRO project, or the target project's established screen contract with screen contracts, decisions, acceptance scenarios, verification evidence and a resume pointer. Save partial specification iterations and preserve the project's established document location. For a localized implementation, use the existing contract and update it when the authorized change affects it. Return read-only review findings in the response unless the user requests a document.
 
 When PentaPRO files exist, this UI document supplements their five pillars and links canonical requirements, checks, architecture and process records. Existing design systems remain authoritative for their owned tokens/components. The skill has no mandatory dependency on the other skills, BMAD, OpenSpec, Figma, a browser plugin, image generation or a paid service. Runtime checks require available project tools; HTML concepts do not prove Android behavior. Research observations, proposals, accepted decisions and executed checks remain distinct. No production usability or cross-model efficiency benchmark is claimed.
 
@@ -612,7 +606,7 @@ The template supplies rules for scoped work, implementation, validation, review,
 
 ## Guides and case studies
 
-The PDFs are Portuguese teaching editions dated November 2026. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. For an existing OpenSpec project, check its installed CLI, profile, resolved spec root and schema before applying a tutorial command. [OpenSpec documentation](https://openspec.dev/docs)
+The PDFs are Portuguese teaching editions dated November 2026. Their five-file PentaPRO examples predate the repository-root topic layout. Follow the current [PentaPRO skill](penta-pro/SKILL.md) for new projects and specification updates. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. For an existing OpenSpec project, check its installed CLI, profile, resolved spec root and schema before applying a tutorial command. [OpenSpec documentation](https://openspec.dev/docs)
 
 - [Development with agents](docs/guia-consolidado-desenvolvimento-com-agentes.pdf) covers direct changes, vibe coding and prototype promotion, project-native SDD and OpenSpec, Android, web, desktop, HTTP APIs, MCP servers, workers, and deployment. The revised edition explains OpenSpec 2.0 discovery and distinguishes delta validation from verification of the consolidated capability.
 - [Castas Android retrospective](docs/relatorio-retrospectiva-castas-android.pdf) shows how environment checks, cross-platform parity, device tests and release evidence changed during one project.
@@ -673,6 +667,7 @@ skills/
 │   │   ├── proof.md
 │   │   └── process.md
 │   ├── evals/
+│   ├── scripts/
 │   └── references/
 ├── peer-review/
 │   ├── SKILL.md
