@@ -83,7 +83,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 | [Software Delivery](#software-delivery) | 1.5.1 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
 | [Production Operations](#production-operations) | 1.0.1 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
-| [Git Ship](#git-ship) | 2.0.0 | Review, commit and publish the authorized Git snapshot. |
+| [Git Ship](#git-ship) | 2.1.0 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
 | [Agent Instructions](#agent-instructions) | 1.1.1 | Maintain portable software-development agent guidance. |
 | [Android modules](android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
@@ -565,7 +565,17 @@ Resolve technical uncertainty with traceable evidence. Read [technical-research/
 
 ## Git Ship
 
-Review, commit and publish the authorized Git snapshot. Read [git-ship/SKILL.md](git-ship/SKILL.md) for scope and conditional resources. Invoke `$git-ship` for this outcome. Existing project tools, contracts and authorization remain authoritative.
+Review, commit and publish an authorized Git snapshot, and prepare a pull request when asked. Read [git-ship/SKILL.md](git-ship/SKILL.md) for scope and conditional resources. Existing project tools, contracts and authorization remain authoritative.
+
+```text
+Use $git-ship to review this branch, commit the intended fix and push it.
+Use $git-ship to commit only docs/ and src/api/ and push the current branch.
+Use $git-ship to draft the PR body for these commits against main.
+```
+
+A ship request covers review, the requested commit and a normal push of the reviewed branch; a PR request produces a draft body. Stated paths or a scope bound what is reviewed and committed, and unrelated staged or unstaged work is preserved rather than absorbed. Reviewing does not license opportunistic fixes: a blocker is reported and stopped, and correcting it is separate work.
+
+The workflow keeps the safety boundaries visible: mutable Git state is established before anything changes, the candidate commit is inspected exactly, secrets are checked across the whole outgoing range including values added and later deleted, and the remote ref is confirmed by comparing `git ls-remote` with `git rev-parse HEAD` rather than trusting the push message. Environment failures are treated explicitly — an index lock, a network or credential failure, or a failing required hook stops or leaves publication `Unverified` instead of being bypassed. Merging, auto-merge, deployment, force-push, amend and history rewrite remain outside this authorization. Invoke `$git-ship` for this outcome.
 
 ## Agent Instructions
 
@@ -723,6 +733,8 @@ These are collection-maintenance prerequisites, not requirements for reading or 
 Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 
 Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
+
+Git Ship 2.1.0 strengthened the delivery contract: a stated path list bounds the reviewed set, delivery never silently fixes or refactors product code, documentation moves revalidate links and anchors, publication is confirmed by comparing `git ls-remote` with `git rev-parse HEAD`, and index, network and hook failures have explicit stop or `Unverified` outcomes. A disposable trial confirmed that a plain commit absorbs unrelated staged entries and that a path-limited commit substitutes working-tree content, while an isolated index preserves both the unrelated staged selection and a partially staged intended blob. These are single-repository structural and executed checks, not a model benchmark or a hosted-forge trial.
 
 The pstack-informed update adds caller-facing contract sketches and verification recipes to PentaPRO, safety-premise and measurement checks to Peer Review, model/enforcement distinctions to Cybersecurity, and instance-aware journey evidence to UI Design. These additions are conditional; the skills keep their existing output contracts and introduce no pstack dependency. [Research attribution and limits](THIRD-PARTY-NOTICES.md#cursor-pstack-research) identify the pinned source and adaptations.
 

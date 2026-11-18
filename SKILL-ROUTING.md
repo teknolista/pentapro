@@ -40,7 +40,7 @@ The earlier closure round added four portable owners and brought the collection 
 
 - [Technical Research](technical-research/SKILL.md) — Resolve technical uncertainty with traceable evidence.
 
-- [Git Ship](git-ship/SKILL.md) — Review, commit and publish the authorized Git snapshot.
+- [Git Ship](git-ship/SKILL.md) — Review, commit, publish or prepare the PR for the authorized Git snapshot.
 
 - [Agent Instructions](agent-instructions/SKILL.md) — Maintain portable software-development agent guidance.
 
