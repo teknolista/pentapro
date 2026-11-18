@@ -63,7 +63,7 @@ When a specification is requested and the user is unavailable, use existing dele
 
 Use the [saved-draft review](specification-review.md) to check what a reader can recover from the artifacts, including which consequential choices are still open.
 
-Check that objectives and hypotheses lead to requirements, acceptance criteria, feasible checks, and a way to evaluate the intended outcome. Reconcile contradictions, missing authoritative links, unexplained deferrals, and stale evidence. After a material clarification, update supported records and recheck affected dependencies and readiness. For a saved specification, record shared coverage and the next action in `process.md`, linking remaining questions in `project.md`, so another session can resume without repeating the interview or treating a draft as accepted. Follow an existing single-file layout when that is authoritative.
+Check that objectives and hypotheses lead to requirements, acceptance criteria, feasible checks, and a way to evaluate the intended outcome. Reconcile contradictions, missing authoritative links, unexplained deferrals, and stale evidence. After a material clarification, update supported records and recheck affected dependencies and readiness. For a saved specification, record shared coverage and the next action in `pentapro/process/index.md`, linking remaining questions in `pentapro/project/decisions.md`, so another session can resume without repeating the interview or treating a draft as accepted. For legacy single-file specifications, follow the authorized migration procedure in [document maintenance](document-maintenance.md); preserve content, IDs and links, and report any migration deferred by scope.
 
 ## Asynchronous discovery
 

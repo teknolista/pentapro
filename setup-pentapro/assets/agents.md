@@ -8,15 +8,19 @@ Replace `[FILL IN]` fields with actual project facts or links. Remove irrelevant
 
 ## Prompt Logging
 
-Mandatory in this repository. Before doing any work on a prompt, append it to `AGENTS.log` at the repository root, including prompts sent to subagents. Append only: never rewrite, reorder, or delete entries. The log is local and must never be committed.
+Before analyzing, responding to, or taking any action on a prompt for this repository, append one entry containing that prompt to `AGENTS.log` at the repository root. The first tool operation may locate the repository, check the log target, and append this entry or verify capture; defer other tool use and delegation until logging succeeds. This applies to every prompt, including prompts sent to subagents. Record each received prompt once, including repeated identical submissions; verify automatic capture using the current event identity or other reliable capture evidence, not text equality alone. If verification requires log access, inspect only the relevant current entry without exposing prior prompts. If capture cannot be verified, stop and report the uncertainty before risking a duplicate or an omitted entry.
 
-- Entry header: `## <RFC 5322 local date-time> | <provider/model> (<agent>, host <host>)`, then the prompt text exactly as sent, then one blank line. Use `<host>/unknown` when the host does not expose a model, and omit `host <host>` when the host is the provider.
-- Replace secrets and personal data with `[REDACTED]` before logging; never paste secrets into prompts.
-- If the append fails, stop the work, fix the write, and backfill the prompt before continuing.
-- If this repository ships a project hook under `scripts/agents-log/`, the hook is the primary capture and this rule is the fallback; verify its entry instead of logging twice.
-- Setup never writes this rule into the user's global agent configuration, and the repository must not depend on a personal global capture. A developer's global capture is a convenience outside this repository and must not duplicate the project hook.
+Use RFC 5322 local time with a numeric UTC offset, the provider/model, and the receiving agent and host. Use `unknown` for unavailable attribution; if the host is known but the model is not, use `<host>/unknown`. Keep one blank line between entries:
 
-Read `docs/agents/prompt-logging.md` for the entry format and attachments, the project hook and host recipes, security, concurrency, and limits.
+```text
+## <RFC 5322 local date and time with numeric UTC offset> | <provider>/<model> (agent <agent name>, host <host>)
+<prompt text, preserving its wording, spacing, and line breaks; use [empty prompt] if empty>
+[attachment: <filename, at its position in the prompt>]
+```
+
+Include attachment names at their position in the prompt; do not copy binary contents. Preserve the prompt text except that secrets and unnecessary personal data must be replaced with `[REDACTED]` before writing. Never put credentials in prompts. Redact common patterns such as PEM private keys, `sk-`/`rk-`/`pk-` keys, `ghp_`/`github_pat_` tokens, `AKIA` and `AIza` keys, `xox*` tokens, JWTs, `Bearer` values, and values after `password`, `passwd`, `senha`, `token`, `secret`, or `api_key`. Redaction is best-effort; it does not identify every secret or personal-data format. If a secret reaches the log, revoke it; deleting the local copy is not sufficient.
+
+Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if any are tracked or staged, stop and report the privacy conflict. Ignore patterns alone do not untrack files; preserve local data and existing index selections until authorized remediation. Create the log with owner-only permissions where supported. Refuse symlink, hard-linked, or non-regular log targets; stop rather than redirecting prompt text. Append only. Never rewrite, reorder, or delete existing entries. Concurrent entries may not be in chronological order; do not reorder them. The log has no automatic rotation; never truncate it. Keep it local; never commit or publish it. Do not send a success message just for logging. If appending fails, stop, report the failure, fix the write, and record the pending prompt before continuing. Never proceed as if logging succeeded when it did not. This instruction depends on agent compliance and is not mechanical enforcement.
 
 ## Project Facts and Navigation
 
@@ -47,7 +51,7 @@ Use the generic owners according to the requested work; optional implementation/
 
 | Skill | When to use it | Expected result and boundary |
 | --- | --- | --- |
-| `setup-pentapro` | First step in a new project, once per repository: pick the issue tracker, fix the domain-documentation layout, initialize the root instruction file and enable repository prompt logging | `docs/agents/` configuration, the root `AGENTS.md`/`CLAUDE.md`, and, with your approval, the `pentapro/` skeleton plus facts written into the owning pillars; asks before writing anything into `pentapro/` |
+| `setup-pentapro` | First step in a new project, once per repository: pick the issue tracker, fix the domain-documentation layout, initialize `AGENTS.md` with the complete repository prompt-logging rule | `docs/agents/` configuration, `AGENTS.md` (imported from `CLAUDE.md` when present), and, with your approval, the `pentapro/` skeleton plus facts written into the owning pillars; asks before writing anything into `pentapro/` |
 | `penta-pro` | Explore, create, resume, update, or review requirements and software specifications | Repository-root `pentapro/` with topic files under five pillar directories. Review the written artifacts and record scope, findings and next action in PROCESS when specification writing is authorized. |
 | `ui-design` | Specify, refine, review, or implement screens and user flows | Maintain the established screen specification, defaulting to `pentapro/product/experience.md` in a PentaPRO project, when documentation is in scope. A localized implementation follows the existing contract. Product-code changes require implementation authority. |
 | `peer-review` | Review implementation changes and relevant tests, or re-review fixes | Evidence-backed findings, checks and coverage limits for the selected snapshot. Review alone does not authorize fixes. Prefer a fresh reviewer when available; disclose self-review and any unmet independence requirement. |

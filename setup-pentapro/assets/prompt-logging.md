@@ -1,5 +1,7 @@
 # Prompt Logging
 
+> Legacy reference retained for existing installations and logger regression tests. Setup PentaPRO 1.3.0 does not install or configure these hooks or copy this policy. Its active prompt rule is self-contained in `AGENTS.md`. Host recipes below are historical; verify the installed host API before any separately authorized reuse.
+
 Mandatory rule for every AI agent and model working in this repository. The root instruction file carries the short operational version; this document defines the entry format, the capture mechanisms, security, concurrency, and limits.
 
 ## Rule

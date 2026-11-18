@@ -1,16 +1,18 @@
 ---
 name: setup-pentapro
-description: "Configure this repository for the teknolista skills: choose the issue tracker and domain documentation layout, initialize the root instruction file from the packaged template, enable mandatory prompt logging (optionally with a project-scoped capture hook for the developer's coding agent), and decide which project facts belong in the PentaPRO specification. Recommended once per new project before the collection's coordinated workflows."
+description: "Configure this repository for the teknolista skills: choose the issue tracker and domain documentation layout, initialize AGENTS.md with the complete prompt-persistence rule, and decide which project facts belong in the PentaPRO specification. Recommended once per new project before the collection's coordinated workflows."
 license: MIT
 metadata:
-  version: "1.2.1"
+  version: "1.3.0"
 ---
 
 # Setup PentaPRO
 
-Scaffold the per-repository configuration that the teknolista skills expect. This is the **first skill to run in a new project**. It records the issue tracker and the domain documentation layout, initializes the root agent instruction file, enables mandatory prompt logging (with an optional project-scoped capture hook for the developer's coding agent), and — when the developer approves — records the project facts that belong in the `pentapro/` specification. Skills that coordinate through the tracker read this configuration.
+Scaffold the per-repository configuration that the teknolista skills expect. This is the **first skill to run in a new project**. It records the issue tracker and the domain documentation layout, configures the complete prompt-persistence rule in the root `AGENTS.md`, and — when the developer approves — records the project facts that belong in the `pentapro/` specification. Skills that coordinate through the tracker read this configuration.
 
 Explore, present what you found, confirm with the user, then write.
+
+The agent running this skill must apply the prompt-persistence rule in Section E immediately, starting with the prompt that invoked setup. Make logging or verification the first tool operation, allowing only the repository-location and log-safety checks needed for it; defer general exploration. If automatic capture already recorded it, verify the current entry instead of duplicating it. Stop and report if the append fails.
 
 ## Process
 
@@ -19,9 +21,8 @@ Explore, present what you found, confirm with the user, then write.
 Look at the current repository to understand its starting state. Read whatever exists; don't assume:
 
 - `git remote -v` and `.git/config`: is this a GitHub repo? Which one?
-- `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Which sections does it already carry? Is the packaged template's `Setup status: temporary` marker or an `## Agent skills` block present?
-- Prompt-logging state: `AGENTS.log`, `docs/agents/prompt-logging.md`, existing `AGENTS.log*` ignore rules, and any project-scoped hook that already logs prompts (`scripts/agents-log/`, `.opencode/`, `.claude/`, `.codex/`, `.cursor/`, `.github/hooks/`).
-- Coding-agent hosts: repository markers (`opencode.json`, `.opencode/`, `CLAUDE.md`, `.claude/`, `.codex/`, `.cursor/`, `.github/hooks/`, `.github/copilot-instructions.md`), installed CLIs (`opencode`, `claude`, `codex`, `cursor-agent`, `copilot`), and the user's configuration directories. A global capture for the same host is a duplicate risk, not a project mechanism. Check `node --version` for the optional hook.
+- `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Which sections does it already carry? Does `CLAUDE.md` already import `AGENTS.md`? Is the packaged template's `Setup status: temporary` marker or an `## Agent skills` block present?
+- Prompt-logging state: whether `AGENTS.log` exists and whether `.gitignore` already excludes `AGENTS.log` and `AGENTS.log.*`, and whether `git ls-files -- AGENTS.log 'AGENTS.log.*'` reports tracked logs. Preserve its existing entries; access only the current entry when needed to verify automatic capture under Section E.
 - Root `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONTEXT.md`, and `CONTEXT-MAP.md`: glossary/context-file conventions used by other collections. If any exist, note them; Section C offers to migrate them into the PentaPRO specification.
 - `pentapro/` and `pentapro/product/domain.md`: does a five-pillar specification exist, and are domain terms already recorded in PRODUCT?
 - `docs/adr/` and any `src/*/docs/adr/` directories (legacy architecture decision records)
@@ -101,30 +102,43 @@ Rules:
 
 **Section E: Root instructions and prompt logging.**
 
-The root instruction file is the durable guide every agent reads. Build it from the packaged [agents.md](assets/agents.md) template: fill what repository evidence supports, keep unresolved template content visibly temporary, and never present generic guidance as a project fact.
+`AGENTS.md` is the canonical, self-contained instruction for prompt persistence. The entire operational rule must be in that file; do not make it depend on another policy document, a hook, or a global agent configuration.
 
-- **Choose the file:** edit `CLAUDE.md` when it exists, otherwise `AGENTS.md`. If neither exists, ask which one to create. Never create a competing file.
-- **New file:** seed it from the template. Fill the rows and commands exploration proved — purpose, stack, repository map, installed skill locations, verification commands — remove rows the evidence proves inapplicable, and leave the genuinely unknown ones as `[FILL IN]`.
-- **Existing file:** preserve the user's content. Add a template section only when the file has no equivalent guidance, and update the skill-owned `## Prompt Logging` and `## Agent skills` blocks in place. Never duplicate a heading or replace project-specific rules with template prose.
+- **Choose the file:** edit `AGENTS.md` when it exists; otherwise create it from [agents.md](assets/agents.md). Do this even when `CLAUDE.md` already exists. If `CLAUDE.md` exists, preserve its content and add `@AGENTS.md` on its own line unless it already imports `AGENTS.md`, so Claude Code loads the complete rule without duplicating it.
+- **Existing `AGENTS.md`:** preserve the user's content. Add or update one `## Prompt Logging` section in place; do not duplicate the heading or replace project-specific rules with template prose. The final section must be complete and self-contained as specified below.
+- **New file:** fill the rows and commands repository exploration proved — purpose, stack, repository map, installed skill locations, verification commands — remove rows the evidence proves inapplicable, and leave genuinely unknown ones as `[FILL IN]`.
 - **Temporary status:** keep the template's setup marker while any material `[FILL IN]` or unverified template section remains. `$penta-pro` reconciles the file after the specification exists.
 
-Prompt logging is mandatory in every repository configured by this skill; only the capture mechanism is a choice. The rule is the portable contract; a project hook is the optional mechanical guarantee.
+Prompt logging is mandatory. Put the complete rule below in `AGENTS.md`; it is also the source text for the `## Prompt Logging` section in the packaged root template. Do not replace it with a link or a summary.
 
-- Write the operational rule into the root instruction file's `## Prompt Logging` section from the packaged template. Every agent appends each prompt to `AGENTS.log` before acting, including prompts sent to subagents.
-- Copy [prompt-logging.md](assets/prompt-logging.md) to `docs/agents/prompt-logging.md` for the entry format, security, concurrency, host behavior, and limits.
-- Ensure `.gitignore` ignores `AGENTS.log` and `AGENTS.log.*`; the log is local and never committed.
-- Detect the coding-agent host(s) from exploration and present the list. Ask one question: keep the instruction rule alone, or add a project-scoped hook for the detected host(s)? Recommend the instruction alone for a solo repository whose host already has a working personal capture, and the project hook for a team repository or when mechanical enforcement is required. Do not ask per host; confirm the list once.
-- The hook is always project-scoped: a shared `scripts/agents-log/` core plus the host's documented project configuration. Never write the user's global configuration, and never make the repository depend on a personal global capture. If the same host already captures globally, keep one mechanism or make the personal capture defer to the project hook.
-- If the developer declines the hook, say that capture then depends on instruction compliance. Node.js 18+ is required for a hook; without it, do not offer the hook.
-- If a project hook already logs prompts, keep one mechanism per host: verify its entry and do not add a duplicate rule or hook.
+~~~markdown
+## Prompt Logging
+
+Before analyzing, responding to, or taking any action on a prompt for this repository, append one entry containing that prompt to `AGENTS.log` at the repository root. The first tool operation may locate the repository, check the log target, and append this entry or verify capture; defer other tool use and delegation until logging succeeds. This applies to every prompt, including prompts sent to subagents. Record each received prompt once, including repeated identical submissions; verify automatic capture using the current event identity or other reliable capture evidence, not text equality alone. If verification requires log access, inspect only the relevant current entry without exposing prior prompts. If capture cannot be verified, stop and report the uncertainty before risking a duplicate or an omitted entry.
+
+Use RFC 5322 local time with a numeric UTC offset, the provider/model, and the receiving agent and host. Use `unknown` for unavailable attribution; if the host is known but the model is not, use `<host>/unknown`. Keep one blank line between entries:
+
+```text
+## <RFC 5322 local date and time with numeric UTC offset> | <provider>/<model> (agent <agent name>, host <host>)
+<prompt text, preserving its wording, spacing, and line breaks; use [empty prompt] if empty>
+[attachment: <filename, at its position in the prompt>]
+```
+
+Include attachment names at their position in the prompt; do not copy binary contents. Preserve the prompt text except that secrets and unnecessary personal data must be replaced with `[REDACTED]` before writing. Never put credentials in prompts. Redact common patterns such as PEM private keys, `sk-`/`rk-`/`pk-` keys, `ghp_`/`github_pat_` tokens, `AKIA` and `AIza` keys, `xox*` tokens, JWTs, `Bearer` values, and values after `password`, `passwd`, `senha`, `token`, `secret`, or `api_key`. Redaction is best-effort; it does not identify every secret or personal-data format. If a secret reaches the log, revoke it; deleting the local copy is not sufficient.
+
+Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if any are tracked or staged, stop and report the privacy conflict. Ignore patterns alone do not untrack files; preserve local data and existing index selections until authorized remediation. Create the log with owner-only permissions where supported. Refuse symlink, hard-linked, or non-regular log targets; stop rather than redirecting prompt text. Append only. Never rewrite, reorder, or delete existing entries. Concurrent entries may not be in chronological order; do not reorder them. The log has no automatic rotation; never truncate it. Keep it local; never commit or publish it. Do not send a success message just for logging. If appending fails, stop, report the failure, fix the write, and record the pending prompt before continuing. Never proceed as if logging succeeded when it did not. This instruction depends on agent compliance and is not mechanical enforcement.
+~~~
+
+- Ensure `.gitignore` excludes `AGENTS.log` and `AGENTS.log.*`, preserving existing entries; the log must not be committed.
+- Do not install or configure hooks, plugins, slash commands, or global agent settings as part of this skill. The rule is enforced by the instruction every agent receives; do not claim that it provides mechanical enforcement.
 
 ### 3. Confirm and edit
 
 Show the user a draft of:
 
-- the `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
+- the `## Agent skills` block to add to `AGENTS.md`
 - the root instruction change: which template sections will be added, which fields exploration can already fill, and where the temporary marker stays
-- `docs/agents/prompt-logging.md`, the `AGENTS.log*` ignore entries, and — when a hook was chosen — the exact host(s), files copied, configuration entries or auto-discovered plugin files, and whether those paths are ignored by Git
+- the complete `## Prompt Logging` section to add to `AGENTS.md`, the `@AGENTS.md` import to add to an existing `CLAUDE.md`, and the `AGENTS.log*` ignore entries
 - the contents of `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, `docs/agents/triage-labels.md` (the last only when Section B ran), and `docs/agents/setup-notes.md` (only when facts were gathered and `pentapro/` was declined)
 - the exact facts proposed for `pentapro/`, grouped by target pillar file, so nothing is written before the user approves the list
 
@@ -134,15 +148,13 @@ Let them edit before writing.
 
 **Pick the file to edit:**
 
-- If `CLAUDE.md` exists, edit it.
-- Else if `AGENTS.md` exists, edit it.
-- If neither exists, ask the user which one to create; don't pick for them.
+- Edit the root `AGENTS.md` if it exists; otherwise create it from [assets/agents.md](assets/agents.md).
+- If a root `CLAUDE.md` exists, preserve its content and add `@AGENTS.md` on its own line unless it already imports `AGENTS.md`.
+- Do not create or replace `CLAUDE.md` as part of this setup.
 
-Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa); always edit the one that's already there.
+**Merge the root instruction template.** For a new `AGENTS.md`, start from [assets/agents.md](assets/agents.md) and fill the fields exploration confirmed. For an existing file, add only the template sections it lacks, and add or update the `## Prompt Logging` and `## Agent skills` blocks in place. Keep the temporary setup marker while material fields remain unfilled. Do not overwrite, reorder, or replace user-authored sections with template prose. The `## Prompt Logging` section must contain the complete rule above, without references to other policy files.
 
-**Merge the root instruction template.** For a new file, start from [assets/agents.md](assets/agents.md), adjust the title to the chosen filename, and fill the fields exploration confirmed. For an existing file, add only the template sections it lacks, and add or update the `## Prompt Logging` and `## Agent skills` blocks in place. Keep the temporary setup marker while material fields remain unfilled. Do not overwrite, reorder, or replace user-authored sections with template prose.
-
-If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
+If an `## Agent skills` block already exists in `AGENTS.md`, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
 
 The block:
 
@@ -159,7 +171,7 @@ Issues for this project live in [one-line summary, for example: GitHub Issues in
 
 ### Repository setup
 
-Agent setup is complete. The other collection skills read `docs/agents/*.md`; `$penta-pro` creates or resumes the `pentapro/` specification. Next step: run `$penta-pro` to introduce the software. `$setup-pentapro` (already run once for this repository) is not needed again unless the issue tracker or the domain layout changes.
+Agent setup is complete. The other collection skills read `docs/agents/*.md`; `$penta-pro` creates or resumes the `pentapro/` specification. Next step: run `$penta-pro` to introduce the software; when `docs/agents/setup-notes.md` exists, read and reconcile its deferred facts first. `$setup-pentapro` (already run once for this repository) is not needed again unless the issue tracker or the domain layout changes.
 ~~~
 
 Include the `### Triage labels` sub-block, linking to `docs/agents/triage-labels.md`, only when Section B ran; otherwise both are omitted.
@@ -171,26 +183,11 @@ Then write the files, using the seed templates in this skill folder as a startin
 - [assets/issue-tracker-local.md](assets/issue-tracker-local.md): local-markdown issue tracker
 - [assets/triage-labels.md](assets/triage-labels.md): label mapping (only if Section B ran)
 - [assets/domain.md](assets/domain.md): domain documentation consumer rules and layout
-- [assets/prompt-logging.md](assets/prompt-logging.md): prompt-logging policy copied to `docs/agents/prompt-logging.md`
-- [assets/prompt-logging/core.mjs](assets/prompt-logging/core.mjs): shared entry, redaction and append core copied into the project when a hook is chosen
-- [assets/prompt-logging/log-prompt.mjs](assets/prompt-logging/log-prompt.mjs): stdin adapter for command hooks
-- [assets/prompt-logging/opencode.ts](assets/prompt-logging/opencode.ts): OpenCode project plugin adapter for `.opencode/plugins/`
-- [assets/prompt-logging/hosts.md](assets/prompt-logging/hosts.md): host configuration, merge, trust and verification recipes
 - [assets/agents.md](assets/agents.md): root instruction template
 
 For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
 
-**Enable prompt logging.** Immediately after the root instruction file is written, write `docs/agents/prompt-logging.md` from [assets/prompt-logging.md](assets/prompt-logging.md). Ensure `.gitignore` lists `AGENTS.log` and `AGENTS.log.*`, preserving existing entries.
-
-If the developer chose a project hook:
-
-1. Copy `core.mjs` from [assets/prompt-logging/](assets/prompt-logging/) to `scripts/agents-log/`. Copy `log-prompt.mjs` there for command-based hooks; for OpenCode, copy `opencode.ts` to `.opencode/plugins/agents-log.ts` so OpenCode auto-loads it.
-2. Apply the selected host recipe from [hosts.md](assets/prompt-logging/hosts.md): merge configuration entries without replacing existing keys, or install an auto-discovered plugin at its documented path. Validate changed JSON, show the exact change before writing, and never overwrite a configuration file.
-3. Run `git check-ignore -v` on each configuration path and tell the user whether the hook will be committed or remain local. Do not change the project's ignore policy without asking.
-4. If a personal global capture exists for the same host, keep one mechanism or make the personal capture defer to the project hook (the OpenCode adapter sets `globalThis.__agentsLogProjectCapture`). Never install or edit the user's global configuration.
-5. Run the smoke test from [hosts.md](assets/prompt-logging/hosts.md), then ask the user to send one real prompt; confirm exactly one new entry, check redaction with a fake secret, and record the host and version in `docs/agents/prompt-logging.md`.
-
-If no hook was chosen, state that capture depends on the instruction rule. Never modify global agent configuration.
+**Enable prompt logging.** Immediately after writing `AGENTS.md`, ensure its `## Prompt Logging` section contains the full rule above, and ensure `.gitignore` lists `AGENTS.log` and `AGENTS.log.*`, preserving existing entries. If `CLAUDE.md` exists, verify that it imports `AGENTS.md`. Do not create a policy document elsewhere or configure any hook, plugin, slash command, or global agent setting.
 
 If Section B ran on GitHub or GitLab, create each configured label the tracker lacks (`gh label create` / `glab label create`).
 
@@ -202,17 +199,17 @@ python3 <installed penta-pro path>/scripts/init_pentapro.py <repository root>
 python3 .agents/skills/penta-pro/scripts/init_pentapro.py .
 ```
 
-The initializer never overwrites existing files. If it is missing or fails, report the exact failure and continue with the remaining setup steps; do not create the pillar files by hand as a substitute.
+The initializer never overwrites existing files. If it is missing or fails, report the exact failure, preserve any partial output, and defer approved facts to `docs/agents/setup-notes.md` with their status, sources and dates; do not create the pillar files by hand as a substitute. Continue independent setup steps and report initialization as incomplete.
 
-Write the approved Section D facts into their pillar files. Preserve existing content, stable IDs and prior provenance; merge the new entries with their `Confirmed` / `Proposed` / `Pending` labels and sources. Rewrite the initializer's `Pending` guidance only where a fact replaced it; leave the rest for the first `$penta-pro` pass.
+Only after successful initialization, or when using a pre-existing specification with the required pillar files, write the approved Section D facts into their pillar files. If initialization was declined or failed in this run, keep those facts in `docs/agents/setup-notes.md` instead, even if partial pillar files exist. Preserve existing content, stable IDs and prior provenance; merge the new entries with their `Confirmed` / `Proposed` / `Pending` labels and sources. Rewrite the initializer's `Pending` guidance only where a fact replaced it; leave the rest for the first `$penta-pro` pass.
 
 ### 5. Done
 
-Tell the user the setup is complete:
+Report completed steps and any incomplete initialization, tracker or logging prerequisite; claim setup complete only when required steps succeeded:
 
 - what was written under `docs/agents/` and what was written into `pentapro/` (or where deferred facts were noted)
-- which root instruction file was created or updated, which fields remain `[FILL IN]`, and that `$penta-pro` reconciles the temporary template content after the specification exists
-- that prompt logging is active, that `AGENTS.log` is local and ignored by Git, which hosts have a project hook (or that the rule alone is the mechanism), whether a personal global capture already covers a host, and whether the hook configuration is committed or local according to the ignore check
+- that `AGENTS.md` was created or updated with the complete, self-contained prompt rule, which fields remain `[FILL IN]`, whether `CLAUDE.md` imports it, and that `$penta-pro` reconciles the temporary template content after the specification exists
+- that prompts must be appended to `AGENTS.log` and that the log is ignored by Git; do not claim mechanical enforcement
 - which collection skills read this configuration (Software Delivery, Git Ship, Peer Review and PR Quiz when they create or update tickets or PRs; `$penta-pro` and the review skills use the glossary and decision records)
 
 Then present the next step explicitly:

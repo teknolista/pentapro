@@ -1,5 +1,7 @@
 # Host hook recipes
 
+> Legacy reference retained for existing installations and logger regression tests. Setup PentaPRO 1.3.0 does not install or configure these hooks or copy this policy. Its active prompt rule is self-contained in `AGENTS.md`. Host recipes below are historical; verify the installed host API before any separately authorized reuse.
+
 How to connect a coding agent's project-scoped prompt event to the shared core in this folder. Use this file only when the developer chooses mechanical capture; the root instruction rule remains the baseline for every host.
 
 ## Prerequisites

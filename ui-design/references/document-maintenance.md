@@ -8,7 +8,7 @@ Read the existing document before writing. Preserve accepted decisions, stable I
 
 ## Ownership and traceability
 
-`ui-design.md` owns the detailed screen/flow/visual contract. Link existing design-system files for canonical tokens instead of cloning their full content. PentaPRO's five files retain ownership of product requirements, architecture, operation, proof/evidence and work execution. Record UI consequences here and propose or make authorized updates in the appropriate owner when a decision changes scope, permissions, data retention, contracts or acceptance. Do not silently resolve conflicts in whichever file was edited last.
+The authoritative screen specification (`pentapro/product/experience.md` in PentaPRO, otherwise the established UI document) owns the detailed screen/flow/visual contract. Link existing design-system files for canonical tokens instead of cloning their full content. PentaPRO's five pillars retain ownership of product requirements, architecture, operation, proof/evidence and work execution. Record UI consequences here and propose or make authorized updates in the appropriate owner when a decision changes scope, permissions, data retention, contracts or acceptance. Do not silently resolve conflicts in whichever file was edited last.
 
 Use existing IDs. If none exist, a small scheme such as `UI-S01` screen, `UI-F01` flow and `UI-D01` decision is sufficient. Keep IDs stable after renaming; retire IDs visibly when references still use them. Index screens with platform, purpose, specification/decision status and links. Scope platform differences explicitly; do not duplicate a whole screen merely for a theme or width variant.
 
