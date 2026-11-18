@@ -1,8 +1,8 @@
 # Sources and adaptation notes
 
-`setup-pentapro` is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md) at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c` (2026-10-27), inspected on 2026-11-18 through the public repository. License: MIT, Copyright (c) 2026 Matt Pocock. The upstream source, copyright and permission notice are recorded in the repository [third-party notices](https://github.com/teknolista/skills/blob/main/THIRD-PARTY-NOTICES.md#setup-pentapro); the package ships under the repository [MIT license](../LICENSE).
+Earlier versions of `setup-pentapro` adapted Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md) at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c` (2026-10-27), inspected on 2026-11-18 through the public repository. License: MIT, Copyright (c) 2026 Matt Pocock. The upstream source, copyright and permission notice are recorded in the repository [third-party notices](https://github.com/teknolista/skills/blob/main/THIRD-PARTY-NOTICES.md#setup-pentapro); the package ships under the repository [MIT license](../LICENSE).
 
-## Adapted files
+## Historical adaptations
 
 | Upstream file | Local file | Adaptation |
 | --- | --- | --- |
@@ -21,18 +21,12 @@ These files are original to this collection, not adaptations of the upstream pac
 
 | Local file | Origin and purpose |
 | --- | --- |
-| [../assets/agents.md](../assets/agents.md) | The project root instruction template formerly maintained at the repository root as `AGENTS-template.md`. It is now packaged here so `$setup-pentapro` can create or merge `AGENTS.md`, mark unknown fields temporary, and let `$penta-pro` reconcile them. It contains the complete prompt-persistence rule, which is also present in the skill entrypoint so setup does not depend on a separate policy document. |
+| [../assets/agents.md](../assets/agents.md) | The project root instruction template formerly maintained at the repository root as `AGENTS-template.md`. Retained for earlier installations that seeded broad project guidance and temporary fields; current setup does not read or copy it. It contains the complete prompt-persistence rule, which is also present in the skill entrypoint so setup does not depend on a separate policy document. |
 
-The files under `../assets/prompt-logging/` and `../assets/prompt-logging.md` are legacy hook implementation materials. The current setup flow does not reference, install, or require them; prompt persistence is configured only through the self-contained rule in `SKILL.md` and `assets/agents.md`.
+The files under `../assets/prompt-logging/` and `../assets/prompt-logging.md` are legacy hook implementation materials. The current setup flow does not reference, install, or require them; current setup uses only the self-contained rule in `SKILL.md`.
 
-## Instruction loading
+## Current scope (1.4.0)
 
-Claude Code documents the `@path` import syntax in its [memory documentation](https://code.claude.com/docs/en/memory#import-additional-files), checked on 2026-11-18. Setup preserves existing `CLAUDE.md` content and adds the `@AGENTS.md` import for hosts using that loading path. Actual instruction discovery and compliance must be verified on the target host; the rule is not mechanical enforcement.
+The active entrypoint configures only the current project's root `AGENTS.md`, using its own inline prompt-persistence rule. It preserves unrelated instructions, merges one complete logging section, and leaves other files unchanged. It no longer imports instructions through Claude, configures trackers, creates domain documentation, seeds the broad instruction template, interviews for project facts or initializes a specification. The historical templates and logger assets remain for earlier installations and regression checks; they are not setup dependencies.
 
-## Why no root glossary
-
-In this collection, the domain glossary is specification material owned by PentaPRO. Writing a root `GLOSSARY.md` at setup time would create a competing canonical record the very first skill run, splitting domain authority between the specification and an installer artifact. The adapted skill records the layout instead (`docs/agents/domain.md`) and lets `$penta-pro` own the content.
-
-## Why Section D asks first
-
-Init findings (stack, commands, constraints, conventions) are commonly wrong, stale or implied. Misplaced "facts" become requirements. Section D therefore routes each fact to its owning pillar — PRODUCT, PROJECT, PRODUCTION, PROOF or PROCESS — keeps agent-operational facts in the root instruction file, and defaults to asking the developer whenever the ownership of a fact is unclear.
+The prompt rule is original to this collection. It includes timing, prompt and subagent scope, entry format, attribution, attachments, redaction, duplicate verification, append-only local storage, unsafe-target and tracked-log checks, and failure handling. Both setup and the resulting instruction section are self-contained.

@@ -1,5 +1,7 @@
 # AGENTS.md
 
+<!-- Historical broad template for earlier installations; current setup uses only its inline prompt-persistence rule. -->
+
 Repository guidance for AI agents. Apply it within the host's instruction hierarchy and consult relevant component-specific instructions before changing their files.
 
 Replace `[FILL IN]` fields with actual project facts or links. Remove irrelevant entries or mark them `Not applicable` with a reason. Unfilled fields are unknown information, not requirements, commands, or authorization. Resolve only gaps that affect the requested work.
@@ -51,7 +53,7 @@ Use the generic owners according to the requested work; optional implementation/
 
 | Skill | When to use it | Expected result and boundary |
 | --- | --- | --- |
-| `setup-pentapro` | First step in a new project, once per repository: pick the issue tracker, fix the domain-documentation layout, initialize `AGENTS.md` with the complete repository prompt-logging rule | `docs/agents/` configuration, `AGENTS.md` (imported from `CLAUDE.md` when present), and, with your approval, the `pentapro/` skeleton plus facts written into the owning pillars; asks before writing anything into `pentapro/` |
+| `setup-pentapro` | Configure prompt persistence in the current project | Only `AGENTS.md`, with the complete self-contained rule for saving prompts in `AGENTS.log` |
 | `penta-pro` | Explore, create, resume, update, or review requirements and software specifications | Repository-root `pentapro/` with topic files under five pillar directories. Review the written artifacts and record scope, findings and next action in PROCESS when specification writing is authorized. |
 | `ui-design` | Specify, refine, review, or implement screens and user flows | Maintain the established screen specification, defaulting to `pentapro/product/experience.md` in a PentaPRO project, when documentation is in scope. A localized implementation follows the existing contract. Product-code changes require implementation authority. |
 | `peer-review` | Review implementation changes and relevant tests, or re-review fixes | Evidence-backed findings, checks and coverage limits for the selected snapshot. Review alone does not authorize fixes. Prefer a fresh reviewer when available; disclose self-review and any unmet independence requirement. |

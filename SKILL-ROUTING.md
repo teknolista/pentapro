@@ -24,7 +24,7 @@ For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). So
 
 | Requested result | Primary owner | Boundary |
 | --- | --- | --- |
-| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | One pass: issue tracker, domain documentation layout, `AGENTS.md` with the complete prompt-persistence rule, and approved specification facts; imports `AGENTS.md` from an existing `CLAUDE.md` |
+| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Creates or updates only `AGENTS.md` with the complete self-contained rule for saving prompts in `AGENTS.log` |
 | Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
 | Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
 | Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
@@ -37,7 +37,7 @@ For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). So
 
 The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**; Setup PentaPRO (the first skill to run in a new project) brings it to **23**. See [upstream dispositions](COLLECTION-REVIEW.md).
 
-- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure a new project for the collection once per repository: issue tracker, domain documentation layout, `AGENTS.md` with the complete prompt-persistence rule, and approved specification facts. Run it before the other skills.
+- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence in the current project’s `AGENTS.md`; the complete rule is embedded directly, and prompts go to `AGENTS.log`.
 
 - [Software Delivery](software-delivery/SKILL.md) — Coordinate dependent implementation tasks or increments and verify their integrated result.
 
@@ -86,7 +86,7 @@ The Android integration stage brought the collection to **13 discoverable skills
 - “Configure a staging pipeline and deploy the accepted API revision” → Production Operations for infrastructure, release and runtime evidence. PentaPRO owns the intended operating contract when specification is requested. Git Ship owns any separately requested Git publication.
 - “Restore service after a failed rollout” → Production Operations for mitigation and recovery. Diagnose Defect owns causal investigation and Cybersecurity handles security assessment where applicable.
 - “Create a PR” alone → no quiz. “Add a comprehension quiz to this PR” → PR Quiz. Drafting, publishing, workflow installation and branch-rule changes retain their distinct authorization scopes.
-- “Set up this fresh repository for the skills” → Setup PentaPRO. It records the issue tracker and domain documentation layout, initializes `AGENTS.md` with the complete prompt-persistence rule, and asks which project facts belong in `pentapro/`; an existing `CLAUDE.md` imports `AGENTS.md`. `$penta-pro` then creates or resumes the specification and reconciles the temporary root instructions.
+- “Set up this fresh repository for the skills” → Setup PentaPRO. It creates or updates only `AGENTS.md` with the complete prompt-persistence rule for `AGENTS.log`. Invoke `$penta-pro` separately for specification work.
 
 The links in this collection-level map help developers find packages. Each installed skill keeps its relative resource links inside its own directory and refers to optional companions by name. An individual installation uses its packaged instructions and the project's commands and contracts. Install a companion when its distinct workflow is useful.
 

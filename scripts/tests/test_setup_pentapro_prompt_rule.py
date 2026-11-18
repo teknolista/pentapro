@@ -43,12 +43,6 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
         self.assertNotIn("assets/prompt-logging/hosts.md", skill_text)
         self.assertIn("Do not install or configure hooks", skill_text)
 
-    def test_deferred_facts_have_an_explicit_consumer(self):
-        setup = SKILL.read_text(encoding="utf-8")
-        consumer = (ROOT / "penta-pro" / "SKILL.md").read_text(encoding="utf-8")
-        self.assertIn("defer approved facts to `docs/agents/setup-notes.md`", setup)
-        self.assertIn("read `docs/agents/setup-notes.md` when present", consumer)
-        self.assertIn("preserving sources, dates", consumer)
 
 
 if __name__ == "__main__":

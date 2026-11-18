@@ -78,7 +78,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.3.0 | Configure a new project for the collection: issue tracker, domain documentation layout, a self-contained prompt-persistence rule in `AGENTS.md`, and the PentaPRO specification skeleton. Run first in a new project. |
+| [Setup PentaPRO](#setup-pentapro) | 1.4.0 | Configure only the current project’s `AGENTS.md` with the complete, self-contained rule for saving prompts in `AGENTS.log`. |
 | [PentaPRO](#pentapro) | 3.1.1 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.3 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -119,7 +119,7 @@ Open a Codex session in that project, select `$setup-pentapro`, and ask:
 
 > Configure this repository for the teknolista skills.
 
-The skill configures the issue tracker and domain documentation layout, initializes `AGENTS.md` from its packaged template with the complete prompt-persistence rule, and adds an `@AGENTS.md` import to an existing `CLAUDE.md`. It does not configure hooks or create a separate prompt-policy document. It asks which project facts belong in `pentapro/` and leaves unknown template fields marked as temporary for `$penta-pro` to reconcile. It ends by handing off to `$penta-pro`. Select it and introduce the software you intend to build — what it is, who uses it, the problem it solves and the first usable outcome are enough; a complete brief is not required:
+The skill creates or updates only `AGENTS.md`, embedding the complete prompt-persistence rule for `AGENTS.log` while preserving existing instructions. For specification work, select `$penta-pro` and introduce the software you intend to build — what it is, who uses it, the problem it solves and the first usable outcome are enough; a complete brief is not required:
 
 > Use $penta-pro to start the specification for this project. Here is what we are building: an offline-first notes app for a single user, where notes stay usable without a connection and sync when one returns. The first usable version should let me create, edit and search notes locally. Record the domain terms we agree on in `pentapro/product/domain.md`, draft the five pillars, and list the decisions that are still open before any implementation starts.
 
@@ -137,7 +137,7 @@ If you require the entire selected scope specified before coding, say so in the 
 
 ## Start a pilot
 
-1. Choose one maintained repository or a new project's first useful slice. Record the intended user outcome, relevant boundary, and one check that exercises it. Run `$setup-pentapro` to initialize the project instructions, tracker and domain layout for the actual stack, commands, and authorities.
+1. Choose one maintained repository or a new project's first useful slice. Record the intended user outcome, relevant boundary, and one check that exercises it. Run `$setup-pentapro` to configure the complete prompt-persistence rule in the project’s `AGENTS.md`.
 2. Install the primary skill and any specialist the work needs. For direct work, start with the agreed behavior and focused check. For vibe coding, define what the isolated experiment should demonstrate. Use the [prototype promotion example](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype) if it will become maintained code.
 3. When using SDD with OpenSpec, identify the selected schema and accepted change. Link its scenarios to checks through the actual product entry point. Use the [delivery example](software-delivery/references/change-contracts.md#worked-example-with-openspec) and, when maintaining five pillars, the [PentaPRO ownership example](penta-pro/references/document-maintenance.md#change-and-openspec-ownership).
 4. Run a working control and a meaningful failure check where the risk warrants it. Record the command, revision, result and any required check still pending in the project's existing PR or verification record. For consequential changes, follow the project's review, security and release gates. Record what a new session would need to resume.
@@ -219,8 +219,8 @@ The core instructions use Markdown and package-local references and templates. S
 ### First task and adoption checks
 
 1. Install the packages needed for your work and confirm that your agent can discover and read them, including their supporting files. Use a small task in a disposable project to check activation and tool access before relying on a new host/model combination.
-2. In a new project, run `$setup-pentapro` first, once per repository. It picks the issue tracker, fixes the domain documentation layout (glossary and decision records inside `pentapro/`), initializes `AGENTS.md` with the complete prompt-persistence rule, imports it from an existing `CLAUDE.md`, initializes the PentaPRO specification skeleton when you authorize it, and asks which project facts belong in the specification; anything unclear is presented to you instead of being written and template fields stay marked temporary for `$penta-pro` to reconcile. Re-running is needed only to switch trackers, change the domain layout, or restart from scratch. See [Setup PentaPRO](#setup-pentapro).
-3. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions. `$setup-pentapro` initializes the root instruction file from its packaged template and reconciles it after the specification exists; adapt that file rather than overwriting existing guidance or leaving placeholders as executable instructions.
+2. Run `$setup-pentapro` to create or update the current project's `AGENTS.md` with the complete rule for saving prompts in `AGENTS.log`. Re-running preserves unrelated instructions and leaves an already complete rule unchanged. See [Setup PentaPRO](#setup-pentapro).
+3. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions and preserve their prompt-persistence rule.
 4. Choose the [workflow depth](#choose-a-workflow). For a new specification, ask `Use $penta-pro to specify an offline notes application. Save the specification and identify unresolved decisions before implementation.` For an existing accepted plan, ask `Use $software-delivery to implement the next ready increment and run the required checks.` For a clear copy edit, identify the exact text and intended replacement directly.
 5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
 6. Inspect the actual artifacts and verification evidence. Confirm that the result meets the requested behavior, preserves existing constraints and names untested boundaries. Review and release follow the project's own gates. Resume material work from its saved contracts and evidence.
@@ -276,57 +276,42 @@ After changing host, model, or significant instructions, run the relevant [Penta
 
 **Entrypoint:** [setup-pentapro/SKILL.md](setup-pentapro/SKILL.md)
 
-The first skill to run in a new project, before the collection's coordinated workflows depend on tracker and domain configuration. Run it once per repository; later runs are needed only when switching issue trackers, changing the domain layout, or restarting from scratch. It configures what the rest of the collection expects to find, verifies that the tracker is reachable, and does not touch anything it has not been authorized to write.
+Setup PentaPRO currently configures only the current project's root `AGENTS.md`. It creates the file when missing or merges one complete `## Prompt Logging` section into existing instructions, preserving unrelated content. The full rule is embedded in the skill itself and written directly into `AGENTS.md`, with no external policy dependency; prompts are saved in `AGENTS.log`.
 
-Setup PentaPRO does six things:
-
-1. Picks the issue tracker — GitHub (`gh`), GitLab (`glab`), local markdown under `.scratch/`, or a workflow you describe — and records it in `docs/agents/issue-tracker.md` from a packaged template.
-2. Records the domain documentation layout in `docs/agents/domain.md`. The domain glossary lives in `pentapro/product/domain.md` and decision records in `pentapro/project/decisions.md`; the skill never creates root-level `GLOSSARY.md`, `GLOSSARY-MAP.md` or a parallel `docs/adr/` tree, and offers to migrate any legacy root files with `git mv` plus links, never silent deletion.
-3. Initializes root `AGENTS.md` from the packaged template with the complete, self-contained prompt-persistence rule. If `CLAUDE.md` exists, it adds `@AGENTS.md` without replacing project instructions. Unknown template fields remain temporary for `$penta-pro` to reconcile after the specification exists.
-4. Ignores `AGENTS.log` and `AGENTS.log.*` so the local prompt log is not committed. The rule itself lives in `AGENTS.md`; setup does not create another policy document or install a hook/plugin.
-5. Asks whether to initialize the `pentapro/` specification skeleton now, using the initializer shipped with the `penta-pro` package (it never overwrites existing files), or leave it for the first `$penta-pro` run.
-6. Weighs every other fact found during exploration against the five pillars — PRODUCT, PROJECT, PRODUCTION, PROOF and PROCESS — and asks the developer before writing anything into `pentapro/` when ownership is unclear. Agent-operational facts stay in the root instruction file; other facts go to `docs/agents/setup-notes.md` when the specification is not initialized, rather than being scattered.
+The rule covers first-action logging, every prompt including subagents, entry formatting and attribution, attachments, redaction, duplicate prevention, append-only storage, unsafe or tracked log targets, and write failures. It relies on agent compliance.
 
 ### Example requests
 
 ```text
-Use $setup-pentapro to configure this repository for the teknolista skills.
-Use $setup-pentapro to migrate the legacy root GLOSSARY.md and docs/adr/ into the PentaPRO specification.
+Use $setup-pentapro to configure the complete prompt-persistence rule in this project's AGENTS.md.
 ```
 
 ### Output and working boundaries
 
-Output: `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, `AGENTS.log*` entries in `.gitignore`, `AGENTS.md` initialized from the packaged template (with its temporary marker while fields remain unknown), an `@AGENTS.md` import in an existing `CLAUDE.md`, the `## Agent skills` block, optionally `docs/agents/triage-labels.md` (only when an installed `triage` skill asks for it), optionally the initialized `pentapro/` skeleton, and — with explicit approval, never silently — project facts written into the owning pillar files with `Confirmed` / `Proposed` / `Pending` labels and sources.
-
-Boundaries: setup does not author the specification, does not implement anything, and never writes into `pentapro/` without the developer approving the fact list. It preserves existing root instructions instead of replacing them. The prompt-persistence rule is complete in `AGENTS.md`; setup does not install hooks/plugins or create a separate policy document. The glossary belongs to PRODUCT and stays there; decisions belong to PROJECT and stay there. When the answer to "does this belong in the spec?" is unclear, the skill asks and follows the developer's decision.
+The only setup output is `AGENTS.md`. Setup preserves other files and existing project instructions. Tracker configuration, domain migrations, specification initialization, broad template seeding, ignore-file changes, Claude imports and hook installation are outside its current scope. An already complete rule is left unchanged.
 
 ### Next step
 
-Setup ends by handing off to `$penta-pro`, the recommended next action for every new project. Introduce the software there: what it is, who it is for, the problem it solves, what the first usable version must do, and the terms the team already uses for the domain. `$penta-pro` turns that introduction into the five-pillar specification and reports the decisions still open. The complete brief is not required up front; the skill asks about consequential gaps and keeps the developer's answers as the source. See [PentaPRO](#pentapro) for the entry point and its example requests.
+For specification work, invoke [PentaPRO](#pentapro) separately and describe the software, users, problem and first usable outcome.
 
 ### Provenance
 
-The package is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md) (MIT), reworked for this collection. See [source notes](setup-pentapro/references/sources.md) and the [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro) for provenance and the adaptations applied.
+Earlier versions adapted Matt Pocock's setup workflow (MIT). The current workflow is narrowed to prompt-persistence configuration. See [source notes](setup-pentapro/references/sources.md) and [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro) for provenance.
 
 ### Resources
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](setup-pentapro/SKILL.md) | Exploration, five setup sections, the complete prompt-persistence rule, confirmation requirements and the agent-skills block. |
-| [Root instructions template](setup-pentapro/assets/agents.md) | `AGENTS.md` template with the complete self-contained prompt rule, project navigation, skill routing, commands, authority and engineering guidance; unknown fields stay marked temporary. |
-| [Issue tracker: GitHub](setup-pentapro/assets/issue-tracker-github.md) | GitHub issues, native dependencies and sub-issues; PR triage-surface flag. |
-| [Issue tracker: GitLab](setup-pentapro/assets/issue-tracker-gitlab.md) | GitLab issues, merge requests and blocking links. |
-| [Issue tracker: local markdown](setup-pentapro/assets/issue-tracker-local.md) | `.scratch/` file layout, numbered tickets and triage status lines. |
-| [Triage labels](setup-pentapro/assets/triage-labels.md) | Label mapping; only relevant when an installed `triage` skill needs it. |
-| [Domain docs](setup-pentapro/assets/domain.md) | Consumer rules for `pentapro/product/domain.md` and `pentapro/project/decisions.md`. |
-| [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored maintainer cases for the setup conversation; not executed against a live tracker. |
-| [Source notes](setup-pentapro/references/sources.md) | Provenance, pinned upstream revision and the adaptations applied. |
+| [Entrypoint](setup-pentapro/SKILL.md) | Complete setup procedure and self-contained prompt-persistence rule. |
+| [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for scope, safe merging and the configured rule. |
+| [Historical root template](setup-pentapro/assets/agents.md) | Retained for earlier installations; not used by current setup. |
+
 
 ## PentaPRO
 
 **Entrypoint:** [penta-pro/SKILL.md](penta-pro/SKILL.md)
 
-Run this after [Setup PentaPRO](#setup-pentapro), the one-time per-repository setup skill. For everyday software, PentaPRO is the canonical product record and the default starting point for specification work in a new project. Its first consolidated pass also reconciles the root `AGENTS.md` or `CLAUDE.md` that setup marked as temporary, replacing placeholders with confirmed project facts and removing template sections that do not apply.
+Run this after [Setup PentaPRO](#setup-pentapro), the one-time per-repository setup skill. For everyday software, PentaPRO is the canonical product record and the default starting point for specification work in a new project. For projects configured by earlier setup versions, its first consolidated pass also reconciles temporary root instruction fields, replacing placeholders with confirmed project facts and removing template sections that do not apply.
 
 Use PentaPRO when defining a product, specifying a substantial feature, maintaining an existing PentaPRO document, or checking whether the next increment is ready for development. It uses existing project information and asks about consequential gaps. Ordinary coding tasks and small, clear specification updates do not restart a full interview.
 
@@ -683,9 +668,9 @@ Offline maintainer checks: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discov
 
 ## Project agent instructions template
 
-[setup-pentapro/assets/agents.md](setup-pentapro/assets/agents.md) is the root instruction template shipped with Setup PentaPRO. Running `$setup-pentapro` creates or updates the target project's `AGENTS.md` from it and adds an `@AGENTS.md` import to an existing `CLAUDE.md`, preserving project guidance. The repository no longer keeps a separate root copy to install by hand.
+[setup-pentapro/assets/agents.md](setup-pentapro/assets/agents.md) is the historical broad instruction template retained for earlier installations. Current `$setup-pentapro` uses its inline rule to create or update only the prompt-logging section in the target project’s `AGENTS.md`.
 
-PentaPRO reads deferred `docs/agents/setup-notes.md` facts on its next pass, preserves their status and provenance, and links them to the owning pillars.
+For earlier installations, PentaPRO reads deferred `docs/agents/setup-notes.md` facts on its next pass, preserves their status and provenance, and links them to the owning pillars.
 
 The template supplies rules for scoped work, implementation, validation, review, security, collaboration, and handoff. It routes work by outcome and lets the project set when direct edits, exploration, or prior specification apply. It identifies the five pillar documents and the cumulative UI specification, and explains ownership, resumption, and evidence states. It also carries the mandatory repository-scoped prompt-logging rule in full, including safe local storage, capture verification, redaction and failure handling. Setup does not install hooks or plugins. Fill in the project's skill locations and commands; unknown fields stay `[FILL IN]` under a temporary marker until `$penta-pro` reconciles the file after the specification exists. The project chooses its stack, source layout, model, and test framework. Artifacts use English by default, with exceptions for required identifiers, literal data, and localization. Keep detailed specifications and runbooks in their authoritative documents and link them from the project guide.
 
