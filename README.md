@@ -7,7 +7,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 > [!IMPORTANT]
 > These skills are still in development. They are based on my personal experience developing my own applications and may need adjustments for other projects, teams, models, and workflows.
 >
-> All 22 skills are distributed under the [MIT License](LICENSE), with source attribution in the [third-party notices](THIRD-PARTY-NOTICES.md).
+> All 23 skills are distributed under the [MIT License](LICENSE), with source attribution in the [third-party notices](THIRD-PARTY-NOTICES.md).
 >
 > Feedback from actual use, constructive criticism, and suggestions are very welcome through [GitHub Issues](https://github.com/teknolista/skills/issues).
 
@@ -28,23 +28,29 @@ All skill instructions and generated artifacts are in English. Conversation can 
     - [Native skill locations](#native-skill-locations)
     - [Required capabilities](#required-capabilities)
     - [Model selection and validation](#model-selection-and-validation)
-  - [PentaPRO](#pentapro)
-    - [The five pillars](#the-five-pillars)
+  - [Setup PentaPRO](#setup-pentapro)
     - [Example requests](#example-requests)
     - [Output and working boundaries](#output-and-working-boundaries)
+    - [Next step](#next-step)
+    - [Provenance](#provenance)
     - [Resources](#resources)
-  - [Peer Review](#peer-review)
+  - [PentaPRO](#pentapro)
+    - [The five pillars](#the-five-pillars)
     - [Example requests](#example-requests-1)
+    - [Output and working boundaries](#output-and-working-boundaries-1)
+    - [Resources](#resources-1)
+  - [Peer Review](#peer-review)
+    - [Example requests](#example-requests-2)
     - [Findings, verdicts, and boundaries](#findings-verdicts-and-boundaries)
     - [Test effectiveness](#test-effectiveness)
     - [Independent review and models](#independent-review-and-models)
     - [Hosted review environments](#hosted-review-environments)
-    - [Resources](#resources-1)
+    - [Resources](#resources-2)
   - [Cybersecurity](#cybersecurity)
     - [Modes and limits](#modes-and-limits)
-    - [Example requests](#example-requests-2)
+    - [Example requests](#example-requests-3)
     - [Coverage and findings](#coverage-and-findings)
-    - [Resources](#resources-2)
+    - [Resources](#resources-3)
   - [UI Design](#ui-design)
     - [Examples and output](#examples-and-output)
     - [UI Design resources](#ui-design-resources)
@@ -72,7 +78,8 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [PentaPRO](#pentapro) | 3.0.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
+| [Setup PentaPRO](#setup-pentapro) | 1.0.0 | Configure a new project for the collection: issue tracker, domain documentation layout and the PentaPRO specification skeleton. Run first in a new project. |
+| [PentaPRO](#pentapro) | 3.0.1 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.3 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
 | [UI Design](#ui-design) | 1.6.0 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
@@ -97,19 +104,24 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 The [routing and consolidation map](SKILL-ROUTING.md) records the 14 Android/quiz source skills. The [closure review](COLLECTION-REVIEW.md) maps all 54 entrypoints in the two requested upstream repositories. Four Android UI skills are internal UI Design procedures; Android security is a Cybersecurity reference. Those five overlapping names are deliberately not separate installable skills.
 
-The current collection contains **22 skills**. It is a curated adaptation, not a mirror of upstream packages. No Matt Pocock or Superpowers installation is required.
+The current collection contains **23 skills**. It is a curated adaptation, not a mirror of upstream packages. Matt Pocock or Superpowers are not required as separate installations.
 
 ## Quick start
 
-In your software project's root, use the [installation prerequisites](#install-with-the-skills-cli) and install one skill for a first task. This example installs PentaPRO for Codex from the published collection.
+In a new project, use the [installation prerequisites](#install-with-the-skills-cli), install `setup-pentapro` first, then the working skills you need. This example installs the setup skill and PentaPRO for Codex from the published collection.
 
 ```sh
+npx skills@latest add teknolista/skills --skill setup-pentapro -a codex
 npx skills@latest add teknolista/skills --skill penta-pro -a codex
 ```
 
-Open a Codex session in that project, select `$penta-pro`, and ask:
+Open a Codex session in that project, select `$setup-pentapro`, and ask:
 
-> Specify the first useful slice of an offline notes app. Save the specification and show which decisions and checks are still open. Planning only.
+> Configure this repository for the teknolista skills.
+
+The skill configures the issue tracker, the domain documentation layout (glossary and decision records inside the PentaPRO specification), and asks which project facts belong in `pentapro/`. It ends by handing off to `$penta-pro`. Select it and introduce the software you intend to build — what it is, who uses it, the problem it solves and the first usable outcome are enough; a complete brief is not required:
+
+> Use $penta-pro to start the specification for this project. Here is what we are building: an offline-first notes app for a single user, where notes stay usable without a connection and sync when one returns. The first usable version should let me create, edit and search notes locally. Record the domain terms we agree on in `pentapro/product/domain.md`, draft the five pillars, and list the decisions that are still open before any implementation starts.
 
 Read the saved specification and confirm the first increment's behavior. For an agreed multi-step implementation, install and select [Software Delivery](#software-delivery). For a known local fix, give the agent the expected behavior and a focused check. OpenSpec is optional. Use the [workflow guide](#choose-a-workflow) to decide when a versioned change record helps.
 
@@ -139,14 +151,20 @@ A pilot can begin with a local test and synthetic inputs. Hosted deployment, nat
 
 Install [Node.js 22.20 or later](https://github.com/vercel-labs/skills#install-a-skill), with npm/npx available, and run the command from the project where you want to use the skills. The CLI installs from the published GitHub repository.
 
-To install PentaPRO for Codex or list the available skills, use the corresponding command:
+To set up a new project for the collection, install `setup-pentapro` first:
+
+```bash
+npx skills@latest add teknolista/skills --skill setup-pentapro -a codex
+```
+
+Then install the working skills you need. To install PentaPRO for Codex or list the available skills, use the corresponding command:
 
 ```bash
 npx skills@latest add teknolista/skills --skill penta-pro -a codex
 npx skills@latest add teknolista/skills --list
 ```
 
-Install all 22 skills for Codex with this command. Quoting `'*'` passes the wildcard to the installer.
+The wildcard command installs all 23 skills, including `setup-pentapro`. Quoting `'*'` passes the wildcard to the installer.
 
 ```bash
 npx skills@latest add teknolista/skills --skill '*' -a codex -y
@@ -156,7 +174,7 @@ Replace `codex` with another [supported agent identifier](https://github.com/ver
 
 To pilot edits from a local checkout, run `npx skills@latest add /path/to/skills --skill '*' -a codex --copy -y` from the pilot project. Use an absolute path to the checkout whose files you want to test.
 
-The installer installs the selected skill packages and can link agent directories to a canonical copy. Use `--copy` when independent copies are needed; see the [installation methods](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#installation-methods). The repository's root `evals/` and `scripts/` stay in the collection checkout, even when you install all 22 skills. For a manual installation, copy only the selected skill directories. See [what belongs to the collection and to each package](#repository-structure).
+The installer installs the selected skill packages and can link agent directories to a canonical copy. Use `--copy` when independent copies are needed; see the [installation methods](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#installation-methods). The repository's root `evals/` and `scripts/` stay in the collection checkout, even when you install all 23 skills. For a manual installation, copy only the selected skill directories. See [what belongs to the collection and to each package](#repository-structure).
 
 Use `npx skills@latest check` to check for updates and `npx skills@latest update` to update installed skills. See the [official CLI reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) for installation options and update scopes.
 
@@ -181,6 +199,7 @@ your-project/.agents/skills/git-ship/SKILL.md
 your-project/.agents/skills/http-api/SKILL.md
 your-project/.agents/skills/mcp-server/SKILL.md
 your-project/.agents/skills/peer-review/SKILL.md
+your-project/.agents/skills/setup-pentapro/SKILL.md
 your-project/.agents/skills/penta-pro/SKILL.md
 your-project/.agents/skills/pr-quiz/SKILL.md
 your-project/.agents/skills/production-operations/SKILL.md
@@ -200,10 +219,11 @@ The core instructions use Markdown and package-local references and templates. S
 ### First task and adoption checks
 
 1. Install the packages needed for your work and confirm that your agent can discover and read them, including their supporting files. Use a small task in a disposable project to check activation and tool access before relying on a new host/model combination.
-2. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions. The optional [AGENTS.md template](AGENTS-template.md) helps record commands, contracts and authority; adapt it rather than overwriting existing guidance or leaving placeholders as executable instructions.
-3. Choose the [workflow depth](#choose-a-workflow). For a new specification, ask `Use $penta-pro to specify an offline notes application. Save the specification and identify unresolved decisions before implementation.` For an existing accepted plan, ask `Use $software-delivery to implement the next ready increment and run the required checks.` For a clear copy edit, identify the exact text and intended replacement directly.
-4. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
-5. Inspect the actual artifacts and verification evidence. Confirm that the result meets the requested behavior, preserves existing constraints and names untested boundaries. Review and release follow the project's own gates. Resume material work from its saved contracts and evidence.
+2. In a new project, run `$setup-pentapro` first, once per repository. It picks the issue tracker, fixes the domain documentation layout (glossary and decision records inside `pentapro/`), initializes the PentaPRO specification skeleton when you authorize it, and asks which project facts belong in the specification; anything unclear is presented to you instead of being written. Re-running is needed only to switch trackers, change the domain layout, or restart from scratch. See [Setup PentaPRO](#setup-pentapro).
+3. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions. The optional [AGENTS.md template](AGENTS-template.md) helps record commands, contracts and authority; adapt it rather than overwriting existing guidance or leaving placeholders as executable instructions.
+4. Choose the [workflow depth](#choose-a-workflow). For a new specification, ask `Use $penta-pro to specify an offline notes application. Save the specification and identify unresolved decisions before implementation.` For an existing accepted plan, ask `Use $software-delivery to implement the next ready increment and run the required checks.` For a clear copy edit, identify the exact text and intended replacement directly.
+5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
+6. Inspect the actual artifacts and verification evidence. Confirm that the result meets the requested behavior, preserves existing constraints and names untested boundaries. Review and release follow the project's own gates. Resume material work from its saved contracts and evidence.
 
 The collection supplies reusable methods and selected platform procedures. Generic workflows apply across stacks, with implementation procedures for native Android, web UI, HTTP APIs and MCP, and deployment guides for AWS, Azure, Google Cloud, Cloudflare and VPS. Other stacks require their own tooling and applicable documentation. Installation, a generated specification and passing collection tests do not certify the software produced with these skills. Consult the [maintenance review](FINAL-SKILL-REVIEW.md) and [evaluation results](evals/RESULTS.md) for the scope actually checked.
 
@@ -252,9 +272,58 @@ Choose a currently available model with sufficient reasoning, domain competence,
 
 After changing host, model, or significant instructions, run the relevant [PentaPRO cases](penta-pro/evals/scenarios.md), [Peer Review cases](peer-review/evals/scenarios.md), [Cybersecurity cases](cybersec/evals/scenarios.md), and [UI Design cases](ui-design/evals/scenarios.md). Check correct activation, preserved user decisions, meaningful defects versus false positives, honest evidence/coverage, and unintended edits. Compare matched tasks before claiming better accuracy, cost, or latency. Official format support does not establish a cross-vendor performance benchmark.
 
+## Setup PentaPRO
+
+**Entrypoint:** [setup-pentapro/SKILL.md](setup-pentapro/SKILL.md)
+
+The first skill to run in a new project, before the collection's coordinated workflows depend on tracker and domain configuration. Run it once per repository; later runs are needed only when switching issue trackers, changing the domain layout, or restarting from scratch. It configures what the rest of the collection expects to find, verifies that the tracker is reachable, and does not touch anything it has not been authorized to write.
+
+Setup PentaPRO does four things:
+
+1. Picks the issue tracker — GitHub (`gh`), GitLab (`glab`), local markdown under `.scratch/`, or a workflow you describe — and records it in `docs/agents/issue-tracker.md` from a packaged template.
+2. Records the domain documentation layout in `docs/agents/domain.md`. The domain glossary lives in `pentapro/product/domain.md` and decision records in `pentapro/project/decisions.md`; the skill never creates root-level `GLOSSARY.md`, `GLOSSARY-MAP.md` or a parallel `docs/adr/` tree, and offers to migrate any legacy root files with `git mv` plus links, never silent deletion.
+3. Asks whether to initialize the `pentapro/` specification skeleton now, using the initializer shipped with the `penta-pro` package (it never overwrites existing files), or leave it for the first `$penta-pro` run.
+4. Weighs every other fact found during exploration against the five pillars — PRODUCT, PROJECT, PRODUCTION, PROOF and PROCESS — and asks the developer before writing anything into `pentapro/` when ownership is unclear. Agent-operational facts stay in the root instruction file (`CLAUDE.md` or `AGENTS.md`, whichever the project already edits); other facts go to `docs/agents/setup-notes.md` when the specification is not initialized, rather than being scattered.
+
+### Example requests
+
+```text
+Use $setup-pentapro to configure this repository for the teknolista skills.
+Use $setup-pentapro to migrate the legacy root GLOSSARY.md and docs/adr/ into the PentaPRO specification.
+```
+
+### Output and working boundaries
+
+Output: `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, the `## Agent skills` block in the root instruction file, optionally `docs/agents/triage-labels.md` (only when an installed `triage` skill asks for it), optionally the initialized `pentapro/` skeleton, and — with explicit approval, never silently — project facts written into the owning pillar files with `Confirmed` / `Proposed` / `Pending` labels and sources.
+
+Boundaries: setup does not author the specification, does not implement anything, and never writes into `pentapro/` without the developer approving the fact list. The glossary belongs to PRODUCT and stays there; decisions belong to PROJECT and stay there. When the answer to "does this belong in the spec?" is unclear, the skill asks and follows the developer's decision.
+
+### Next step
+
+Setup ends by handing off to `$penta-pro`, the recommended next action for every new project. Introduce the software there: what it is, who it is for, the problem it solves, what the first usable version must do, and the terms the team already uses for the domain. `$penta-pro` turns that introduction into the five-pillar specification and reports the decisions still open. The complete brief is not required up front; the skill asks about consequential gaps and keeps the developer's answers as the source. See [PentaPRO](#pentapro) for the entry point and its example requests.
+
+### Provenance
+
+The package is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md) (MIT), reworked for this collection. See [source notes](setup-pentapro/references/sources.md) and the [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro) for provenance and the adaptations applied.
+
+### Resources
+
+| Resource | Purpose |
+| --- | --- |
+| [Entrypoint](setup-pentapro/SKILL.md) | Exploration, four sections (tracker, triage labels, domain docs, other facts), confirmation rules and the agent-skills block. |
+| [Issue tracker: GitHub](setup-pentapro/assets/issue-tracker-github.md) | GitHub issues, native dependencies and sub-issues; PR triage-surface flag. |
+| [Issue tracker: GitLab](setup-pentapro/assets/issue-tracker-gitlab.md) | GitLab issues, merge requests and blocking links. |
+| [Issue tracker: local markdown](setup-pentapro/assets/issue-tracker-local.md) | `.scratch/` file layout, numbered tickets and triage status lines. |
+| [Triage labels](setup-pentapro/assets/triage-labels.md) | Label mapping; only relevant when an installed `triage` skill needs it. |
+| [Domain docs](setup-pentapro/assets/domain.md) | Consumer rules for `pentapro/product/domain.md` and `pentapro/project/decisions.md`. |
+| [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored maintainer cases for the setup conversation; not executed against a live tracker. |
+| [Source notes](setup-pentapro/references/sources.md) | Provenance, pinned upstream revision and the adaptations applied. |
+
 ## PentaPRO
 
 **Entrypoint:** [penta-pro/SKILL.md](penta-pro/SKILL.md)
+
+Run this after [Setup PentaPRO](#setup-pentapro), the one-time per-repository setup skill. For everyday software, PentaPRO is the canonical product record and the default starting point for specification work in a new project.
 
 Use PentaPRO when defining a product, specifying a substantial feature, maintaining an existing PentaPRO document, or checking whether the next increment is ready for development. It uses existing project information and asks about consequential gaps. Ordinary coding tasks and small, clear specification updates do not restart a full interview.
 
@@ -314,6 +383,7 @@ The workflow is model-neutral. Use a host that can load the complete skill folde
 | --- | --- |
 | [Entrypoint](penta-pro/SKILL.md) | Scope, interview workflow, document maintenance, readiness, and handoff. |
 | [Template index](penta-pro/assets/penta-pro-template.md) | Authoring guidance and links to the five pillar templates. |
+| [Initializer](penta-pro/scripts/init_pentapro.py) | Creates the five-pillar specification in a repository root, preserving existing files; offline tests live in the package's `scripts/tests/`. |
 | [Document maintenance](penta-pro/references/document-maintenance.md) | Canonical ownership, coordinated updates, resumption, and migration. |
 | [Focused discovery](penta-pro/references/discovery.md) | Conditional techniques for unclear intent, dependent questions, alternatives, and consequential missing information. |
 | [Specification review](penta-pro/references/specification-review.md) | Artifact-based comprehension, cross-pillar checks, finding resolution and readiness handoff. |
@@ -651,6 +721,11 @@ skills/
 │   ├── evals/
 │   └── references/
 ├── technical-research/
+├── setup-pentapro/
+│   ├── SKILL.md
+│   ├── assets/
+│   ├── evals/
+│   └── references/
 ├── git-ship/
 ├── agent-instructions/
 ├── diagnose-defect/
@@ -722,6 +797,7 @@ To reproduce the local collection checks, use a POSIX development environment wi
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_collection.py
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_skill_evals.py --check-cases
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s penta-pro/scripts/tests -v
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s ui-design/scripts/tests -v
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s pr-quiz/scripts/tests -v
 node pr-quiz/scripts/tests/workflow.cjs
@@ -759,7 +835,7 @@ Where present, evaluation files and executable tests record the package's actual
 
 ## License and attribution
 
-All 22 packages use the [MIT License](LICENSE) and include a copy of its notice. This covers the imported Android and PR Quiz material, including references embedded in UI Design and Cybersecurity, under the MIT redistribution permission confirmed by the repository maintainer. Retain the license and applicable attribution when redistributing a package. See [third-party notices](THIRD-PARTY-NOTICES.md#pl-coding-android-and-pr-quiz-skills) for the source mapping.
+All 23 packages use the [MIT License](LICENSE) and include a copy of its notice. This covers the imported Android and PR Quiz material, including references embedded in UI Design and Cybersecurity, and the adapted Setup PentaPRO package, under the MIT redistribution permission confirmed by the repository maintainer. Retain the license and applicable attribution when redistributing a package. See [third-party notices](THIRD-PARTY-NOTICES.md) for the source mapping.
 
 The source research for [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), [Cybersecurity](cybersec/references/sources.md), and [UI Design](ui-design/references/sources.md) records their inputs and adaptation decisions. [Third-party notices](THIRD-PARTY-NOTICES.md) preserve upstream attribution; the repository license does not relicense external articles. Attribution does not imply affiliation, endorsement, or a runtime dependency.
 

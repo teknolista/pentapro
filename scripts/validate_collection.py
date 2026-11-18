@@ -106,7 +106,7 @@ labels = {
     "penta-pro":"PentaPRO", "peer-review":"Peer Review", "cybersec":"Cybersecurity",
     "ui-design":"UI Design", "diagnose-defect":"Diagnose Defect",
     "production-operations": "Production Operations",
-    "software-delivery":"Software Delivery", "technical-research":"Technical Research", "git-ship":"Git Ship", "agent-instructions":"Agent Instructions", "behavior-testing":"Behavior Testing", "http-api":"HTTP API", "mcp-server":"MCP Server",
+    "software-delivery":"Software Delivery", "technical-research":"Technical Research", "git-ship":"Git Ship", "setup-pentapro":"Setup PentaPRO", "agent-instructions":"Agent Instructions", "behavior-testing":"Behavior Testing", "http-api":"HTTP API", "mcp-server":"MCP Server",
 }
 versions = {}
 descriptions = {}

@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "3.0.0"
+  version: "3.0.1"
 ---
 
 # PentaPRO
@@ -18,6 +18,8 @@ Turn user intent and accepted software changes into a maintained English specifi
 | Create | Inspect the repository and run `python3 /installed/path/penta-pro/scripts/init_pentapro.py /project/repository/root`. Populate the relevant topic files with project facts, using the [pillar templates](assets/penta-pro-template.md) as authoring guidance. Interview for consequential gaps. | A linked `pentapro/` specification with clear facts, proposals, and open questions. |
 | Resume or update | Read the existing specification and resume state first. Use new answers and consult only relevant template sections for structural gaps or reassessing readiness. | Focused revisions preserving settled decisions, stable IDs, and unrelated edits. |
 | Review | Use [specification review](references/specification-review.md) on the requested specification and its material dependencies. For readiness, use the [PROCESS checklist](assets/process.md#increment-readiness-authority-and-completion). | Findings about the written specification and affected decisions or gates. Edit only when revisions are requested. |
+
+In a new repository, `$setup-pentapro` (when installed) records the issue tracker and domain layout first; this skill remains usable without it.
 
 Before changing a specification, identify the requested mode, target snapshot, canonical files/IDs and allowed writes. If context is limited, take one increment at a time and preserve the next action and material gaps in the existing PROCESS record or in the response for read-only work.
 

@@ -261,3 +261,26 @@ This pass verifies the local installation and discovery path plus the declared h
 Castas and Yo-Fi received the initial directory structure and project-specific navigation. Castas still needs reconciliation of its existing pillar records and conflicting toolchain instructions; Yo-Fi still needs product decisions before its scaffold can be accepted as a complete specification. Their OpenSpec directories remain separate. Previous PDF guides are dated teaching editions, and the README points users to the current skill for the new layout.
 
 The current collection validator, 22 entrypoint structural checks, evaluator isolation probe and offline suites passed locally. Structural and local execution checks do not establish that another agent, project or platform will recreate a software build identically. Projects must pin relevant inputs and verify their own outputs.
+
+## Setup PentaPRO addition
+
+2026-11-18. Added Setup PentaPRO 1.0.0 as the collection's first skill to run in a new project. It is adapted from Matt Pocock's `setup-matt-pocock-skills` at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c`, with issue-tracker, triage-label, domain-documentation and root-instruction templates. The domain layout is rewritten for this collection: glossary and context terms are PRODUCT material in `pentapro/product/domain.md`, decisions are PROJECT material in `pentapro/project/decisions.md`, and no root `GLOSSARY.md`, `GLOSSARY-MAP.md` or parallel `docs/adr/` tree is created. A new findings section weighs every other setup fact against the five pillars and asks the developer when ownership is unclear. The skill ends with an explicit handoff to `$penta-pro` for the project introduction.
+
+The README, routing map, project instruction template, third-party notices, collection disposition and validator label were updated. Provenance is recorded in the package [source notes](setup-pentapro/references/sources.md) and the [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro), which list the adapted files and deviations; the package keeps the repository's standard MIT `LICENSE`. The package ships authored evaluation scenarios, not executed model trials. Validation reported 155 Markdown files, 837 local links and anchors, 23 catalog versions and no issues. The 32 collection/evaluator, 11 PentaPRO initializer, 26 UI helper and 15 PR quiz publisher tests passed, as did the 27 Node quiz workflow scenarios, and `git diff --check` was clean.
+
+These are structural and offline checks. The setup conversation was not executed against a fresh repository with a live GitHub or GitLab tracker, so activation, question quality and real project outcomes still depend on the host, model and target project.
+
+## Final collection audit with the 23rd package — 2026-11-18
+
+Read all 23 entrypoints, their descriptions, boundaries, authority statements, references and catalogs before closing the Setup PentaPRO work. The 22 existing skills needed no new behavioral change: their workflow, security, retry/idempotency, cancellation, release and evidence contracts remain aligned with their stated scope, and the earlier per-package findings are unchanged. The audit confirmed that tracker configuration is consumed through the generated root instruction block rather than duplicated inside each coordination skill.
+
+Corrections made in this pass:
+
+- Setup PentaPRO now distinguishes what the collection expects from what it guarantees: the tracker/domain configuration is the contract, while `pentapro/` initialization remains optional and is created or resumed by `$penta-pro`.
+- The setup conversation now explores project facts (README, manifests, lockfiles, CI, commands) before Section D classifies them, handles a re-run over existing `docs/agents/`, stops rather than guessing when the tracker is unreachable, and states when the `penta-pro` initializer is not installed.
+- Legacy glossary/ADR migration preserves decision IDs and inbound links, supports one-file or per-record decision layouts, and never leaves two canonical copies.
+- The initializer reports repository failures as a clean `ValueError`, and its CLI prints `error: ...` with exit code 1 instead of a traceback and Git's stderr. Its 11 package-local tests cover creation, preservation, recreation, root enforcement, five symlink refusals and both CLI paths.
+- README task numbering, installation sequencing, package tree and resource tables now match the 23-package collection; PentaPRO is 3.0.1 because its packaged initializer changed, with the template version updated in lockstep.
+- Setup PentaPRO ships authored evaluation scenarios; they are maintainer cases, not executed model trials.
+
+Verification: the collection validator reported 155 Markdown files, 837 local links and anchors, 23 catalog versions and no issues. The 15 evaluation cases, 32 collection/evaluator tests, 11 PentaPRO initializer tests, 26 UI helper tests, 15 PR publisher tests, 27 Node quiz scenarios and `git diff --check` passed. These remain structural and offline checks; no live tracker, fresh-repository interview, hosted CI run or model comparison was executed for this pass.

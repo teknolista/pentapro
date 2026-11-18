@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), and [UI Design](ui-design/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record. These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
+This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), and [UI Design](ui-design/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record, and the `setup-pentapro` package redistributes adapted upstream text from one upstream skill (see [Setup PentaPRO](#setup-pentapro)). These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
 
 | Work | Copyright notice | License |
 | --- | --- | --- |
@@ -154,8 +154,25 @@ The [Blueprint skills](https://github.com/owainlewis/blueprint/tree/9a73756a1f0d
 
 ## Matt Pocock and Superpowers closure review
 
-The [complete disposition map](COLLECTION-REVIEW.md#upstream-coverage) records 39 Matt Pocock and 15 Superpowers entrypoints at their inspected revisions. New workflow instructions use original wording and do not bundle upstream code, scripts, templates or substantial prose. The original works retain their licenses and notices. No plugin, hook or external orchestration is installed. Exclusions are explicit rather than represented as imported capabilities.
+The [complete disposition map](COLLECTION-REVIEW.md#upstream-coverage) records 39 Matt Pocock and 15 Superpowers entrypoints at their inspected revisions. New workflow instructions use original wording and do not bundle upstream code, scripts, templates or substantial prose. The original works retain their licenses and notices. No plugin, hook or external orchestration is installed. Exclusions are explicit rather than represented as imported capabilities. The later Setup PentaPRO adaptation is recorded separately below.
 
 ## Production Operations
 
 [Production Operations](production-operations/SKILL.md) uses original workflow instructions and templates based on the primary technical references in its [source notes](production-operations/references/sources.md). OpenAI's Skill Creator and Matt Pocock's [Writing for Agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) informed the authoring structure. The Matt Pocock license is listed above. No external skill, provider code, deployment template or connector is redistributed. Linked works and services retain their respective terms.
+
+## Setup PentaPRO
+
+[Setup PentaPRO](setup-pentapro/SKILL.md) is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md), inspected on 2026-11-18 at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c`. Matt Pocock's skills repository is MIT-licensed, Copyright (c) 2026 Matt Pocock (see the table and the common permission notice above).
+
+Unlike the rest of this collection, Setup PentaPRO redistributes **adapted upstream text and templates**, not only independently written work. The adapted files are `setup-pentapro/SKILL.md` and the packaged templates `setup-pentapro/assets/issue-tracker-github.md`, `issue-tracker-gitlab.md`, `issue-tracker-local.md`, `triage-labels.md` and `domain.md`. The upstream copyright and permission notice are reproduced above; the package ships under the repository's [MIT license](setup-pentapro/LICENSE) and records [source notes](setup-pentapro/references/sources.md) with the upstream revision, each file's adaptation, and the reasons for the deviations.
+
+The main adaptations are:
+
+- The domain-documentation section is rewritten for this collection: the domain glossary is PRODUCT specification material and decision records are PROJECT material; the skill never creates root-level `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONTEXT.md`, `CONTEXT-MAP.md` or a parallel `docs/adr/` tree, and offers to migrate legacy files with `git mv` plus links.
+- A new section ("Other project facts") requires every fact gathered during setup to be evaluated for inclusion in the PentaPRO specification (`pentapro/`), with the developer deciding when pillar ownership is unclear. Facts are labelled `Confirmed` / `Proposed` / `Pending` and carry sources.
+- The `triage` label section is retained only for projects that also install an upstream `triage` skill; no `triage` skill ships in this collection.
+- Upstream `wayfinder` references remain only when the project also installs upstream `wayfinder`; this collection does not ship it.
+- The upstream `disable-model-invocation` flag is not used; this collection selects skills by description and explicit invocation.
+- Attribution retargeting: "never file issues into mattpocock/skills" now references `teknolista/skills`.
+
+Setup is the first skill run per new project, so the whole collection documents it as the required opening step. No upstream plugin, script or hook is installed by the package, and the adaptation grants no trademark rights, endorsement or affiliation.

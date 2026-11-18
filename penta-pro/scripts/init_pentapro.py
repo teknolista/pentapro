@@ -41,8 +41,16 @@ ARTIFACTS = {
 
 def initialize(root):
     root = root.resolve()
-    if subprocess.check_output(["git", "-C", str(root), "rev-parse", "--show-toplevel"],
-                               text=True).strip() != str(root):
+    try:
+        top = subprocess.run(
+            ["git", "-C", str(root), "rev-parse", "--show-toplevel"],
+            check=True, capture_output=True, text=True,
+        ).stdout.strip()
+    except subprocess.CalledProcessError as error:
+        raise ValueError(
+            f"Not a Git repository root: {(error.stderr or '').strip() or 'git rev-parse failed'}"
+        ) from error
+    if top != str(root):
         raise ValueError("Pass the repository root, not a subdirectory")
     target = root / "pentapro"
     if target.is_symlink():
@@ -103,4 +111,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("repository_root", type=Path)
     args = parser.parse_args()
-    print(initialize(args.repository_root))
+    try:
+        print(initialize(args.repository_root))
+    except ValueError as error:
+        parser.exit(1, f"error: {error}\n")
