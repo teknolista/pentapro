@@ -91,7 +91,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 | [Production Operations](#production-operations) | 1.0.1 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.0 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
-| [Agent Instructions](#agent-instructions) | 1.1.1 | Maintain portable software-development agent guidance. |
+| [Agent Instructions](#agent-instructions) | 1.1.2 | Maintain portable software-development agent guidance. |
 | [Android modules](android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
 | [Android errors](android-error-handling/SKILL.md) | 1.2.4 | Implement typed domain/HTTP/storage error handling. |
