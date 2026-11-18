@@ -78,7 +78,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.2.0 | Configure a new project for the collection: issue tracker, domain documentation layout, root agent instructions, prompt logging with an optional project-scoped capture hook, and the PentaPRO specification skeleton. Run first in a new project. |
+| [Setup PentaPRO](#setup-pentapro) | 1.2.1 | Configure a new project for the collection: issue tracker, domain documentation layout, root agent instructions, prompt logging with an optional project-scoped capture hook, and the PentaPRO specification skeleton. Run first in a new project. |
 | [PentaPRO](#pentapro) | 3.1.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.3 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -316,6 +316,8 @@ The package is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https:/
 | [Root instructions template](setup-pentapro/assets/agents.md) | Project `AGENTS.md`/`CLAUDE.md` template: navigation, skill routing, prompt logging, commands, authority and engineering rules; unknown fields stay marked temporary. |
 | [Prompt logging](setup-pentapro/assets/prompt-logging.md) | Repository policy copied to `docs/agents/prompt-logging.md`: rule, entry format, project hook, security, concurrency and limits. |
 | [Prompt-log core](setup-pentapro/assets/prompt-logging/core.mjs) | Shared entry format, redaction and append contract copied to `scripts/agents-log/core.mjs` when a hook is chosen. |
+| [Command-hook adapter](setup-pentapro/assets/prompt-logging/log-prompt.mjs) | Reads host JSON from stdin and appends through the shared core for command-based hooks. |
+| [OpenCode adapter](setup-pentapro/assets/prompt-logging/opencode.ts) | Project plugin copied to `.opencode/plugins/` for automatic discovery. |
 | [Host hook recipes](setup-pentapro/assets/prompt-logging/hosts.md) | Project configuration, merge, trust and verification recipes for OpenCode, Claude Code, Codex, Cursor and Copilot. |
 | [Issue tracker: GitHub](setup-pentapro/assets/issue-tracker-github.md) | GitHub issues, native dependencies and sub-issues; PR triage-surface flag. |
 | [Issue tracker: GitLab](setup-pentapro/assets/issue-tracker-gitlab.md) | GitLab issues, merge requests and blocking links. |

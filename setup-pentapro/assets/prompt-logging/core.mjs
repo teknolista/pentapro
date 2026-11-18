@@ -8,7 +8,14 @@
  * without a package manager, network access or build step.
  */
 
-import { appendFileSync } from "node:fs"
+import {
+	constants,
+	closeSync,
+	fstatSync,
+	lstatSync,
+	openSync,
+	writeFileSync,
+} from "node:fs"
 import { join } from "node:path"
 
 const LOG_FILE = "AGENTS.log"
@@ -90,18 +97,24 @@ export function isUserPrompt(message) {
 /**
  * Extracts the prompt and attachment names from a stdin hook payload.
  * Claude Code, Codex, Cursor and Copilot all send `prompt`; the other keys are
- * accepted so a host that renames the field does not silently lose entries.
+ * accepted so a host that renames the field fails explicitly rather than
+ * silently recording an empty prompt.
  */
 export function extractPrompt(payload) {
-	if (!payload || typeof payload !== "object") return { text: "", attachments: [] }
+	if (!payload || typeof payload !== "object") {
+		throw new Error("hook payload must be an object")
+	}
 
 	let text = ""
+	let hasPrompt = false
 	for (const key of ["prompt", "user_prompt", "userPrompt", "message", "text"]) {
 		if (typeof payload[key] === "string") {
 			text = payload[key]
+			hasPrompt = true
 			break
 		}
 	}
+	if (!hasPrompt) throw new Error("hook payload has no prompt field")
 
 	const attachments = []
 	if (Array.isArray(payload.attachments)) {
@@ -180,9 +193,32 @@ export function formatEntry({
 	return `## ${rfc5322(date)} | ${attribution({ host, provider, model, variant })}${metaText}\n${bodyParts.join("\n\n")}\n\n`
 }
 
-/** Appends synchronously with O_APPEND; the file is created with owner-only permissions. */
+/** Appends synchronously without following a symlink; new files are owner-only. */
 export function appendEntry(logPath, entry) {
-	appendFileSync(logPath, entry, { encoding: "utf8", flag: "a", mode: 0o600 })
+	try {
+		if (!lstatSync(logPath).isFile()) {
+			throw new Error("log path must be a regular file")
+		}
+	} catch (error) {
+		if (error?.code !== "ENOENT") throw error
+	}
+
+	const flags =
+		constants.O_WRONLY |
+		constants.O_APPEND |
+		constants.O_CREAT |
+		(constants.O_NONBLOCK ?? 0) |
+		(constants.O_NOFOLLOW ?? 0)
+	const fileDescriptor = openSync(logPath, flags, 0o600)
+	try {
+		const file = fstatSync(fileDescriptor)
+		if (!file.isFile() || file.nlink !== 1) {
+			throw new Error("log path must be a regular, unlinked file")
+		}
+		writeFileSync(fileDescriptor, entry, { encoding: "utf8" })
+	} finally {
+		closeSync(fileDescriptor)
+	}
 }
 
 /** Resolves the log path; the caller is responsible for the repository root. */

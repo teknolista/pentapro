@@ -1,12 +1,7 @@
 /**
  * OpenCode project adapter for the shared prompt-log core.
  *
- * Load it from the project configuration, not from the user's global
- * configuration:
- *
- *   {
- *     "plugins": ["./scripts/agents-log/opencode.ts"]
- *   }
+ * Place it at `.opencode/plugins/agents-log.ts` for project auto-discovery.
  *
  * The plugin id is distinct from the personal `agents-log` plugin so both can
  * be loaded. The adapter sets a process flag at setup; a personal global
@@ -21,17 +16,22 @@ import {
 	formatEntry,
 	isUserPrompt,
 	messageText,
-} from "./core.mjs"
+} from "../../scripts/agents-log/core.mjs"
+
+declare global {
+	var __agentsLogProjectCapture: boolean | undefined
+}
 
 export default Plugin.define({
 	id: "agents-log-project",
 	async setup(ctx) {
-		const root = ctx.location.directory
+		const root = ctx.location.project?.directory
+		if (!root) throw new Error("[agents-log] OpenCode did not provide the project root")
 		const logPath = join(root, "AGENTS.log")
 		const seen = new Set()
 
 		// Read by a personal global capture, which must yield to the project.
-		;(globalThis as any).__agentsLogProjectCapture = true
+		globalThis.__agentsLogProjectCapture = true
 
 		await ctx.session.hook("context", (event) => {
 			const messages = Array.isArray(event?.messages) ? event.messages : []

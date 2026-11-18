@@ -1,6 +1,6 @@
 # Collection closure review
 
-This records the earlier collection closure. See the [distribution review](FINAL-SKILL-REVIEW.md#distribution-review) for the later license and release status and the [Production Operations addition](FINAL-SKILL-REVIEW.md#production-operations-addition) for the 22nd package. The Git Delivery package named here was later renamed Git Ship (`git-ship`) at version 2.0.0; links point to its current location. The previously excluded `setup-matt-pocock-skills` row was later adapted as `setup-pentapro` (1.0.0, now 1.2.0); that disposition is noted inline.
+This records the earlier collection closure. See the [distribution review](FINAL-SKILL-REVIEW.md#distribution-review) for the later license and release status and the [Production Operations addition](FINAL-SKILL-REVIEW.md#production-operations-addition) for the 22nd package. The Git Delivery package named here was later renamed Git Ship (`git-ship`) at version 2.0.0; links point to its current location. The previously excluded `setup-matt-pocock-skills` row was later adapted as `setup-pentapro` (1.0.0, now 1.2.1); that disposition is noted inline.
 
 ## Scope and conclusion
 

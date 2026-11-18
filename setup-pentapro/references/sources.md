@@ -30,7 +30,7 @@ These files are original to this collection, not adaptations of the upstream pac
 
 Consulted on 2026-11-18 for the optional project-scoped capture. Only the documented configuration shapes and event contracts are used; no host code is bundled.
 
-- **OpenCode 2.0.31:** <https://opencode.ai/docs/build/plugins> — plugin loading, `Plugin.define`, project plugin paths and the server plugin API.
+- **OpenCode 2.0.31:** <https://opencode.ai/docs/build/plugins>, <https://opencode.ai/docs/build/plugins/server> and <https://opencode.ai/docs/plugins> — `Plugin.define`, automatic discovery under `.opencode/plugins/`, relative plugin paths, configured plugin-directory loading, and the distinction between `ctx.location.directory` (plugin location) and `ctx.location.project.directory` (project root). A configured local plugin path must be a directory or package, not a single TypeScript file.
 - **Claude Code:** <https://docs.claude.com/en/docs/claude-code/hooks> — `UserPromptSubmit`, `${CLAUDE_PROJECT_DIR}`, settings locations and exit-code behavior.
 - **Codex CLI:** <https://developers.openai.com/codex/hooks> — `UserPromptSubmit`, `.codex/hooks.json`, git-root paths and hook trust.
 - **Cursor:** <https://cursor.com/docs/agent/hooks> — `beforeSubmitPrompt`, `.cursor/hooks.json`, project/cloud behavior and exit-code handling.

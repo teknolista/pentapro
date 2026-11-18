@@ -41,22 +41,24 @@ The root instruction file (`AGENTS.md`, or `CLAUDE.md` when that is the file thi
 A project-scoped hook enforces the rule mechanically. It is optional, versioned with the repository, and installed only with the developer's approval. The shipped implementation is one shared core plus thin host adapters:
 
 ```text
-scripts/agents-log/core.mjs        entry format, redaction, append contract
+scripts/agents-log/core.mjs        entry format, redaction, safe append contract
 scripts/agents-log/log-prompt.mjs  stdin adapter for command hooks
-scripts/agents-log/opencode.ts     OpenCode plugin adapter (only for OpenCode)
+.opencode/plugins/agents-log.ts    OpenCode project plugin adapter
 ```
 
 The core reads the host payload, extracts the prompt, formats the entry, applies best-effort redaction, and appends synchronously with owner-only permissions. It produces no output on success. On failure it writes the reason to stderr and exits non-zero; the OpenCode adapter throws instead.
 
 | Host | Project configuration | Event | Can block an unlogged prompt? |
 | --- | --- | --- | --- |
-| OpenCode | `opencode.json` → `plugins` | `session.hook("context")` | Yes, the request is aborted |
+| OpenCode | `.opencode/plugins/agents-log.ts` | `session.hook("context")` | Yes, the request is aborted |
 | Claude Code | `.claude/settings.json` | `UserPromptSubmit` | Yes, exit 2 |
 | Codex CLI | `.codex/hooks.json` | `UserPromptSubmit` | Yes, exit 2 or `decision: block` |
 | Cursor | `.cursor/hooks.json` | `beforeSubmitPrompt` | Yes, exit 2 or `continue: false` |
 | GitHub Copilot CLI | `.github/hooks/<name>.json` | `userPromptSubmitted` | No, hook output is ignored |
 
 The exact configuration entries, merge rules, trust requirements, and verification steps are in the skill's `assets/prompt-logging/hosts.md`. A hook requires Node.js 18 or newer; without it, keep the instruction rule and do not install a hook.
+
+A command hook must reject a payload that has no recognized prompt field; only an explicitly empty prompt is recorded as `[empty prompt]`. The logger must also refuse a symlink or non-regular log path so a repository-local hook cannot redirect prompt text outside the repository.
 
 A hook must:
 
@@ -79,7 +81,7 @@ If the repository already logs prompts, verify its entry instead of creating a s
 
 Redaction is best effort. It covers common patterns — PEM private keys, `sk-`/`rk-`/`pk-` keys, `ghp_`/`github_pat_` tokens, `AKIA` keys, `AIza` keys, `xox*` tokens, JWTs, `Bearer` values, and values after `password`, `secret`, `token`, `senha`, or `api_key` — but it does not identify personal data or unknown formats. Pasting secrets into prompts remains prohibited. A secret that reached the log must be revoked, not merely deleted: the file is local, but the value has already circulated.
 
-The core creates the log with owner-only permissions (`0600`) when it creates the file. Treat the log as local audit data, restrict access, and keep it out of Git.
+The core creates the log with owner-only permissions (`0600`) when it creates the file and refuses symlink, hard-linked, or non-regular log paths. Treat the log as local audit data, restrict access, and keep it out of Git.
 
 ## Concurrency
 

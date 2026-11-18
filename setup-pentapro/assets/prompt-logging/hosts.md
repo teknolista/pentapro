@@ -6,14 +6,14 @@ How to connect a coding agent's project-scoped prompt event to the shared core i
 
 - Node.js 18 or newer is available as `node`. If it is not, do not install a hook; keep the instruction rule and report the missing prerequisite.
 - `AGENTS.log` and `AGENTS.log.*` are in `.gitignore`.
-- The project has, or will have, `scripts/agents-log/core.mjs` and `scripts/agents-log/log-prompt.mjs`. Add `scripts/agents-log/opencode.ts` only for OpenCode.
+- The project has, or will have, `scripts/agents-log/core.mjs`; command-based hosts also need `scripts/agents-log/log-prompt.mjs`. OpenCode's adapter lives at `.opencode/plugins/agents-log.ts`.
 - The hook configuration is merged into the host's existing project file. Never replace an existing hooks array, reorder entries, or drop another tool's hook.
 
 ## Choose the host
 
 | Host | Project configuration | Event | Payload field | Can block? |
 | --- | --- | --- | --- | --- |
-| OpenCode | `opencode.json` → `plugins` | `session.hook("context")` | message content | Yes, a thrown error aborts the request |
+| OpenCode | `.opencode/plugins/agents-log.ts` | `session.hook("context")` | message content | Yes, a thrown error aborts the request |
 | Claude Code | `.claude/settings.json` | `UserPromptSubmit` | `prompt` | Yes, exit 2 |
 | Codex CLI | `.codex/hooks.json` | `UserPromptSubmit` | `prompt` | Yes, exit 2 or `decision: block` |
 | Cursor | `.cursor/hooks.json` | `beforeSubmitPrompt` | `prompt` + `attachments` | Yes, exit 2 or `continue: false` |
@@ -24,19 +24,10 @@ Detect the host from repository markers, installed CLIs and the user's configura
 
 ## OpenCode
 
-1. Copy `core.mjs` and `opencode.ts` to `scripts/agents-log/`.
-2. Merge the plugin path into the project configuration OpenCode already uses: root `opencode.json`/`opencode.jsonc`, or `.opencode/opencode.json(c)` when that is the project file.
-
-```jsonc
-{
-  "$schema": "https://opencode.ai/config.json",
-  "plugins": ["./scripts/agents-log/opencode.ts"]
-}
-```
-
-3. If `plugins` already exists, append the path. Do not create a second configuration file.
-4. If the developer has the personal `agents-log` plugin in the OpenCode global configuration, make it check `globalThis.__agentsLogProjectCapture` inside its context hook and return early when the project adapter is loaded. If it cannot be updated, keep one mechanism: either the project hook or the personal capture, not both.
-5. Verify with a real prompt and confirm exactly one new entry.
+1. Copy `core.mjs` to `scripts/agents-log/core.mjs`.
+2. Copy `opencode.ts` to `.opencode/plugins/agents-log.ts`, creating the directory if needed. OpenCode auto-loads plugins from `.opencode/plugins/`; do not add a single-file path to the `plugins` array, because configured local paths must be directories or packages.
+3. If the developer has the personal `agents-log` plugin in the OpenCode global configuration, make it check `globalThis.__agentsLogProjectCapture` inside its context hook and return early when the project adapter is loaded. If it cannot be updated, keep one mechanism: either the project hook or the personal capture, not both.
+4. Verify with a real prompt and confirm exactly one new entry.
 
 ## Claude Code
 
@@ -161,7 +152,7 @@ printf '%s' '{"prompt":"agents-log smoke test"}' |
   node scripts/agents-log/log-prompt.mjs --host smoke --root .
 ```
 
-   Confirm one new entry and then remove that test entry only if the project allows editing the log. The append-only rule normally means leaving it; a synthetic entry at the bottom is harmless.
+   Confirm one new entry and then remove that test entry only if the project allows editing the log. The append-only rule normally means leaving it; a synthetic entry at the bottom is harmless. Also confirm that a payload without a recognized prompt field fails rather than recording `[empty prompt]`.
 4. Send one real prompt through the host. Confirm exactly one new entry with the expected host, model or `unknown`, and the prompt text.
 5. Test redaction with a fake value, for example `senha: hunter2`; the log must contain `[REDACTED]`.
 6. Test failure handling only when the user agrees: make `AGENTS.log` read-only, send a prompt, confirm the host blocks or reports, then restore permissions.

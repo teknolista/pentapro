@@ -1,5 +1,14 @@
 import assert from "node:assert/strict"
-import { readFileSync, rmSync, statSync, writeFileSync, mkdtempSync } from "node:fs"
+import {
+	existsSync,
+	linkSync,
+	readFileSync,
+	rmSync,
+	statSync,
+	symlinkSync,
+	writeFileSync,
+	mkdtempSync,
+} from "node:fs"
 import { tmpdir } from "node:os"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -66,7 +75,8 @@ test("extractPrompt handles every documented host payload", () => {
 		["/tmp/a.txt"],
 	)
 	assert.equal(extractPrompt({ user_prompt: "alias" }).text, "alias")
-	assert.equal(extractPrompt({}).text, "")
+	assert.equal(extractPrompt({ prompt: "" }).text, "")
+	assert.throws(() => extractPrompt({}), /no prompt field/)
 })
 
 test("normalizePayload accepts string and object model shapes", () => {
@@ -181,6 +191,26 @@ test("appendEntry reports an unwritable path", () => {
 	assert.throws(() => appendEntry(join(parent, "AGENTS.log"), "entry\n\n"))
 })
 
+test("appendEntry refuses a symlink log path", { skip: process.platform === "win32" }, () => {
+	const directory = temporaryDirectory()
+	const target = join(directory, "outside.log")
+	const logPath = resolveLogPath(directory)
+	writeFileSync(target, "untouched")
+	symlinkSync(target, logPath)
+	assert.throws(() => appendEntry(logPath, "prompt\n\n"))
+	assert.equal(readFileSync(target, "utf8"), "untouched")
+})
+
+test("appendEntry refuses a hard-linked log path", { skip: process.platform === "win32" }, () => {
+	const directory = temporaryDirectory()
+	const target = join(directory, "outside.log")
+	const logPath = resolveLogPath(directory)
+	writeFileSync(target, "untouched")
+	linkSync(target, logPath)
+	assert.throws(() => appendEntry(logPath, "prompt\n\n"), /unlinked file/)
+	assert.equal(readFileSync(target, "utf8"), "untouched")
+})
+
 test("resolveLogPath rejects a missing root", () => {
 	assert.throws(() => resolveLogPath(""))
 })
@@ -228,6 +258,14 @@ test("CLI exits 2 on an invalid payload so the host can block", () => {
 	})
 	assert.equal(empty.status, 2)
 	assert.match(empty.stderr, /no hook payload/)
+
+	const missingPrompt = spawnSync(process.execPath, [cli, "--root", directory], {
+		input: JSON.stringify({ model: "gpt-6.1" }),
+		encoding: "utf8",
+	})
+	assert.equal(missingPrompt.status, 2)
+	assert.match(missingPrompt.stderr, /no prompt field/)
+	assert.equal(existsSync(join(directory, "AGENTS.log")), false)
 
 	const fileAsRoot = join(directory, "file")
 	writeFileSync(fileAsRoot, "x")

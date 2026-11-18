@@ -3,7 +3,7 @@ name: setup-pentapro
 description: "Configure this repository for the teknolista skills: choose the issue tracker and domain documentation layout, initialize the root instruction file from the packaged template, enable mandatory prompt logging (optionally with a project-scoped capture hook for the developer's coding agent), and decide which project facts belong in the PentaPRO specification. Recommended once per new project before the collection's coordinated workflows."
 license: MIT
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
 ---
 
 # Setup PentaPRO
@@ -68,7 +68,7 @@ If no `pentapro/` directory exists yet, ask whether to initialize it now:
 
 > Initialize the PentaPRO specification skeleton now? (recommended: **yes** — `$penta-pro` fills and maintains it later)
 
-Run the initializer in step 4, once the user authorizes it; it never overwrites existing files and fills the pillar topic files with `Pending` markers. If the installed `penta-pro` package is not available, recommend installing it or defer, and record the deferred facts as described in Section D. If the user prefers to defer, say that domain terms and other setup facts stay unrecorded until the first `$penta-pro` pass.
+Run the initializer in step 4, once the user authorizes it; it never overwrites existing files and fills the pillar topic files with `Pending` markers. If the installed `penta-pro` package is not available, recommend installing it or defer, and record the deferred facts as described in Section D. If the user prefers to defer, record the approved setup facts in `docs/agents/setup-notes.md` during Section D; the first `$penta-pro` pass should absorb them into the five pillars.
 
 Then decide the domain-document layout:
 
@@ -124,7 +124,7 @@ Show the user a draft of:
 
 - the `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
 - the root instruction change: which template sections will be added, which fields exploration can already fill, and where the temporary marker stays
-- `docs/agents/prompt-logging.md`, the `AGENTS.log*` ignore entries, and — when a hook was chosen — the exact host(s), files copied, configuration entries to merge, and whether those paths are ignored by Git
+- `docs/agents/prompt-logging.md`, the `AGENTS.log*` ignore entries, and — when a hook was chosen — the exact host(s), files copied, configuration entries or auto-discovered plugin files, and whether those paths are ignored by Git
 - the contents of `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, `docs/agents/triage-labels.md` (the last only when Section B ran), and `docs/agents/setup-notes.md` (only when facts were gathered and `pentapro/` was declined)
 - the exact facts proposed for `pentapro/`, grouped by target pillar file, so nothing is written before the user approves the list
 
@@ -174,7 +174,7 @@ Then write the files, using the seed templates in this skill folder as a startin
 - [assets/prompt-logging.md](assets/prompt-logging.md): prompt-logging policy copied to `docs/agents/prompt-logging.md`
 - [assets/prompt-logging/core.mjs](assets/prompt-logging/core.mjs): shared entry, redaction and append core copied into the project when a hook is chosen
 - [assets/prompt-logging/log-prompt.mjs](assets/prompt-logging/log-prompt.mjs): stdin adapter for command hooks
-- [assets/prompt-logging/opencode.ts](assets/prompt-logging/opencode.ts): OpenCode project plugin adapter
+- [assets/prompt-logging/opencode.ts](assets/prompt-logging/opencode.ts): OpenCode project plugin adapter for `.opencode/plugins/`
 - [assets/prompt-logging/hosts.md](assets/prompt-logging/hosts.md): host configuration, merge, trust and verification recipes
 - [assets/agents.md](assets/agents.md): root instruction template
 
@@ -184,8 +184,8 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 
 If the developer chose a project hook:
 
-1. Copy `core.mjs` and `log-prompt.mjs` from [assets/prompt-logging/](assets/prompt-logging/) to `scripts/agents-log/`; copy `opencode.ts` too when OpenCode is one of the chosen hosts.
-2. Merge the selected host entry from [hosts.md](assets/prompt-logging/hosts.md) into the project configuration the host already uses. Preserve every existing hook and key, validate the JSON afterwards, and show the user the exact entry before writing. Never overwrite a configuration file.
+1. Copy `core.mjs` from [assets/prompt-logging/](assets/prompt-logging/) to `scripts/agents-log/`. Copy `log-prompt.mjs` there for command-based hooks; for OpenCode, copy `opencode.ts` to `.opencode/plugins/agents-log.ts` so OpenCode auto-loads it.
+2. Apply the selected host recipe from [hosts.md](assets/prompt-logging/hosts.md): merge configuration entries without replacing existing keys, or install an auto-discovered plugin at its documented path. Validate changed JSON, show the exact change before writing, and never overwrite a configuration file.
 3. Run `git check-ignore -v` on each configuration path and tell the user whether the hook will be committed or remain local. Do not change the project's ignore policy without asking.
 4. If a personal global capture exists for the same host, keep one mechanism or make the personal capture defer to the project hook (the OpenCode adapter sets `globalThis.__agentsLogProjectCapture`). Never install or edit the user's global configuration.
 5. Run the smoke test from [hosts.md](assets/prompt-logging/hosts.md), then ask the user to send one real prompt; confirm exactly one new entry, check redaction with a fake secret, and record the host and version in `docs/agents/prompt-logging.md`.
