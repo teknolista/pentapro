@@ -207,3 +207,4 @@ prettierignore.txt
 .windsurfrules
 .opencode/
 skills-lock.json
+AGENTS.log
