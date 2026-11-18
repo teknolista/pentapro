@@ -1,6 +1,6 @@
 # ✨ AI Agent Skills
 
-My personal collection of reusable skills for developers building software with AI coding agents. PentaPRO turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git delivery, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
+My personal collection of reusable skills for developers building software with AI coding agents. PentaPRO turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
 
 All skill instructions and generated artifacts are in English. Conversation can use the user's preferred language.
 
@@ -55,7 +55,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
   - [Software Delivery](#software-delivery)
   - [Production Operations](#production-operations)
   - [Technical Research](#technical-research)
-  - [Git Delivery](#git-delivery)
+  - [Git Ship](#git-ship)
   - [Agent Instructions](#agent-instructions)
   - [Native Android implementation and testing](#native-android-implementation-and-testing)
   - [PR Quiz](#pr-quiz)
@@ -83,7 +83,7 @@ All skill instructions and generated artifacts are in English. Conversation can 
 | [Software Delivery](#software-delivery) | 1.5.1 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
 | [Production Operations](#production-operations) | 1.0.1 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
-| [Git Delivery](#git-delivery) | 1.0.1 | Review, commit and publish the authorized Git snapshot. |
+| [Git Ship](#git-ship) | 2.0.0 | Review, commit and publish the authorized Git snapshot. |
 | [Agent Instructions](#agent-instructions) | 1.1.1 | Maintain portable software-development agent guidance. |
 | [Android modules](android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
@@ -177,7 +177,7 @@ your-project/.agents/skills/android-unit-testing/SKILL.md
 your-project/.agents/skills/behavior-testing/SKILL.md
 your-project/.agents/skills/cybersec/SKILL.md
 your-project/.agents/skills/diagnose-defect/SKILL.md
-your-project/.agents/skills/git-delivery/SKILL.md
+your-project/.agents/skills/git-ship/SKILL.md
 your-project/.agents/skills/http-api/SKILL.md
 your-project/.agents/skills/mcp-server/SKILL.md
 your-project/.agents/skills/peer-review/SKILL.md
@@ -563,9 +563,9 @@ The [deployment brief](production-operations/assets/deployment-brief.md) capture
 
 Resolve technical uncertainty with traceable evidence. Read [technical-research/SKILL.md](technical-research/SKILL.md) for scope and conditional resources. Invoke `$technical-research` for this outcome. Existing project tools, contracts and authorization remain authoritative.
 
-## Git Delivery
+## Git Ship
 
-Review, commit and publish the authorized Git snapshot. Read [git-delivery/SKILL.md](git-delivery/SKILL.md) for scope and conditional resources. Invoke `$git-delivery` for this outcome. Existing project tools, contracts and authorization remain authoritative.
+Review, commit and publish the authorized Git snapshot. Read [git-ship/SKILL.md](git-ship/SKILL.md) for scope and conditional resources. Invoke `$git-ship` for this outcome. Existing project tools, contracts and authorization remain authoritative.
 
 ## Agent Instructions
 
@@ -641,7 +641,7 @@ skills/
 │   ├── evals/
 │   └── references/
 ├── technical-research/
-├── git-delivery/
+├── git-ship/
 ├── agent-instructions/
 ├── diagnose-defect/
 ├── behavior-testing/
@@ -721,6 +721,8 @@ git diff --check
 These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](SKILL-EVALUATION.md).
 
 Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
+
+Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
 
 The pstack-informed update adds caller-facing contract sketches and verification recipes to PentaPRO, safety-premise and measurement checks to Peer Review, model/enforcement distinctions to Cybersecurity, and instance-aware journey evidence to UI Design. These additions are conditional; the skills keep their existing output contracts and introduce no pstack dependency. [Research attribution and limits](THIRD-PARTY-NOTICES.md#cursor-pstack-research) identify the pinned source and adaptations.
 

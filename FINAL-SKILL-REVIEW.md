@@ -22,7 +22,7 @@ The collection's division of responsibility is suitable for the stated developme
 | [Peer Review](peer-review/SKILL.md) | Retain. Source-backed findings, counterevidence, snapshot freshness and distinct verification/independence claims. |
 | [Cybersecurity](cybersec/SKILL.md) | Retain. Threat-to-control evidence, actual effect boundaries, allowed/denied controls, residual risk and authorization. |
 | [UI Design](ui-design/SKILL.md) | Correct documentation scope. Preserve platform-aware interaction/accessibility checks and distinguish specifications, concepts and runtime evidence. |
-| [Git Delivery](git-delivery/SKILL.md) | Retain. Reviewed snapshot, unrelated index preservation, explicit destinations and remote confirmation; no implicit merge/deploy. |
+| [Git Ship](git-ship/SKILL.md) | Retain. Reviewed snapshot, unrelated index preservation, explicit destinations and remote confirmation; no implicit merge/deploy. |
 | [Agent Instructions](agent-instructions/SKILL.md) | Strengthen evaluation integrity. Small useful owners, conditional references, verified isolation and honest comparison limits. |
 | [Android Module Structure](android-module-structure/SKILL.md) | Retain. Actual AGP/Kotlin mode, compatible conventions, explicit dependencies and release evidence. |
 | [Android Data Layer](android-data-layer/SKILL.md) | Retain. Atomic storage, migration and query semantics, account boundaries and uncertain remote outcomes. |
@@ -103,7 +103,7 @@ No blocking finding remains in the inspected collection scope. The collection is
 
 ## Production Operations addition
 
-On 2026-11-10 the collection added [Production Operations](production-operations/SKILL.md) as its 22nd package. It owns hosted backend planning, pipeline and infrastructure configuration, authorized deployment, runtime verification and recovery. PentaPRO retains specification, Software Delivery retains dependent application implementation, and Git Delivery retains Git publication. The package ships five conditional provider guides, two adaptable templates, worked examples and [offline evaluation scenarios](production-operations/evals/scenarios.md). Its [source notes](production-operations/references/sources.md) record original synthesis and linked primary references. The earlier validation records refer to their own snapshots.
+On 2026-11-10 the collection added [Production Operations](production-operations/SKILL.md) as its 22nd package. It owns hosted backend planning, pipeline and infrastructure configuration, authorized deployment, runtime verification and recovery. PentaPRO retains specification, Software Delivery retains dependent application implementation, and Git Ship retains Git publication. The package ships five conditional provider guides, two adaptable templates, worked examples and [offline evaluation scenarios](production-operations/evals/scenarios.md). Its [source notes](production-operations/references/sources.md) record original synthesis and linked primary references. The earlier validation records refer to their own snapshots.
 
 Local validation passed all 22 skill metadata checks, the collection catalog/license/link validator and all 68 offline helper tests. Skills CLI 1.7.6 installed only the new package into a disposable Codex project, where its 18 files matched the source byte for byte.
 
@@ -128,7 +128,7 @@ Date: 2026-11-10. Reviewed the local collection over `648fe9c`, preserving the p
 | Behavior Testing; Android Unit Testing; Android Integration Testing; Android UI Testing | Keep independent expectations, actual failure boundaries, deterministic scheduling and the distinction between mocked, host, device and live-service evidence. |
 | Android Module Structure; Android Data Layer; Android Error Handling; Android DI Koin; Android Background | Keep version-aware examples, cancellation, account-bound commits, migration preservation, component ownership and effective startup/release checks. |
 | UI Design; Peer Review; Cybersecurity | Keep observable interaction/accessibility contracts, substantiated findings, threat/control evidence, actual independence and scoped verdicts. No additional instruction defect was established in the inspected paths. |
-| Git Delivery; PR Quiz; Production Operations | Keep publication and deployment scoped to actual authorization, exact revision/target verification and recovery. The quiz remains an educational aid. Provider access and real deployment remain environment-specific. |
+| Git Ship; PR Quiz; Production Operations | Keep publication and deployment scoped to actual authorization, exact revision/target verification and recovery. The quiz remains an educational aid. Provider access and real deployment remain environment-specific. |
 
 Rechecked the [Agent Skills specification](https://agentskills.io/specification), [AGP built-in Kotlin](https://developer.android.com/build/migrate-to-built-in-kotlin), [Koin verification](https://insert-koin.io/docs/reference/koin-test/verify/), [Compose v2 testing](https://developer.android.com/develop/ui/compose/testing/migrate-v2), and [MCP revision changes](https://modelcontextprotocol.io/specification/2026-07-28/changelog). No new third-party skill implementation was incorporated. Existing notices and runtime package versions remain unchanged.
 
@@ -162,7 +162,7 @@ The collection is ready for use with its documented prerequisites and project-sp
 | HTTP API | Retained tenant-scoped retry, compatibility, transaction and external destination controls. |
 | MCP Server | Retained revision-specific lifecycle, caller authorization and downstream effect checks. |
 | Technical Research | Retained primary evidence, bounded experiments and explicit uncertainty. |
-| Git Delivery | Retained staged versus working-tree evidence and explicit publication scope. |
+| Git Ship | Retained staged versus working-tree evidence and explicit publication scope. |
 | UI Design | Retained conditional platform procedures and separation of visual, interaction and usability evidence. |
 | Android Module Structure | Retained effective Gradle mode, module ownership and supported build/release variants. |
 | Android Data Layer | Retained atomic writes, migration and session-bound storage behavior. |
@@ -211,7 +211,7 @@ The candidate supports local adoption using the documented tools and prerequisit
 | Cybersecurity | Make detection and accountability visible in threat coverage, update MCP source links, and include the version-qualified Android encrypted storage option. |
 | UI Design | Add a rendered accessibility journey spanning automated and manual checks, and make Android companion instructions optional when installed alone. |
 | Production Operations | Connect an applicable error-budget policy to a promotion decision and add incident recovery and follow-up evidence to the existing record. |
-| Git Delivery | Respect project commit/signature policy and stop publication on credentials present anywhere in the outgoing range. |
+| Git Ship | Respect project commit/signature policy and stop publication on credentials present anywhere in the outgoing range. |
 | Agent Instructions | Distinguish explicit use from discovery and place generated-code execution and scoring in separate environments. |
 | Android Module Structure | Describe effective built-in Kotlin configuration, conditional reference stacks, and Room 2/3 conventions. |
 | Android Data Layer | Preserve existing clients and serialization policy, give Room 2/3 setup alternatives, and test actual data boundaries and migration. |

@@ -40,7 +40,7 @@ The earlier closure round added four portable owners and brought the collection 
 
 - [Technical Research](technical-research/SKILL.md) — Resolve technical uncertainty with traceable evidence.
 
-- [Git Delivery](git-delivery/SKILL.md) — Review, commit and publish the authorized Git snapshot.
+- [Git Ship](git-ship/SKILL.md) — Review, commit and publish the authorized Git snapshot.
 
 - [Agent Instructions](agent-instructions/SKILL.md) — Maintain portable software-development agent guidance.
 
@@ -80,7 +80,7 @@ The Android integration stage brought the collection to **13 discoverable skills
 - “Find why this Android sync sometimes drops writes” → Diagnose Defect while the cause is unclear. Use the native data helper for the concrete fix when applicable.
 - “Add a browser regression for retry after a failed save” → Behavior Testing. A native Compose interaction test uses the native Android UI test owner.
 - “Implement this HTTP write endpoint and its regression checks” → HTTP API. “Expose the action as an MCP tool” → MCP Server. An implementation that touches both uses the actual transport and owning service contract at each boundary. Coordinate through Software Delivery when dependent tasks or increments need a shared execution plan.
-- “Configure a staging pipeline and deploy the accepted API revision” → Production Operations for infrastructure, release and runtime evidence. PentaPRO owns the intended operating contract when specification is requested. Git Delivery owns any separately requested Git publication.
+- “Configure a staging pipeline and deploy the accepted API revision” → Production Operations for infrastructure, release and runtime evidence. PentaPRO owns the intended operating contract when specification is requested. Git Ship owns any separately requested Git publication.
 - “Restore service after a failed rollout” → Production Operations for mitigation and recovery. Diagnose Defect owns causal investigation and Cybersecurity handles security assessment where applicable.
 - “Create a PR” alone → no quiz. “Add a comprehension quiz to this PR” → PR Quiz. Drafting, publishing, workflow installation and branch-rule changes retain their distinct authorization scopes.
 

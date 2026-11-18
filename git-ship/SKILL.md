@@ -1,12 +1,12 @@
 ---
-name: git-delivery
+name: git-ship
 description: Review and package a requested Git commit, normal branch push, or pull request, preserving unrelated work and verifying the published revision. Use for commit, ship, push, or PR preparation. Implementation completion alone does not authorize publication, merge, or deployment.
 license: MIT
 metadata:
-  version: "1.0.1"
+  version: "2.0.0"
 ---
 
-# Deliver reviewed Git changes
+# Ship reviewed Git changes
 
 Match the requested actions. A PR-body request produces a draft. A commit request commits the reviewed set. A normal push publishes only the established branch/ref. Reuse authorization already given instead of asking repeatedly. Use concise English commit messages and project artifacts.
 

@@ -1,10 +1,10 @@
 # Skill Review Report
 
-This historical report records recommendations against earlier package revisions. The maintenance review tracks subsequent changes and verification. [Final skill maintenance review](FINAL-SKILL-REVIEW.md)
+This historical report records recommendations against earlier package revisions. The maintenance review tracks subsequent changes and verification. [Final skill maintenance review](FINAL-SKILL-REVIEW.md). Package names are those current at the time of the report; Git Delivery was later renamed Git Ship (`git-ship`).
 
 ## Project Overview
 
-This repository contains **22 skills** for assisting developers in building high-quality software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Delivery, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
+This repository contains **22 skills** for assisting developers in building high-quality software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Ship, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
 
 The collection was last reviewed and closed on 2026-11-06, with all 21 skill packages passing structural validation and executable checks. This report identifies improvement opportunities to ensure these skills remain the most effective tools for helping developers build high-quality, secure software.
 

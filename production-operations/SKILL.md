@@ -35,7 +35,7 @@ A plan or configuration request stays within that scope. Verify the target and a
 
 For a mixed deployment, verify each control plane and the boundary between them. Other providers can use the same workflow with their own current documentation and a verified mapping of identity, runtime, artifact, networking, storage, and release behavior.
 
-PentaPRO owns the specification, Software Delivery coordinates dependent application changes, Git Delivery publishes Git changes, Cybersecurity owns security assessments, and Diagnose Defect investigates causes. Production Operations owns deployment and operational effects. The project's authorization and existing records govern all of them.
+PentaPRO owns the specification, Software Delivery coordinates dependent application changes, Git Ship publishes Git changes, Cybersecurity owns security assessments, and Diagnose Defect investigates causes. Production Operations owns deployment and operational effects. The project's authorization and existing records govern all of them.
 
 [Worked examples](references/worked-examples.md) for a managed API with a migration or a VPS behind Cloudflare.
 
