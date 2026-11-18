@@ -4,7 +4,19 @@ Repository guidance for AI agents. Apply it within the host's instruction hierar
 
 Replace `[FILL IN]` fields with actual project facts or links. Remove irrelevant entries or mark them `Not applicable` with a reason. Unfilled fields are unknown information, not requirements, commands, or authorization. Resolve only gaps that affect the requested work.
 
-When adopting this template, confirm the target repository root, complete the navigation and authority fields, locate the installed generic owners and any relevant optional helpers, and discover the real verification commands. Keep unresolved setup facts explicit. Review any existing `AGENTS.md` and scoped guidance before combining them; copying this file does not install skills or supply tools.
+> **Setup status: temporary.** `[FILL IN]` fields are unknown. `$penta-pro` reconciles this file after the specification and removes this note; remove it earlier when every material field is already known.
+
+## Prompt Logging
+
+Mandatory in this repository. Before doing any work on a prompt, append it to `AGENTS.log` at the repository root, including prompts sent to subagents. Append only: never rewrite, reorder, or delete entries. The log is local and must never be committed.
+
+- Entry header: `## <RFC 5322 local date-time> | <provider/model> (<agent>)`, then the prompt text exactly as sent, then one blank line.
+- Replace secrets and personal data with `[REDACTED]` before logging; never paste secrets into prompts.
+- If the append fails, stop the work, fix the write, and backfill the prompt before continuing.
+- If a project-scoped hook already logs prompts, verify its entry instead of creating a duplicate.
+- Never configure this rule in the user's global agent configuration; it applies to this repository only.
+
+Read `docs/agents/prompt-logging.md` for the entry format and attachments, the optional repository hook, concurrency, and limits.
 
 ## Project Facts and Navigation
 

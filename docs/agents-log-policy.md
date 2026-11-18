@@ -64,7 +64,7 @@ O log usa abertura em modo de anexação (`O_APPEND`), o que evita que agentes s
 - Não há rotação automática: o arquivo cresce sem limite. A rotação é manual, por cópia do arquivo e recomeço do log; entradas nunca são editadas.
 - O arquivo foi reiniciado em 2026-11-17, depois de a correção do filtro entrar em vigor. A versão anterior ficou em `AGENTS.log.pre-fix` (também ignorada pelo Git) e contém entradas de teste e checkpoints registrados por engano.
 - Textos anteriores a esta política (por exemplo, o conteúdo de `AGENTS.md` que ocupava o arquivo) não são histórico de prompts e não foram apagados por causa da regra de anexação apenas.
-- O plugin e os arquivos dos demais harnesses são artefatos locais de desenvolvimento: `.opencode/`, `.cursor/` e `.windsurfrules` estão no `.gitignore`. Neste repositório, o único arquivo de instrução versionado é o template `AGENTS-template.md`; o `AGENTS.md` de trabalho e os arquivos equivalentes dos outros harnesses ficam fora do Git quando existem.
+- O plugin e os arquivos dos demais harnesses são artefatos locais de desenvolvimento: `.opencode/`, `.cursor/` e `.windsurfrules` estão no `.gitignore`. Neste repositório, o template de instrução de projeto agora é distribuído dentro da skill `setup-pentapro` como `assets/agents.md`; o `AGENTS.md` de trabalho e os arquivos equivalentes dos outros harnesses ficam fora do Git quando existem.
 
 ## Decisões
 

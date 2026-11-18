@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "3.0.1"
+  version: "3.1.0"
 ---
 
 # PentaPRO
@@ -20,6 +20,8 @@ Turn user intent and accepted software changes into a maintained English specifi
 | Review | Use [specification review](references/specification-review.md) on the requested specification and its material dependencies. For readiness, use the [PROCESS checklist](assets/process.md#increment-readiness-authority-and-completion). | Findings about the written specification and affected decisions or gates. Edit only when revisions are requested. |
 
 In a new repository, `$setup-pentapro` (when installed) records the issue tracker and domain layout first; this skill remains usable without it.
+
+A repository configured by `$setup-pentapro` may have a root instruction file carrying the packaged template's `Setup status: temporary` marker. After the first consolidated specification is saved, reconcile that file: fill the remaining `[FILL IN]` fields from confirmed project facts, remove sections that do not apply, add facts learned in the interview, and delete the marker. Preserve the project's own instructions and the `## Prompt Logging` rule. Follow [reconciling the root instructions](references/document-maintenance.md#reconcile-the-root-instructions).
 
 Before changing a specification, identify the requested mode, target snapshot, canonical files/IDs and allowed writes. If context is limited, take one increment at a time and preserve the next action and material gaps in the existing PROCESS record or in the response for read-only work.
 

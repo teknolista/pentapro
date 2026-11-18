@@ -15,6 +15,15 @@
 
 Not adaptable as-is: the upstream `disable-model-invocation: true` flag is not used; this collection selects skills by description and explicit invocation.
 
+## Original assets
+
+These files are original to this collection, not adaptations of the upstream package:
+
+| Local file | Origin and purpose |
+| --- | --- |
+| [../assets/agents.md](../assets/agents.md) | The project root instruction template formerly maintained at the repository root as `AGENTS-template.md`. It is now packaged here so `$setup-pentapro` can create or merge a project's `AGENTS.md`/`CLAUDE.md`, mark unknown fields temporary, and let `$penta-pro` reconcile them. |
+| [../assets/prompt-logging.md](../assets/prompt-logging.md) | The project-facing prompt-logging policy, adapted from the repository's local `docs/agents-log-policy.md` into harness-neutral English. It keeps the mandatory append-only rule, RFC 5322 entry format, repository-scoped hook guidance, redaction limits and concurrency behavior, and removes this machine's OpenCode-specific evidence. |
+
 ## Why no root glossary
 
 In this collection, the domain glossary is specification material owned by PentaPRO. Writing a root `GLOSSARY.md` at setup time would create a competing canonical record the very first skill run, splitting domain authority between the specification and an installer artifact. The adapted skill records the layout instead (`docs/agents/domain.md`) and lets `$penta-pro` own the content.

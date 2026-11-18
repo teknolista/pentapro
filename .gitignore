@@ -208,3 +208,4 @@ prettierignore.txt
 .opencode/
 skills-lock.json
 AGENTS.log
+AGENTS.log.*

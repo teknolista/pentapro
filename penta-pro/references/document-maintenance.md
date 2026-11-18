@@ -31,6 +31,18 @@ For an approved change named `tenant-receipts`, PRODUCT points to the `Receipt r
 
 When resuming, reopen the active change and the latest relevant source. If the accepted scenario or implementation changed after the last check, keep the prior result tied to its snapshot and identify what needs rerunning. Update the owning record when the project accepts a changed decision. After the project synchronizes and archives the change, point ongoing PRODUCT references to the maintained capability spec and retain historical evidence against the tested change. [OpenSpec default schema](https://openspec.dev/docs/schemas/spec-driven)
 
+## Reconcile the root instructions
+
+When setup ran, the repository root instruction file (`AGENTS.md`, or `CLAUDE.md` when that is the project's file) may contain the packaged template with a `Setup status: temporary` marker and `[FILL IN]` fields. Reconcile it after the first consolidated specification is saved, because the specification now supplies the facts those fields need.
+
+1. Read the whole instruction file and the saved specification. Reconcile only after the facts are confirmed; do not infer stack, commands, or authority from a template placeholder.
+2. Fill the remaining fields from confirmed pillar records and observed repository files, carrying the same source locator used in the pillars. Replace the `[FILL IN]` text instead of leaving both versions.
+3. Remove template sections, rows, and skill-table entries that do not match the project. Keep `## Prompt Logging` and the `## Agent skills` configuration block.
+4. Preserve user-authored instructions, project-specific commands, and accepted decisions. Do not reformat, reorder, or rewrite unrelated sections.
+5. Remove the `Setup status: temporary` marker only when every material field is resolved or deliberately marked `Not applicable` with a reason. Record the reconciliation in `process/index.md` when that file tracks setup completion.
+
+A section that remains useful but unfilled stays visible as `[FILL IN]`; report the gap instead of deleting the concern to make the file look complete.
+
 ## Coordinated updates and resumption
 
 1. Read `process/index.md` for current scope, next action, shared status, and any unfinished update. Then inspect the affected pillars and their referenced records. For an existing single-file specification, read its equivalent resume section.

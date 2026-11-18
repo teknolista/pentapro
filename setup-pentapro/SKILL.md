@@ -1,14 +1,14 @@
 ---
 name: setup-pentapro
-description: "Configure this repository for the teknolista skills: choose the issue tracker, the domain documentation layout and which project facts belong in the PentaPRO specification, then record the setup and hand off to $penta-pro for the project introduction. Recommended once per new project before the collection's coordinated workflows."
+description: "Configure this repository for the teknolista skills: choose the issue tracker and domain documentation layout, initialize the root instruction file from the packaged template, enable mandatory prompt logging, and decide which project facts belong in the PentaPRO specification. Recommended once per new project before the collection's coordinated workflows."
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Setup PentaPRO
 
-Scaffold the per-repository configuration that the teknolista skills expect. This is the **first skill to run in a new project**. It records the issue tracker, the domain documentation layout, and — when the developer approves — the project facts that belong in the `pentapro/` specification. Skills that coordinate through the tracker read this configuration.
+Scaffold the per-repository configuration that the teknolista skills expect. This is the **first skill to run in a new project**. It records the issue tracker and the domain documentation layout, initializes the root agent instruction file, enables mandatory prompt logging, and — when the developer approves — records the project facts that belong in the `pentapro/` specification. Skills that coordinate through the tracker read this configuration.
 
 Explore, present what you found, confirm with the user, then write.
 
@@ -19,7 +19,8 @@ Explore, present what you found, confirm with the user, then write.
 Look at the current repository to understand its starting state. Read whatever exists; don't assume:
 
 - `git remote -v` and `.git/config`: is this a GitHub repo? Which one?
-- `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Is there already an `## Agent skills` section in either?
+- `AGENTS.md` and `CLAUDE.md` at the repo root: does either exist? Which sections does it already carry? Is the packaged template's `Setup status: temporary` marker or an `## Agent skills` block present?
+- Prompt-logging state: `AGENTS.log`, `docs/agents/prompt-logging.md`, existing `AGENTS.log*` ignore rules, and any project-scoped hook (for example `.opencode/plugins/`) that already logs prompts.
 - Root `GLOSSARY.md`, `GLOSSARY-MAP.md`, `CONTEXT.md`, and `CONTEXT-MAP.md`: glossary/context-file conventions used by other collections. If any exist, note them; Section C offers to migrate them into the PentaPRO specification.
 - `pentapro/` and `pentapro/product/domain.md`: does a five-pillar specification exist, and are domain terms already recorded in PRODUCT?
 - `docs/adr/` and any `src/*/docs/adr/` directories (legacy architecture decision records)
@@ -97,11 +98,30 @@ Rules:
 - If `pentapro/` was declined in this setup, record the gathered facts in `docs/agents/setup-notes.md` (short, factual, with sources and dates) and state that the first `$penta-pro` run should absorb them into the five pillars. Never leave gathered facts only in the conversation.
 - Record configuration names only, never secret values.
 
+**Section E: Root instructions and prompt logging.**
+
+The root instruction file is the durable guide every agent reads. Build it from the packaged [agents.md](assets/agents.md) template: fill what repository evidence supports, keep unresolved template content visibly temporary, and never present generic guidance as a project fact.
+
+- **Choose the file:** edit `CLAUDE.md` when it exists, otherwise `AGENTS.md`. If neither exists, ask which one to create. Never create a competing file.
+- **New file:** seed it from the template. Fill the rows and commands exploration proved — purpose, stack, repository map, installed skill locations, verification commands — remove rows the evidence proves inapplicable, and leave the genuinely unknown ones as `[FILL IN]`.
+- **Existing file:** preserve the user's content. Add a template section only when the file has no equivalent guidance, and update the skill-owned `## Prompt Logging` and `## Agent skills` blocks in place. Never duplicate a heading or replace project-specific rules with template prose.
+- **Temporary status:** keep the template's setup marker while any material `[FILL IN]` or unverified template section remains. `$penta-pro` reconciles the file after the specification exists.
+
+Prompt logging is mandatory in every repository configured by this skill; only the capture mechanism is a choice:
+
+- Write the operational rule into the root instruction file's `## Prompt Logging` section from the packaged template. Every agent appends each prompt to `AGENTS.log` before acting, including prompts sent to subagents.
+- Copy [prompt-logging.md](assets/prompt-logging.md) to `docs/agents/prompt-logging.md` for the entry format, security, concurrency, hook guidance, and limits.
+- Ensure `.gitignore` ignores `AGENTS.log` and `AGENTS.log.*`; the log is local and never committed.
+- Ask one further question: add a repository-scoped hook as well, or rely on the instruction alone? Recommend the instruction alone unless the host documents a reliable project-scoped pre-request hook. Never configure logging in the user's global scope.
+- If a project hook already logs prompts, keep one mechanism: verify its entry and do not add a duplicate rule or hook.
+
 ### 3. Confirm and edit
 
 Show the user a draft of:
 
 - the `## Agent skills` block to add to whichever of `CLAUDE.md` / `AGENTS.md` is being edited (see step 4 for selection rules)
+- the root instruction change: which template sections will be added, which fields exploration can already fill, and where the temporary marker stays
+- `docs/agents/prompt-logging.md`, the `AGENTS.log*` ignore entries, and whether a repository hook will be added
 - the contents of `docs/agents/issue-tracker.md`, `docs/agents/domain.md`, `docs/agents/triage-labels.md` (the last only when Section B ran), and `docs/agents/setup-notes.md` (only when facts were gathered and `pentapro/` was declined)
 - the exact facts proposed for `pentapro/`, grouped by target pillar file, so nothing is written before the user approves the list
 
@@ -116,6 +136,8 @@ Let them edit before writing.
 - If neither exists, ask the user which one to create; don't pick for them.
 
 Never create `AGENTS.md` when `CLAUDE.md` already exists (or vice versa); always edit the one that's already there.
+
+**Merge the root instruction template.** For a new file, start from [assets/agents.md](assets/agents.md), adjust the title to the chosen filename, and fill the fields exploration confirmed. For an existing file, add only the template sections it lacks, and add or update the `## Prompt Logging` and `## Agent skills` blocks in place. Keep the temporary setup marker while material fields remain unfilled. Do not overwrite, reorder, or replace user-authored sections with template prose.
 
 If an `## Agent skills` block already exists in the chosen file, update its contents in-place rather than appending a duplicate. Don't overwrite user edits to the surrounding sections.
 
@@ -146,8 +168,12 @@ Then write the files, using the seed templates in this skill folder as a startin
 - [assets/issue-tracker-local.md](assets/issue-tracker-local.md): local-markdown issue tracker
 - [assets/triage-labels.md](assets/triage-labels.md): label mapping (only if Section B ran)
 - [assets/domain.md](assets/domain.md): domain documentation consumer rules and layout
+- [assets/prompt-logging.md](assets/prompt-logging.md): prompt-logging policy copied to `docs/agents/prompt-logging.md`
+- [assets/agents.md](assets/agents.md): root instruction template
 
 For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch using the user's description.
+
+**Enable prompt logging.** Immediately after the root instruction file is written, write `docs/agents/prompt-logging.md` from [assets/prompt-logging.md](assets/prompt-logging.md). Ensure `.gitignore` lists `AGENTS.log` and `AGENTS.log.*`, preserving existing entries. If the user chose a repository hook, add it in the host's documented project-scoped location and verify it with a test prompt; never modify global agent configuration.
 
 If Section B ran on GitHub or GitLab, create each configured label the tracker lacks (`gh label create` / `glab label create`).
 
@@ -168,6 +194,8 @@ Write the approved Section D facts into their pillar files. Preserve existing co
 Tell the user the setup is complete:
 
 - what was written under `docs/agents/` and what was written into `pentapro/` (or where deferred facts were noted)
+- which root instruction file was created or updated, which fields remain `[FILL IN]`, and that `$penta-pro` reconciles the temporary template content after the specification exists
+- that prompt logging is active, that `AGENTS.log` is local and ignored by Git, and whether a repository hook was added
 - which collection skills read this configuration (Software Delivery, Git Ship, Peer Review and PR Quiz when they create or update tickets or PRs; `$penta-pro` and the review skills use the glossary and decision records)
 
 Then present the next step explicitly:
@@ -182,4 +210,4 @@ Use $penta-pro to start the specification for this project. Here is what we are 
 
 Say that a plain description of the software and the intended outcome is enough; `$penta-pro` asks about consequential gaps, keeps the user's answers as the source, and marks inferred items as proposed. Glossary terms and decisions agreed during that conversation belong to PRODUCT and PROJECT, not to the repository root.
 
-Finish with the maintenance note: `docs/agents/*.md` and `pentapro/` can be edited directly later; re-running this skill is only necessary to switch issue trackers, change the domain layout, or restart from scratch.
+Finish with the maintenance note: `docs/agents/*.md`, the root instruction file, and `pentapro/` can be edited directly later; re-running this skill is only necessary to switch issue trackers, change the domain layout, or restart from scratch.
