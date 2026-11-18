@@ -38,6 +38,7 @@ jobs:
           python3 -m unittest discover -s ui-design/scripts/tests -v
           python3 -m unittest discover -s pr-quiz/scripts/tests -v
           node pr-quiz/scripts/tests/workflow.cjs
+          node --test scripts/tests/test_agents_log.mjs
       - name: Check changed lines for whitespace errors
         env:
           BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}

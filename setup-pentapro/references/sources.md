@@ -22,7 +22,22 @@ These files are original to this collection, not adaptations of the upstream pac
 | Local file | Origin and purpose |
 | --- | --- |
 | [../assets/agents.md](../assets/agents.md) | The project root instruction template formerly maintained at the repository root as `AGENTS-template.md`. It is now packaged here so `$setup-pentapro` can create or merge a project's `AGENTS.md`/`CLAUDE.md`, mark unknown fields temporary, and let `$penta-pro` reconcile them. |
-| [../assets/prompt-logging.md](../assets/prompt-logging.md) | The project-facing prompt-logging policy, adapted from the repository's local `docs/agents-log-policy.md` into harness-neutral English. It keeps the mandatory append-only rule, RFC 5322 entry format, repository-scoped hook guidance, redaction limits and concurrency behavior, and removes this machine's OpenCode-specific evidence. |
+| [../assets/prompt-logging.md](../assets/prompt-logging.md) | The project-facing prompt-logging policy, adapted from the repository's local `docs/agents-log-policy.md` into harness-neutral English. It keeps the mandatory append-only rule, RFC 5322 entry format, project-scoped hook guidance, host behavior, redaction limits and concurrency behavior, and removes this machine's OpenCode-specific evidence. |
+| [../assets/prompt-logging/](../assets/prompt-logging/) | Original shared core, stdin adapter and OpenCode adapter for the optional project hook. The core implements the entry format, redaction and append contract; the adapters translate each host's prompt event into the same entry without duplicating logic. |
+| [../assets/prompt-logging/hosts.md](../assets/prompt-logging/hosts.md) | Original host recipes based on the public documentation listed below. Configures, merges and verifies project-scoped prompt events for OpenCode, Claude Code, Codex, Cursor and Copilot. |
+
+## Host hook references
+
+Consulted on 2026-11-18 for the optional project-scoped capture. Only the documented configuration shapes and event contracts are used; no host code is bundled.
+
+- **OpenCode 2.0.31:** <https://opencode.ai/docs/build/plugins> — plugin loading, `Plugin.define`, project plugin paths and the server plugin API.
+- **Claude Code:** <https://docs.claude.com/en/docs/claude-code/hooks> — `UserPromptSubmit`, `${CLAUDE_PROJECT_DIR}`, settings locations and exit-code behavior.
+- **Codex CLI:** <https://developers.openai.com/codex/hooks> — `UserPromptSubmit`, `.codex/hooks.json`, git-root paths and hook trust.
+- **Cursor:** <https://cursor.com/docs/agent/hooks> — `beforeSubmitPrompt`, `.cursor/hooks.json`, project/cloud behavior and exit-code handling.
+- **GitHub Copilot CLI:** <https://docs.github.com/en/copilot/how-tos/copilot-cli/use-hooks> and <https://docs.github.com/en/copilot/reference/hooks-reference> — `userPromptSubmitted`, `.github/hooks/*.json`, `bash`/`powershell` handlers and ignored output.
+- **Gemini CLI:** verify the installed version's hook documentation before adding a recipe; this package does not claim an event it has not validated.
+
+The repository's local `docs/agents-log-policy.md` remains the original Portuguese design record; the packaged policy is a harness-neutral English adaptation.
 
 ## Why no root glossary
 

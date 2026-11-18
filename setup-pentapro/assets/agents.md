@@ -10,13 +10,13 @@ Replace `[FILL IN]` fields with actual project facts or links. Remove irrelevant
 
 Mandatory in this repository. Before doing any work on a prompt, append it to `AGENTS.log` at the repository root, including prompts sent to subagents. Append only: never rewrite, reorder, or delete entries. The log is local and must never be committed.
 
-- Entry header: `## <RFC 5322 local date-time> | <provider/model> (<agent>)`, then the prompt text exactly as sent, then one blank line.
+- Entry header: `## <RFC 5322 local date-time> | <provider/model> (<agent>, host <host>)`, then the prompt text exactly as sent, then one blank line. Use `<host>/unknown` when the host does not expose a model, and omit `host <host>` when the host is the provider.
 - Replace secrets and personal data with `[REDACTED]` before logging; never paste secrets into prompts.
 - If the append fails, stop the work, fix the write, and backfill the prompt before continuing.
-- If a project-scoped hook already logs prompts, verify its entry instead of creating a duplicate.
-- Never configure this rule in the user's global agent configuration; it applies to this repository only.
+- If this repository ships a project hook under `scripts/agents-log/`, the hook is the primary capture and this rule is the fallback; verify its entry instead of logging twice.
+- Setup never writes this rule into the user's global agent configuration, and the repository must not depend on a personal global capture. A developer's global capture is a convenience outside this repository and must not duplicate the project hook.
 
-Read `docs/agents/prompt-logging.md` for the entry format and attachments, the optional repository hook, concurrency, and limits.
+Read `docs/agents/prompt-logging.md` for the entry format and attachments, the project hook and host recipes, security, concurrency, and limits.
 
 ## Project Facts and Navigation
 
