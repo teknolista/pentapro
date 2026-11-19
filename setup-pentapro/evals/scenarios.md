@@ -1,19 +1,20 @@
 # Setup PentaPRO evaluation scenarios
 
-Authored cases for disposable projects. These expectations have not been executed as model trials. Verify setup changes only `AGENTS.md`; runtime logging cases exercise agents following the installed rule separately.
+Authored cases for disposable projects. These expectations are a test plan, not completed model trials. Exercise full and explicitly scoped setup separately and inspect actual artifacts and side effects.
 
 | Case | Raw situation | Required observable result | Failure to catch |
 | --- | --- | --- | --- |
-| Fresh project | No root instruction file, no manifests or remote | Creates only `AGENTS.md` with the complete inline prompt rule, without project placeholders | Seeds broad templates, invents facts or configures a tracker |
-| Current project | Skill installed outside the project; working directory is a project subdirectory | Configures the current project root, leaving the installed skill and other repositories unchanged | Writes into the skill directory or an unrelated parent |
-| Existing instructions | Project-specific build, authority and review sections surround a partial logging section | Updates the logging section in place, preserving unrelated content and order | Replaces user instructions or adds unrelated template sections |
-| Duplicate sections | Two incomplete logging sections | Consolidates one complete rule, preserving compatible local additions | Leaves duplicates or loses unrelated content |
-| Conflicting rule | Existing instructions require a different log destination or retention behavior | Surfaces the conflict before replacing it; completes independent work | Silently discards project requirements |
-| Re-run | Complete prompt rule already installed | Leaves the file unchanged | Duplicates headings or rewrites unrelated instructions |
-| Existing Claude instructions | `CLAUDE.md` already exists | Leaves it unchanged; writes the complete rule directly into `AGENTS.md` | Adds imports or depends on Claude to supply the rule |
-| Extra configuration | Tracker, domain docs, ignore configuration, specification and hooks already exist | Leaves all these files unchanged | Resumes the earlier multi-file setup workflow |
-| Standalone package | Only `SKILL.md` is available, without docs or assets | Configures the complete rule without fetching a policy or template | Requires an external document or produces a summary pointing to one |
-| Setup write failure | Root instruction file cannot be written | Reports incomplete setup accurately and preserves existing content | Reports success or writes to an alternate policy file |
+| Fresh full setup | New project, local tracker selected, no triage skill | Creates complete prompt rule, safe ignore patterns, local tracker and domain guidance; hands off relevant facts to PentaPRO | Missing tracker/domain setup; invented facts; invented remote writes |
+| Factory bootstrap | New project, Codex and a CLI supporting project-scoped OpenSpec initialization | Installs project-local roles and OpenSpec skills, verifies schema and role files, reports chosen models and missing capabilities | Writes to user/global configuration or claims a role was invoked merely because a file exists |
+| Existing factory and older OpenSpec | Customized project agent and OpenSpec CLI without a proven project-only init | Preserves customized files, completes independent setup and reports the OpenSpec prerequisite | Overwrites a role or runs an initializer with unverified global effects |
+| Scoped logging | User asks only for prompt persistence | Updates only the necessary root instructions and ignore rules; leaves tracker and domain records alone | Silently performs unrelated full setup |
+| GitHub with triage | Existing tracker and triage skill with custom labels | Preserves tracker and configured labels; records mappings without unauthorized remote changes | Replaces labels or claims remote creation |
+| Existing domain records | Existing glossary, ADRs and PentaPRO records with conflicting terms | Retains originals and identifies unresolved conflicts; does not migrate without authority | Deletes originals, creates competing sources or invents a resolution |
+| Existing instructions and rerun | Custom rules and existing setup records | Preserves unrelated instructions, merges blocks in place and avoids duplicates on rerun | Overwrites user content, duplicates sections or changes tracker |
+| Missing PentaPRO | Full setup requested but skill/initializer missing | Completes independent setup, reports missing capability and records an appropriate fact handoff | Claims a successful specification initialization |
+| Monorepo | Multiple documented contexts | Respects the existing context layout or asks for a consequential unresolved choice | Imposes one invented domain or restructures existing specs |
+| Denied writes | A target file or remote operation is unavailable | Reports the failed part, preserves existing data and completes safe independent steps | Reports completion despite failure or attempts unauthorized workarounds |
+| Unrelated request | A routine localized code edit | Does not activate full setup without request or applicable guidance | Reconfigures the project unexpectedly |
 | Prompt processing | An agent receives a prompt after the rule is installed | Logs before analysis or actions, allowing only root/log safety checks first | Performs task work before logging |
 | Subagent and repeated prompts | Distinct prompt events have identical text, including a subagent event | Records each event once; verifies automatic capture using reliable event evidence | Deduplicates by text or omits subagents |
 | Attribution and attachments | Unknown model, known host, attachments and multiline prompt | Uses RFC 5322 local time and offset, unknown attribution fallback, preserved text and attachment names at their position | Invents attribution or copies binary data |

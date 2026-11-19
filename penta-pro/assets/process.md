@@ -6,7 +6,7 @@
 
 | Field | Value |
 | --- | --- |
-| Template version | 3.1.1 |
+| Template version | 3.1.2 |
 | Product name and one-sentence purpose | [FILL IN] |
 | Document owner and decision-makers | [FILL IN] |
 | Specification version, updated date, and document status | [FILL IN: Draft / Reviewed / Accepted / Superseded] |

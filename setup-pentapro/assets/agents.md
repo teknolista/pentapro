@@ -1,6 +1,6 @@
 # AGENTS.md
 
-<!-- Historical broad template for earlier installations; current setup uses only its inline prompt-persistence rule. -->
+<!-- Adapt this template to established project instructions; preserve existing user content. -->
 
 Repository guidance for AI agents. Apply it within the host's instruction hierarchy and consult relevant component-specific instructions before changing their files.
 
@@ -10,7 +10,7 @@ Replace `[FILL IN]` fields with actual project facts or links. Remove irrelevant
 
 ## Prompt Logging
 
-Before analyzing, responding to, or taking any action on a prompt for this repository, append one entry containing that prompt to `AGENTS.log` at the repository root. The first tool operation may locate the repository, check the log target, and append this entry or verify capture; defer other tool use and delegation until logging succeeds. This applies to every prompt, including prompts sent to subagents. Record each received prompt once, including repeated identical submissions; verify automatic capture using the current event identity or other reliable capture evidence, not text equality alone. If verification requires log access, inspect only the relevant current entry without exposing prior prompts. If capture cannot be verified, stop and report the uncertainty before risking a duplicate or an omitted entry.
+Before analyzing, responding to, or taking any action on a prompt for this repository, append one entry containing that prompt to `AGENTS.log` at the repository root. The first tool operation may locate the repository, check the log target, and append this entry or verify capture; defer other tool use and delegation until logging succeeds. This applies to every prompt, including prompts sent to subagents. Record each received prompt once, including repeated identical submissions. When the host and project have been checked and no automatic capture is active, append the current prompt once without requiring an event identity. Otherwise verify automatic capture using the current event identity or other reliable capture evidence, not text equality alone. If verification requires log access, inspect only the relevant current entry without exposing prior prompts. If capture cannot be verified, stop and report the uncertainty before risking a duplicate or an omitted entry.
 
 Use RFC 5322 local time with a numeric UTC offset, the provider/model, and the receiving agent and host. Use `unknown` for unavailable attribution; if the host is known but the model is not, use `<host>/unknown`. Keep one blank line between entries:
 
@@ -53,7 +53,7 @@ Use the generic owners according to the requested work; optional implementation/
 
 | Skill | When to use it | Expected result and boundary |
 | --- | --- | --- |
-| `setup-pentapro` | Configure prompt persistence in the current project | Only `AGENTS.md`, with the complete self-contained rule for saving prompts in `AGENTS.log` |
+| `setup-pentapro` | Configure the current project for the collection | Prompt persistence and appropriate tracker, domain and PentaPRO setup; preserve established project decisions |
 | `penta-pro` | Explore, create, resume, update, or review requirements and software specifications | Repository-root `pentapro/` with topic files under five pillar directories. Review the written artifacts and record scope, findings and next action in PROCESS when specification writing is authorized. |
 | `ui-design` | Specify, refine, review, or implement screens and user flows | Maintain the established screen specification, defaulting to `pentapro/product/experience.md` in a PentaPRO project, when documentation is in scope. A localized implementation follows the existing contract. Product-code changes require implementation authority. |
 | `peer-review` | Review implementation changes and relevant tests, or re-review fixes | Evidence-backed findings, checks and coverage limits for the selected snapshot. Review alone does not authorize fixes. Prefer a fresh reviewer when available; disclose self-review and any unmet independence requirement. |

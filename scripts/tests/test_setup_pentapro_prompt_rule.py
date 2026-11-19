@@ -32,7 +32,7 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
         rule = prompt_rule(TEMPLATE.read_text(encoding="utf-8"))
         self.assertIn("`AGENTS.log`", rule)
         self.assertNotRegex(rule, r"`(?:docs/|\.gitignore|[A-Za-z0-9._/-]+\.(?:md|json|ya?ml))")
-        for required in ("subagents", "RFC 5322", "[REDACTED]", "Append only", "never commit", "appending fails", "owner-only", "hard-linked", "Git index", "current event identity", "first tool operation"):
+        for required in ("subagents", "RFC 5322", "[REDACTED]", "Append only", "never commit", "appending fails", "owner-only", "hard-linked", "Git index", "current event identity", "first tool operation", "no automatic capture is active"):
             with self.subTest(required=required):
                 self.assertIn(required, rule)
 
@@ -42,6 +42,16 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
         self.assertNotIn("docs/agents/prompt-logging.md", skill_text)
         self.assertNotIn("assets/prompt-logging/hosts.md", skill_text)
         self.assertIn("Do not install or configure hooks", skill_text)
+
+    def test_deferred_setup_facts_have_an_explicit_consumer(self):
+        setup = SKILL.read_text(encoding="utf-8")
+        consumer = (ROOT / "penta-pro" / "SKILL.md").read_text(encoding="utf-8")
+        maintenance = (ROOT / "penta-pro" / "references" / "document-maintenance.md").read_text(encoding="utf-8")
+        self.assertIn("`docs/agents/setup-notes.md`", setup)
+        self.assertIn("read `docs/agents/setup-notes.md` when present", consumer)
+        self.assertIn("preserving sources, dates", consumer)
+        self.assertIn("mark reconciled notes with canonical links", maintenance)
+        self.assertIn("Remove the `Setup status: temporary` marker only", maintenance)
 
 
 

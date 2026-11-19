@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "3.1.1"
+  version: "3.1.2"
 ---
 
 # PentaPRO
@@ -19,9 +19,9 @@ Turn user intent and accepted software changes into a maintained English specifi
 | Resume or update | Read the existing specification and resume state first. Use new answers and consult only relevant template sections for structural gaps or reassessing readiness. | Focused revisions preserving settled decisions, stable IDs, and unrelated edits. |
 | Review | Use [specification review](references/specification-review.md) on the requested specification and its material dependencies. For readiness, use the [PROCESS checklist](assets/process.md#increment-readiness-authority-and-completion). | Findings about the written specification and affected decisions or gates. Edit only when revisions are requested. |
 
-In a new repository, `$setup-pentapro` (when installed) configures only the self-contained prompt-persistence rule in `AGENTS.md`; this skill remains usable without it. Before drafting or resuming, read `docs/agents/setup-notes.md` when present and reconcile its deferred facts into the owning pillars, preserving sources, dates and `Confirmed` / `Proposed` / `Pending` states. Link each migrated fact to its canonical home and retain unresolved conflicts for clarification; notes do not override accepted specification decisions.
+In a new repository, `$setup-pentapro` (when installed) can configure prompt persistence and applicable tracker and domain guidance, and hand off deferred project facts; this skill remains usable without it. Before drafting or resuming, read `docs/agents/setup-notes.md` when present and reconcile its deferred facts into the owning pillars, preserving sources, dates and `Confirmed` / `Proposed` / `Pending` states. Link each migrated fact to its canonical home and retain unresolved conflicts for clarification; notes do not override accepted specification decisions.
 
-A repository configured by an earlier version of `$setup-pentapro` may have a root instruction file carrying the packaged template's `Setup status: temporary` marker. After the first consolidated specification is saved, reconcile that file: fill the remaining `[FILL IN]` fields from confirmed project facts, remove sections that do not apply, add facts learned in the interview, and delete the marker. Preserve the project's own instructions and the `## Prompt Logging` rule. Follow [reconciling the root instructions](references/document-maintenance.md#reconcile-the-root-instructions).
+A repository configured by `$setup-pentapro` may have a root instruction file carrying the packaged template's `Setup status: temporary` marker. After the first consolidated specification is saved, reconcile that file: fill the remaining `[FILL IN]` fields from confirmed project facts and remove sections that do not apply. Remove the marker only when all material fields are resolved or deliberately marked not applicable. Preserve the project's own instructions and the `## Prompt Logging` rule. Follow [reconciling the root instructions](references/document-maintenance.md#reconcile-the-root-instructions).
 
 Before changing a specification, identify the requested mode, target snapshot, canonical files/IDs and allowed writes. If context is limited, take one increment at a time and preserve the next action and material gaps in the existing PROCESS record or in the response for read-only work.
 
