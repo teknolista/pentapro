@@ -58,3 +58,11 @@ Suppose project guidance points to `specs/current.md` as the baseline and `specs
 ## Worked example of adopting a prototype
 
 An isolated upload prototype demonstrated that users can retry a failed submission. Record what it demonstrated with synthetic data. When asked to make it part of the maintained application, inspect the real entry point, account permissions, file limits, dependency changes and the prototype's stubbed storage. Reuse the interaction where it fits the application. Replace the stub through the owning adapter and establish the accepted behavior for failed and repeated submissions in the existing ticket or change record. Exercise successful upload, denied access and retry on the maintained implementation. Record the observed result there. Use OpenSpec if the project's workflow or user selects it for this change.
+
+## Verify OpenSpec removals and renames
+
+When a project selects an external OpenSpec store, retain its resolved planning root and store selection across inspection, validation, synchronization and archival. Check the installed CLI's supported flags; do not substitute a nearby local `openspec/` directory when the selected store is unavailable.
+
+For REMOVED requirements, recover the exact baseline body and scenarios, including the reason and migration conditions, and check that the retired behavior is no longer delivered where the accepted change requires its removal. Search behavior rather than the title alone. If synchronization already removed the entry, inspect history in the planning repository at the actual capability path. A successful Git command with empty output does not establish that the path or baseline was found. Missing or title-only baseline evidence leaves the check unverified.
+
+For RENAMED requirements, verify the retained behavior under the new requirement identity; do not require code symbols or files to be renamed. When the target also has a MODIFIED block, verify that accepted modified behavior instead. Keep not-applicable checks distinct from unavailable evidence. Structural validation and source mapping cannot establish executed behavior. [OpenSpec verification semantics](https://github.com/Fission-AI/OpenSpec/blob/0c737dc1b543249b38b0f4716816fcf493d894dd/skills/openspec-verify-change/SKILL.md)

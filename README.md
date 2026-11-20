@@ -2,7 +2,7 @@
 
 My personal collection of reusable skills for developers building software with AI coding agents. PentaPRO turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
 
-All skill instructions and generated artifacts are in English. Conversation can use the user's preferred language.
+The collection's skill instructions and reusable artifacts are written in English. Conversation uses the developer's preferred language. For a project README, Setup PentaPRO uses the language the developer selects.
 
 > [!IMPORTANT]
 > These skills are still in development. They are based on my personal experience developing my own applications and may need adjustments for other projects, teams, models, and workflows.
@@ -79,21 +79,21 @@ All skill instructions and generated artifacts are in English. Conversation can 
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.6.2 | Set up prompt persistence, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
-| [PentaPRO](#pentapro) | 3.1.2 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
-| [Peer Review](#peer-review) | 1.10.3 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
+| [Setup PentaPRO](#setup-pentapro) | 1.7.1 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
+| [PentaPRO](#pentapro) | 3.1.4 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
+| [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
-| [UI Design](#ui-design) | 1.6.1 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
-| [Diagnose Defect](#diagnose-defect) | 1.1.0 | Reproduce unclear failures, distinguish causes, and verify authorized fixes. |
+| [UI Design](#ui-design) | 1.6.2 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
+| [Diagnose Defect](#diagnose-defect) | 1.1.1 | Reproduce unclear failures, distinguish causes, and verify authorized fixes. |
 | [Behavior Testing](#behavior-testing) | 1.2.0 | Author behavior and regression tests or use a requested test-first workflow outside native Android. |
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
-| [MCP Server](#mcp-server) | 1.2.0 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
-| [Software Delivery](#software-delivery) | 1.5.1 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 0.2.2 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
-| [Production Operations](#production-operations) | 1.0.1 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
+| [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
+| [Software Delivery](#software-delivery) | 1.5.3 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
+| [Software Factory](software-factory/SKILL.md) | 0.2.4 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
-| [Git Ship](#git-ship) | 2.1.0 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
-| [Agent Instructions](#agent-instructions) | 1.1.3 | Maintain portable software-development agent guidance. |
+| [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
+| [Agent Instructions](#agent-instructions) | 1.1.5 | Maintain portable software-development agent guidance. |
 | [Android modules](android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
 | [Android errors](android-error-handling/SKILL.md) | 1.2.4 | Implement typed domain/HTTP/storage error handling. |
@@ -119,11 +119,13 @@ npx skills@latest add teknolista/skills --skill penta-pro -a codex
 
 Open a Codex session in that project, select `$setup-pentapro`, and ask:
 
-> Configure this repository for the teknolista skills.
+> Configure this repository for the teknolista skills. Its purpose is to provide a local task tracker.
 
-The skill configures prompt persistence and the project’s relevant tracker and domain guidance while preserving existing instructions. For specification work, select `$penta-pro` and introduce the software you intend to build — what it is, who uses it, the problem it solves and the first usable outcome are enough; a complete brief is not required:
+Setup configures prompt persistence and the relevant tracker and domain guidance. It uses the supplied purpose or discovers it from the repository. Choose whether to replace, complement or skip an existing README, select the language for the generated README and choose a license when the project lacks one.
 
 Full setup also prepares OpenSpec and Codex factory roles in the project when the installed tools support a safe project-scoped setup. The default role templates use Sol for implementation and verification and Astra for reviews; edit their project-local TOML files to select available models and reasoning effort. The setup reports unavailable prerequisites and preserves existing role files. See [factory setup](setup-pentapro/references/factory-setup.md). A new Codex session may be needed to discover roles and skills.
+
+For specification work, introduce the software, its users, the problem and the first useful outcome.
 
 > Use $penta-pro to start the specification for this project. Here is what we are building: an offline-first notes app for a single user, where notes stay usable without a connection and sync when one returns. The first usable version should let me create, edit and search notes locally. Record the domain terms we agree on in `pentapro/product/domain.md`, draft the five pillars, and list the decisions that are still open before any implementation starts.
 
@@ -224,7 +226,7 @@ The core instructions use Markdown and package-local references and templates. S
 ### First task and adoption checks
 
 1. Install the packages needed for your work and confirm that your agent can discover and read them, including their supporting files. Use a small task in a disposable project to check activation and tool access before relying on a new host/model combination.
-2. Run `$setup-pentapro` to configure the project for the collection, including the complete prompt-persistence rule, tracker and domain guidance. Re-running preserves unrelated instructions and existing decisions. See [Setup PentaPRO](#setup-pentapro).
+2. Run `$setup-pentapro` to configure the project for the collection, including the complete prompt-persistence rule, README and license choices, tracker and domain guidance. Re-running preserves unrelated instructions and existing decisions. See [Setup PentaPRO](#setup-pentapro).
 3. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions and preserve their prompt-persistence rule.
 4. Choose the [workflow depth](#choose-a-workflow). For a new specification, ask `Use $penta-pro to specify an offline notes application. Save the specification and identify unresolved decisions before implementation.` For an existing accepted plan, ask `Use $software-delivery to implement the next ready increment and run the required checks.` For a clear copy edit, identify the exact text and intended replacement directly.
 5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
@@ -254,6 +256,7 @@ Invocation and consent differ by host. For example, Codex documents `$name`, Cla
 
 | Task | Necessary access | If unavailable |
 | --- | --- | --- |
+| Setup and factory | Writable project, applicable package assets and selected host tools | Resolve setup choices, keep unavailable capabilities pending and use a separate review context where required. See [factory setup](setup-pentapro/references/factory-setup.md) and [role packets](software-factory/references/roles.md). |
 | PentaPRO creation/update | User intent, relevant existing context, package assets, and a writable requested destination | Ask only consequential missing questions; retain proposals and blockers. If writing is unavailable, return the draft and disclose that it was not saved. |
 | PentaPRO review | The actual specification and relevant authoritative context | Report missing material rather than treating an absent document as ready. |
 | UI Design specification and implementation | Relevant requirements/design context and a writable target project; source/toolchain for implementation, browser or Android environment for runtime checks | Save a partial specification and mark pending decisions/checks; never claim rendered, device, accessibility or user validation without evidence. |
@@ -271,7 +274,7 @@ Managed review services may load only instruction text. See [Hosted review envir
 
 The skills include concrete behavior traces, failure examples, and evidence checks to reduce reliance on unstated engineering knowledge. For larger tasks, retain the target snapshot, reviewed and pending areas, evidence, unresolved questions, and next action. Reopen relevant source after context loss or a changed snapshot. Validate representative tasks on each intended model and host before relying on its results.
 
-The workflows have no hard-coded model, reasoning setting, vendor tool name, or mandatory orchestration mechanism. `agents/openai.yaml` in these packages contains display metadata and a default prompt; it does not select a model. Hosts may offer their own model overrides. Use those controls deliberately rather than adding a vendor-specific override to the portable core.
+Portable workflows let the project and host choose models. The optional project-local Codex factory TOMLs supply editable model and reasoning defaults, subject to host availability. The package files named `agents/openai.yaml` provide display metadata and a default prompt.
 
 Choose a currently available model with sufficient reasoning, domain competence, context capacity, and reliable tool use for the task. Escalate difficult requirements or review risks when evidence warrants it. The documented [OpenAI model options](https://learn.chatgpt.com/docs/models) include the repository's example implementation/review pairing; availability and suitability depend on the host/account and observed results. A model name is not a quality gate.
 
@@ -281,19 +284,21 @@ After changing host, model, or significant instructions, run the relevant [Penta
 
 **Entrypoint:** [setup-pentapro/SKILL.md](setup-pentapro/SKILL.md)
 
-Set up the current repository for the collection: prompt persistence in `AGENTS.md`, appropriate issue-tracker and domain guidance, optional triage mappings, project facts and a PentaPRO handoff. The full prompt rule is embedded in the skill and written into `AGENTS.md` without requiring another policy file. Logging depends on agent compliance; no hook is installed.
+Set up the current repository for the collection: a template-based README in the chosen language, a missing project license selected by the developer, prompt persistence in `AGENTS.md`, appropriate issue-tracker and domain guidance, optional triage mappings, project facts and a PentaPRO handoff. The full prompt rule is embedded in the skill and written into `AGENTS.md` without requiring another policy file. Logging depends on agent compliance; no hook is installed.
 
 ### Example requests
 
 ```text
-Use $setup-pentapro to configure this repository for the collection.
+Use $setup-pentapro to configure this repository. Its purpose is to provide a CLI for tracking local tasks.
 ```
+
+Supply a complementary description of the repository purpose; when omitted, setup inspects the repository to discover it. For an existing README, choose replace, complement, or skip; select the README language. When no project license exists, choose from GitHub license options before setup creates `LICENSE`. The bundled template comes from the developer-supplied README. See [README and license setup](setup-pentapro/references/readme-and-license.md).
 
 For prompt logging only, request that narrower scope explicitly.
 
 ### Output and working boundaries
 
-A full setup may update `AGENTS.md`, `.gitignore`, relevant `docs/agents/` guidance, project-local OpenSpec files and `.codex/agents/`; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
+A full setup may create or, after the selected treatment, update `README.md`, create a missing `LICENSE` after license selection, and update `AGENTS.md`, `.gitignore`, relevant `docs/agents/` guidance, project-local OpenSpec files and `.codex/agents/`; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
 
 ### Next step
 
@@ -309,6 +314,7 @@ Adapted from Matt Pocock's setup workflow (MIT). See [source notes](setup-pentap
 | --- | --- |
 | [Entrypoint](setup-pentapro/SKILL.md) | Setup workflow and self-contained prompt-persistence rule. |
 | [Repository setup](setup-pentapro/references/repository-setup.md) | Tracker, triage, domain, project facts and handoff procedure. |
+| [README and license](setup-pentapro/references/readme-and-license.md) | Project purpose, template, language and licensing choices. |
 | [Factory setup](setup-pentapro/references/factory-setup.md) | Project-scoped OpenSpec and Codex agent setup, models and verification. |
 | [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
 | [Root instruction template](setup-pentapro/assets/agents.md) | Adaptable project guidance, preserving existing instructions. |
@@ -604,7 +610,7 @@ Use for concrete server changes under an existing or authorized contract. For ex
 
 ## MCP Server
 
-Use to implement an MCP server or an exposed capability. For example, “Expose the existing document lookup through our supported MCP client.” Keep protocol revision, transport, permission enforcement, and downstream test effects explicit. The protocol reference covers modern and legacy clients, including shared endpoints. [Skill](mcp-server/SKILL.md) · [Revision checks](mcp-server/references/protocol-revisions.md) · [Remote authorization](mcp-server/references/authorization.md)
+Use to implement an MCP server or an exposed capability. For example, “Expose the existing document lookup through our supported MCP client.” Keep protocol revision, transport, permission enforcement, and downstream test effects explicit. The protocol reference covers modern and legacy clients, including shared endpoints. [Skill](mcp-server/SKILL.md) · [Revision checks](mcp-server/references/protocol-revisions.md) · [Remote authorization](mcp-server/references/authorization.md) · [Tool contracts and task evaluation](mcp-server/references/tool-contracts-and-evaluation.md)
 
 ## Software Factory
 
@@ -646,7 +652,7 @@ Use $git-ship to draft the PR body for these commits against main.
 
 A ship request covers review, the requested commit and a normal push of the reviewed branch; a PR request produces a draft body. Stated paths or a scope bound what is reviewed and committed, and unrelated staged or unstaged work is preserved rather than absorbed. Reviewing does not license opportunistic fixes: a blocker is reported and stopped, and correcting it is separate work.
 
-The workflow keeps the safety boundaries visible: mutable Git state is established before anything changes, the candidate commit is inspected exactly, secrets are checked across the whole outgoing range including values added and later deleted, and the remote ref is confirmed by comparing `git ls-remote` with `git rev-parse HEAD` rather than trusting the push message. Environment failures are treated explicitly — an index lock, a network or credential failure, or a failing required hook stops or leaves publication `Unverified` instead of being bypassed. Merging, auto-merge, deployment, force-push, amend and history rewrite remain outside this authorization. Invoke `$git-ship` for this outcome.
+The workflow keeps the safety boundaries visible: mutable Git state is established before anything changes, the candidate commit is inspected exactly, secrets are checked across the whole outgoing range including values added and later deleted, and the remote ref is confirmed at the effective push repository against the recorded reviewed commit ID. Environment failures are treated explicitly — an index lock, a network or credential failure, or a failing required hook stops or leaves publication `Unverified` instead of being bypassed. Merging, auto-merge, deployment, force-push, amend and history rewrite remain outside this authorization. Invoke `$git-ship` for this outcome.
 
 ## Agent Instructions
 
@@ -816,7 +822,7 @@ Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) t
 
 Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
 
-Git Ship 2.1.0 strengthened the delivery contract: a stated path list bounds the reviewed set, delivery never silently fixes or refactors product code, documentation moves revalidate links and anchors, publication is confirmed by comparing `git ls-remote` with `git rev-parse HEAD`, and index, network and hook failures have explicit stop or `Unverified` outcomes. A disposable trial confirmed that a plain commit absorbs unrelated staged entries and that a path-limited commit substitutes working-tree content, while an isolated index preserves both the unrelated staged selection and a partially staged intended blob. These are single-repository structural and executed checks, not a model benchmark or a hosted-forge trial.
+The Git Ship 2.1.0 maintenance pass strengthened the delivery contract: a stated path list bounds the reviewed set, delivery never silently fixes or refactors product code, documentation moves revalidate links and anchors, publication is confirmed by comparing `git ls-remote` with `git rev-parse HEAD`, and index, network and hook failures have explicit stop or `Unverified` outcomes. A disposable trial confirmed that a plain commit absorbs unrelated staged entries and that a path-limited commit substitutes working-tree content, while an isolated index preserves both the unrelated staged selection and a partially staged intended blob. These are single-repository structural and executed checks, not a model benchmark or a hosted-forge trial.
 
 The pstack-informed update adds caller-facing contract sketches and verification recipes to PentaPRO, safety-premise and measurement checks to Peer Review, model/enforcement distinctions to Cybersecurity, and instance-aware journey evidence to UI Design. These additions are conditional; the skills keep their existing output contracts and introduce no pstack dependency. [Research attribution and limits](THIRD-PARTY-NOTICES.md#cursor-pstack-research) identify the pinned source and adaptations.
 
@@ -846,6 +852,8 @@ All 24 packages use the [MIT License](LICENSE) and include a copy of its notice.
 The source research for [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), [Cybersecurity](cybersec/references/sources.md), and [UI Design](ui-design/references/sources.md) records their inputs and adaptation decisions. [Third-party notices](THIRD-PARTY-NOTICES.md) preserve upstream attribution; the repository license does not relicense external articles. Attribution does not imply affiliation, endorsement, or a runtime dependency.
 
 ## Data privacy
+
+- Setup PentaPRO installs a project instruction to append prompts and attachment names to local `AGENTS.log`. The rule excludes log files from Git, uses best-effort redaction and relies on agent compliance. The log has no automatic rotation. Review access and retention under the project’s policy.
 
 - The optional UI prototype helper reads local inputs and writes an HTML file. The bundled viewer runs locally and keeps the selected route, theme, and width in the URL fragment.
 - PR Quiz preview runs locally. Publishing writes quiz questions and an encoded answer key to the GitHub PR body. If the optional grader is installed, answers and results can appear in PR checkboxes, comments, and commit statuses. Access and retention follow the repository and GitHub settings.

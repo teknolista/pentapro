@@ -1,6 +1,6 @@
 # Software factory workflow
 
-Status: **historical proposal**. Its portable first version is now the [Software Factory skill](../software-factory/SKILL.md); the gates, pilot and rollout below remain proposed design material, not evidence of an executed factory run.
+Status: **historical proposal**. Its portable first version is now the [Software Factory skill](../software-factory/SKILL.md); the gates, pilot and rollout below remain proposed design material, not evidence of an executed factory run. For day-to-day use, follow the [operational checklist](guia-fabrica-changes.md).
 
 Date: 2026-11-19.
 

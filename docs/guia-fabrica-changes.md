@@ -6,7 +6,8 @@ Este guia apresenta um roteiro para conduzir uma change com Codex, OpenSpec, Pen
 
 - [ ] Abra uma sessão do Codex no repositório correto e confira a branch e as alterações locais existentes.
 - [ ] Instale as skills necessárias no escopo do projeto: pelo menos `setup-pentapro`, `software-factory`, `penta-pro`, `software-delivery`, `peer-review` e `git-ship`, além das skills especializadas que o projeto utiliza.
-- [ ] Peça: **“Use `$setup-pentapro` para configurar este repositório para a fábrica de software. Use somente instalações e configurações locais ao projeto e preserve as escolhas existentes.”**
+- [ ] Peça: **“Use `$setup-pentapro` para configurar este repositório para a fábrica de software. Use somente instalações e configurações locais ao projeto e preserve as escolhas existentes. O objetivo deste repositório é [descrição do projeto].”**
+- [ ] Escolha se deseja substituir, complementar ou preservar o README existente. Se ele for gerado ou atualizado, indique o idioma. Escolha uma licença quando o projeto ainda não tiver uma.
 - [ ] Examine o relatório do setup: instruções, regra de registro de prompts, tracker, documentos de domínio, OpenSpec, skills e agentes. Resolva as pendências que afetem a change. A regra de registro depende da observância pelo agente; sua existência não comprova captura automática.
 - [ ] Confira a versão do OpenSpec, o schema e a localização das skills instaladas. A versão e suas opções de instalação devem permitir confirmar que o setup é restrito ao projeto. Em projetos existentes, preserve configurações e personalizações.
 - [ ] Em Codex, confira os papéis locais e ajuste `model` e `model_reasoning_effort` nos arquivos de `.codex/agents/` conforme os modelos disponíveis. Os templates incluem `factory_spec`, `factory_implementer`, `factory_verifier`, `factory_reviewer` e `factory_retrospective`. Reinicie ou abra uma nova sessão se necessário e confirme a descoberta; a existência dos arquivos não prova que os agentes foram utilizados.
@@ -38,6 +39,7 @@ Se desejar somente um plano ou execução local, diga isso e omita as operaçõe
 
 - [ ] Confirme que a change ativa e o schema do OpenSpec foram identificados e que os critérios descrevem comportamento observável, incluindo casos negativos relevantes.
 - [ ] Confira se regras de produto e decisões de arquitetura apontam para seus registros canônicos em PentaPRO, OpenSpec ou nos documentos adotados pelo projeto. Questões que mudem materialmente o resultado devem ser resolvidas antes das tarefas dependentes.
+- [ ] Conclua a revisão de especificação exigida antes de enviar trabalho dependente ao implementador. Identifique a revisão da change e a raiz do store quando houver um selecionado.
 - [ ] Verifique se o plano divide o trabalho em entregas pequenas, cada uma com resultado, caminhos afetados e forma de verificação. O orquestrador pode executar etapas independentes em paralelo quando não houver conflito de escrita.
 - [ ] Peça evidências de testes adequados à change e, quando necessário, execução no alvo real, como navegador, dispositivo, serviço ou ambiente de teste. Validação estrutural do OpenSpec não comprova o comportamento do aplicativo.
 
@@ -53,6 +55,6 @@ Se desejar somente um plano ou execução local, diga isso e omita as operaçõe
 
 ## 5. Retomar trabalho interrompido
 
-Informe o nome da change e peça ao agente que reabra os arquivos canônicos e o registro da execução, identifique a revisão atual, os resultados ainda válidos, os bloqueios e a próxima ação autorizada. Não considere uma etapa concluída apenas por estar marcada como tarefa pronta: confira as evidências para a versão correspondente.
+Informe o nome da change e peça ao agente que reabra os arquivos canônicos e o registro da execução, identifique a revisão atual, os resultados ainda válidos, os bloqueios e a próxima ação autorizada. Confirme cada etapa pelas evidências da revisão correspondente. Após uma interrupção em push ou archive, confira a referência remota, a pasta da change e as especificações consolidadas antes de repetir a operação. Mantenha o store e a raiz de planejamento selecionados na retomada.
 
 Consulte a [skill Software Factory](../software-factory/SKILL.md), seu [contrato de execução](../software-factory/references/execution.md), o [protocolo de retrospectiva](../software-factory/references/retrospective.md), o [procedimento de setup](../setup-pentapro/references/factory-setup.md) e a [retrospectiva do primeiro piloto](retrospectiva-piloto-fabrica-2026-11-19.md) para detalhes e limitações.

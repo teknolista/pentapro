@@ -24,7 +24,7 @@ For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). So
 
 | Requested result | Primary owner | Boundary |
 | --- | --- | --- |
-| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Configures prompt persistence, tracker, domain, project-local OpenSpec and factory roles, and PentaPRO handoff |
+| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, project-local OpenSpec and factory roles, and PentaPRO handoff |
 | Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
 | Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
 | Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
@@ -37,7 +37,7 @@ For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). So
 
 The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**, Setup PentaPRO to **23**, and Software Factory to the current **24**. See [upstream dispositions](COLLECTION-REVIEW.md).
 
-- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence, tracker and domain guidance, project-local OpenSpec and factory roles, and a PentaPRO handoff.
+- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, project-local OpenSpec and factory roles, and a PentaPRO handoff.
 
 - [Software Delivery](software-delivery/SKILL.md) — Coordinate dependent implementation tasks or increments and verify their integrated result.
 - [Software Factory](software-factory/SKILL.md) — Coordinate an explicitly requested multi-agent delivery run across existing owners, authorized publication, archival and retrospective.
@@ -87,7 +87,7 @@ The Android integration stage brought the collection to **13 discoverable skills
 - “Configure a staging pipeline and deploy the accepted API revision” → Production Operations for infrastructure, release and runtime evidence. PentaPRO owns the intended operating contract when specification is requested. Git Ship owns any separately requested Git publication.
 - “Restore service after a failed rollout” → Production Operations for mitigation and recovery. Diagnose Defect owns causal investigation and Cybersecurity handles security assessment where applicable.
 - “Create a PR” alone → no quiz. “Add a comprehension quiz to this PR” → PR Quiz. Drafting, publishing, workflow installation and branch-rule changes retain their distinct authorization scopes.
-- “Set up this fresh repository for the skills” → Setup PentaPRO. It configures prompt persistence and appropriate tracker/domain setup, and invokes or hands off to `$penta-pro` when specification work is authorized.
+- “Set up this fresh repository for the skills” → Setup PentaPRO. It configures prompt persistence, README and license choices, and appropriate tracker/domain setup, and invokes or hands off to `$penta-pro` when specification work is authorized.
 
 The links in this collection-level map help developers find packages. Each installed skill keeps its relative resource links inside its own directory and refers to optional companions by name. An individual installation uses its packaged instructions and the project's commands and contracts. Install a companion when its distinct workflow is useful.
 

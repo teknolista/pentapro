@@ -95,3 +95,9 @@ This is independently written conceptual guidance. No upstream scripts, template
 ## Elephant & Goldfish Model — 1.5.3
 
 2026-11-07: adapted the [Comprehension reviewer's](https://github.com/google/elephant-goldfish-model/blob/e9e1f06aa4e26e95cd4ed37210a0632202c429e9/agents/comprehension.md) reconstruction technique to reconstruct a screen journey from its entry to its result and recovery. It separates a cue a user can discover from an explanation only a spec reader sees. The finding's scope follows the actual material inspected. See [research scope and attribution](https://github.com/teknolista/skills/blob/25007537cc58122a8200d1bed63245586f49c82b/THIRD-PARTY-NOTICES.md#elephant--goldfish-model-research).
+
+## Targeted refresh — 2026-11-20
+
+Added original conditional IME/Enter guidance from [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/2de1134dc4d1cfe112934611ae5803ae17a1bd7e/docs/ime-composition.md), checked against [UI Events](https://www.w3.org/TR/uievents/#events-composition-key-events), and forced-colors guidance from [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors). Capture-control and input scenarios are authored evaluation briefs, not executed browser evidence. No handler, legacy workaround, launcher or design dataset is copied.
+
+Canonical Bencium and AccessLint locations are [bencium/bencium-marketplace](https://github.com/bencium/bencium-marketplace/tree/5de46a39b4640fa419560cd0b67e4c4b50dac802) and [AccessLint/skills](https://github.com/AccessLint/skills/tree/2e9d7336678302d0bc08848e92542560295b34d3). Their inspected heads matched the historical pins; preserve the older links as provenance. Map-specific instructions and new aesthetic/toolchain requirements were deferred for lack of a demonstrated general gap.

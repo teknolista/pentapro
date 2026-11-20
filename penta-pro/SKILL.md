@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "3.1.2"
+  version: "3.1.4"
 ---
 
 # PentaPRO

@@ -3,7 +3,7 @@ name: ui-design
 description: "Design, specify, prototype, refine, review, or implement web and Android screens and user flows. Maintain the project's screen specification, using PentaPRO PRODUCT when selected."
 license: MIT
 metadata:
-  version: "1.6.1"
+  version: "1.6.2"
 ---
 
 # UI Design

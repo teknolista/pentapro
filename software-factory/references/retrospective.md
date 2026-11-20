@@ -1,6 +1,6 @@
 # Post-run retrospective
 
-Run after the requested implementation, review, publication and archival stages finish. If any requested stage remains incomplete, label the assessment provisional, identify the missing evidence and schedule the retrospective as the next action after completion; do not imply a future scheduler exists. Inspect the run ledger, original request and later changes, review findings, check output, revision/remote evidence, archived change and actual session records when available. Do not assume all conversations or cost data exist.
+Run after the requested implementation, review, publication and archival stages finish. If any requested stage remains incomplete, label the assessment provisional, identify the missing evidence and record the follow-up retrospective as the next action after completion. Inspect the run ledger, original request and later changes, review findings, check output, revision/remote evidence, archived change and actual session records when available. Do not assume all conversations or cost data exist.
 
 Produce a concise report:
 

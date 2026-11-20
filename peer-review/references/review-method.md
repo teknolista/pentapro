@@ -145,3 +145,7 @@ Keep service execution status separate from analysis: a neutral/successful check
 Unavailable optional tools do not automatically invalidate an inspection review. Missing evidence is material when it prevents judging an important changed behavior or satisfying a specifically requested review gate. A real defect can be reported despite an unavailable build. Separate code findings, pre-existing/environmental CI failures, and outstanding release requirements.
 
 A saved report should let another engineer reproduce each finding without needing the review conversation. Use current source locations, label deleted-side references, redact sensitive values, and state what evidence could overturn a disputed conclusion. In an automated workflow, honor a caller-supplied structured format and represent no findings as an empty finding collection; missing content is an error or incomplete review, never a clean result.
+
+## Inspect history for a removed guarantee
+
+When a diff removes a security guard, compatibility path or meaningful regression test, inspect available prior fixes, blame or decision rationale if it can distinguish legitimate relocation/replacement from reintroducing a known failure. Trace the effective replacement in the current snapshot. Missing history is an evidence limit, not proof of a vulnerability; do not require history archaeology for every change. [Differential review methodology](https://github.com/trailofbits/skills/blob/149d7b21f4067765b82e67029730b42d228ef4b4/plugins/differential-review/skills/differential-review/methodology.md)

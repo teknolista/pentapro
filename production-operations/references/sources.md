@@ -12,3 +12,7 @@ Prepared on 2026-11-10. The workflow, provider guides and examples are original 
 | [Model Context Protocol security guidance](https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices) | Tool trust, authorization and token boundaries. |
 
 Linked materials retain their own licenses and terms. Documentation review establishes the cited behavior at the documented scope. Live login, deployment, telemetry and recovery require actual target-specific evidence.
+
+## Operation attribution — 2026-11-20
+
+[Addy Osmani observability](https://github.com/addyosmani/agent-skills/blob/8c99fa36d90068c82d547f7c12a9d67a3e95f4ee/skills/observability-and-instrumentation/SKILL.md) informed original conditional guidance distinguishing initiating path from correlation identity. No telemetry implementation or upstream source text is copied. Existing tested forward-repair/restore guidance already covers migration recovery, so it was retained without another procedure.

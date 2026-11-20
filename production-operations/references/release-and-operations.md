@@ -24,3 +24,7 @@ When the service has an error-budget policy, connect the decision to the agreed 
 In the existing incident record, capture the affected window and customer impact, revision and evidence, containment and recovery checks, confirmed causes and contributing conditions, and corrective actions with owners and follow-up. Review conditions that made the failure possible and track whether each correction works.
 
 [Google SRE canarying releases](https://sre.google/workbook/canarying-releases/) · [Google SRE incident management](https://sre.google/resources/practices-and-processes/incident-management-guide/) · [OpenTelemetry security](https://opentelemetry.io/docs/security/)
+
+## Attribute operations with several entry paths
+
+When scheduler, manual, webhook or replay paths initiate the same operation, establish its initiating path at the trusted entry boundary and propagate it with correlation context across HTTP, queues and services. Keep origin distinct from execution identity: a shared trace does not explain why work started. Treat caller-supplied attribution as untrusted until validated; attribution never grants authorization. Use bounded origin categories for metrics, and keep sensitive identifiers, free-form URLs and payloads out of metric labels. Exercise two origins that share the downstream path and verify they remain distinguishable. [Observability source](https://github.com/addyosmani/agent-skills/blob/8c99fa36d90068c82d547f7c12a9d67a3e95f4ee/skills/observability-and-instrumentation/SKILL.md)

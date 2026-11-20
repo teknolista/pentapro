@@ -133,3 +133,9 @@ Maintainer routing cases are recorded in [the integration map](https://github.co
 | A prototype export exists, then a changed manifest fails validation. | Keep the previous artifact intact but identify it as stale; do not claim it demonstrates the failed iteration. |
 
 These instruction cases were inspected by the maintainer but not executed as new agent trials. Earlier browser and specification trials retain their original scope.
+
+## Composition and forced-colors regression briefs
+
+For a screen with custom Enter submission, use supported IME input: confirmation preserves the composed text and performs no submit; a subsequent action submits once, with modifiers and explicit submit preserved. Exercise forced colors on a supported target where a shadow previously supplied the only boundary or focus cue. Inspect actual behavior and identify untested browser/input-method combinations.
+
+Provide a blank or stale screenshot of a working screen as a capture-control case. The agent should inspect the current instance and capture conditions before attributing the artifact to a product defect. These are authored cases, not executed browser evidence.

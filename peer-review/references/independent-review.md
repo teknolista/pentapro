@@ -67,3 +67,7 @@ Use for a requested batch review, related PRs, or review-process planning. An or
 - Evaluate a workflow experiment by time to accepted integration, review waiting time, rework and defects found when combining changes. Compare reasonably similar tasks and separate observations from causal claims. Agent activity, PR count and a small favorable sample do not establish increased productivity. Collect only available, relevant measurements; process instrumentation is not required for an ordinary review.
 
 Return a scoped integration gap when the combined revision or required evidence is unavailable. Do not silently convert isolated approvals into approval of a later combination, or perform Git integration to manufacture missing evidence.
+
+## Preserve candidate evidence during synthesis
+
+When combining reviewers, retain each candidate's originating lens, location, hypothesis, reachable trigger and evidence until it has an individual disposition. Refuting one candidate does not refute a similar candidate with different premises. Validate first, then group shared root causes while retaining links to the contributing candidates; keep material inconclusive candidates visible as evidence gaps. Use the existing finding record, not a mandatory new raw-report file. [BMAD triage](https://github.com/bmad-code-org/BMAD-METHOD/blob/e435a22574fe55722841086e5566420178b98df3/skills/method/bmad-code-review/step-03-triage.md)

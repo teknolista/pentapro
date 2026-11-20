@@ -4,9 +4,9 @@ This historical report records recommendations against earlier package revisions
 
 ## Project Overview
 
-This repository contains **22 skills** (the count at the time of this report; the current collection has 23) for assisting developers in building high-quality software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Ship, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
+This review considered **22 skills**. The [current catalog](README.md#available-skills) lists the maintained packages. The reviewed collection assisted developers building software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Ship, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
 
-The collection was last reviewed and closed on 2026-11-06, with all 21 skill packages passing structural validation and executable checks. This report identifies improvement opportunities to ensure these skills remain the most effective tools for helping developers build high-quality, secure software.
+A prior closure review took place on 2026-11-06, with all 21 skill packages passing structural validation and executable checks. This report identifies improvement opportunities to ensure these skills remain the most effective tools for helping developers build high-quality, secure software.
 
 ---
 

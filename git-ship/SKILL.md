@@ -3,7 +3,7 @@ name: git-ship
 description: Review and package a requested Git commit, normal branch push, or pull request, preserving unrelated work and verifying the published revision. Use for commit, ship, push, or PR preparation. Implementation completion alone does not authorize publication, merge, or deployment.
 license: MIT
 metadata:
-  version: "2.1.0"
+  version: "2.1.1"
 ---
 
 # Ship reviewed Git changes
@@ -22,7 +22,7 @@ Review actual changes, relevant guards, callers, tests, and contracts. Treat rev
 
 Do not fix, refactor, reformat or restyle product code while delivering. A substantiated blocker stops the delivery and is reported; correcting it is separate work. Restrict incidental edits to the project's own formatting hook or to files the request explicitly covers.
 
-Run relevant safe project checks and required gates. Inspect execution side effects first. Reuse matching evidence only for the same snapshot, command, configuration and environment. Record failures and unavailable evidence accurately. Stop before commit or push for validated blockers, failed required checks, or material unmet verification. Inspect the full intended diff for secrets, private data, generated noise and accidental artifacts without printing secret values; flag unintended oversized, binary or vendored additions. Run the whitespace and conflict-marker check (`git diff --check`) on the candidate snapshot. After renaming or moving files, especially documentation, validate the affected internal links and anchors rather than assuming the move preserved them.
+Run relevant safe project checks and required gates. Inspect execution side effects first. Reuse matching evidence only for the same snapshot, command, configuration and environment. Record failures and unavailable evidence accurately. Stop before commit or push for validated blockers, failed required checks, or material unmet verification. Inspect the full intended diff for secrets, private data, generated noise and accidental artifacts without printing secret values; explicitly check for leaked credentials, API tokens, `.env` files, temporary debugging flags/statements, commented-out test assertions, or leftover scratch files. Flag unintended oversized, binary or vendored additions. Run the whitespace and conflict-marker check (`git diff --check`) on the candidate snapshot. After renaming or moving files, especially documentation, validate the affected internal links and anchors rather than assuming the move preserved them. Confirm that untracked and unstaged files are accounted for and that no unreviewed edits are silently swept into the commit.
 
 ## Commit the reviewed snapshot
 
@@ -36,13 +36,13 @@ Inspect the commit and post-hook worktree afterward. Reconcile and review hook c
 
 ## Push and confirm
 
-Resolve push URLs and ref configuration before sending data. Use the established destination; use `origin` and the current branch only if unambiguous. If multiple push URLs, mirror settings, or automatic tag following would widen publication, stop and report the configuration instead of changing it. Use the local Git documentation to choose an explicit branch-only command for the actual setup.
+Resolve the effective push URLs and ref configuration before sending data. Inspect all push URLs with the local equivalent of `git remote get-url --push --all <remote>` without exposing embedded credentials. Use the established destination; use `origin` and the current branch only if unambiguous. If multiple push URLs, mirror settings, or automatic tag following would widen publication, stop and report the configuration instead of changing it. Use the local Git documentation to choose an explicit branch-only command for the actual setup.
 
-Check the destination branch's current object ID. If it exists, obtain enough history through a scoped safe fetch when needed and verify it is an ancestor of the intended commit. Inspect outgoing commits. Stop on divergence; do not pull, rebase, merge, force-push or rewrite history. For a standard single-destination setup, use an explicit remote and `HEAD:refs/heads/<destination-branch>` refspec, disabling incidental tag following with a supported command option if needed. Do not set upstream configuration or change remote settings unless the user asked for that change.
+Record the reviewed commit ID and destination branch ref before push. Query the effective push repository for that ref. A named remote can resolve to a different repository for fetch and for push. If it exists, obtain enough history from that same repository through a scoped safe fetch when needed and verify it is an ancestor of the intended commit. Inspect outgoing commits. Stop on divergence; do not pull, rebase, merge, force-push or rewrite history. For a standard single-destination setup, use an explicit remote and `<reviewed-commit>:refs/heads/<destination-branch>` refspec, disabling incidental tag following with a supported command option if needed. Do not set upstream configuration or change remote settings unless the user asked for that change.
 
 Check the outgoing range for credentials and private data, including values introduced and then deleted before the tip. If discovered, stop publication and report the affected path and revision without the value. Coordinate revocation or rotation and any history repair under the actual authority for those actions.
 
-After push, query the actual push destination and compare its branch ID with the intended commit; a success message alone is insufficient. Confirm this without changing local state by comparing `git ls-remote --heads <remote> refs/heads/<branch>` with `git rev-parse HEAD`, which neither fetches nor updates refs. If the push fails, retain the local commit and report the error. If remote confirmation is unavailable, report publication as unverified. A no-op requires evidence that the intended branch already points to the commit.
+After push, query the actual push destination and compare its branch ID with the intended commit; a success message alone is insufficient. Confirm this without changing local state. Query `git ls-remote --heads <resolved-push-url> refs/heads/<branch>` and compare the result with the recorded commit ID. Use a secret-safe transport or tool when the endpoint contains credentials. A later change to local HEAD does not change the commit expected at the destination. If the push fails, retain the local commit and report the error. If remote confirmation is unavailable, report publication as unverified. A no-op requires evidence that the intended branch already points to the commit.
 
 ## Environment and failure handling
 

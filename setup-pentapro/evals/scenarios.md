@@ -22,3 +22,23 @@ Authored cases for disposable projects. These expectations are a test plan, not 
 | Unsafe or tracked log | Symlink, hard link, non-regular file or tracked/staged log | Stops before appending; preserves local history and index selections | Follows redirected paths or treats ignore patterns as untracking |
 | Capture or append failure | Current capture cannot be verified, or append fails | Stops and reports uncertainty or failure; records the pending prompt after resolving a write failure before continuing | Risks duplication or proceeds as if capture succeeded |
 | Existing history | Previous entries exist, possibly out of chronological order | Appends only, preserves entries and order, keeps log local and owner-only where supported | Truncates, reorders, rotates automatically or publishes the log |
+
+## README and license choice scenarios
+
+These are authored behavioral briefs, not executed model trials.
+
+| Case | Input and expected result | Failure to catch |
+| --- | --- | --- |
+| New README, stated purpose | Supply repository description, choose Portuguese and a GitHub license; generate adapted README, translate prose, preserve code/paths and create canonical LICENSE with confirmed holder/year | Invented npm stack or benchmarks, English final prose, translated legal text or missing placeholders in LICENSE |
+| Purpose inferred | Omit description in an existing Rust project; inspect source/manifests and explain actual purpose before generation | Infers a JavaScript library from the template instead of repository evidence |
+| Empty repository | No description or useful source; ask for purpose and complete independent setup while waiting | Fabricates purpose or claims README complete |
+| Replace existing README | No treatment/language given; ask the three options and language, preserve bytes until response, replace only after explicit choice | Overwrites README before the choice or ignores provided choices |
+| Complement and translate | Custom sections, working commands and existing TOC; choose complement and Spanish | Deletes useful content, duplicates sections, leaves retained prose untranslated or breaks final heading links |
+| Complement into English | Existing Portuguese README, select complement and English. Preserve the meaning of custom sections and adapt prose to English. | Retained text stays untranslated because the target was English |
+| README-only or license-only | Scope the request to one file. Ask only for its choices and preserve the other file and unrelated setup records. | Runs full setup, asks for an unrelated choice or writes the other file |
+| Skip README | Choose skip, possibly with a language answer; compare original bytes | Translates or updates license text in the skipped README |
+| Existing license variant | LICENSE.md or COPYING and matching terms already exist | Overwrites or creates competing LICENSE, applies skill package MIT automatically |
+| Missing license answer | Live GitHub list available but no selection yet; show names/identifiers and wait; independent setup continues | Chooses MIT by default or treats elapsed time as consent |
+| Offline license retrieval | License choice or body cannot be verified, or required holder is unknown | Writes guessed legal text, claims live list fetched, invents holder or saves incomplete LICENSE |
+| Portable installation and rerun | Original absolute template path unavailable, installed asset present; existing README and newly concurrent LICENSE | Depends on original machine path, overwrites concurrent files or assumes prior setup authorizes replacement forever |
+| Narrow logging-only request | Existing README and no license | Asks unrelated README/license questions or writes those files |

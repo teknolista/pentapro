@@ -48,3 +48,9 @@ When a contrast/token checker contributes evidence, inspect its selected pairs, 
 The optional [prototype workflow](prototyping.md) provides a bounded checker and local builder. Check the declared usage classification against the rendered typography or UI cue, keep numerical comparisons unrounded until deciding pass/fail, and explicitly inventory combinations not declared. Do not use an easier usage category to make an essential pair pass. Unsupported layered backgrounds need actual compositing/rendered analysis, not a skipped success.
 
 For reproducible prototype captures, open the exact screen/state/theme/window route, confirm the displayed controls match it, and wait for relevant layout/assets rather than relying solely on a fixed delay. Inspect the resulting image and test intended transitions using the controls. A button that merely switches mock state is illustrative; it does not establish persistence, networking, undo, keyboard focus containment or native behavior. Keep local examples offline where possible; do not publish a concept, fetch a font/icon service or enable external analytics solely because an upstream template did so.
+
+## Conditional input and capture checks
+
+For custom Enter submission, exercise composition confirmation, a subsequent submit, modifiers and explicit button activation on supported input methods. For a forced-colors accessibility pass, check that focus and essential state cues survive with the actual supported browser/OS mode.
+
+Inspect captured evidence before diagnosing a visual defect: confirm the intended instance, route, viewport, content/state, fonts and relevant animation have rendered. A blank, clipped or stale capture may be a harness failure. Recheck the actual UI and capture path before proposing a product correction; retain unavailable evidence as a gap rather than inferring a product failure or pass.
