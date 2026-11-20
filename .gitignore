@@ -207,5 +207,7 @@ prettierignore.txt
 .windsurfrules
 .opencode/
 skills-lock.json
-AGENTS.log
-AGENTS.log.*
+
+# Mandatory local prompt log and its rotated copies (see docs/agents-log-policy.md)
+/AGENTS.log
+/AGENTS.log.*
