@@ -50,8 +50,8 @@ These are authored scenarios, not executed host trials.
 | Case | Expected observation | Failure to catch |
 | --- | --- | --- |
 | Five selected hosts | Install six roles in only the explicitly selected host's project paths, preserve preexisting custom files and global settings | Confuse an existing directory with the active host or overwrite roles |
-| Unknown host or unsupported Luna | Continue independent setup; report the missing host selection or shipper model/effort without substituting | Claim the shipper is ready because a file exists |
-| Authorized ship | Delegate after readiness and explicit applicable commit/push authority; shipper loads git-ship and verifies remote | Publish merely because implementation finished |
+| Unknown host or unsupported role settings | Continue independent setup; report unsupported settings and preserve the developer choice without substitution | Claim host discovery or runtime selection from a file alone |
+| Direct shipper invocation without detail | Delegate its git-ship review, commit and normal push in the current context, respecting permissions and scope | Downgrade to review only, or publish merely because implementation finished |
 | Failed check or divergent remote | Keep the reviewed changes and any local commit; report the exact blocker | Bypass a required check or rewrite history |
 | Narrow setup | Logging-only setup creates no factory agents | Expand scoped requests to all hosts |
 

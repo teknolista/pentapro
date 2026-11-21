@@ -31,7 +31,7 @@ class FactoryAgentTests(unittest.TestCase):
             self.assertEqual({p.name for p in (TEMPLATES / role).iterdir()}, hosts)
         for path in (TEMPLATES / "factory-shipper").iterdir():
             text = path.read_text()
-            for required in ("git-ship", "gpt-6-luna", "high", "stop publication"):
+            for required in ("git-ship", "direct request to invoke factory_shipper", "commit", "normal push"):
                 self.assertIn(required, text, str(path))
         role = tomllib.loads((TEMPLATES / "factory-shipper/codex.toml").read_text())
         self.assertEqual((role["model"], role["model_reasoning_effort"]), ("gpt-6-luna", "high"))

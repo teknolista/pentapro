@@ -77,3 +77,12 @@ Inspect Git status and applicable scoped instructions before editing. Preserve u
 Keep credentials and unnecessary personal data out of source, evaluation artifacts, and responses. Keep prompt logs local and ignored. Avoid destructive operations or external changes outside the request. Delegate only when requested or required by applicable instructions, with explicit scope and ownership; a role template alone grants no execution authority.
 
 At handoff, state the changed behavior, affected artifacts, checks actually executed, and material gaps. Distinguish local edits from committed or published revisions. Update documentation owned by the change without creating competing specifications or imposing an application stack on this collection.
+
+
+## PentaPRO factory guidance
+
+Use the applicable project-local skills in `.agents/skills/`; use `software-factory` for explicitly requested factory runs and OpenSpec skills for the repository-root `openspec/` workflow. Follow existing project instructions and actual user authority. Factory role profiles are available for Codex, GitHub Copilot, OpenCode and Antigravity CLI; resolve their host-specific identities before delegation.
+
+When a developer directly invokes a factory role without a narrower task, delegate its defined workflow using the current project and session context. Preserve its configured model and reasoning effort, the developer’s custom settings, applicable permissions and role-specific stop conditions. A direct shipper invocation requests git-ship review, commit and normal push; implementation completion alone does not.
+
+All factory roles use the PDSA protocol in `docs/agents/continuous-improvement.md` and consult relevant lessons in `docs/agents/lessons-learned.md`. The orchestrator alone records lessons, always in English. For substantial factory or multi-agent runs, the orchestrator maintains a durable record under `docs/agents/runs/`; role packets carry the run ID, record path, version and input fingerprint. Follow the installed `software-factory` run-record contract.
