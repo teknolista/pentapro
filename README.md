@@ -991,3 +991,8 @@ The source research for [PentaPRO](penta-pro/references/sources.md), [Peer Revie
 Copyleft © 2026 <a href="https://x.com/teknolista">Raul Bras</a> 🇧🇷 Published under the MIT license. <br>
 Made in Brazil, in the Land of Oz (SP) , with 🌭 🍕 and AI 🤖.
 </small></p>
+
+
+## AI development workflow
+
+This repository uses project-local PentaPRO skills and factory agent profiles together with [OpenSpec](openspec/). See [agent instructions](AGENTS.md) for the project workflow. The [continuous improvement protocol](docs/agents/continuous-improvement.md) describes PDSA and the [lessons record](docs/agents/lessons-learned.md); substantial factory runs use the [execution-record guide](docs/agents/runs/README.md). Lessons are recorded in English.
