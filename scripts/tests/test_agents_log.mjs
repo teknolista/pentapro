@@ -276,3 +276,9 @@ test("CLI exits 2 on an invalid payload so the host can block", () => {
 	assert.equal(unwritable.status, 2)
 	assert.match(unwritable.stderr, /\[agents-log\]/)
 })
+
+test("attachment labels receive the same credential redaction as prompt text", () => {
+ const entry = formatEntry({ text: "synthetic attachment", attachments: ["/tmp/sk-1234567890abcdef.txt"] })
+ assert.ok(!entry.includes("sk-1234567890abcdef"))
+ assert.match(entry, /attachment: \/tmp\/\[REDACTED api key\]\.txt/)
+})

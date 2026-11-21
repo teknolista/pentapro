@@ -40,3 +40,11 @@ Original conditional guidance follows [OpenSpec apply](https://github.com/Fissio
 ## README and project licensing — 2026-11-20
 
 The maintainer supplied `/home/dever/workspace/teknolista/readme.md` as the project README template. The packaged `assets/readme.md.template` preserved the original bytes at introduction (SHA-256 `f700c6520149fe5bf9ff73297c06ec6d2536b987ddf41192a92f373b942ea917`). The closing review removed one trailing space to pass the repository whitespace check (current SHA-256 `90968bf6eb7fc874f341e10675f6eb4d604f377b52d87211d3cefa97ef9aca58`); template examples are adapted to verified target-project facts. This is maintainer-supplied material, not attributed to the Matt Pocock adaptation. GitHub's [license API documentation](https://docs.github.com/en/rest/licenses/licenses) defines current choice discovery and canonical license-body retrieval. No external license text is bundled as a target-project default; the developer selects the license. README language and replace/complement/skip choices are required independently of the collection's English-artifact convention.
+
+## Cross-host role identity and closing maintenance — 2026-11-21
+
+The [OpenCode agent documentation](https://opencode.ai/docs/agents/) defines path-derived agent IDs. [Claude Code](https://code.claude.com/docs/en/sub-agents) uses `name` in frontmatter; [Copilot](https://docs.github.com/en/copilot/reference/custom-agents-configuration) documents profile identity and environment differences; [Antigravity](https://antigravity.google/docs/subagents) defines custom names, explicit tools and model tiers. Setup records the actual discovered mapping and missing capabilities rather than claiming universal alias or model support. Offline adapter validation is not an executed host integration test.
+
+## PentaPRO plugin packaging — 2026-11-21
+
+PentaPRO is the collection identity; setup remains project-scoped regardless of package scope. Resolve the plugin-qualified installed skill and the target checkout separately, preserving generated project records through package updates. Root package metadata and per-host adapters do not change the complete prompt rule or install hooks.

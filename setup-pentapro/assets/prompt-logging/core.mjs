@@ -188,7 +188,7 @@ export function formatEntry({
 	const metaText = meta.length > 0 ? ` (${meta.join(", ")})` : ""
 
 	const bodyParts = [redact(text || "[empty prompt]")]
-	for (const attachment of attachments) bodyParts.push(`[attachment: ${attachment}]`)
+	for (const attachment of attachments) bodyParts.push(`[attachment: ${redact(String(attachment))}]`)
 
 	return `## ${rfc5322(date)} | ${attribution({ host, provider, model, variant })}${metaText}\n${bodyParts.join("\n\n")}\n\n`
 }

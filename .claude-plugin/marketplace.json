@@ -1,0 +1,13 @@
+{
+  "name": "teknolista",
+  "owner": {
+    "name": "Teknolista"
+  },
+  "plugins": [
+    {
+      "name": "pentapro",
+      "source": "./",
+      "description": "PentaPRO: software development skills, factory agents and evidence-based continuous improvement."
+    }
+  ]
+}

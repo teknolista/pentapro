@@ -148,3 +148,11 @@ Reviewed all 13 entrypoints and the pending changes. The Android helpers put pro
 The offline PR Quiz review reproduced stale checkbox and comment submissions and a hidden key pointing to a removed option. The grader now checks the event head or comment revision token, rejects invalid visible option/key combinations, and confirms the current revision before writing a new pass. Bare comment commands from the earlier template need the current token. The prototype checker now resolves long alias chains iteratively and bounds recursive fragment expansion.
 
 All 13 packages passed structural validation. The UI helper passed 24 Python tests, the PR publisher passed 12 Python tests, and the actual embedded grader passed 25 offline scenarios with GitHub API doubles. In a disposable project, a separate PentaPRO trial produced five linked drafts, preserved all three existing files, and recorded blocked readiness for a proposed inventory API retry contract. The Peer Review trial and PentaPRO trial used the same model as this maintenance pass. Smaller models, consuming Android apps, and a hosted GitHub workflow were outside these checks.
+
+### Current cross-host factory maintenance — 2026-11-21
+
+Setup PentaPRO ships six roles for five hosts; resolve logical role names to the host's actual discovered identity. Every role returns a proportional PDSA summary and optional evidence-backed lesson candidates. Only the main-session orchestrator writes the project lessons record. See the [current maintenance audit](docs/maintenance-review-2026-11-21.md) for script/test coverage and remaining runtime gaps; the older counts and trials above retain their historical scope.
+
+### PentaPRO distribution identity
+
+PentaPRO names the collection and plugin; `penta-pro` remains the specification skill. Package delivery does not change owner routing or authorize setup. Plugins and `npx skills add` expose the same source packages; select one effective installation per host/project and resolve plugin-qualified IDs. User-wide availability still uses project-local setup and lessons. See the [installation guide](README.md#install-pentapro).

@@ -153,3 +153,7 @@ Never execute placeholders. Distinguish documented commands from commands actual
 - Keep explanations concise, concrete, and matched to the audience. State consequential assumptions, trade-offs, and blockers; distinguish requirements, proposals, decisions, and observed results.
 - This template's default is clear English for project artifacts and the user's preferred language for conversation. Preserve required identifiers, public names, literal data, and localization/user-facing text in their required languages. Follow explicit project language requirements.
 - Update relevant documentation when behavior, interfaces, configuration, or workflows change. At handoff, state what changed and why, verification performed, material remaining limits, and any needed next action. Keep this file focused on durable project guidance and maintain it as the project evolves.
+
+## Factory continuous improvement
+
+When factory roles are installed, apply their PDSA handoff even for isolated calls. Consult the installed project protocol and relevant lessons; the main session/orchestrator alone records useful evidence-backed candidates in the project's lessons record. Resolve actual paths during setup; preserve established records. Late lessons may remain local until the next authorized commit.

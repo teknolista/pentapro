@@ -29,6 +29,7 @@ jobs:
       - name: Validate metadata and links
         run: |
           python3 -m pip install --only-binary=:all: -r scripts/requirements-validation.txt
+          python3 scripts/package_plugin.py --check
           python3 scripts/validate_collection.py
           python3 scripts/run_skill_evals.py --check-cases
       - name: Run offline helper tests
@@ -39,6 +40,7 @@ jobs:
           python3 -m unittest discover -s pr-quiz/scripts/tests -v
           node pr-quiz/scripts/tests/workflow.cjs
           node --test scripts/tests/test_agents_log.mjs
+          node --test scripts/tests/test_opencode_plugin.mjs
       - name: Check changed lines for whitespace errors
         env:
           BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}

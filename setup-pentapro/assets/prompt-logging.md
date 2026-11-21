@@ -2,6 +2,9 @@
 
 > Legacy reference retained for existing installations and logger regression tests. Setup PentaPRO 1.3.0 does not install or configure these hooks or copy this policy. Its active prompt rule is self-contained in `AGENTS.md`. Host recipes below are historical; verify the installed host API before any separately authorized reuse.
 
+**Historical compatibility material, not current setup policy.** The complete current rule is owned by `setup-pentapro/SKILL.md` and its `assets/agents.md` template. The legacy helpers do not themselves implement all current guarantees (including Git-index privacy checks and reliable event-identity deduplication); invoking them alone does not establish compliance. Historical rotation recipes below must not be applied to a project whose current rule requires retaining its existing append-only log. Use only under a separately authorized, reviewed host integration.
+
+
 Mandatory rule for every AI agent and model working in this repository. The root instruction file carries the short operational version; this document defines the entry format, the capture mechanisms, security, concurrency, and limits.
 
 ## Rule

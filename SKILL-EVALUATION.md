@@ -4,7 +4,7 @@ The canonical [evaluation procedure](agent-instructions/references/evaluation.md
 
 See the [initial assessment](SKILL-ASSESSMENT.md) and [closure review](COLLECTION-REVIEW.md) for executed checks and their limits. Maintenance records are not loaded during ordinary application work.
 
-The [frontier-model trial record](evals/RESULTS.md) reports the first baseline and candidate runs with GPT-6.1 Sol and GPT-6 Astra.
+The [frontier-model trial record](evals/RESULTS.md) reports the first baseline and candidate runs with GPT-6.1 Terra and GPT-6.1 Sol.
 
 The [final maintenance review](FINAL-SKILL-REVIEW.md) records the subsequent per-skill assessment, corrections and verification limits.
 

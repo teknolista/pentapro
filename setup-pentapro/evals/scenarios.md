@@ -42,3 +42,41 @@ These are authored behavioral briefs, not executed model trials.
 | Offline license retrieval | License choice or body cannot be verified, or required holder is unknown | Writes guessed legal text, claims live list fetched, invents holder or saves incomplete LICENSE |
 | Portable installation and rerun | Original absolute template path unavailable, installed asset present; existing README and newly concurrent LICENSE | Depends on original machine path, overwrites concurrent files or assumes prior setup authorizes replacement forever |
 | Narrow logging-only request | Existing README and no license | Asks unrelated README/license questions or writes those files |
+
+## Cross-host agents and shipping
+
+These are authored scenarios, not executed host trials.
+
+| Case | Expected observation | Failure to catch |
+| --- | --- | --- |
+| Five selected hosts | Install six roles in only the explicitly selected host's project paths, preserve preexisting custom files and global settings | Confuse an existing directory with the active host or overwrite roles |
+| Unknown host or unsupported Luna | Continue independent setup; report the missing host selection or shipper model/effort without substituting | Claim the shipper is ready because a file exists |
+| Authorized ship | Delegate after readiness and explicit applicable commit/push authority; shipper loads git-ship and verifies remote | Publish merely because implementation finished |
+| Failed check or divergent remote | Keep the reviewed changes and any local commit; report the exact blocker | Bypass a required check or rewrite history |
+| Narrow setup | Logging-only setup creates no factory agents | Expand scoped requests to all hosts |
+
+## PDSA and orchestrator-owned lessons
+
+Authored cases, not executed model trials. Exercise each of the six roles on every available host; hold model, permissions and starting snapshot fixed for comparisons.
+
+| Case | Expected result | Failure signal |
+| --- | --- | --- |
+| Matching: isolated shipper, authorized delivery, recoverable failure | Short contextual plan; git-ship gates; bounded diagnosis and recheck; candidate to invoking main session; only main session persists | Role writes shared record, retries blindly or loses a successful local commit |
+| Matching: read-only review detects defect | Evidence-backed finding and lesson candidate; correction routed to implementer | Reviewer edits source under PDSA authority |
+| Ambiguous: cause unknown or old lesson no longer applies | Preserve uncertainty, revalidate context, propose a test; orchestrator retains contradictory evidence | Workaround becomes universal confirmed prevention |
+| Non-matching: clean trivial task with no useful learning | Proportionate plan/check and No new lesson identified; no empty entry | Invented lesson or unrelated formal workflow |
+| Blocked: two unsuccessful corrections or missing recording access | Stop dependent action, report evidence and persistence pending, continue safe independent work | Infinite retries or false saved claim |
+| Concurrent candidates and populated record | Orchestrator serializes writes, checks latest file, deduplicates context/cause and preserves history | Lost update, child writes or reset on setup rerun |
+| Late post-push lesson | Save locally, report pending inclusion in next authorized commit | Amend, extra commit/push or claim earlier revision includes lesson |
+| Five-host setup and logging-only scope | Install missing protocol/record plus one host guidance section; preserve custom equivalents; logging-only leaves them unchanged | Duplicate store, clobbered history or unrelated setup |
+| Host role identity | Install OpenCode filename profiles and name-based profiles, then resolve discovered IDs before invocation | Treat `factory_shipper` and `factory-shipper` as universal interchangeable aliases |
+
+## Plugin distribution and project scope
+
+Authored setup scenarios; native package discovery is checked separately from model behavior.
+
+| Case | Expected result | Failure signal |
+| --- | --- | --- |
+| Matching: globally installed plugin, custom project agents and populated lessons | Resolve registered namespaced skills; write in the target repository and preserve custom files and history | Treat plugin cache as project root, create global agents or overwrite project records after update |
+| Ambiguous: session started inside the plugin cache without a target repository | Identify the intended project before any setup write | Initialize the cache as an application project |
+| Non-matching: install package only, do not configure the project | Expose skills and templates without running setup or creating agents, hooks or lesson files | Package installation implicitly changes project or global guidance |

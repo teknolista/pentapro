@@ -1,6 +1,6 @@
-# ✨ AI Agent Skills
+# PentaPRO — AI software development collection
 
-My personal collection of reusable skills for developers building software with AI coding agents. PentaPRO turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
+**PentaPRO** is a collection of reusable skills for developers building software with AI coding agents. Its `penta-pro` specification skill turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
 
 The collection's skill instructions and reusable artifacts are written in English. Conversation uses the developer's preferred language. For a project README, Setup PentaPRO uses the language the developer selects.
 
@@ -11,10 +11,104 @@ The collection's skill instructions and reusable artifacts are written in Englis
 >
 > Feedback from actual use, constructive criticism, and suggestions are very welcome through [GitHub Issues](https://github.com/teknolista/skills/issues).
 
+## Install PentaPRO
+
+PentaPRO is the collection/package name; the repository remains `teknolista/skills` and the specification skill remains `penta-pro`. Choose **one installation method per host/project**. Installing both the plugin and copied skills can advertise duplicates. The bundle contains all 24 original skills and the six factory-agent templates; setup creates the actual selected-host agents in each project. Installing the plugin does not run setup, enable prompt hooks, select a model, or publish Git changes.
+
+### 1. Choose the installation scope
+
+**Recommended: project-scoped skills.** Run one command from the target repository (choose your agent):
+
+```sh
+npx skills@latest add teknolista/skills --skill '*' -a codex
+npx skills@latest add teknolista/skills --skill '*' -a github-copilot
+npx skills@latest add teknolista/skills --skill '*' -a opencode
+npx skills@latest add teknolista/skills --skill '*' -a antigravity-cli
+```
+
+These are alternatives. No `-g` means project scope. Omit `-a` to select interactively; omit `--skill '*'` to choose individual skills. For editable independent copies, select copy in the installer or add `--copy`. Use `npx skills@latest check` and `npx skills@latest update` for installer-managed skills; review changes before adoption. [Installer reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
+
+**Native plugin, project-scoped:** use the local bundle recipes below. They configure the project/session. Codex also requires installation through the host and an effective-scope check. Some hosts still cache package bytes in a user directory; project activation and cache storage are different. Use the skills CLI route when you require skill files to live entirely in the project and no plugin cache installation.
+
+**Native plugin, user-wide:** these commands change the host's user installation/configuration and are optional:
+
+```sh
+# Codex
+codex plugin marketplace add teknolista/skills
+codex plugin add pentapro@teknolista
+
+# GitHub Copilot CLI
+copilot plugin marketplace add teknolista/skills
+copilot plugin install pentapro@teknolista
+
+# OpenCode V2
+opencode plugin add github:teknolista/skills
+
+# Antigravity CLI
+agy plugin install https://github.com/teknolista/skills
+```
+
+Check the installed CLI's help before using these commands on older versions. These use a repository source, not a published npm package or an official marketplace listing. Remote installation requires the committed manifests to be available on GitHub. Updating local files in this checkout does not publish them. Host update/removal commands and policy vary; see [plugin operations](docs/plugin-distribution.md).
+
+To install only skills globally, add `-g` to the selected skills CLI command. Global availability affects multiple repositories; a shared update can change behavior in all of them. Project copies can diverge or shadow global skills. Keep one active copy per skill/host and inspect the effective registered path before removing duplicates. No global setup or background action is required.
+
+### 2. Run setup once in each target project
+
+Open your host in the actual target repository and invoke the installed `setup-pentapro` skill, selecting its plugin-qualified name if the host namespaces it:
+
+```text
+Use the installed setup-pentapro skill to configure this project for PentaPRO.
+Use project-local settings only and preserve existing files and decisions.
+The project purpose is: [describe your project].
+```
+
+Setup preserves existing instructions, asks for unresolved README/license choices, prepares relevant project guidance and available tools, installs the selected-host agent templates and initializes the PDSA protocol and empty lessons record. It never writes into the plugin cache or turns a user-wide installation into global project configuration. Repeat per repository even when the plugin is installed globally. Existing customized agents/records are preserved on rerun; plugin updates do not silently replace them. See [Setup PentaPRO](#setup-pentapro).
+
+### Project-local native plugin recipes
+
+From a separate source checkout of `teknolista/skills`, use Python 3.12+ with [maintenance dependencies](scripts/requirements-validation.txt) in an existing suitable environment. Export to a **new** directory in the target project. Replace the absolute example paths; never overwrite an existing plugin or host config. The exporter only copies distribution-eligible skill files and writes the selected-host manifest; it does not install anything or edit host settings.
+
+| Host | Export command | Activate only in the target project |
+| --- | --- | --- |
+| Codex | `python3 /path/to/skills/scripts/package_plugin.py --host codex --output /path/to/project/plugins/pentapro` | Merge the repository marketplace and trusted-project config below; install from the local Plugins Directory, then verify effective scope. |
+| Copilot CLI | `python3 /path/to/skills/scripts/package_plugin.py --host copilot --output /path/to/project/plugins/pentapro` | From that project run `copilot --plugin-dir ./plugins/pentapro`; this mounts for that session without a user-wide install. |
+| OpenCode V2 | `python3 /path/to/skills/scripts/package_plugin.py --host opencode --output /path/to/project/plugins/pentapro` | Merge `"plugins": ["./plugins/pentapro"]` into project `opencode.json(c)` and restart; preserve other entries. Requires V2 `skill.transform`. |
+| Antigravity CLI | `python3 /path/to/skills/scripts/package_plugin.py --host antigravity-cli --output /path/to/project/.agents/plugins/pentapro` | Start `agy` in the project; inspect `/plugin` and `/skills`. Optionally validate first with `agy plugin validate --strict /path/to/project/.agents/plugins/pentapro`. |
+
+For Codex, merge this catalog into `.agents/plugins/marketplace.json` in the target project (retain other plugins):
+
+```json
+{
+  "name": "pentapro-project",
+  "plugins": [{
+    "name": "pentapro",
+    "source": {"source": "local", "path": "./plugins/pentapro"},
+    "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+    "category": "Productivity"
+  }]
+}
+```
+
+Merge into the target project's `.codex/config.toml`, using its actual absolute path and keeping existing settings:
+
+```toml
+[marketplaces.pentapro-project]
+source_type = "local"
+source = "/absolute/path/to/project"
+
+[plugins."pentapro@pentapro-project"]
+enabled = true
+```
+
+The Codex catalog advertises a plugin; availability alone does not establish installation. Restart the app and install PentaPRO from the local Plugins Directory. The host uses its user cache and can save user-level enable choices; inspect those choices before claiming project-only activation. For installation wholly contained in the project, use the recommended skills CLI route. Codex loads project configuration only in trusted projects, subject to managed policy. Inspect availability with `codex plugin list --marketplace pentapro-project --available --json`. This establishes discovery, not agent/model execution. [Codex packaging](https://developers.openai.com/plugins/build/plugins) · [Copilot CLI reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference) · [OpenCode plugins](https://opencode.ai/docs/plugins/) · [Antigravity plugins](https://antigravity.google/docs/plugins)
+
+**Validation status:** exported Antigravity bundles passed native strict validation with 24 skills; Codex discovered the root marketplace and exported local bundle. Copilot CLI is unavailable in the maintenance environment. The installed OpenCode 2.0.31 returned an empty plugin/skill registry even for a minimal control plugin; its runtime discovery is not established here. Use the skills CLI fallback until your client's plugin discovery is confirmed. Offline adapter/export tests do not certify all host versions. See [distribution design and checks](docs/plugin-distribution.md).
+
 ## Contents
 
-- [✨ AI Agent Skills](#-ai-agent-skills)
+- [PentaPRO — AI software development collection](#pentapro--ai-software-development-collection)
   - [Contents](#contents)
+  - [Install PentaPRO](#install-pentapro)
   - [Available skills](#available-skills)
   - [Quick start](#quick-start)
   - [Choose a workflow](#choose-a-workflow)
@@ -79,7 +173,7 @@ The collection's skill instructions and reusable artifacts are written in Englis
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.7.1 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
+| [Setup PentaPRO](#setup-pentapro) | 1.9.2 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
 | [PentaPRO](#pentapro) | 3.1.4 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -89,7 +183,7 @@ The collection's skill instructions and reusable artifacts are written in Englis
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 1.5.3 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 0.2.4 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](software-factory/SKILL.md) | 0.4.1 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
@@ -119,11 +213,11 @@ npx skills@latest add teknolista/skills --skill penta-pro -a codex
 
 Open a Codex session in that project, select `$setup-pentapro`, and ask:
 
-> Configure this repository for the teknolista skills. Its purpose is to provide a local task tracker.
+> Configure this repository for the PentaPRO collection. Its purpose is to provide a local task tracker.
 
 Setup configures prompt persistence and the relevant tracker and domain guidance. It uses the supplied purpose or discovers it from the repository. Choose whether to replace, complement or skip an existing README, select the language for the generated README and choose a license when the project lacks one.
 
-Full setup also prepares OpenSpec and Codex factory roles in the project when the installed tools support a safe project-scoped setup. The default role templates use Sol for implementation and verification and Astra for reviews; edit their project-local TOML files to select available models and reasoning effort. The setup reports unavailable prerequisites and preserves existing role files. See [factory setup](setup-pentapro/references/factory-setup.md). A new Codex session may be needed to discover roles and skills.
+Full setup also prepares OpenSpec and six factory roles for the selected host (Codex, Claude Code, GitHub Copilot, Antigravity or OpenCode) in the project when the installed tools support a safe project-scoped setup. Codex templates use Terra for implementation and verification and Sol for specification review, code review and retrospective, with high effort except medium for retrospective. The shipper requires GPT-6 Luna with high effort. Other host templates inherit the available session model; shipping remains blocked when Luna/high cannot be selected and verified. For Codex, edit project-local TOML files to select available models and reasoning effort, retaining the shipper requirement. The setup reports unavailable prerequisites and preserves existing role files. See [factory setup](setup-pentapro/references/factory-setup.md). A new Codex session may be needed to discover roles and skills.
 
 For specification work, introduce the software, its users, the problem and the first useful outcome.
 
@@ -298,7 +392,7 @@ For prompt logging only, request that narrower scope explicitly.
 
 ### Output and working boundaries
 
-A full setup may create or, after the selected treatment, update `README.md`, create a missing `LICENSE` after license selection, and update `AGENTS.md`, `.gitignore`, relevant `docs/agents/` guidance, project-local OpenSpec files and `.codex/agents/`; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
+A full setup may create or, after the selected treatment, update `README.md`, create a missing `LICENSE` after license selection, and update `AGENTS.md`, `.gitignore`, relevant `docs/agents/` guidance, project-local OpenSpec files and the selected host's agent directory; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
 
 ### Next step
 
@@ -315,7 +409,9 @@ Adapted from Matt Pocock's setup workflow (MIT). See [source notes](setup-pentap
 | [Entrypoint](setup-pentapro/SKILL.md) | Setup workflow and self-contained prompt-persistence rule. |
 | [Repository setup](setup-pentapro/references/repository-setup.md) | Tracker, triage, domain, project facts and handoff procedure. |
 | [README and license](setup-pentapro/references/readme-and-license.md) | Project purpose, template, language and licensing choices. |
-| [Factory setup](setup-pentapro/references/factory-setup.md) | Project-scoped OpenSpec and Codex agent setup, models and verification. |
+| [Factory setup](setup-pentapro/references/factory-setup.md) | Project-scoped OpenSpec, cross-host agents, PDSA records, models and verification. |
+| [PDSA protocol template](setup-pentapro/assets/continuous-improvement.md) | Contextual execution, bounded recovery and orchestrator-owned learning. |
+| [Lessons template](setup-pentapro/assets/lessons-learned.md) | Empty project record with evidence and confidence fields. |
 | [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
 | [Root instruction template](setup-pentapro/assets/agents.md) | Adaptable project guidance, preserving existing instructions. |
 
@@ -461,7 +557,7 @@ Implementer -> project checks -> fresh reviewer -> validated findings
 
 The reviewer receives requirements, actual source/snapshot access, contracts, and check evidence. It does not need the implementer's full conversation. A fresh session of the same capable model can provide independence; a different model may add diversity.
 
-For example, use `gpt-6.1-sol` for implementation and `gpt-6-astra` for review when available in the host. Select the reviewer through model/session controls or authorized orchestration; installing this package does not select or change a model. Evaluate the arrangement on validated defects, material misses, false positives, time, and cost. No model-pair benchmark is claimed.
+For example, use `gpt-6.1-terra` for implementation and `gpt-6.1-sol` for review when available in the host. Select the reviewer through model/session controls or authorized orchestration; installing this package does not select or change a model. Evaluate the arrangement on validated defects, material misses, false positives, time, and cost. No model-pair benchmark is claimed.
 
 ### Hosted review environments
 
@@ -618,6 +714,16 @@ Coordinate a requested end-to-end agent run using existing OpenSpec, PentaPRO, d
 
 The [first pilot](docs/retrospectiva-piloto-fabrica-2026-11-19.md) exercised local implementation, separate review, repeated setup verification and archival. Custom-role selection and configured models remain unverified in the tested host. Confirm those capabilities in your client before requiring them as delivery gates. Use the [change checklist](docs/guia-fabrica-changes.md) for adoption.
 
+### Continuous improvement with PDSA
+
+All six factory roles (`factory_spec`, `factory_implementer`, `factory_verifier`, `factory_reviewer`, `factory_retrospective`, `factory_shipper`) use a short Plan-Do-Study-Act cycle, including isolated invocations. Plan against the current project, skills, relevant lessons and checks; execute the task; study results and unexpected conditions; then make authorized corrections and rerun affected checks. Read-only roles report source corrections to their authorized owner. Repeated correction is bounded to two attempts per failure, stopping sooner without progress.
+
+Agents return the outcome, evidence/gaps, a concise PDSA summary and any useful lesson candidate; they do not write the shared lessons record. The orchestrator checks evidence, separates cause hypotheses from confirmed causes, consolidates duplicates and alone records lessons in `docs/agents/lessons-learned.md` or the project's established equivalent. For standalone agent calls, the invoking main session serves as orchestrator. Logical names must map to the discovered host IDs; for example OpenCode uses `factory-shipper` from its filename rather than an assumed `factory_shipper` alias. If a custom agent runs as the main session directly, it finishes its role before visibly taking the recording responsibility. If recording is unavailable, the candidate is returned with persistence pending. No new lesson is a valid outcome.
+
+Full `setup-pentapro` installs the [PDSA protocol](setup-pentapro/assets/continuous-improvement.md), an [empty lessons record](setup-pentapro/assets/lessons-learned.md), and project instruction pointers while preserving existing customizations and lesson history. A logging-only setup leaves these artifacts untouched. Agents consult relevant lessons on the next task and revalidate their applicability. Lessons record context, evidence, confidence, correction, prevention hypothesis, status and next verification; they never override project policy or grant permission.
+
+Lessons persisted after commit or push may remain local until the next authorized commit. The orchestrator reports persistence and publication separately. This process does not automatically rewrite skills or retrain models. Structural validation and authored scenarios do not establish improved quality or lower cost; evaluate actual runs before making those claims.
+
 ## Software Delivery
 
 Coordinate dependent tasks and verify the integrated result. For example, “Implement the accepted retry change across the API, worker and existing clients.” Use the governing baseline and applicable active change, or establish the intended behavior from the request and existing project contracts. Reconcile material changes with the owning records and keep verification tied to the resulting revision. A clear localized change can use its domain procedure directly. See [Software Delivery](software-delivery/SKILL.md) and its [change contract guide](software-delivery/references/change-contracts.md).
@@ -719,6 +825,12 @@ skills/
 ├── COLLECTION-REVIEW.md
 ├── FINAL-SKILL-REVIEW.md
 ├── REVIEW-REPORT.md
+├── plugin.json                 PentaPRO package identity and source skill list
+├── package.json                Generated OpenCode Git/local package metadata
+├── plugin/                     OpenCode adapter and generated skill catalog
+├── .codex-plugin/              Codex compatibility manifest
+├── .antigravity-plugin/        Antigravity overlay
+├── .claude-plugin/             Compatibility marketplace catalog
 ├── docs/
 ├── .github/workflows/validate.yml
 ├── evals/
@@ -805,6 +917,7 @@ Install the maintainer dependency with `python3 -m pip install -r scripts/requir
 To reproduce the local collection checks, use a POSIX development environment with Git, Python 3.12+ and Node.js 24, matching the CI runtime family. After installing the dependency above, run these commands from the collection root. The validator tests use disposable Git inventories. The evaluator isolation cases need Linux with Bubblewrap and libseccomp, and the OpenSpec cases need the OpenSpec CLI. Check the test summary for skips. The quiz tests use API doubles. [Evaluation prerequisites](SKILL-EVALUATION.md)
 
 ```bash
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/package_plugin.py --check
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_collection.py
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_skill_evals.py --check-cases
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/tests -v
@@ -813,12 +926,13 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s ui-design/scripts/test
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s pr-quiz/scripts/tests -v
 node pr-quiz/scripts/tests/workflow.cjs
 node --test scripts/tests/test_agents_log.mjs
+node --test scripts/tests/test_opencode_plugin.mjs
 git diff --check
 ```
 
 These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](SKILL-EVALUATION.md).
 
-Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
+Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [closing maintenance audit](docs/maintenance-review-2026-11-21.md) records current scope, script/test coverage, repairs and remaining host-validation gaps; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 
 Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
 

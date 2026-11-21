@@ -1,0 +1,44 @@
+{
+  "name": "pentapro",
+  "version": "1.0.0",
+  "description": "PentaPRO: software development skills, factory agents and evidence-based continuous improvement.",
+  "author": {
+    "name": "Teknolista",
+    "url": "https://github.com/teknolista"
+  },
+  "homepage": "https://github.com/teknolista/skills#readme",
+  "repository": "https://github.com/teknolista/skills",
+  "license": "MIT",
+  "keywords": [
+    "software-engineering",
+    "skills",
+    "quality",
+    "security"
+  ],
+  "skills": [
+    "./agent-instructions",
+    "./android-background",
+    "./android-data-layer",
+    "./android-di-koin",
+    "./android-error-handling",
+    "./android-integration-testing",
+    "./android-module-structure",
+    "./android-ui-testing",
+    "./android-unit-testing",
+    "./behavior-testing",
+    "./cybersec",
+    "./diagnose-defect",
+    "./git-ship",
+    "./http-api",
+    "./mcp-server",
+    "./peer-review",
+    "./penta-pro",
+    "./pr-quiz",
+    "./production-operations",
+    "./setup-pentapro",
+    "./software-delivery",
+    "./software-factory",
+    "./technical-research",
+    "./ui-design"
+  ]
+}

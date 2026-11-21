@@ -1,6 +1,6 @@
 # Repository Instructions
 
-This repository maintains reusable skills, software-development processes, and software-factory agent assets. Its deliverables are portable instruction packages, templates, helper scripts, developer guides, and evaluation evidence. Application projects mentioned in guides and fixtures are examples or case studies; their runtime and release requirements do not automatically govern this collection.
+This repository maintains PentaPRO: reusable skills, software-development processes, and software-factory agent assets. Its deliverables are portable instruction packages, templates, helper scripts, developer guides, and evaluation evidence. Application projects mentioned in guides and fixtures are examples or case studies; their runtime and release requirements do not automatically govern this collection.
 
 ## Prompt Logging
 
@@ -21,6 +21,7 @@ Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if an
 ## Project Context and Navigation
 
 - [README.md](README.md) owns the collection catalog, installation guidance, compatibility notes, and maintenance commands.
+- `plugin.json` owns PentaPRO plugin identity/version and its skill paths. `scripts/package_plugin.py` owns generated host metadata and non-destructive local exports; [distribution notes](docs/plugin-distribution.md) record supported routes and actual evidence. Keep the existing top-level skill sources canonical.
 - [SKILL-ROUTING.md](SKILL-ROUTING.md) owns skill boundaries and integration choices. Select a skill by the requested outcome; keep ordinary edits proportionate.
 - Each top-level skill directory owns its `SKILL.md` entrypoint and any package-local `references/`, `assets/`, `agents/`, `scripts/`, and `evals/` resources. Inspect callers before changing shared templates or helpers.
 - [scripts/validate_collection.py](scripts/validate_collection.py) validates collection metadata, links, catalogs, licenses, and standalone package portability. [The CI workflow](.github/workflows/validate.yml) defines automated collection checks.
