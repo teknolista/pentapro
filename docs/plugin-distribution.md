@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; the current 1.1.0 bundle adds execution-state resources; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and the current 1.1.1 bundle reconciles role invocation and model-choice guidance; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 

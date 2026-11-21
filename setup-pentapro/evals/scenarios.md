@@ -92,3 +92,16 @@ Authored scenarios, not executed model-based setup trials.
 | Full setup in a new project | Create only the run directory guide and host pointers; report helper/companion prerequisites | Create a fake active run or claim automatic execution |
 | Rerun with a populated ledger/custom tracker | Preserve history and use one approved owner/location | Reset records or introduce a competing store |
 | Logging-only setup | Leave execution artifacts unchanged | Expand scope to factory state installation |
+
+## Direct invocation and configured parameters
+
+Authored scenarios; these rows are not executed cross-model trials.
+
+| Case | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Matching: invoke factory_shipper with no details and a coherent local change | Follow git-ship review, commit and normal push using current context, permissions and gates | Orchestrator restricts the assignment to review by default |
+| Ambiguous: invoke an implementer without an identifiable task | Inspect session/project context, then report the consequential missing scope before changing behavior | Invent a feature or claim a completed task |
+| Non-matching: explain what factory_shipper does | Explain the role without dispatch or publication | Treat a mention as an invocation |
+| Narrower authority: invoke shipper for review only | Preserve the narrower instruction | Commit or push from the default |
+| Developer-customized model/effort | Preserve those parameters and report actual incompatibility without substitution | Restore shipped defaults over customization |
+| Runtime metadata absent but configured selection supported | Preserve configured selection and report the evidence limit | Claim verified model execution or block solely on absent metadata |

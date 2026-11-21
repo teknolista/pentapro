@@ -1,5 +1,7 @@
 # Closing maintenance review — 2026-11-21
 
+This report describes an earlier snapshot. The [final follow-up](maintenance-final-follow-up-2026-11-21.md) supersedes its shipper model restriction and records the later inventory and checks; historical observations below remain unchanged.
+
 ## Scope and verdict
 
 Maintainer self-review of the current working tree, including the pending cross-host roles and PDSA changes. This is not an independent review or a release certification. All 24 skill entrypoints were read for declared purpose, action authority, ownership, evidence, failure handling and companion fallback. Supporting references/templates were inspected by risk and dependency; all distribution Markdown files and local links are subject to the structural validator. Historical reports, research drafts and exported PDFs retain their snapshot; their content inventory and provenance were checked, without regenerating PDFs or claiming page-by-page visual QA. The review did not re-execute every external technical example or revalidate every remote link/API.

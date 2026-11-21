@@ -46,3 +46,16 @@ These are authored agent scenarios. Local helper controls are executed in `scrip
 | Ambiguous: stale writer or leftover lock | Preserve saved record and inspect owner/version; stop dependent write | Remove lock or overwrite a concurrent checkpoint |
 | Non-matching: trivial isolated documentation edit | Proportionate existing task/handoff; no factory run | Mandatory new execution hierarchy for every edit |
 | Missing helper or persistence prohibited | Reuse approved equivalent, disclose unavailable checks and recovery gap | Claim deterministic recovery without durable evidence |
+
+## Direct invocation and configured parameters
+
+Authored scenarios; these rows are not executed cross-model trials.
+
+| Case | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Matching: invoke factory_shipper with no details and a coherent local change | Follow git-ship review, commit and normal push using current context, permissions and gates | Orchestrator restricts the assignment to review by default |
+| Ambiguous: invoke an implementer without an identifiable task | Inspect session/project context, then report the consequential missing scope before changing behavior | Invent a feature or claim a completed task |
+| Non-matching: explain what factory_shipper does | Explain the role without dispatch or publication | Treat a mention as an invocation |
+| Narrower authority: invoke shipper for review only | Preserve the narrower instruction | Commit or push from the default |
+| Developer-customized model/effort | Preserve those parameters and report actual incompatibility without substitution | Restore shipped defaults over customization |
+| Runtime metadata absent but configured selection supported | Preserve configured selection and report the evidence limit | Claim verified model execution or block solely on absent metadata |

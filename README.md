@@ -175,7 +175,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.10.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
+| [Setup PentaPRO](#setup-pentapro) | 1.10.1 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
 | [PentaPRO](#pentapro) | 3.1.4 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -185,7 +185,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 1.5.3 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 0.5.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](software-factory/SKILL.md) | 0.5.1 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
@@ -943,7 +943,7 @@ git diff --check
 
 These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](SKILL-EVALUATION.md).
 
-Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [closing maintenance audit](docs/maintenance-review-2026-11-21.md) records current scope, script/test coverage, repairs and remaining host-validation gaps; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
+Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [final maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md) records the latest checks, script/test inventory and adoption limits. The [earlier closing maintenance audit](docs/maintenance-review-2026-11-21.md) records its evaluated snapshot; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 
 Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
 

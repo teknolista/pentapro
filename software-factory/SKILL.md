@@ -3,7 +3,7 @@ name: software-factory
 description: Coordinate a multi-agent software delivery run from an authorized request or OpenSpec change through specification, implementation, independent review, verification, records, and any explicitly authorized Git delivery and archival. Use for an explicitly requested software factory or end-to-end agent workflow, not a routine isolated edit or a standalone code review.
 license: MIT
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # Coordinate a software factory run
