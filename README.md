@@ -154,6 +154,8 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
   - [MCP Server](#mcp-server)
   - [Software Delivery](#software-delivery)
   - [Software Factory](#software-factory)
+    - [Durable execution records](#durable-execution-records)
+    - [Continuous improvement with PDSA](#continuous-improvement-with-pdsa)
   - [Production Operations](#production-operations)
   - [Technical Research](#technical-research)
   - [Git Ship](#git-ship)
@@ -173,7 +175,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 1.9.2 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
+| [Setup PentaPRO](#setup-pentapro) | 1.10.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, OpenSpec and a PentaPRO handoff. |
 | [PentaPRO](#pentapro) | 3.1.4 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -183,7 +185,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 1.5.3 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 0.4.1 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](software-factory/SKILL.md) | 0.5.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
@@ -411,6 +413,7 @@ Adapted from Matt Pocock's setup workflow (MIT). See [source notes](setup-pentap
 | [README and license](setup-pentapro/references/readme-and-license.md) | Project purpose, template, language and licensing choices. |
 | [Factory setup](setup-pentapro/references/factory-setup.md) | Project-scoped OpenSpec, cross-host agents, PDSA records, models and verification. |
 | [PDSA protocol template](setup-pentapro/assets/continuous-improvement.md) | Contextual execution, bounded recovery and orchestrator-owned learning. |
+| [Run directory guide](setup-pentapro/assets/runs-readme.md) | Durable state location, ownership and recovery boundaries; no active run at setup. |
 | [Lessons template](setup-pentapro/assets/lessons-learned.md) | Empty project record with evidence and confidence fields. |
 | [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
 | [Root instruction template](setup-pentapro/assets/agents.md) | Adaptable project guidance, preserving existing instructions. |
@@ -714,13 +717,21 @@ Coordinate a requested end-to-end agent run using existing OpenSpec, PentaPRO, d
 
 The [first pilot](docs/retrospectiva-piloto-fabrica-2026-11-19.md) exercised local implementation, separate review, repeated setup verification and archival. Custom-role selection and configured models remain unverified in the tested host. Confirm those capabilities in your client before requiring them as delivery gates. Use the [change checklist](docs/guia-fabrica-changes.md) for adoption.
 
+### Durable execution records
+
+Factory runs and substantial dependent multi-agent changes use one `docs/agents/runs/<run-id>/run.json`, or an approved existing equivalent. The orchestrator alone checkpoints it before delegation, after checked results, before/after external effects and during recovery. It stores English summaries, canonical contract links, owners, pending work, required gates and snapshot-bound evidence. Small bounded single-agent edits can remain lightweight. Setup prepares the [directory guide](setup-pentapro/assets/runs-readme.md) without creating a fictional active run or replacing existing records.
+
+The packaged [run-state helper](software-factory/scripts/run_state.py) uses Python 3.12+ and Git for `init`, `snapshot`, `save` and `check`. It detects outdated record writers, stale fingerprints on passed gates, incomplete required gates and unfinished work at completion; saves use a per-run lock and atomic replacement. Follow the [record format and recovery procedure](software-factory/references/run-records.md) for commands, prerequisites and limits. Check actual files and remote effects before replaying interrupted operations. A local record cannot certify a review or remote publication by itself.
+
+The fingerprint excludes run metadata and local prompt logs; ignored untracked outputs and external inputs need separate evidence. Preserve historical evidence when invalidating a gate. Choose project policy for versioning sanitized checkpoints; helpers never stage, commit or publish them. Post-push records can remain local for the next authorized commit. Existing customized projects adopt this contract through reviewed reconciliation. See the [local directory guide](docs/agents/runs/README.md) and [executed recovery controls](docs/factory-run-persistence.md).
+
 ### Continuous improvement with PDSA
 
 All six factory roles (`factory_spec`, `factory_implementer`, `factory_verifier`, `factory_reviewer`, `factory_retrospective`, `factory_shipper`) use a short Plan-Do-Study-Act cycle, including isolated invocations. Plan against the current project, skills, relevant lessons and checks; execute the task; study results and unexpected conditions; then make authorized corrections and rerun affected checks. Read-only roles report source corrections to their authorized owner. Repeated correction is bounded to two attempts per failure, stopping sooner without progress.
 
 Agents return the outcome, evidence/gaps, a concise PDSA summary and any useful lesson candidate; they do not write the shared lessons record. The orchestrator checks evidence, separates cause hypotheses from confirmed causes, consolidates duplicates and alone records lessons in `docs/agents/lessons-learned.md` or the project's established equivalent. For standalone agent calls, the invoking main session serves as orchestrator. Logical names must map to the discovered host IDs; for example OpenCode uses `factory-shipper` from its filename rather than an assumed `factory_shipper` alias. If a custom agent runs as the main session directly, it finishes its role before visibly taking the recording responsibility. If recording is unavailable, the candidate is returned with persistence pending. No new lesson is a valid outcome.
 
-Full `setup-pentapro` installs the [PDSA protocol](setup-pentapro/assets/continuous-improvement.md), an [empty lessons record](setup-pentapro/assets/lessons-learned.md), and project instruction pointers while preserving existing customizations and lesson history. A logging-only setup leaves these artifacts untouched. Agents consult relevant lessons on the next task and revalidate their applicability. Lessons record context, evidence, confidence, correction, prevention hypothesis, status and next verification; they never override project policy or grant permission.
+Full `setup-pentapro` installs the [PDSA protocol](setup-pentapro/assets/continuous-improvement.md), an [empty lessons record](setup-pentapro/assets/lessons-learned.md), and project instruction pointers while preserving existing customizations and lesson history. A logging-only setup leaves these artifacts untouched. Agents consult relevant lessons on the next task and revalidate their applicability. Lessons record context, evidence, confidence, correction, prevention hypothesis, status and next verification; every entry is written in English even when the developer keeps PentaPRO specifications in Portuguese, so the collection can reuse lessons for future skill improvements. Lessons never override project policy or grant permission.
 
 Lessons persisted after commit or push may remain local until the next authorized commit. The orchestrator reports persistence and publication separately. This process does not automatically rewrite skills or retrain models. Structural validation and authored scenarios do not establish improved quality or lower cost; evaluate actual runs before making those claims.
 
@@ -914,7 +925,7 @@ Authoring was checked against [OpenAI's skill guide](https://learn.chatgpt.com/d
 
 Install the maintainer dependency with `python3 -m pip install -r scripts/requirements-validation.txt` in a development environment. Run `python3 scripts/validate_collection.py` from this repository root. It checks frontmatter, local inline links and ATX-heading anchors outside fenced examples, catalog versions, licenses, installation coverage, and supported optional `agents/openai.yaml` fields. Relative links in shipped packages must resolve inside the package, including after a standalone install. Refer to optional companions by name and give maintainers upstream links for provenance. The [validation workflow](.github/workflows/validate.yml) runs the collection gate and offline Python and Node helper tests. Model trials and runtime compatibility checks use the [evaluation procedure](SKILL-EVALUATION.md).
 
-To reproduce the local collection checks, use a POSIX development environment with Git, Python 3.12+ and Node.js 24, matching the CI runtime family. After installing the dependency above, run these commands from the collection root. The validator tests use disposable Git inventories. The evaluator isolation cases need Linux with Bubblewrap and libseccomp, and the OpenSpec cases need the OpenSpec CLI. Check the test summary for skips. The quiz tests use API doubles. [Evaluation prerequisites](SKILL-EVALUATION.md)
+To reproduce the local collection checks, use a POSIX development environment with Git, Python 3.12+ and Node.js 24, matching the CI runtime family. After installing the dependency above, run these commands from the collection root. The validator tests use disposable Git inventories. The root suite also runs isolated execution-state recovery controls, with source-change, failed-write and uncertain-effect cases; see [persistence evidence](docs/factory-run-persistence.md). The evaluator isolation cases need Linux with Bubblewrap and libseccomp, and the OpenSpec cases need the OpenSpec CLI. Check the test summary for skips. The quiz tests use API doubles. [Evaluation prerequisites](SKILL-EVALUATION.md)
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/package_plugin.py --check

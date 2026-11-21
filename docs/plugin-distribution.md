@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin starts at version 1.0.0; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; the current 1.1.0 bundle adds execution-state resources; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -50,3 +50,8 @@ Run the full README/CI offline suite after source/package changes. `package_plug
 - [Skills installer reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md).
 
 Documentation and client versions can diverge. Check the installed version and actual discovery at adoption; report gaps instead of substituting an unsupported manifest, skill or model.
+
+
+## Execution-state resources in bundle 1.1.0
+
+Software Factory 0.5.0 includes its package-local run helper and format reference; Setup PentaPRO 1.10.0 includes the run directory guide and host pointers. These are ordinary skill resources, distributed through each existing route without host API changes. No active execution is created at install time. Existing customized projects need reviewed reconciliation rather than automatic replacement. The [persistence validation record](factory-run-persistence.md) covers the new offline controls; the native installation observations above retain their original snapshot and limitations.

@@ -156,3 +156,8 @@ Setup PentaPRO ships six roles for five hosts; resolve logical role names to the
 ### PentaPRO distribution identity
 
 PentaPRO names the collection and plugin; `penta-pro` remains the specification skill. Package delivery does not change owner routing or authorize setup. Plugins and `npx skills add` expose the same source packages; select one effective installation per host/project and resolve plugin-qualified IDs. User-wide availability still uses project-local setup and lessons. See the [installation guide](README.md#install-pentapro).
+
+
+### Durable factory execution state
+
+Software Factory owns the [run-record contract](software-factory/references/run-records.md) and package-local helper. Setup PentaPRO prepares the directory guide and host pointers; it does not create runs or overwrite customized records. Default to one orchestrator-owned English checkpoint record per substantial run under `docs/agents/runs/`, reusing existing equivalent trackers. Lessons remain separate. Bounded single-agent edits do not acquire a factory run merely because the assets are installed.

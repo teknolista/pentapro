@@ -1,6 +1,6 @@
 # Lessons learned
 
-The main session/orchestrator maintains this project record. Factory agents return candidates and evidence; they do not write here. Keep proposed prevention separate from validated results. Lessons added after publication may remain local until the next authorized commit.
+The main session/orchestrator maintains this project record. Factory agents return candidates and evidence; they do not write here. Write every persisted lesson entry in English, including its title and all fields, even when project specifications or conversations use another language. Translate and summarize relevant observations into English; retain technical identifiers and source quotes only when needed, with an English explanation. This applies to the project's lessons record in `docs/` or its approved equivalent and keeps lessons reusable for improving the PentaPRO skills. Keep proposed prevention separate from validated results. Lessons added after publication may remain local until the next authorized commit.
 
 ## LL-001 — Distinguish host sandbox failures from helper regressions
 

@@ -26,6 +26,7 @@ Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if an
 - Each top-level skill directory owns its `SKILL.md` entrypoint and any package-local `references/`, `assets/`, `agents/`, `scripts/`, and `evals/` resources. Inspect callers before changing shared templates or helpers.
 - [scripts/validate_collection.py](scripts/validate_collection.py) validates collection metadata, links, catalogs, licenses, and standalone package portability. [The CI workflow](.github/workflows/validate.yml) defines automated collection checks.
 - [SKILL-EVALUATION.md](SKILL-EVALUATION.md) owns the evaluation procedure. Root `evals/` contains synthetic fixtures, policy overlays, cases, and recorded trials. Instruction files inside fixtures apply to those simulated projects, not to collection maintenance.
+- `software-factory/references/run-records.md` owns execution-record persistence; its package-local helper validates checkpoints. The project directory guide is `docs/agents/runs/README.md`.
 - `docs/` contains developer guides and case studies. [The software-factory design](docs/software-factory-workflow.md) provides design context; [Software Factory](software-factory/SKILL.md) owns the reusable execution workflow. Historical review reports describe their evaluated snapshots; verify current source before reusing their conclusions.
 
 ## Authoring Skills and Processes

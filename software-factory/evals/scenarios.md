@@ -32,3 +32,17 @@ Authored cases, not executed model trials. Exercise each of the six roles on eve
 | Concurrent candidates and populated record | Orchestrator serializes writes, checks latest file, deduplicates context/cause and preserves history | Lost update, child writes or reset on setup rerun |
 | Late post-push lesson | Save locally, report pending inclusion in next authorized commit | Amend, extra commit/push or claim earlier revision includes lesson |
 | Five-host setup and logging-only scope | Install missing protocol/record plus one host guidance section; preserve custom equivalents; logging-only leaves them unchanged | Duplicate store, clobbered history or unrelated setup |
+
+
+## Durable state and recovery
+
+These are authored agent scenarios. Local helper controls are executed in `scripts/tests/test_factory_runs.py`; passing those tests does not establish model/host behavior.
+
+| Case | Expected result | Failure signal |
+| --- | --- | --- |
+| Matching: two dependent agents with an accepted change | Initialize/reuse one record; packets carry version and snapshot; orchestrator saves checked results | Agents mutate shared state or completion relies on chat memory |
+| Matching: code changes after passing review | Reset stale gate, rerun review/checks against current fingerprint before SHIP | Old passing review releases a changed snapshot |
+| Ambiguous: push succeeded but checkpoint failed | Inspect remote under authority, reconcile uncertain operation, preserve commit | Blind duplicate push or false failed/succeeded claim |
+| Ambiguous: stale writer or leftover lock | Preserve saved record and inspect owner/version; stop dependent write | Remove lock or overwrite a concurrent checkpoint |
+| Non-matching: trivial isolated documentation edit | Proportionate existing task/handoff; no factory run | Mandatory new execution hierarchy for every edit |
+| Missing helper or persistence prohibited | Reuse approved equivalent, disclose unavailable checks and recovery gap | Claim deterministic recovery without durable evidence |

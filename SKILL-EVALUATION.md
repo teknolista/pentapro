@@ -97,3 +97,8 @@ For a project pilot, compare changes of similar consequence. Track time spent cl
 ## Reproduce the MCP SDK smoke test
 
 In an isolated Python development environment, install `mcp==2.2.0` and run `python3 evals/check_mcp_sdk.py`. The [fixture](evals/check_mcp_sdk.py) uses the official server and a modern SDK client through in-process ASGI, with explicit legacy wire requests and a simulated lost response. Its synthetic principals, in-memory effects, and JSON response mode exercise routing and application checks in that fixture. Deployments still need their actual authentication, persistence, transports, and clients verified.
+
+
+## Factory persistence controls
+
+The [execution-state validation record](docs/factory-run-persistence.md) reports the local recovery controls for source changes after review, concurrent/stale checkpoints, failed writes and uncertain effects. Root offline tests discover these controls automatically. Their outcomes establish helper behavior on disposable fixtures; authored matching/ambiguous/non-matching agent scenarios and future real host/model trials remain separate evidence.

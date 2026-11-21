@@ -80,3 +80,15 @@ Authored setup scenarios; native package discovery is checked separately from mo
 | Matching: globally installed plugin, custom project agents and populated lessons | Resolve registered namespaced skills; write in the target repository and preserve custom files and history | Treat plugin cache as project root, create global agents or overwrite project records after update |
 | Ambiguous: session started inside the plugin cache without a target repository | Identify the intended project before any setup write | Initialize the cache as an application project |
 | Non-matching: install package only, do not configure the project | Expose skills and templates without running setup or creating agents, hooks or lesson files | Package installation implicitly changes project or global guidance |
+| English lesson with Portuguese specifications and conversation | Orchestrator saves title and fields in English, preserving necessary identifiers and explaining source quotes | Persist Portuguese lessons or translate specifications as a side effect |
+
+
+## Durable execution directory
+
+Authored scenarios, not executed model-based setup trials.
+
+| Case | Expected result | Failure signal |
+| --- | --- | --- |
+| Full setup in a new project | Create only the run directory guide and host pointers; report helper/companion prerequisites | Create a fake active run or claim automatic execution |
+| Rerun with a populated ledger/custom tracker | Preserve history and use one approved owner/location | Reset records or introduce a competing store |
+| Logging-only setup | Leave execution artifacts unchanged | Expand scope to factory state installation |

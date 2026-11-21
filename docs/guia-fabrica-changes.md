@@ -66,3 +66,12 @@ O setup também possui definições para Claude Code, GitHub Copilot, Antigravit
 Todos os seis agentes aplicam um PDSA breve, inclusive isoladamente: planejar para o contexto, executar pelas skills, estudar resultados e corrigir dentro da autoridade, repetindo as verificações afetadas. O setup prepara o protocolo em `docs/agents/continuous-improvement.md` e o registro inicialmente sem lições em `docs/agents/lessons-learned.md`, preservando equivalentes e histórico existentes.
 
 Cada agente retorna evidências, limitações e eventuais lições ao orquestrador. Somente o orquestrador registra as lições, distinguindo hipóteses de causas confirmadas. Uma execução isolada usa a sessão principal como orquestrador. Lições gravadas depois do push podem permanecer locais para o próximo commit autorizado; isso não exige reabrir a publicação. Sem novidade útil, o agente informa que não identificou nova lição.
+
+
+## 7. Persistência e retomada da execução
+
+Em uma execução da fábrica ou change substancial com agentes dependentes, o orquestrador mantém `docs/agents/runs/<run-id>/run.json`, ou reutiliza um registro equivalente aprovado. O setup prepara somente a orientação da pasta; cada run começa com trabalho real. Escreva os resumos em inglês, mesmo com especificações em português. O registro aponta para contratos e evidências existentes; as lições continuam no arquivo próprio.
+
+Os pacotes dos agentes recebem ID da run, caminho, versão do registro e fingerprint de entrada. Os agentes devolvem resultado, evidências e snapshot testado; somente o orquestrador salva checkpoints. Use o [helper e o contrato](../software-factory/references/run-records.md) para criar, capturar, conferir e salvar com comparação de versão. O helper exige Python 3.12+ e Git e não altera configurações, índice ou remotos.
+
+Na retomada, confira os arquivos, a branch, a revisão das evidências e os efeitos externos reais. Um push pode ter ocorrido antes de uma falha ao salvar o registro; mantenha seu estado incerto até consultar a referência remota antes de repetir. Checks de uma versão anterior não liberam uma versão alterada. O [registro de validação](factory-run-persistence.md) distingue os testes locais já executados das avaliações com modelos/hosts ainda pendentes.

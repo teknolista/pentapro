@@ -38,6 +38,10 @@ class PluginPackagingTests(unittest.TestCase):
             self.assertTrue((output / 'setup-pentapro/assets/agents/factory-shipper/codex.toml').is_file())
             self.assertTrue((output / 'setup-pentapro/assets/lessons-learned.md').is_file())
             self.assertTrue((output / 'bundle-files.json').is_file())
+            self.assertEqual((output / 'software-factory/scripts/run_state.py').read_bytes(), (ROOT / 'software-factory/scripts/run_state.py').read_bytes())
+            self.assertTrue((output / 'software-factory/references/run-records.md').is_file())
+            self.assertTrue((output / 'setup-pentapro/assets/runs-readme.md').is_file())
+            self.assertFalse((output / 'docs/agents/runs').exists())
 
     def test_refuses_existing_destination_without_modifying_it(self):
         output = self.root / 'existing'

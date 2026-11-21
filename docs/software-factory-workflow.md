@@ -403,10 +403,10 @@ Model names are intentionally omitted. Assign the smallest model that passes the
 
 ## Handoff artifacts
 
-Keep the run folder small. The canonical specification stays in the project; the run folder links to it.
+Keep the run folder small. The canonical specification stays in the project; the run folder links to it. The current runtime contract is [durable run persistence](../software-factory/references/run-records.md), which supersedes the earlier `.factory/runs/` proposal. Only `run.json` is required for the default persisted format; the other files below are optional evidence locations, reused from existing project records where available.
 
 ```text
-.factory/runs/<run-id>/
+docs/agents/runs/<run-id>/
 ├── run.json            # state, scope, authorization, gate status
 ├── preflight.md        # environment and baseline evidence
 ├── spec-review.md      # accepted criteria, findings, open decisions
@@ -425,49 +425,17 @@ If the project already has a run record or tracker, use it and link the artifact
 
 ### Run manifest
 
-```json
-{
-  "run_id": "2026-11-19-001",
-  "intent": "Add result deletion to Castas web and Android",
-  "repo": "/home/dever/workspace/55area/castas",
-  "base_revision": "6e3ef53",
-  "branch": "change/result-deletion",
-  "risk": "medium",
-  "scope": {
-    "include": ["web/", "android/", "openspec/", "pentapro/"],
-    "exclude": ["release signing", "store submission"]
-  },
-  "authorization": {
-    "specify": true,
-    "implement": true,
-    "test": true,
-    "commit": false,
-    "push": false,
-    "merge": false,
-    "deploy": false,
-    "publish": false
-  },
-  "gates": {
-    "G0": "passed",
-    "G1": "in_progress",
-    "G2": "pending",
-    "G3": "pending",
-    "G4": "pending",
-    "G5": "pending",
-    "G6": "pending",
-    "G7": "pending",
-    "G8": "pending",
-    "G9": "not_requested",
-    "G10": "pending"
-  }
-}
-```
+The [packaged helper](../software-factory/scripts/run_state.py) initializes the complete versioned envelope and validates compare-and-save checkpoints. Use its [format version 1](../software-factory/references/run-records.md#format-version-1) rather than the former design-only intent/repo/G0-G10 JSON shape. Record state, repository/branch/base commit, source fingerprint, canonical references, gates, tasks, authorized operations, blockers, next action and checkpoint history. Only the orchestrator writes; agents return evidence against the supplied record version and input snapshot. This is a local record contract with deterministic structural checks, not a general distributed workflow engine.
 
 ### Task packet
 
 ```json
 {
   "task_id": "T-002",
+  "run_id": "result-deletion",
+  "record_path": "docs/agents/runs/result-deletion/run.json",
+  "record_version": 2,
+  "input_fingerprint": "<captured source fingerprint>",
   "outcome": "A saved result can be deleted and does not reappear after restart",
   "owner_skill": "android-data-layer",
   "paths": ["android/app/src/main/java/...", "android/app/src/androidTest/..."],
@@ -485,6 +453,10 @@ If the project already has a run record or tracker, use it and link the artifact
 {
   "id": "E-014",
   "task_id": "T-002",
+  "run_id": "result-deletion",
+  "record_path": "docs/agents/runs/result-deletion/run.json",
+  "record_version": 2,
+  "input_fingerprint": "<captured source fingerprint>",
   "criterion": "SPEC-3.2",
   "command": "./gradlew :app:connectedDebugAndroidTest",
   "revision": "abc1234",
