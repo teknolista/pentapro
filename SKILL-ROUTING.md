@@ -151,7 +151,7 @@ All 13 packages passed structural validation. The UI helper passed 24 Python tes
 
 ### Current cross-host factory maintenance — 2026-11-21
 
-Setup PentaPRO ships six roles for five hosts; resolve logical role names to the host's actual discovered identity. Every role returns a proportional PDSA summary and optional evidence-backed lesson candidates. Only the main-session orchestrator writes the project lessons record. See the [current maintenance audit](docs/maintenance-review-2026-11-21.md) for script/test coverage and remaining runtime gaps; the older counts and trials above retain their historical scope.
+Setup PentaPRO ships six roles for six hosts: Codex, Claude Code, Cursor, GitHub Copilot, OpenCode and Antigravity. Resolve logical role names to the host's actual discovered identity. Every role returns a proportional PDSA summary and optional evidence-backed lesson candidates. Only the main-session orchestrator writes the project lessons record. See the [current maintenance audit](docs/maintenance-review-2026-11-21.md) for script/test coverage and remaining runtime gaps; the older counts and trials above retain their historical scope.
 
 ### PentaPRO distribution identity
 

@@ -36,6 +36,9 @@ class PluginPackagingTests(unittest.TestCase):
             manifest = output / ('.codex-plugin/plugin.json' if host == 'codex' else 'plugin.json')
             self.assertEqual(json.loads(manifest.read_text())['name'], 'pentapro')
             self.assertTrue((output / 'setup-pentapro/assets/agents/factory-shipper/codex.toml').is_file())
+            for host_profile in ('claude-code.md', 'cursor.md'):
+                for role in ('spec', 'implementer', 'verifier', 'reviewer', 'retrospective', 'shipper'):
+                    self.assertTrue((output / 'setup-pentapro/assets/agents' / ('factory-' + role) / host_profile).is_file())
             self.assertTrue((output / 'setup-pentapro/assets/lessons-learned.md').is_file())
             self.assertTrue((output / 'bundle-files.json').is_file())
             self.assertEqual((output / 'software-factory/scripts/run_state.py').read_bytes(), (ROOT / 'software-factory/scripts/run_state.py').read_bytes())

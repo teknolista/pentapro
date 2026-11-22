@@ -25,7 +25,7 @@ class FactoryAgentTests(unittest.TestCase):
 
     def test_all_host_adapters_cover_each_role_and_shipper_guard(self):
         roles = {"factory-spec", "factory-implementer", "factory-verifier", "factory-reviewer", "factory-retrospective", "factory-shipper"}
-        hosts = {"codex.toml", "claude-code.md", "github-copilot.md", "opencode.md", "antigravity.md"}
+        hosts = {"codex.toml", "claude-code.md", "github-copilot.md", "opencode.md", "antigravity.md", "cursor.md"}
         self.assertEqual({p.name for p in TEMPLATES.iterdir() if p.is_dir()}, roles)
         for role in roles:
             self.assertEqual({p.name for p in (TEMPLATES / role).iterdir()}, hosts)
@@ -86,7 +86,7 @@ class FactoryAgentTests(unittest.TestCase):
                     if path.name == "opencode.md":
                         self.assertEqual(metadata["mode"], "subagent")
                     else:
-                        self.assertEqual(metadata["name"], canonical["name"])
+                        self.assertEqual(metadata["name"], directory.name if path.name == "cursor.md" else canonical["name"])
 
     def test_roles_do_not_embed_unsupported_permission_or_provider_overrides(self):
         allowed = {"name", "description", "developer_instructions", "model", "model_reasoning_effort"}

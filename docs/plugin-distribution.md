@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and the current 1.1.1 bundle reconciles role invocation and model-choice guidance; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and the current 1.2.0 bundle adds Cursor role templates; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -39,7 +39,7 @@ Never install both routes for the same host without inspecting effective discove
 
 The maintenance run passed 106 Python tests (including the two native probes) and 47 Node tests, the 24-skill collection/link validator, metadata freshness and 15 evaluation-case checks. These ran with Python 3.12.6 and Node.js 27.0.0-alpha.0.0.0 rather than the CI Node.js 24 runtime; CI execution remains pending publication. No live model-based setup or shipping trial was run.
 
-Run the full README/CI offline suite after source/package changes. `package_plugin.py --check` guards metadata freshness; existing collection checks guard links, versions and standalone skill portability. Optional native probes are not a five-host workflow trial, a PDSA effectiveness benchmark, or a security certification.
+Run the full README/CI offline suite after source/package changes. `package_plugin.py --check` guards metadata freshness; existing collection checks guard links, versions and standalone skill portability. Optional native probes are not a six-host workflow trial, a PDSA effectiveness benchmark, or a security certification.
 
 ## Primary format references
 

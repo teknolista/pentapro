@@ -105,3 +105,15 @@ Authored scenarios; these rows are not executed cross-model trials.
 | Narrower authority: invoke shipper for review only | Preserve the narrower instruction | Commit or push from the default |
 | Developer-customized model/effort | Preserve those parameters and report actual incompatibility without substitution | Restore shipped defaults over customization |
 | Runtime metadata absent but configured selection supported | Preserve configured selection and report the evidence limit | Claim verified model execution or block solely on absent metadata |
+
+## Cursor and Claude Code role discovery
+
+Authored scenarios; no native invocation is implied.
+
+| Case | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Cursor project with no existing roles | Install six `.cursor/agents/` profiles with hyphenated names and resolve each discovered ID | Use underscore IDs or claim file creation proves invocation |
+| Claude Code project with no existing roles | Install the six bundled `.claude/agents/` profiles and verify discovery | Claim Claude support is newly implemented or activate a different host |
+| Cursor project already has customized Claude/Codex compatible roles | Inspect existing names and precedence, preserve custom files, report any shadowing | Overwrite custom profiles or silently duplicate identities |
+| Read-only role with mandatory prompt log | Preserve read-only source scope while allowing required prompt capture under host policy | Set a host write restriction that silently blocks the required log |
+| Non-matching: skills-only installation | Do not create role files or change host settings | Treat plugin installation as project setup |
