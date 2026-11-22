@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "native-sdd-process",
-  "record_version": 11,
+  "record_version": 14,
   "objective": "Transition the collection to a native agent-coordinated SDD lifecycle",
   "contracts": [
     "pentapro/changes/archive/2026-11-22_native-sdd-process/change.md",
@@ -13,10 +13,10 @@
     "base_commit": "46d8facc40ec5cc04fbc97cd4c90712c48f50f9a"
   },
   "orchestrator": "main-session",
-  "state": "SHIP",
+  "state": "DONE",
   "snapshot": {
-    "fingerprint": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
-    "head": "46d8facc40ec5cc04fbc97cd4c90712c48f50f9a"
+    "fingerprint": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
+    "head": "a012b2b76453d6736ad474eebf8f72d8e274895d"
   },
   "gates": [
     {
@@ -24,36 +24,45 @@
       "kind": "spec-review",
       "required": true,
       "status": "passed",
-      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
       "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
-      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded. Final local delta is post-publication retrospective/lessons/receipts; current links and whitespace rechecked. Runtime and independent-review evidence is inherited for unchanged relevant source; published CI applies only to a012b2b76453d6736ad474eebf8f72d8e274895d, not unpublished lesson entries."
     },
     {
       "id": "integrated-checks",
       "kind": "check",
       "required": true,
       "status": "passed",
-      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
       "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
-      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded. Final local delta is post-publication retrospective/lessons/receipts; current links and whitespace rechecked. Runtime and independent-review evidence is inherited for unchanged relevant source; published CI applies only to a012b2b76453d6736ad474eebf8f72d8e274895d, not unpublished lesson entries."
     },
     {
       "id": "independent-review",
       "kind": "review",
       "required": true,
       "status": "passed",
-      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
       "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
-      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded. Final local delta is post-publication retrospective/lessons/receipts; current links and whitespace rechecked. Runtime and independent-review evidence is inherited for unchanged relevant source; published CI applies only to a012b2b76453d6736ad474eebf8f72d8e274895d, not unpublished lesson entries."
     },
     {
       "id": "developer-result-acceptance",
       "kind": "review",
       "required": true,
       "status": "passed",
-      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
       "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
-      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded. Final local delta is post-publication retrospective/lessons/receipts; current links and whitespace rechecked. Runtime and independent-review evidence is inherited for unchanged relevant source; published CI applies only to a012b2b76453d6736ad474eebf8f72d8e274895d, not unpublished lesson entries."
+    },
+    {
+      "id": "published-ci",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed",
+      "evidence": "https://github.com/teknolista/skills/actions/runs/45069113369",
+      "reason": "Delegated shipper verified completed success for exact published commit a012b2b76453d6736ad474eebf8f72d8e274895d; validate job and all required steps passed. Final local delta is post-publication retrospective/lessons/receipts; current links and whitespace rechecked. Runtime and independent-review evidence is inherited for unchanged relevant source; published CI applies only to a012b2b76453d6736ad474eebf8f72d8e274895d, not unpublished lesson entries."
     }
   ],
   "tasks": [
@@ -86,6 +95,12 @@
       "owner": "main-session",
       "status": "done",
       "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    },
+    {
+      "id": "final-retrospective",
+      "owner": "factory_retrospective",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/retrospective.md"
     }
   ],
   "operations": [
@@ -101,21 +116,21 @@
       "id": "commit-native",
       "kind": "commit",
       "authorization": "Owner explicitly approved the reviewed result and closure/publication scope in the message: sim, prossiga",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "a012b2b76453d6736ad474eebf8f72d8e274895d",
+      "observation": "Configured factory_shipper receipt: reviewed commit created; normal branch-only push; ls-remote and GitHub API both confirmed main at expected revision. CI run45069113369 pending. Original unrelated w retained locally, index empty."
     },
     {
       "id": "push-native",
       "kind": "push",
       "authorization": "Owner explicitly approved the reviewed result and closure/publication scope in the message: sim, prossiga",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "a012b2b76453d6736ad474eebf8f72d8e274895d",
+      "observation": "Configured factory_shipper receipt: reviewed commit created; normal branch-only push; ls-remote and GitHub API both confirmed main at expected revision. CI run45069113369 pending. Original unrelated w retained locally, index empty."
     }
   ],
   "blockers": [],
-  "next_action": "Configured factory_shipper reviews exact publishable snapshot, commits and normally pushes; preserve original unrelated w unstaged, and confirm actual remote ref/CI.",
+  "next_action": "Requested delivery complete. Preserve original unrelated setup-reference edit and local post-publication receipts/retrospective/lessons; no extra publication. Future consuming-project adoption is outside this completed change.",
   "history": [
     {
       "record_version": 1,
@@ -182,6 +197,24 @@
       "state": "SHIP",
       "orchestrator": "main-session",
       "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e"
+    },
+    {
+      "record_version": 12,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e"
+    },
+    {
+      "record_version": 13,
+      "state": "RETROSPECTIVE",
+      "orchestrator": "main-session",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e"
+    },
+    {
+      "record_version": 14,
+      "state": "DONE",
+      "orchestrator": "main-session",
+      "snapshot": "146f6e84f05062e3f71344e6fc2c84e0691910889c7ce014d410f3c44983c8ed"
     }
   ]
 }

@@ -74,3 +74,13 @@ Authored cases, not executed model evidence. Pair normal paths with failures; in
 | Cancelled partially implemented change | Record effects/recovery and reconcile retained approved facts, archive with cancelled disposition only when resolved | Promote abandoned intent or automatically revert source |
 | Archive collision/interruption | Preserve both directories, inspect actual state and report safe recovery | Overwrite archive or blindly repeat partial consolidation |
 | Parallel changes overlap requirement IDs | Serialize integration and reconcile baseline changes | Earlier snapshot overwrites later accepted behavior |
+
+## Completed-run resume guidance
+
+Authored clarification cases; not executed model trials.
+
+| Case | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Completed run with confirmed remote/CI receipt, archive preserves an older next action | Label the instruction as archive-checkpoint history, link the dated completion receipt and current PROCESS guidance, and avoid repeating publication | Treat historical wording as authority to create another commit/push |
+| Later documentation maintenance changes the source fingerprint of a DONE run | Preserve the old run identity/evidence; report expected snapshot drift and use a separate proportionate task/run for new work | Rewrite past passing fingerprints or claim that old checks passed against the new tree |
+| Unfinished run with an uncertain external effect and changed files | Inspect actual source/remote effects and reconcile before dependent work; do not apply the completed-run shortcut | Dismiss a genuinely unresolved operation as mere historical drift |

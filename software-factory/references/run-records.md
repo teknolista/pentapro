@@ -31,6 +31,10 @@ python3 /installed/software-factory/scripts/run_state.py check --project /projec
 
 Exit 0 means local validation succeeded; exit 1 reports an error without replacing the previous record on rejected saves. Python 3.12+ and Git are prerequisites. Without them, preserve the record through an equivalent reviewed mechanism and report the missing automatic checks. The helper executes only fixed read-only Git queries; it never executes record strings, installs hooks or changes Git/host configuration.
 
+## Completed records and later maintenance
+
+A completed run remains evidence for its recorded source and publication, not a claim about every later worktree. After a new maintenance edit, `check` may correctly report snapshot drift against that completed run. Do not reopen it, rewrite its passing fingerprints or repeat its confirmed effects merely to obtain a green check. Inspect its recorded structure/history without asserting current-source equivalence, and use a new run or proportionate task record for new work. A genuinely resumed unfinished operation still follows the actual-state reconciliation above.
+
 ## Format version 1
 
 `init` emits the complete envelope and initial history. `save` preserves schema, run/repository/orchestrator identity and earlier history, increments `record_version` and appends a checkpoint (state, fingerprint and owner). Field sets are strict so misspellings fail. History is a checkpoint index, not a full audit log or a replay of every former task/gate value. Keep historical detail in the referenced evidence.

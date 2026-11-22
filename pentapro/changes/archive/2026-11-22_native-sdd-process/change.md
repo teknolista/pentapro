@@ -16,4 +16,6 @@
 
 Working decision provenance: [transition contract](../../../../docs/native-sdd-contract.md). Execution checkpoint: [run record](../../../../docs/agents/runs/native-sdd-process/run.json). The change governs intended behavior; the run indexes execution, not a second contract.
 
-Next action: verify closure records and publish the reviewed snapshot through factory_shipper under the received approval; record actual remote confirmation separately.
+Historical next action at the archive checkpoint: verify closure records and publish the reviewed snapshot through factory_shipper under the received approval; record actual remote confirmation separately.
+
+Completion receipt (2026-11-22): that action subsequently completed at `a012b2b76453d6736ad474eebf8f72d8e274895d`. The shipper confirmed the remote ref and successful [CI run 45069113369](https://github.com/teknolista/skills/actions/runs/45069113369). The [current PROCESS index](../../../process/index.md) owns current resume guidance. This completed archive is history, not an instruction to republish it.

@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and the current 2.0.0 bundle adopts native PentaPRO SDD; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and bundle 2.0.0 adopted native PentaPRO SDD and the current 2.0.1 bundle corrects setup/closure guidance; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -59,3 +59,7 @@ Software Factory 0.5.0 includes its package-local run helper and format referenc
 ## Native SDD bundle 2.0.0
 
 The bundle keeps 24 source skills and six specialist roles for six hosts. The host main session guides exploration and delegates the native change lifecycle. Setup PentaPRO 2.0.0, PentaPRO 4.0.0, Software Delivery 2.0.0 Software Factory 1.0.0 and UI Design 2.0.0 use fixed five-dimensional change records and the default single result-approval gate. No additional SDD executable, schema installation, global agent configuration or automatic project migration is part of packaging. Existing customized projects need reviewed reconciliation and preservation of their historical records; plugin updates do not overwrite them. See the [migration guide](native-sdd-migration.md).
+
+## Guidance follow-up 2.0.1
+
+The pre-existing local setup-reference heading typo was removed; the published heading was already correct, so Setup PentaPRO remains 2.0.0. Software Factory 1.0.1 clarifies current resume guidance versus historical archive checkpoint instructions. The README specification-only example writes the six active-change files and preserves the baseline until result approval. No agent model, effort, package inventory or helper runtime changes. Earlier versioned observations above retain their original scope.
