@@ -1,6 +1,6 @@
 # Final skill maintenance review
 
-Latest assessment: see [final maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md). Earlier sections are dated maintenance records, not the current catalog.
+Latest assessment: see [native SDD maintenance review](docs/native-sdd-review.md). Earlier sections are dated maintenance records, not the current catalog.
 
 This record contains successive reviews. Earlier dates, counts and versions describe their original snapshots. See the [current collection review](#current-collection-review) for the latest pass. The [README catalog](README.md#available-skills) owns current package versions.
 

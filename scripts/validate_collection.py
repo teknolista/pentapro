@@ -36,7 +36,10 @@ root = Path.cwd()
 inventory = subprocess.check_output(
     ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"]
 )
-files = {root / os.fsdecode(path) for path in inventory.split(b"\0") if path}
+# Git lists tracked deletions too; validate the candidate working tree, while
+# retaining dangling symlinks so unsafe inputs are still reported.
+files = {file for raw in inventory.split(b"\0") if raw
+         for file in (root / os.fsdecode(raw),) if file.exists() or file.is_symlink()}
 directories = {root}
 for file in files:
     directories.update(parent for parent in file.parents if root in parent.parents)

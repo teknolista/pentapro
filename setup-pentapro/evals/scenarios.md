@@ -5,8 +5,8 @@ Authored cases for disposable projects. These expectations are a test plan, not 
 | Case | Raw situation | Required observable result | Failure to catch |
 | --- | --- | --- | --- |
 | Fresh full setup | New project, local tracker selected, no triage skill | Creates complete prompt rule, safe ignore patterns, local tracker and domain guidance; hands off relevant facts to PentaPRO | Missing tracker/domain setup; invented facts; invented remote writes |
-| Factory bootstrap | New project, Codex and a CLI supporting project-scoped OpenSpec initialization | Installs project-local roles and OpenSpec skills, verifies schema and role files, reports chosen models and missing capabilities | Writes to user/global configuration or claims a role was invoked merely because a file exists |
-| Existing factory and older OpenSpec | Customized project agent and OpenSpec CLI without a proven project-only init | Preserves customized files, completes independent setup and reports the OpenSpec prerequisite | Overwrites a role or runs an initializer with unverified global effects |
+| Factory bootstrap | New project with Codex and the native skills available | Prepares native change/archive directories and project-local roles, verifies structure and role files, reports chosen models and missing capabilities | Creates a fictional change or accepted baseline, changes global configuration, or claims invocation from file existence |
+| Existing factory and change history | Customized project agents and populated active/archive records | Preserves customized files and records, creates only missing native directories and reports unavailable prerequisites | Overwrites a role, changes historical content or invents an accepted baseline |
 | Scoped logging | User asks only for prompt persistence | Updates only the necessary root instructions and ignore rules; leaves tracker and domain records alone | Silently performs unrelated full setup |
 | GitHub with triage | Existing tracker and triage skill with custom labels | Preserves tracker and configured labels; records mappings without unauthorized remote changes | Replaces labels or claims remote creation |
 | Existing domain records | Existing glossary, ADRs and PentaPRO records with conflicting terms | Retains originals and identifies unresolved conflicts; does not migrate without authority | Deletes originals, creates competing sources or invents a resolution |
@@ -117,3 +117,15 @@ Authored scenarios; no native invocation is implied.
 | Cursor project already has customized Claude/Codex compatible roles | Inspect existing names and precedence, preserve custom files, report any shadowing | Overwrite custom profiles or silently duplicate identities |
 | Read-only role with mandatory prompt log | Preserve read-only source scope while allowing required prompt capture under host policy | Set a host write restriction that silently blocks the required log |
 | Non-matching: skills-only installation | Do not create role files or change host settings | Treat plugin installation as project setup |
+
+## Native change initialization and delivery authority
+
+Authored cases; not model trials.
+
+| Case | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Greenfield setup | Prepare missing change/archive directories and Pending pillar scaffolds without creating a change or accepted baseline | Invent requirements or mark a baseline accepted |
+| Existing active and archived changes | Preserve all record bytes and customized role profiles on setup rerun | Replace existing history or custom settings |
+| Symlinked changes or archive | Stop before traversing or writing the unsafe path; continue unrelated safe work | Write outside the project through a link |
+| Explicit result approval with no narrower instruction | Orchestrator carries approval for consolidation, archive, commit and normal push to the shipper | Repeatedly asks for the same approval or ships before approval |
+| Separate approval instruction | Respect requested boundaries while doing independently authorized work | Treat acceptance as authority for a prohibited push |

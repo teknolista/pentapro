@@ -1,6 +1,6 @@
 # Maintaining the repository-root PentaPRO specification
 
-The five pillars are PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. Create pentapro/ at the Git repository root with scripts/init_pentapro.py. The initializer supplies topic files and assets/, preserves existing files, and marks missing project facts as Pending. Populate applicable topics. Split large topics into linked feature or subsystem records inside their pillar. Use stable IDs and relative links.
+The five pillars are PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. Establish the actual project root; use ordinary file tools, or optionally scripts/init_pentapro.py when Python/Git are available. Inspect paths and refuse unsafe symlinks/overwrites, preserving existing records. Prepare changes/archive without inventing an accepted baseline. The initializer supplies topic files and assets/, preserves existing files, and marks missing project facts as Pending. Author proposed change content inside the active change; populate baseline topics only during approved consolidation. Split large baseline topics into linked feature or subsystem records inside their pillar. Use stable IDs and relative links.
 
 | Pillar | Canonical ownership |
 | --- | --- |
@@ -11,13 +11,13 @@ The five pillars are PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. Create pe
 | process/ | Specification index, coverage and status, change history, tasks, owners, agent authority, decisions needing human input, reviews, gates and next action. |
 | assets/ | Supporting images, icons, styles, diagrams, media and other resources; record source, rights, version and consuming records. |
 
-## Change and OpenSpec ownership
+## Change ownership
 
-For each change, read process/index.md, affected requirements and decisions, the implementation, and the active OpenSpec change if selected. Compare accepted intent with observed behavior. Record the baseline revision and affected IDs in process/change-control.md. Update canonical topic files and cross-pillar links after the decision is settled. Revisit checks and operating instructions. Preserve historical evidence with its tested revision; mark affected checks stale or pending until rerun. Record unfinished multi-file updates and resume from actual contents. Verify links, IDs, acceptance status and next action.
+The root pillar files own the current consolidated baseline. `pentapro/changes/<name>/` owns proposed or in-progress intent and its verification until explicit result approval. Use [the change specification contract](change-specification.md) and its six packaged templates. Identify the baseline revision and affected stable IDs before changing a contract; link unmodified baseline facts and preserve unrelated content. A pre-implementation specification review is a distinct gate and does not make the proposed change the baseline.
 
-PentaPRO is the maintained specification and navigation source for the software. OpenSpec is a separate change workflow. Its proposal, design, delta, tasks and archived capability are versioned under the selected planning root, typically repository-root openspec/. For a registered store see [external planning roots](#external-planning-roots). While a change is active, link its accepted scope and scenarios. After reconciliation or archive, update PentaPRO topic files and retain a pointer to the OpenSpec revision. A validated delta does not prove implementation or deployment. Record which definition is canonical when an active change temporarily differs from the maintained baseline.
+After explicit result approval, reconcile all affected pillars before the orchestrator archives. Compare every changed requirement and scenario to the recorded baseline and intended change; retain unchanged content, record additions/modifications/removals/renames, decisions, migration and check evidence tied to their tested snapshot. Verify links and ownership from both the resulting baseline and the eventual archive location. Record partial consolidation and resume by inspecting actual files. Do not overwrite concurrent edits. A cancelled change remains visibly cancelled, never promotes abandoned intent, and records partial source effects and any separately authorized recovery.
 
-A screen contract can live in product/experience.md or linked screen files within product/. Existing docs/ui-design.md may remain the detailed owner during migration. Record its link and status in process/index.md, then move and reconcile it when authorized. Business behavior belongs in PRODUCT, technical implementation in PROJECT, operating effects in PRODUCTION, evidence in PROOF, and authority in PROCESS. Cross-cutting concerns have one owner for each kind of fact, with links across pillars.
+A screen contract can live in product/experience.md or linked screen files within product/. Existing docs/ui-design.md may remain its owner during migration. Product behavior belongs in PRODUCT, design in PROJECT, operating effects in PRODUCTION, verification in PROOF, and authority/tasks in PROCESS. Cross-cutting concerns have one owner per fact.
 
 ## Existing projects and migration
 
@@ -25,11 +25,9 @@ Inventory prior five-pillar files, screen specifications, incoming links and acc
 
 For a first increment, document observable behavior, negative cases, quality criteria, technical constraints, operating needs, feasible checks and authority. Later scope can remain Pending. Exact recreation requires enough concrete assets, environment and dependency versions, algorithms and data contracts to distinguish plausible implementations, followed by verification of the rebuilt product. Do not promise byte-identical artifacts or identical behavior across unverified environments.
 
-### Example with an accepted OpenSpec change
+### Example with an accepted change
 
-For an approved change named `tenant-receipts`, PRODUCT points to the `Receipt retries` requirement and affected scenarios in the change delta. PROJECT links the change's design decisions. PRODUCTION records any durable storage or rollout constraints that apply to the project. PROCESS links the accepted change, its task list, acceptance decision, and next pending check. PROOF maps the scenarios to the handler checks, their observed results and the tested snapshot. For example, the conflicting replay scenario needs a 409 response and unchanged job state. If the tests have only been planned, record them as pending even when OpenSpec validates the delta and its planning artifacts are complete.
-
-When resuming, reopen the active change and the latest relevant source. If the accepted scenario or implementation changed after the last check, keep the prior result tied to its snapshot and identify what needs rerunning. Update the owning record when the project accepts a changed decision. After the project synchronizes and archives the change, point ongoing PRODUCT references to the maintained capability spec and retain historical evidence against the tested change. [OpenSpec default schema](https://openspec.dev/docs/schemas/spec-driven)
+For `tenant-receipts`, the active change's PRODUCT record identifies the baseline replay behavior, the changed tenant-scoping requirement and its success, denial and conflicting-replay scenarios. PROJECT records design and alternatives, PRODUCTION captures migration, PROOF maps each criterion to executed checks and tested revisions, and PROCESS owns implementation tasks. Before result approval these remain proposed change records. On approval, reconcile each affected pillar while preserving unaffected scenarios, then verify the resulting links and let the factory archive the complete history. Planned tests are not executed evidence.
 
 ## Reconcile the root instructions
 
@@ -55,10 +53,6 @@ File writes may complete only partly. If interrupted, leave a durable record of 
 
 ## Baseline and proposed changes
 
-For a material change to existing software, compare the request with accepted requirements, observed behavior, and related work already in progress. Record the baseline revision or state in PROCESS and link any conflict or overlap that could affect delivery. In PROJECT, summarize the intended additions, modifications, and retirements by canonical PRODUCT ID, with the reason, affected consumers or stored data, and compatibility commitments. Link changes to contracts, planned checks, tasks, and operating procedures in their owning pillars.
+For a material change to existing software, compare the request with accepted requirements, observed behavior, and related work already in progress. Record the baseline revision or state in the active change PROCESS and link any conflict or overlap that could affect delivery. In PROJECT, summarize the intended additions, modifications, and retirements by canonical PRODUCT ID, with the reason, affected consumers or stored data, and compatibility commitments. Link changes to contracts, planned checks, tasks, and operating procedures in their owning pillars.
 
-Keep a pending proposal separate from active requirements within the same files. Apply settled changes to the owning records, retaining stable IDs where identity remains the same and recording supersessions or retirements. Preserve previous acceptance and evidence with their original scope. If a compatibility commitment is still undecided, record who can resolve it and which work depends on it.
-
-## External planning roots
-
-When the project selects a registered OpenSpec store, use that resolved planning root instead of assuming repository-root `openspec/`. Preserve the implementation repository, planning repository, store identity and relevant revisions in existing change links. Follow the installed CLI's inspection and selection rules; an unavailable declared store is a dependency gap, not authority to initialize a competing local specification.
+Keep each pending proposal in its active change files, not among maintained baseline requirements. After explicit result approval, apply settled changes to the owning records, retaining stable IDs where identity remains the same and recording supersessions or retirements. Preserve previous acceptance and evidence with their original scope. If a compatibility commitment is still undecided, record who can resolve it and which work depends on it.

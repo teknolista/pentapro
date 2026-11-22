@@ -1,0 +1,187 @@
+{
+  "schema_version": 1,
+  "run_id": "native-sdd-process",
+  "record_version": 11,
+  "objective": "Transition the collection to a native agent-coordinated SDD lifecycle",
+  "contracts": [
+    "pentapro/changes/archive/2026-11-22_native-sdd-process/change.md",
+    "docs/native-sdd-contract.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/skills",
+    "branch": "main",
+    "base_commit": "46d8facc40ec5cc04fbc97cd4c90712c48f50f9a"
+  },
+  "orchestrator": "main-session",
+  "state": "SHIP",
+  "snapshot": {
+    "fingerprint": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+    "head": "46d8facc40ec5cc04fbc97cd4c90712c48f50f9a"
+  },
+  "gates": [
+    {
+      "id": "native-contract",
+      "kind": "spec-review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+    },
+    {
+      "id": "integrated-checks",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+    },
+    {
+      "id": "independent-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+    },
+    {
+      "id": "developer-result-acceptance",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e",
+      "evidence": "docs/agents/runs/native-sdd-process/closure-evidence.md",
+      "reason": "Closure reviewed and checked; matching unchanged runtime-component evidence inherited from integrated-evidence.md; explicit result approval recorded."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "bootstrap-structure",
+      "owner": "factory_implementer",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    },
+    {
+      "id": "specification-contract",
+      "owner": "native_spec_content",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    },
+    {
+      "id": "setup-profiles",
+      "owner": "native_setup",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    },
+    {
+      "id": "evaluation-transition",
+      "owner": "native_evals",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    },
+    {
+      "id": "orchestration-integration",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "docs/agents/runs/native-sdd-process/integrated-evidence.md"
+    }
+  ],
+  "operations": [
+    {
+      "id": "archive-native",
+      "kind": "archive",
+      "authorization": "Owner explicitly approved the reviewed result and closure/publication scope in the message: sim, prossiga",
+      "status": "confirmed",
+      "expected_revision": null,
+      "observation": "Active source absent; six files preserved at pentapro/changes/archive/2026-11-22_native-sdd-process; all ten accepted requirement/scenario rows preserved; 250 Markdown/1034 links/24 versions checked without issues."
+    },
+    {
+      "id": "commit-native",
+      "kind": "commit",
+      "authorization": "Owner explicitly approved the reviewed result and closure/publication scope in the message: sim, prossiga",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "push-native",
+      "kind": "push",
+      "authorization": "Owner explicitly approved the reviewed result and closure/publication scope in the message: sim, prossiga",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "Configured factory_shipper reviews exact publishable snapshot, commits and normally pushes; preserve original unrelated w unstaged, and confirm actual remote ref/CI.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "ca2bf59527f8b45e3159019ac811c143d239f6fa30e3701c69ea612e5fd514cf"
+    },
+    {
+      "record_version": 2,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "ca2bf59527f8b45e3159019ac811c143d239f6fa30e3701c69ea612e5fd514cf"
+    },
+    {
+      "record_version": 3,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "1daff293fffaa586587331d91abb2a2b3698aa7cdc630f2680ed8a92a251c7a4"
+    },
+    {
+      "record_version": 4,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "b52c9d3cfe14d4e409e32bdb677e813ff475a654a48312a0caa7b56deef4b856"
+    },
+    {
+      "record_version": 5,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "e1ec613b23e9cfc7df371057ab89f21c9d13df2daee89c51247daec9a8afab94"
+    },
+    {
+      "record_version": 6,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "7c773b111a7d4f4a4dc934cd19d0ee51720b46cef86d772473db2e72202f93ef"
+    },
+    {
+      "record_version": 7,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "c8ba3f5f447df10ba478d04ddfed62e748bc121f18cc7977399a3c09b14aca29"
+    },
+    {
+      "record_version": 8,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "c8ba3f5f447df10ba478d04ddfed62e748bc121f18cc7977399a3c09b14aca29"
+    },
+    {
+      "record_version": 9,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "975ab722442fbcb0063d95250fdc80f5c6537838bd90ee5094f305ef220923b8"
+    },
+    {
+      "record_version": 10,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e"
+    },
+    {
+      "record_version": 11,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "2010572f1525da972e33862844f7ea2c671c2a708b8ddd1f1f58dfaac259e88e"
+    }
+  ]
+}

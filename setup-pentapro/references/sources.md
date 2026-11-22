@@ -31,11 +31,11 @@ Full setup includes purpose-driven README and license choices, issue-tracker sel
 
 The change reverses the entrypoint narrowing in commit `5fe20c9` while adapting upstream behavior to current project authority, existing records and the collection's owners. It does not copy the upstream mandatory confirmation workflow, or assume all consumer skills are installed. The upstream MIT notice is included in [the package's third-party notices](../THIRD-PARTY-NOTICES.md).
 
-Version 1.6 adds original project-local factory role templates and the [factory setup procedure](factory-setup.md). Their Codex format follows the [custom agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents); OpenSpec setup follows its [project setup documentation](https://openspec.dev/docs/setup), with version-specific checks before execution. Model choices are editable project defaults, not availability guarantees. The repository's pilot record documents failed custom-role invocation and the manual-capture correction in 1.6.1; neither templates nor schema tests prove runtime discovery.
+Version 1.6 adds original project-local factory role templates and the [factory setup procedure](factory-setup.md). Their Codex format follows the [custom agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents); native setup now uses the PentaPRO-owned change lifecycle. Model choices are editable project defaults, not availability guarantees. The repository's pilot record documents failed custom-role invocation and the manual-capture correction in 1.6.1; neither templates nor schema tests prove runtime discovery.
 
-## Store-aware planning — 2026-11-20
+## Native SDD transition — 2026-11-22
 
-Original conditional guidance follows [OpenSpec apply](https://github.com/Fission-AI/OpenSpec/blob/0c737dc1b543249b38b0f4716816fcf493d894dd/skills/openspec-apply-change/SKILL.md) for selected-store continuity, resolved planning roots and unavailable declarations. Initialization still follows actual setup authority and installed CLI behavior. No upstream scripts or mandatory approval loop are imported.
+The native change workflow adapts ideas from [OpenSpec](https://github.com/Fission-AI/OpenSpec) and its workflow skills as implementation references. The earlier store-aware guidance is historical and no longer governs setup; no upstream utility is installed or required. Preserve attribution and applicable licensing.
 
 ## README and project licensing — 2026-11-20
 

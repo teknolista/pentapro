@@ -3,12 +3,12 @@ name: ui-design
 description: "Design, specify, prototype, refine, review, or implement web and Android screens and user flows. Maintain the project's screen specification, using PentaPRO PRODUCT when selected."
 license: MIT
 metadata:
-  version: "1.6.2"
+  version: "2.0.0"
 ---
 
 # UI Design
 
-Turn a user's task into coherent, implementable screens and observable interaction contracts. For documentation work, maintain `pentapro/product/experience.md` and linked screen files in a PentaPRO project, or the project's established UI contract. Cover the screens discussed across iterations. Write artifacts in English and converse in the user's language. Preserve required product copy and localization languages.
+Turn a user's task into coherent, implementable screens and observable interaction contracts. For documentation work, author proposed UI detail in the active PentaPRO change’s `product.md` or a linked change-local screen record, preserving `pentapro/product/experience.md` as consolidated baseline until result approval, or the project's established UI contract. Cover the screens discussed across iterations. Write artifacts in English and converse in the user's language. Preserve required product copy and localization languages.
 
 ## Scope and working contract
 
@@ -42,7 +42,7 @@ Read the design method and document maintenance for substantive specification wo
 4. **Make the design reviewable.** Use a concise wireframe, flow diagram, existing screenshot, or targeted mock when it will resolve uncertainty. Compare material directions with the same representative task/content, give each a rationale, and record selections or remixes. An optional token-driven gallery can show foundations, shared components, shell and meaningful screen states; use the [prototype workflow](references/prototyping.md) when useful. Record what each artifact demonstrates and cannot demonstrate. An HTML mock of an Android screen is a concept, not evidence of native behavior. Additional assets/prototypes are optional and linked from the document.
 5. **Implement or evaluate within scope.** In implementation mode, follow actual project components and toolchain, preserve unrelated work, and load the matching platform reference. In review mode, substantiate barriers and separate defects from aesthetic suggestions. Before exercising an action, check the environment and its real effects; use isolated fixtures for purchases, deletion, messages and other consequential writes. Use available authorized tools; missing Figma/browser/SDK access narrows evidence without blocking useful specification work.
 6. **Verify and reconcile.** Follow the validation reference for checks appropriate to the mode. Revisit linked screens, tokens, requirements and checks affected by a changed decision. Do not weaken acceptance criteria to match an implementation. Preserve unresolved conflicts visibly.
-7. **Hand off within scope.** For an explicitly read-only or conversation-only request, return findings or design notes in the response. When documentation is in scope, update the established contract, using `pentapro/product/experience.md` and linked screen files in a PentaPRO project. Include the screen/flow index, accepted and proposed decisions, relevant specification detail, evidence, open questions and next action. Verify links and persisted content. Report the absolute path when saved, screens affected, remaining decisions, and checks actually executed. If a requested write fails, return the recoverable draft and disclose the failure.
+7. **Hand off within scope.** For an explicitly read-only or conversation-only request, return findings or design notes in the response. When documentation is in scope, update the established contract, using the active change’s `product.md` or linked change-local screen files in a PentaPRO project; only approved consolidation updates root PRODUCT records. Include the screen/flow index, accepted and proposed decisions, relevant specification detail, evidence, open questions and next action. Verify links and persisted content. Report the absolute path when saved, screens affected, remaining decisions, and checks actually executed. If a requested write fails, return the recoverable draft and disclose the failure.
 
 ## Completion
 

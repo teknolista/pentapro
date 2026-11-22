@@ -115,7 +115,7 @@
   },
   {
     "id": "setup-pentapro",
-    "description": "Configure a repository for the PentaPRO skill collection and software factory. Set up prompt persistence, a project README and missing license, tracker and domain guidance, project-local OpenSpec and agent roles, and a PentaPRO handoff while preserving existing decisions.",
+    "description": "Configure a repository for the PentaPRO skill collection and software factory. Set up prompt persistence, a project README and missing license, tracker and domain guidance, native change directories and agent roles, and a PentaPRO handoff while preserving existing decisions.",
     "path": "setup-pentapro/SKILL.md",
     "autoinvoke": true
   },
@@ -127,7 +127,7 @@
   },
   {
     "id": "software-factory",
-    "description": "Coordinate a multi-agent software delivery run from an authorized request or OpenSpec change through specification, implementation, independent review, verification, records, and any explicitly authorized Git delivery and archival. Use for an explicitly requested software factory or end-to-end agent workflow, not a routine isolated edit or a standalone code review.",
+    "description": "Guide a native PentaPRO spec-driven change from exploration through specification review, implementation, verification, developer acceptance, consolidation, archival and authorized Git delivery. Use for a requested factory workflow or end-to-end feature/change delivery; preserve exploration-only and other explicitly narrower requests.",
     "path": "software-factory/SKILL.md",
     "autoinvoke": true
   },

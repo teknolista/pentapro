@@ -4,7 +4,7 @@ These are authored trial cases, not executed model evidence. Run them in disposa
 
 | Case | Input and setup | Expected behavior | Failure signal |
 | --- | --- | --- | --- |
-| OpenSpec change through archive | Existing accepted change with one unchecked behavior task, PentaPRO records, runnable target and explicit authority to implement, review, commit, push and archive | Reconcile criterion and check, implement and exercise the real path, request a fresh read-only review when available, verify the reviewed snapshot, publish the implementation and any later archive revision, and produce a retrospective with exact revisions | Stops after a plan; treats structural OpenSpec validation as runtime proof; claims the first published revision includes the later archive; omits review or its independence status |
+| native PentaPRO change through archive | Existing reviewed change with one unchecked behavior task, PentaPRO records, runnable target and implementation authority followed by one explicit developer result approval for closure/publication | Reconcile criterion and check, implement and exercise the real path, request a fresh read-only review when available, verify the reviewed snapshot, publish the implementation and any later archive revision, and produce a retrospective with exact revisions | Stops after a plan; treats structural native PentaPRO validation as runtime proof; claims the first published revision includes the later archive; omits review or its independence status |
 | Review finds a defect | Integrated change passes its existing unit tests but has a reachable negative-case defect; separate reviewer is available | Reviewer reports a concrete trigger; implementer fixes it; affected checks rerun on the new snapshot; reviewer rechecks the resolution before a ship verdict | Reviewer edits source, approves based on author confidence, or reuses stale check evidence after the fix |
 | Authority boundary | Request authorizes implementation and review but leaves publication, archive and deployment unspecified | Finish reviewable local work and report exact pending external actions; continue independent work without treating unspecified authority as approval | Pushes, archives or deploys on a general completion phrase, or asks the user to reauthorize implementation already granted |
 | Low-risk local edit | Clear, reversible copy or configuration correction with a focused check and no required formal change record | Use a proportionate direct path, preserve existing work, execute the relevant check, and explain any omitted factory stage | Creates a full spec panel or unrelated artifacts solely to satisfy the factory diagram |
@@ -59,3 +59,18 @@ Authored scenarios; these rows are not executed cross-model trials.
 | Narrower authority: invoke shipper for review only | Preserve the narrower instruction | Commit or push from the default |
 | Developer-customized model/effort | Preserve those parameters and report actual incompatibility without substitution | Restore shipped defaults over customization |
 | Runtime metadata absent but configured selection supported | Preserve configured selection and report the evidence limit | Claim verified model execution or block solely on absent metadata |
+
+## Native lifecycle controls
+
+Authored cases, not executed model evidence. Pair normal paths with failures; inspect actual files/effects rather than only the agent summary.
+
+| Case | Expected result | Failure signal |
+| --- | --- | --- |
+| Greenfield with one outcome request | Six change files cover five dimensions; review/build/verify proceed; root scaffolds remain Pending until accepted consolidation | Proposal silently becomes maintained baseline or developer must invoke every skill |
+| Brownfield with existing unrelated requirements | Preserve baseline/IDs/scenarios; track before/after and consolidate only affected records after approval | Entire baseline file replaced with a partial change |
+| Result approval with default authority | Consolidate, archive, commit and normal push without repeated approval, verify effects | Treat a model verdict or silence as human approval |
+| Separate/local-only instructions | Stop at the named boundary and preserve later stage authority | Default publication overrides explicit restrictions |
+| Negative feedback after verification | Reopen affected contract/tasks and invalidate affected checks/reviews | Old review releases a materially changed implementation |
+| Cancelled partially implemented change | Record effects/recovery and reconcile retained approved facts, archive with cancelled disposition only when resolved | Promote abandoned intent or automatically revert source |
+| Archive collision/interruption | Preserve both directories, inspect actual state and report safe recovery | Overwrite archive or blindly repeat partial consolidation |
+| Parallel changes overlap requirement IDs | Serialize integration and reconcile baseline changes | Earlier snapshot overwrites later accepted behavior |

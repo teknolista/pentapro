@@ -36,4 +36,4 @@ Use this order for initial detail and presentation. Capture consequential operat
 
 ## Output files
 
-Initialize the project-root pentapro/ with scripts/init_pentapro.py, then use these five detailed templates to populate the corresponding topic files. The templates are authoring references and are not copied wholesale into a project. A topic can be split into smaller linked records as the specification grows. See [document maintenance](../references/document-maintenance.md) for canonical ownership, migration, and OpenSpec reconciliation.
+Initialize the project-root pentapro/ with scripts/init_pentapro.py, then use these five detailed templates as authoring guidance in the active change; populate baseline topic files only during approved consolidation. The templates are authoring references and are not copied wholesale into a project. A topic can be split into smaller linked records as the specification grows. See [document maintenance](../references/document-maintenance.md) for canonical ownership, migration, and native change reconciliation.

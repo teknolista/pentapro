@@ -4,6 +4,7 @@
 
 - Project / application:
 - Platforms / stack / supported environments:
+- Active change / baseline location and result-approval state (when PentaPRO governs):
 - Scope of this iteration:
 - Updated / source snapshot:
 - Specification coverage / unresolved decisions:

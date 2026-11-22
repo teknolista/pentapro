@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and the current 1.2.0 bundle adds Cursor role templates; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and the current 2.0.0 bundle adopts native PentaPRO SDD; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -55,3 +55,7 @@ Documentation and client versions can diverge. Check the installed version and a
 ## Execution-state resources in bundle 1.1.0
 
 Software Factory 0.5.0 includes its package-local run helper and format reference; Setup PentaPRO 1.10.0 includes the run directory guide and host pointers. These are ordinary skill resources, distributed through each existing route without host API changes. No active execution is created at install time. Existing customized projects need reviewed reconciliation rather than automatic replacement. The [persistence validation record](factory-run-persistence.md) covers the new offline controls; the native installation observations above retain their original snapshot and limitations.
+
+## Native SDD bundle 2.0.0
+
+The bundle keeps 24 source skills and six specialist roles for six hosts. The host main session guides exploration and delegates the native change lifecycle. Setup PentaPRO 2.0.0, PentaPRO 4.0.0, Software Delivery 2.0.0 Software Factory 1.0.0 and UI Design 2.0.0 use fixed five-dimensional change records and the default single result-approval gate. No additional SDD executable, schema installation, global agent configuration or automatic project migration is part of packaging. Existing customized projects need reviewed reconciliation and preservation of their historical records; plugin updates do not overwrite them. See the [migration guide](native-sdd-migration.md).

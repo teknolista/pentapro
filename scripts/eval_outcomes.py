@@ -10,9 +10,10 @@ import tempfile
 import eval_isolation
 
 
-GRADERS = {"receipts", "openspec-receipts", "copy", "read-only", "spec-draft", "test-only"}
+GRADERS = {"receipts", "native-sdd-receipts", "copy", "read-only", "spec-draft", "test-only"}
 RECEIPT_PATHS = {"receipts.py", "test_receipts.py"}
-TASKS = "openspec/changes/tenant-receipts/tasks.md"
+TASKS = "pentapro/changes/tenant-receipts/process.md"
+PROOF = "pentapro/changes/tenant-receipts/proof.md"
 TASK_LINE = re.compile(rb"(?m)^[ \t]*[-*+] \[([ xX])\] ([^\r\n]+)")
 PILLARS = {
     "pentapro/README.md",
@@ -49,8 +50,7 @@ def load_cases(evals, packages):
             raise ValueError(f"{name}: expected a task prompt")
         if "grader" in case and (not isinstance(case["grader"], str) or case["grader"] not in GRADERS):
             raise ValueError(f"{name}: unknown grader")
-        requirements = case.get("requires", [])
-        if not isinstance(requirements, list) or any(tool != "openspec" for tool in requirements):
+        if case.get("requires", []) != []:
             raise ValueError(f"{name}: unsupported prerequisite")
     return cases
 
@@ -130,14 +130,20 @@ def score(evals, case, workspace, result, seed):
         "skill_files_preserved": not result["installed_skill_changes"],
         "fixture_head_preserved": result["fixture_head"] == result["initial_head"],
     }
-    if grader in {"receipts", "openspec-receipts"}:
-        required = RECEIPT_PATHS | ({TASKS} if grader == "openspec-receipts" else set())
+    if grader in {"receipts", "native-sdd-receipts"}:
+        required = RECEIPT_PATHS | ({TASKS, PROOF} if grader == "native-sdd-receipts" else set())
         checks["only_expected_files_changed"] = paths == required
-        if grader == "openspec-receipts":
+        if grader == "native-sdd-receipts":
             tasks_path = evals / "overlays" / case["overlay"] / TASKS
             expected = [(b"x", text) for _, text in TASK_LINE.findall(tasks_path.read_bytes())]
             actual = [(mark.lower(), text) for mark, text in TASK_LINE.findall(bounded_bytes(workspace / TASKS))]
             checks["tasks_completed_without_editing_contract"] = actual == expected
+            proof_path = evals / "overlays" / case["overlay"] / PROOF
+            original_proof = proof_path.read_bytes()
+            actual_proof = bounded_bytes(workspace / PROOF)
+            checks["proof_plan_preserved_with_actual_evidence"] = (
+                actual_proof.startswith(original_proof) and bool(actual_proof[len(original_proof):].strip())
+            )
         behavior = check_receipts(evals, workspace, seed)
         return {
             "status": ("fail" if not all(checks.values()) else
@@ -165,8 +171,17 @@ def score(evals, case, workspace, result, seed):
     elif grader == "read-only":
         checks["fixture_bytes_preserved"] = not paths
     elif grader == "spec-draft":
-        checks["only_requested_pillars_changed"] = paths == PILLARS
-        checks["nonempty_pillars"] = all(bounded_bytes(workspace / name) for name in PILLARS)
+        change_roots = {"/".join(name.split("/")[:3]) for name in paths
+                        if re.fullmatch(r"pentapro/changes/[a-z0-9]+(?:-[a-z0-9]+){1,2}/[^/]+", name)}
+        expected = set()
+        if len(change_roots) == 1:
+            root = change_roots.pop()
+            expected = {f"{root}/{name}.md" for name in
+                        ("change", "product", "project", "production", "proof", "process")}
+        bootstrap = PILLARS | {"pentapro/changes/README.md", "pentapro/changes/archive/README.md"}
+        checks["single_valid_change_with_all_dimensions"] = bool(expected) and expected <= paths
+        checks["only_specification_files_changed"] = bool(expected) and paths <= (expected | bootstrap)
+        checks["nonempty_change_artifacts"] = bool(expected) and all(bounded_bytes(workspace / name) for name in expected)
     return {
         "status": ("pass" if grader == "copy" else "manual") if all(checks.values()) else "fail",
         "checks": checks,

@@ -53,7 +53,7 @@ def command(workspace, tools, argv, *, read_only=False, seccomp_fd=None):
         "--setenv", "HOME", "/home/eval", "--setenv", "CODEX_HOME", "/home/eval/.codex",
         "--setenv", "PATH", "/tools:/usr/bin:/bin", "--setenv", "LANG", "C.UTF-8",
         "--setenv", "SHELL", "/bin/bash",
-        "--setenv", "OPENSPEC_TELEMETRY", "0", "--setenv", "GIT_CONFIG_NOSYSTEM", "1",
+        "--setenv", "GIT_CONFIG_NOSYSTEM", "1",
     ]
     if seccomp_fd is None:
         args.extend(("--dev", "/dev"))

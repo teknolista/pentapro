@@ -193,22 +193,25 @@ else:
             with self.assertRaisesRegex(ValueError, "invalid skill owner"):
                 runner.eval_outcomes.load_cases(evals, ["http-api"])
 
-    def test_openspec_task_grading_accepts_evidence_but_preserves_work_items(self):
+    def test_native_change_task_grading_accepts_evidence_but_preserves_work_items(self):
         with tempfile.TemporaryDirectory() as folder:
             workspace = Path(folder)
             tasks = runner.eval_outcomes.TASKS
             task_file = workspace / tasks
             task_file.parent.mkdir(parents=True)
-            original = (runner.EVALS / "overlays/openspec" / tasks).read_bytes()
+            original = (runner.EVALS / "overlays/native-sdd" / tasks).read_bytes()
             checked = original.replace(b"- [ ]", b"- [x]")
             result = {
                 "execution_status": "complete",
-                "changed_paths": ["receipts.py", "test_receipts.py", tasks],
+                "changed_paths": ["receipts.py", "test_receipts.py", tasks, runner.eval_outcomes.PROOF],
                 "installed_skill_changes": [],
                 "fixture_head": "initial",
                 "initial_head": "initial",
             }
-            case = {"grader": "openspec-receipts", "overlay": "openspec"}
+            case = {"grader": "native-sdd-receipts", "overlay": "native-sdd"}
+            proof = workspace / runner.eval_outcomes.PROOF
+            original_proof = (runner.EVALS / "overlays/native-sdd" / runner.eval_outcomes.PROOF).read_bytes()
+            proof.write_bytes(original_proof + b"\nActual: focused tests passed.\n")
             with patch.object(runner.eval_outcomes, "check_receipts", return_value={"status": "pass"}):
                 task_file.write_bytes(checked + b"\nEvidence: focused tests passed.\n")
                 grade = runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)
@@ -220,6 +223,47 @@ else:
                     task_file.write_bytes(changed)
                     grade = runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)
                     self.assertEqual(grade["status"], "fail")
+                task_file.write_bytes(checked)
+                for changed in (original_proof, b"Replaced the original verification plan\n"):
+                    proof.write_bytes(changed)
+                    grade = runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)
+                    self.assertEqual(grade["status"], "fail")
+
+    def test_native_spec_draft_requires_six_change_records_without_source_edits(self):
+        with tempfile.TemporaryDirectory() as folder:
+            workspace = Path(folder)
+            root = "pentapro/changes/receipt-retries"
+            artifacts = {f"{root}/{name}.md" for name in
+                         ("change", "product", "project", "production", "proof", "process")}
+            for name in artifacts:
+                path = workspace / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("Pending: conflicting replay behavior needs an owner decision.\n")
+            result = {"execution_status": "complete", "changed_paths": list(artifacts),
+                      "installed_skill_changes": [], "fixture_head": "initial", "initial_head": "initial"}
+            case = {"grader": "spec-draft"}
+            self.assertEqual(runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)["status"], "manual")
+            result["changed_paths"].remove(f"{root}/proof.md")
+            self.assertEqual(runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)["status"], "fail")
+            result["changed_paths"].append(f"{root}/proof.md")
+            result["changed_paths"].append("receipts.py")
+            self.assertEqual(runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)["status"], "fail")
+            result["changed_paths"].remove("receipts.py")
+            (workspace / f"{root}/proof.md").write_text("")
+            self.assertEqual(runner.eval_outcomes.score(runner.EVALS, case, workspace, result, 53)["status"], "fail")
+
+    def test_native_fixture_preserves_baseline_replay_and_change_scenarios(self):
+        root = runner.EVALS / "overlays/native-sdd/pentapro"
+        baseline = (root / "product/receipts.md").read_text()
+        change = root / "changes/tenant-receipts"
+        self.assertIn("Scenario S-01: Request ID is replayed", baseline)
+        product = (change / "product.md").read_text()
+        for scenario in ("S-01: Request ID is replayed", "S-02: Independent tenants use the same ID",
+                         "S-03: Conflicting replay", "S-04: Rejected calls have no effect"):
+            self.assertIn(scenario, product)
+        self.assertEqual({p.name for p in change.iterdir()},
+                         {f"{name}.md" for name in ("change", "product", "project", "production", "proof", "process")})
+        self.assertEqual(len(runner.eval_outcomes.TASK_LINE.findall((change / "process.md").read_bytes())), 2)
 
     def test_authored_regression_must_detect_unauthorized_side_effect(self):
         test_body = """import unittest
@@ -261,31 +305,6 @@ class QueueContract(unittest.TestCase):
             (workspace / "loop").symlink_to("loop")
             self.assertEqual(runner.eval_outcomes.bounded_bytes(workspace / "loop/notes.md"), b"")
             self.assertEqual(runner.snapshot(workspace / "loop"), {"": {"unsafe_root": "symbolic link or substituted parent"}})
-
-    @unittest.skipUnless(shutil.which("openspec"), "optional OpenSpec CLI")
-    def test_real_openspec_fixture_validates_with_unfinished_tasks(self):
-        source = runner.EVALS / "overlays" / "openspec"
-        with tempfile.TemporaryDirectory() as temp:
-            fixture = Path(temp) / "fixture"
-            shutil.copytree(source, fixture)
-            env = os.environ | {"OPENSPEC_TELEMETRY": "0"}
-            commands = [
-                ("validate", "--all", "--strict", "--json"),
-                ("status", "--change", "tenant-receipts", "--json"),
-                ("instructions", "apply", "--change", "tenant-receipts", "--json"),
-            ]
-            reports = [json.loads(subprocess.check_output(
-                ["openspec", *args], cwd=fixture, env=env, text=True, timeout=15
-            )) for args in commands]
-            self.assertEqual(reports[0]["summary"]["totals"]["passed"], 2)
-            self.assertTrue(reports[1]["isComplete"])
-            self.assertEqual(reports[2]["progress"], {"total": 2, "complete": 0, "remaining": 2})
-            delta = fixture / "openspec/changes/tenant-receipts/specs/receipts/spec.md"
-            delta.write_text(delta.read_text().replace("Scenario: Request ID is replayed", "Scenario: Exact replay"))
-            missing = subprocess.run(["openspec", *commands[0]], cwd=fixture, env=env,
-                                     capture_output=True, text=True, timeout=15)
-            self.assertEqual(missing.returncode, 1, missing.stdout)
-            self.assertIn("Request ID is replayed", missing.stdout)
 
     def test_gateway_rejects_embedded_credentials(self):
         for url in ("https://token@example.test/v1", "https://example.test/?token=private",

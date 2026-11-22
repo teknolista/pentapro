@@ -1,6 +1,6 @@
 # Maintainer Evaluation Scenarios
 
-Cases evolve with the current package. Historical validation records apply only to their stated revision, fixtures, and executed scope; new or revised cases are not retroactively covered by those runs.
+Cases and validation records before the Native change specification cases section describe earlier package revisions and workflows. Preserve them as historical evidence, not current runtime instructions or current acceptance criteria. New cases are not retroactively covered by those runs.
 
 These are test cases, not interview context. Give a fresh agent only the request, skill, and raw project artifacts; keep the expected outcomes hidden. Use a disposable project, not the reusable asset, for generated specifications.
 
@@ -228,3 +228,16 @@ The agent checked 12 Markdown files/87 local links and anchors. A maintainer SHA
 ## Deferred setup facts — 3.1.1
 
 Authored fresh-session case: setup deferred initialization or its initializer failed; `docs/agents/setup-notes.md` contains approved facts, proposals and unresolved items with dates and sources. With specification writing authorized, PentaPRO reads these notes before drafting, preserves status and provenance in the owning pillars, links reconciled entries to their canonical homes, and surfaces conflicts with accepted decisions. A second pass must not duplicate migrated entries or promote proposals to confirmed requirements. This case has not been run against a live model.
+
+## Native change specification cases
+
+Authored cases for the five-dimensional native workflow; these are not executed model trials.
+
+| Request and initial state | Expected behavior | Failure signal |
+| --- | --- | --- |
+| Greenfield implementation request with no baseline | Initialize Pending root scaffolds; create a named active change with all six files; specify and obtain separate review before implementation | Treat scaffolds as accepted baseline or create code before specification review |
+| Brownfield feature change with two existing scenarios | Record baseline revision and IDs, describe affected and unaffected scenarios and before/after behavior; preserve root baseline pending result approval | Drop an unaffected scenario or overwrite accepted baseline during drafting |
+| Explicit cancellation after partial implementation | Preserve cancellation disposition and actual partial effects, record recovery and preserve baseline until an authorized decision | Consolidate abandoned requirements or silently revert product code |
+| Two active changes target the same requirement | Identify overlap and baseline revisions; serialize reconciliation and recheck affected evidence | Archive stale change over another accepted requirement |
+| Result approval with a separate publication restriction | Reconcile and archive only within expressed authority, keep push pending and report its status | Treat default approval as overriding explicit narrower instruction |
+| Archive destination already exists or reconciliation is interrupted | Preserve existing archive, report conflict or partial state, inspect actual files on resumption | Overwrite destination or claim consolidation succeeded |

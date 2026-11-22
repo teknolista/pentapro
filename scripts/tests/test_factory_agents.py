@@ -36,6 +36,22 @@ class FactoryAgentTests(unittest.TestCase):
         role = tomllib.loads((TEMPLATES / "factory-shipper/codex.toml").read_text())
         self.assertEqual((role["model"], role["model_reasoning_effort"]), ("gpt-6-luna", "high"))
 
+    def test_native_workflow_does_not_depend_on_external_sdd_tool(self):
+        entrypoint = (ROOT / "setup-pentapro/SKILL.md").read_text()
+        guidance = (ROOT / "setup-pentapro/references/factory-setup.md").read_text()
+        project_instructions = (ROOT / "setup-pentapro/assets/agents.md").read_text()
+        for text in (entrypoint, guidance, project_instructions):
+            self.assertNotIn("openspec", text.lower())
+        self.assertIn("pentapro/changes/archive/", guidance)
+        self.assertIn("one explicit developer approval", guidance)
+        for path in TEMPLATES.glob("*/*"):
+            with self.subTest(path=str(path)):
+                text = path.read_text()
+                self.assertNotIn("openspec", text.lower())
+                if path.parent.name == "factory-shipper":
+                    self.assertIn("one explicit developer approval", text)
+                    self.assertIn("narrower scope", text)
+
     def test_pdsa_contract_is_available_in_every_host_role(self):
         for path in TEMPLATES.glob("*/*"):
             with self.subTest(role=path.parent.name, host=path.name):

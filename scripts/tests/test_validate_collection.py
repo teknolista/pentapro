@@ -40,6 +40,19 @@ class CollectionValidationTests(unittest.TestCase):
         self.write("penta-pro/agents/openai.yaml", 'interface:\n  display_name: "PentaPRO"\n  short_description: "Create useful project specifications"\n  default_prompt: "Use $penta-pro to specify this project."\n')
         self.check()
 
+    def test_deleted_tracked_document_is_not_candidate_content(self):
+        self.write("retired.md", "# Retired document\n")
+        subprocess.run(["git", "add", "retired.md"], cwd=self.root, check=True)
+        (self.root / "retired.md").unlink()
+        self.check()
+
+    def test_link_to_deleted_tracked_document_still_fails(self):
+        self.write("retired.md", "# Retired document\n")
+        subprocess.run(["git", "add", "retired.md"], cwd=self.root, check=True)
+        (self.root / "retired.md").unlink()
+        self.write("guide.md", "[Retired](retired.md)\n")
+        self.check("missing or outside collection")
+
     def test_fenced_heading_cannot_supply_an_anchor(self):
         self.write("guide.md", "[Missing](#fake)\n```markdown\n# Fake\n```\n")
         self.check("missing anchor")

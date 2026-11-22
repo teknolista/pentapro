@@ -13,18 +13,18 @@ Select the owner by outcome. Select the specification depth, agent authority and
 | Correct copy on one screen without changing meaning or behavior | Apply the local edit and check the affected rendering or content. Use UI Design if the change calls for an interaction or design decision. |
 | Try two interaction patterns with synthetic data | UI Design for a visual concept. Technical Research for a bounded feasibility experiment. Capture what the experiment establishes before deciding whether to maintain its output. |
 | Add image sharing across an app, API and storage | Use PentaPRO when drafting the requirements. Use Software Delivery to coordinate authorized implementation after the contract establishes permissions, failure behavior and checks. Use specialist guidance at the actual boundaries. |
-| Implement an accepted OpenSpec or project-native SDD change | Confirm which project record governs the behavior. Use the domain owner for a localized implementation or Software Delivery for dependent increments. Trace verification to the accepted scenarios and existing evidence record. |
+| Implement a reviewed native PentaPRO SDD change | Confirm which project record governs the behavior. Use the domain owner for a localized implementation or Software Delivery for dependent increments. Trace verification to the accepted scenarios and existing evidence record. |
 | Remove one authorization condition | Trace allowed and denied behavior and establish the intended policy before changing it. Use Cybersecurity when threat assessment or hardening is the requested outcome. A short diff can need strong evidence. |
 
 Use an existing issue, specification, schema or contract to record decisions at its owning location. In a combined request, draft and review the scope the user or policy requires before coding. If implementation reveals a material conflict, pause only dependent work and resolve it with the appropriate owner. Keep the actual code, canonical artifacts, tests and evidence aligned through the handoff.
 
-For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). Software Delivery has worked examples for [OpenSpec](software-delivery/references/change-contracts.md#worked-example-with-openspec), [project-native SDD](software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd), and [prototype adoption](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype).
+For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). Software Delivery has worked examples for [project-native SDD](software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd), and [prototype adoption](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype).
 
 ## Generic owners
 
 | Requested result | Primary owner | Boundary |
 | --- | --- | --- |
-| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, project-local OpenSpec and factory roles, and PentaPRO handoff |
+| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, native changes and factory roles, and PentaPRO handoff |
 | Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
 | Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
 | Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
@@ -37,7 +37,7 @@ For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). So
 
 The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**, Setup PentaPRO to **23**, and Software Factory to the current **24**. See [upstream dispositions](COLLECTION-REVIEW.md).
 
-- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, project-local OpenSpec and factory roles, and a PentaPRO handoff.
+- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, native changes and factory roles, and a PentaPRO handoff.
 
 - [Software Delivery](software-delivery/SKILL.md) — Coordinate dependent implementation tasks or increments and verify their integrated result.
 - [Software Factory](software-factory/SKILL.md) — Coordinate an explicitly requested multi-agent delivery run across existing owners, authorized publication, archival and retrospective.

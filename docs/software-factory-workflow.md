@@ -1,5 +1,7 @@
 # Software factory workflow
 
+Historical design/evaluation record. It describes its original snapshot, not the current runtime contract. Use the [native workflow guide](guia-fabrica-changes.md) and the maintained skill entrypoints for current work.
+
 Status: **historical proposal**. Its portable first version is now the [Software Factory skill](../software-factory/SKILL.md); the gates, pilot and rollout below remain proposed design material, not evidence of an executed factory run. For day-to-day use, follow the [operational checklist](guia-fabrica-changes.md).
 
 Date: 2026-11-19.

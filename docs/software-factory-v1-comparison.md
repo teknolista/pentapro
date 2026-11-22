@@ -1,5 +1,7 @@
 # Software factory v1 — comparison and scope
 
+Historical design/evaluation record. It describes its original snapshot, not the current runtime contract. Use the [native workflow guide](guia-fabrica-changes.md) and the maintained skill entrypoints for current work.
+
 The supplied Castas-based proposal and the ChuteGPT discussion both favor canonical SDD/OpenSpec records, vertical slices, independent review, targeted checks, evidence-bound handoffs, explicit authority and a retrospective. The ChuteGPT history additionally motivates preserving authority through a run, completing authorized work without an unnecessary stop, and testing terminal rendering and cross-language input contracts.
 
 This v1 keeps the proposal's gates as states, while making role count and depth proportional to the change. It uses existing skills rather than replacing their domain workflows. Unlike a hard-coded pipeline, it treats the requested order and project policy as authoritative. It explicitly handles the often-missed case where archiving after publication changes tracked files and requires another authorized publication. A retrospective recorded after the final published revision likewise needs a separate publication if it must be in Git.

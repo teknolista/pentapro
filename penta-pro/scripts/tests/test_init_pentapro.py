@@ -71,6 +71,61 @@ class InitializationTests(unittest.TestCase):
         self.assertEqual("Owned index\n", custom_index.read_text(encoding="utf-8"))
         self.assertTrue(deleted.is_file(), deleted)
 
+    def test_creates_change_structure_with_guidance_and_no_active_change(self):
+        target = INIT.initialize(self.root)
+        changes = target / "changes"
+        archive = changes / "archive"
+        self.assertEqual({"README.md", "archive"}, {path.name for path in changes.iterdir()})
+        self.assertEqual({"README.md"}, {path.name for path in archive.iterdir()})
+        self.assertIn("two or three", (changes / "README.md").read_text())
+        self.assertIn("YYYY-MM-DD_<name>", (archive / "README.md").read_text())
+        self.assertNotIn("OpenSpec", (target / "README.md").read_text())
+        self.assertIn("[changes](changes/)", (target / "README.md").read_text())
+
+    def test_rerun_preserves_changes_archive_and_their_indexes(self):
+        target = INIT.initialize(self.root)
+        changes = target / "changes"
+        active = changes / "add-login" / "change.md"
+        active.parent.mkdir()
+        active.write_text("In progress\n")
+        archived = changes / "archive" / "2026-11-22_add-search" / "change.md"
+        archived.parent.mkdir()
+        archived.write_text("Archived\n")
+        for index in (changes / "README.md", changes / "archive/README.md"):
+            index.write_text("Custom guidance\n")
+
+        INIT.initialize(self.root)
+
+        self.assertEqual("In progress\n", active.read_text())
+        self.assertEqual("Archived\n", archived.read_text())
+        for index in (changes / "README.md", changes / "archive/README.md"):
+            self.assertEqual("Custom guidance\n", index.read_text())
+
+    def test_rejects_symlinked_changes_and_archive_before_writing(self):
+        for linked in ("changes", "archive"):
+            with self.subTest(linked=linked), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder)
+                subprocess.run(["git", "init", "-q", str(root)], check=True)
+                target = root / "pentapro"
+                target.mkdir()
+                external = root / "external"
+                external.mkdir()
+                sentinel = external / "sentinel"
+                sentinel.write_text("Untouched\n")
+                if linked == "changes":
+                    (target / "changes").symlink_to(external, target_is_directory=True)
+                    expected = {"changes"}
+                else:
+                    changes = target / "changes"
+                    changes.mkdir()
+                    (changes / "archive").symlink_to(external, target_is_directory=True)
+                    expected = {"changes"}
+                with self.assertRaisesRegex(ValueError, "symbolic-link"):
+                    INIT.initialize(root)
+                self.assertEqual(expected, {path.name for path in target.iterdir()})
+                self.assertEqual({"sentinel"}, {path.name for path in external.iterdir()})
+                self.assertEqual("Untouched\n", sentinel.read_text())
+
     def test_requires_the_repository_root(self):
         child = self.root / "child"
         child.mkdir()

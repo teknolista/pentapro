@@ -1,77 +1,64 @@
-# Guia de uso da fábrica de software para changes
+# Conduzir uma change com PentaPRO
 
-Este guia apresenta um roteiro para conduzir uma change com Codex, OpenSpec, PentaPRO e as skills Teknolista. Adapte-o às regras do repositório e à complexidade da alteração. A fábrica é um fluxo orientado por instruções e agentes; seus resultados dependem das ferramentas, permissões, modelos e verificações disponíveis em cada execução.
+A sessão principal do ambiente de codificação atua como agente de exploração e orquestração. O desenvolvedor descreve o resultado desejado uma vez; o agente esclarece decisões relevantes e aciona os especialistas durante o trabalho. O processo usa especificações em Markdown e as ferramentas normais do projeto, sem um utilitário de SDD ou schemas configuráveis.
 
-## 1. Preparar o projeto uma vez
+## 1. Preparar o projeto
 
-- [ ] Abra uma sessão do Codex no repositório correto e confira a branch e as alterações locais existentes.
-- [ ] Instale as skills necessárias no escopo do projeto: pelo menos `setup-pentapro`, `software-factory`, `penta-pro`, `software-delivery`, `peer-review` e `git-ship`, além das skills especializadas que o projeto utiliza.
-- [ ] Peça: **“Use `$setup-pentapro` para configurar este repositório para a fábrica de software. Use somente instalações e configurações locais ao projeto e preserve as escolhas existentes. O objetivo deste repositório é [descrição do projeto].”**
-- [ ] Escolha se deseja substituir, complementar ou preservar o README existente. Se ele for gerado ou atualizado, indique o idioma. Escolha uma licença quando o projeto ainda não tiver uma.
-- [ ] Examine o relatório do setup: instruções, regra de registro de prompts, tracker, documentos de domínio, OpenSpec, skills e agentes. Resolva as pendências que afetem a change. A regra de registro depende da observância pelo agente; sua existência não comprova captura automática.
-- [ ] Confira a versão do OpenSpec, o schema e a localização das skills instaladas. A versão e suas opções de instalação devem permitir confirmar que o setup é restrito ao projeto. Em projetos existentes, preserve configurações e personalizações.
-- [ ] Em Codex, confira os papéis locais e preserve `model` e `model_reasoning_effort` nos arquivos de `.codex/agents/`, salvo personalização deliberada do desenvolvedor. Os templates incluem `factory_spec`, `factory_implementer`, `factory_verifier`, `factory_reviewer`, `factory_retrospective` e `factory_shipper`. Reinicie ou abra uma nova sessão se necessário e confirme a descoberta; a existência dos arquivos não prova que os agentes foram utilizados.
-- [ ] Para um novo produto ou uma especificação ainda não consolidada, use `$penta-pro` para registrar o problema, os usuários, o primeiro resultado útil e as decisões conhecidas. Uma especificação pronta, por si só, não autoriza implementação ou publicação.
+Instale a coleção e execute `setup-pentapro` no repositório de destino. Confira a preservação das instruções, logs, configurações e agentes personalizados. O setup prepara `pentapro/changes/archive/` e a orientação da fábrica; não inventa uma change ativa nem aceita uma especificação inicial.
 
-## 2. Solicitar a change
+Os seis especialistas possuem definições para Codex, Claude Code, Cursor, GitHub Copilot, OpenCode e Antigravity. O ambiente precisa descobrir os perfis e oferecer as ferramentas necessárias. Preserve modelo/esforço configurados e personalizações. Cursor usa nomes como `factory-shipper`; OpenCode usa o identificador do arquivo. Confira o mapeamento do host e não confunda um arquivo instalado com execução comprovada.
 
-Descreva o comportamento desejado, quem será afetado, os limites, exemplos de sucesso e erro, requisitos de compatibilidade e o que não faz parte do pedido. Nomeie as operações que deseja que a fábrica execute. Este exemplo autoriza implementação, revisão, commit, push e arquivamento; adapte-o ao seu caso:
+## 2. Descrever o trabalho
 
-```text
-Use $software-factory e os agentes locais disponíveis para esta change.
+Exemplo de uma única solicitação:
 
-Objetivo: [resultado que o usuário deve conseguir].
-Contexto e restrições: [informações relevantes e registros existentes].
-Critérios: [comportamento esperado, exemplos e falhas relevantes].
-Fora do escopo: [o que não deve mudar].
+> Use software-factory para desenvolver um catálogo de serviços com busca e favoritos. Explore os requisitos comigo e conduza a implementação e a verificação.
 
-Crie e revise a change OpenSpec, use PentaPRO e as skills especializadas
-aplicáveis, implemente, verifique e peça revisão independente. Corrija os
-problemas confirmados e revalide. Atualize os registros afetados. Faça commit
-e push da branch [nome] para [remoto], arquive a change quando estiver pronta,
-publique também as alterações do arquivamento e faça uma retrospectiva.
-Informe o estado da CI e as verificações indisponíveis.
-```
+Para um projeto existente:
 
-Se desejar somente um plano ou execução local, diga isso e omita as operações não solicitadas. Merge, release, deploy e mudanças em serviços externos precisam estar abrangidos pela autorização aplicável. O agente deve respeitar autorizações já dadas e as regras do projeto.
+> Use software-factory para permitir exportação dos favoritos, preservando o comportamento e os dados existentes.
 
-## 3. Acompanhar especificação e implementação
+Pedidos de exploração ou especificação apenas respeitam esse limite. O agente não deve presumir implementação, gastos ou efeitos externos a partir de uma pergunta sobre uma ideia.
 
-- [ ] Confirme que a change ativa e o schema do OpenSpec foram identificados e que os critérios descrevem comportamento observável, incluindo casos negativos relevantes.
-- [ ] Confira se regras de produto e decisões de arquitetura apontam para seus registros canônicos em PentaPRO, OpenSpec ou nos documentos adotados pelo projeto. Questões que mudem materialmente o resultado devem ser resolvidas antes das tarefas dependentes.
-- [ ] Conclua a revisão de especificação exigida antes de enviar trabalho dependente ao implementador. Identifique a revisão da change e a raiz do store quando houver um selecionado.
-- [ ] Verifique se o plano divide o trabalho em entregas pequenas, cada uma com resultado, caminhos afetados e forma de verificação. O orquestrador pode executar etapas independentes em paralelo quando não houver conflito de escrita.
-- [ ] Peça evidências de testes adequados à change e, quando necessário, execução no alvo real, como navegador, dispositivo, serviço ou ambiente de teste. Validação estrutural do OpenSpec não comprova o comportamento do aplicativo.
+## 3. Especificar a change
 
-## 4. Revisar e concluir
+O agente escolhe uma identidade única de duas ou três palavras minúsculas separadas por hífens e abre `pentapro/changes/<nome>/`. Confere changes ativas e arquivadas para evitar colisões. A change contém seis arquivos:
 
-- [ ] Confira o resultado do revisor para o estado integrado: achados, evidências, cobertura e limitações. Uma revisão independente exige um contexto separado; caso não esteja disponível, registre essa limitação.
-- [ ] Para cada defeito confirmado, confira a correção, a repetição das verificações afetadas e a nova revisão da versão corrigida. Uma mudança posterior pode invalidar evidências anteriores.
-- [ ] Confirme que especificações, tarefas OpenSpec, PentaPRO e documentação afetada correspondem ao resultado e que verificações obrigatórias estão concluídas ou registradas como pendentes.
-- [ ] Depois do arquivamento, examine a especificação consolidada, preencha eventuais propósitos gerados como pendentes e valide novamente o resultado com a versão instalada do OpenSpec.
-- [ ] Se solicitados, confira o commit, o destino do push, a revisão publicada e o resultado da CI. Verifique se a change foi arquivada e se os arquivos gerados pelo arquivamento também foram publicados quando isso estiver no escopo. Uma revisão publicada antes do arquivamento não contém as alterações feitas depois dele.
-- [ ] Leia a retrospectiva: escopo, fontes, revisões, etapas, problemas, retrabalho, intervenções, evidências e melhorias propostas. Trate métricas não observadas como desconhecidas. Se houver uma etapa solicitada pendente, a retrospectiva é provisória; retome-a após a conclusão.
-- [ ] Caso a retrospectiva seja adicionada ao Git após a última publicação, inclua sua publicação no escopo quando desejar que ela fique no remoto. Registre o commit resultante.
+| Arquivo | Responsabilidade |
+| --- | --- |
+| change.md | Identidade, problema, escopo, baseline, impactos, estado, aprovação e índice |
+| product.md | Requisitos e cenários observáveis, IDs estáveis e comportamento antes/depois |
+| project.md | Arquitetura, contratos, decisões, alternativas e riscos |
+| production.md | Instalação, operação, compatibilidade, migração e recuperação |
+| proof.md | Critérios, verificações planejadas/executadas, evidências e versão testada |
+| process.md | Autoridade, tarefas, responsáveis, dependências e retomada |
 
-## 5. Retomar trabalho interrompido
+Uma dimensão não afetada informa isso e aponta para a baseline. Não se inventam requisitos para preencher o modelo. No primeiro projeto, a especificação ainda não existe como baseline aceita: ela é elaborada na change. Nos projetos existentes, os cinco pilares principais continuam representando a baseline consolidada enquanto a mudança é implementada.
 
-Informe o nome da change e peça ao agente que reabra os arquivos canônicos e o registro da execução, identifique a revisão atual, os resultados ainda válidos, os bloqueios e a próxima ação autorizada. Confirme cada etapa pelas evidências da revisão correspondente. Após uma interrupção em push ou archive, confira a referência remota, a pasta da change e as especificações consolidadas antes de repetir a operação. Mantenha o store e a raiz de planejamento selecionados na retomada.
+## 4. Implementar e revisar
 
-Consulte a [skill Software Factory](../software-factory/SKILL.md), seu [contrato de execução](../software-factory/references/execution.md), o [protocolo de retrospectiva](../software-factory/references/retrospective.md), o [procedimento de setup](../setup-pentapro/references/factory-setup.md) e a [retrospectiva do primeiro piloto](retrospectiva-piloto-fabrica-2026-11-19.md) para detalhes e limitações.
+O agente principal aciona a revisão da especificação antes da implementação dependente. Em seguida planeja incrementos, delega escopos delimitados e usa as skills especializadas pertinentes. Cada tarefa tem uma forma observável de verificar sua conclusão; testes e documentação acompanham o incremento responsável.
 
-## 6. Agentes em outros ambientes e melhoria contínua
+A verificação liga critérios a evidências reais. A revisão independente examina o snapshot integrado e seus possíveis defeitos. Correções voltam ao implementador e invalidam as evidências afetadas. O fluxo não exige uma sequência de prompts do desenvolvedor, mas perguntas sobre decisões de produto, permissões ou conflitos relevantes continuam necessárias. Tentativas sem progresso são investigadas e limitadas, não repetidas indefinidamente.
 
-O setup também possui definições para Claude Code, Cursor, GitHub Copilot, Antigravity e OpenCode. Confira o ambiente e a versão efetivamente usados; não copie arquivos Codex para configurar outro host. No Cursor, os nomes dos perfis usam hífens; no OpenCode, os IDs vêm dos arquivos, como `factory-shipper`, enquanto os nomes lógicos do fluxo usam `factory_shipper`. O setup deve registrar o mapeamento e confirmar a descoberta. A instalação não comprova ferramentas disponíveis nem execução real. Os parâmetros configurados para cada papel são escolhas orientadas a custo e devem ser respeitados, incluindo personalizações do desenvolvedor. O shipper usa GPT-6 Luna com esforço high por padrão no Codex. A falta de metadados de execução, por si só, não bloqueia a entrega; incompatibilidades reais devem ser reportadas sem substituir silenciosamente o modelo. Acionar um papel sem detalhamento adicional solicita sua função definida no contexto atual. Para o shipper, isso inclui revisão, commit e push normal pela git-ship, respeitando escopo, permissões e bloqueios.
+## 5. Validar o resultado uma vez
 
-Todos os seis agentes aplicam um PDSA breve, inclusive isoladamente: planejar para o contexto, executar pelas skills, estudar resultados e corrigir dentro da autoridade, repetindo as verificações afetadas. O setup prepara o protocolo em `docs/agents/continuous-improvement.md` e o registro inicialmente sem lições em `docs/agents/lessons-learned.md`, preservando equivalentes e histórico existentes.
+Quando as verificações exigidas passarem, o agente apresenta comportamento, evidências, limitações e efeitos de fechamento pendentes. Por padrão, a aprovação explícita desse resultado autoriza consolidação, arquivamento, commit e push normal da change. O agente informa esse escopo antes de pedir a aprovação.
 
-Cada agente retorna evidências, limitações e eventuais lições ao orquestrador. Somente o orquestrador registra as lições, distinguindo hipóteses de causas confirmadas. Uma execução isolada usa a sessão principal como orquestrador. Lições gravadas depois do push podem permanecer locais para o próximo commit autorizado; isso não exige reabrir a publicação. Sem novidade útil, o agente informa que não identificou nova lição.
+Se desejar, o desenvolvedor pode pedir etapas separadas ou execução local sem publicação. Essas restrições prevalecem. Aprovar a definição do processo ou a proposta inicial não equivale a aceitar uma implementação ainda não entregue. Silêncio, tempo decorrido e parecer de um modelo não são aprovação humana.
 
+Feedback negativo retorna às decisões, tarefas e verificações afetadas. O agente só apresenta novamente o resultado quando houver evidência atualizada suficiente.
 
-## 7. Persistência e retomada da execução
+## 6. Consolidar, arquivar e publicar
 
-Em uma execução da fábrica ou change substancial com agentes dependentes, o orquestrador mantém `docs/agents/runs/<run-id>/run.json`, ou reutiliza um registro equivalente aprovado. O setup prepara somente a orientação da pasta; cada run começa com trabalho real. Escreva os resumos em inglês, mesmo com especificações em português. O registro aponta para contratos e evidências existentes; as lições continuam no arquivo próprio.
+Após a aprovação, o agente reconcilia o resultado com os cinco pilares principais, preservando requisitos e cenários não alterados. Confere o conteúdo salvo e as evidências afetadas. Move então a pasta para `pentapro/changes/archive/YYYY-MM-DD_<nome>/`, usando a data local do desenvolvedor, e corrige links de entrada e saída. Uma colisão nunca é sobrescrita.
 
-Os pacotes dos agentes recebem ID da run, caminho, versão do registro e fingerprint de entrada. Os agentes devolvem resultado, evidências e snapshot testado; somente o orquestrador salva checkpoints. Use o [helper e o contrato](../software-factory/references/run-records.md) para criar, capturar, conferir e salvar com comparação de versão. O helper exige Python 3.12+ e Git e não altera configurações, índice ou remotos.
+O shipper revisa o snapshot final, cria o commit e faz o push normal dentro da autorização. A referência remota é consultada para confirmar o commit. Arquivamento, publicação, implantação e release são fatos distintos; a aprovação padrão não autoriza merge, deploy, force push ou reescrita de histórico.
 
-Na retomada, confira os arquivos, a branch, a revisão das evidências e os efeitos externos reais. Um push pode ter ocorrido antes de uma falha ao salvar o registro; mantenha seu estado incerto até consultar a referência remota antes de repetir. Checks de uma versão anterior não liberam uma versão alterada. O [registro de validação](factory-run-persistence.md) distingue os testes locais já executados das avaliações com modelos/hosts ainda pendentes.
+Uma change cancelada preserva o motivo, efeitos parciais, decisões de recuperação e trabalho pendente. Não promove intenção abandonada a comportamento entregue nem autoriza rollback automático. Se houver efeitos não reconciliados, o cancelamento fica pendente na change ativa. O arquivo final distingue a disposição `completed` ou `cancelled` de sua localização arquivada.
+
+## 7. Retomar e aprender
+
+Em interrupções, confira os arquivos reais, a branch, a versão testada e os efeitos externos antes de repetir uma operação. Um push ou movimento de diretório pode ter ocorrido mesmo se o registro local falhou. Changes sobre os mesmos requisitos precisam de integração serializada.
+
+O orquestrador mantém um registro durável para execuções substanciais e recolhe candidatos a lições dos agentes. Somente ele escreve o registro de lições, em inglês. O helper existente de registros é opcional e verifica consistência local; não coordena o SDD nem comprova a verdade das evidências. Consulte o [guia de registros](agents/runs/README.md), o [protocolo PDSA](agents/continuous-improvement.md) e o [contrato de fechamento](../software-factory/references/closure.md).

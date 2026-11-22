@@ -57,6 +57,14 @@ def initialize(root):
         raise ValueError("Refusing a symbolic-link specification directory")
     if (target / "assets").is_symlink():
         raise ValueError("Refusing a symbolic-link assets directory")
+    changes = target / "changes"
+    archive = changes / "archive"
+    for directory in (changes, archive):
+        if directory.is_symlink():
+            raise ValueError(f"Refusing a symbolic-link changes directory: {directory.name}")
+    for path in (changes / "README.md", archive / "README.md"):
+        if path.is_symlink():
+            raise ValueError(f"Refusing a symbolic-link changes index: {path}")
     for pillar, files in ARTIFACTS.items():
         directory = target / pillar
         if directory.is_symlink():
@@ -87,6 +95,25 @@ def initialize(root):
             "record its source, usage rights, format and revision. Never store secrets.\n",
             encoding="utf-8",
         )
+    archive.mkdir(parents=True, exist_ok=True)
+    changes_index = changes / "README.md"
+    if not changes_index.exists():
+        changes_index.write_text(
+            "# Active changes\n\n"
+            "Keep each active change in a uniquely named directory of two or three "
+            "lowercase words separated by hyphens. Preserve existing changes and "
+            "their records. Completed or cancelled changes belong in [archive](archive/).\n",
+            encoding="utf-8",
+        )
+    archive_index = archive / "README.md"
+    if not archive_index.exists():
+        archive_index.write_text(
+            "# Archived changes\n\n"
+            "Store completed or cancelled changes in directories named "
+            "`YYYY-MM-DD_<name>`, using the archive date. Preserve existing archives; "
+            "do not overwrite an existing destination.\n",
+            encoding="utf-8",
+        )
     index = target / "README.md"
     if index.is_symlink():
         raise ValueError("Refusing symbolic-link specification index")
@@ -99,9 +126,9 @@ def initialize(root):
             "[PRODUCTION](production/environments.md), [PROOF](proof/traceability.md), "
             "and [PROCESS](process/index.md). Put supporting images, icons, styles and "
             "other binary resources in [assets](assets/), with source, rights and revision "
-            "recorded in the owning pillar. A new change updates the affected canonical "
-            "records and evidence for its tested revision. OpenSpec change artifacts "
-            "remain in the repository-root openspec/ when that workflow is selected.\n",
+            "recorded in the owning pillar. Keep active change records in [changes](changes/) "
+            "and preserve completed or cancelled changes in [archive](changes/archive/). "
+            "Reconcile affected canonical records and evidence for the tested revision.\n",
             encoding="utf-8",
         )
     return target

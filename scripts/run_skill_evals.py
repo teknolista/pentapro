@@ -262,14 +262,13 @@ def main():
     parser.add_argument("--arms", nargs="+", choices=("none", "baseline", "candidate"),
                         default=["none", "baseline"])
     parser.add_argument("--cases", nargs="+", choices=tuple(cases),
-                        default=[name for name, case in cases.items() if not case.get("requires")])
+                        default=list(cases))
     parser.add_argument("--explicit", action="store_true", help="Explicitly invoke the fixture's owner in skill arms")
     parser.add_argument("--model", help="Model exposed by the selected host or gateway")
     parser.add_argument("--effort", default="low")
     parser.add_argument("--codex", default="codex")
     parser.add_argument("--isolated", action="store_true", help="Use Linux mount and process isolation")
     parser.add_argument("--gateway", type=gateway_url, help="Responses API gateway for isolated model runs")
-    parser.add_argument("--openspec", help="Standalone OpenSpec executable to mount for isolated runs")
     parser.add_argument("--check-isolation", action="store_true", help="Run offline isolation probes and exit")
     parser.add_argument("--check-cases", action="store_true", help="Validate the case inventory and exit")
     parser.add_argument("--grade", action="store_true", help="Run independent offline artifact checks (Linux)")
@@ -308,8 +307,8 @@ def main():
     if options.isolated and not (options.gateway and options.model):
         parser.error("--isolated model runs require --gateway and an explicit tool-capable --model")
     options.model = options.model or "gpt-6.1-sol"
-    if not options.isolated and (options.gateway or options.openspec):
-        parser.error("--gateway and --openspec are for isolated runs")
+    if not options.isolated and options.gateway:
+        parser.error("--gateway is for isolated runs")
     if "baseline" in options.arms and not options.baseline:
         parser.error("--baseline is required when selecting the baseline arm")
     if options.explicit and "none" in options.arms:
@@ -321,13 +320,8 @@ def main():
             sidecar = tools["codex"].with_name("codex-code-mode-host")
             if sidecar.is_file():
                 tools[sidecar.name] = native_tool(str(sidecar))
-            if options.openspec:
-                tools["openspec"] = native_tool(options.openspec)
         except ValueError as exc:
             parser.error(str(exc))
-    needs_openspec = any("openspec" in cases[name].get("requires", ()) for name in options.cases)
-    if needs_openspec and not (tools.get("openspec") if options.isolated else shutil.which("openspec")):
-        parser.error("selected case requires OpenSpec; provide --openspec for isolated runs or install it on PATH")
     revision = (git("rev-parse", "--verify", "--end-of-options", f"{options.baseline}^{{commit}}")
                 .decode().strip() if options.baseline else None)
     output = Path(tempfile.mkdtemp(prefix="skill-eval-"))
@@ -361,9 +355,6 @@ def main():
                                                                            text=True).strip(),
             "candidate_base": git("rev-parse", "HEAD").decode().strip() if "candidate" in options.arms else None,
             "execution_boundary": "mount-and-process; shared network" if options.isolated else "workspace-write",
-            "openspec_version": subprocess.check_output(
-                [tools.get("openspec", "openspec"), "--version"], text=True, timeout=15
-            ).strip() if needs_openspec else None,
             "case_definitions": {case: cases[case] for case in options.cases},
             "runner_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             "grader_sha256": {
