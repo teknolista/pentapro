@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and bundle 2.0.0 adopted native PentaPRO SDD and the current 2.0.1 bundle corrects setup/closure guidance; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and bundle 2.0.0 adopted native PentaPRO SDD and bundle 2.0.1 corrects setup/closure guidance, and bundle 2.1.0 adds Git defaults and the permanent motivational manifesto, and the current 2.2.0 bundle adds per-run factory invocation history; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -63,3 +63,11 @@ The bundle keeps 24 source skills and six specialist roles for six hosts. The ho
 ## Guidance follow-up 2.0.1
 
 The pre-existing local setup-reference heading typo was removed; the published heading was already correct, so Setup PentaPRO remains 2.0.0. Software Factory 1.0.1 clarifies current resume guidance versus historical archive checkpoint instructions. The README specification-only example writes the six active-change files and preserves the baseline until result approval. No agent model, effort, package inventory or helper runtime changes. Earlier versioned observations above retain their original scope.
+
+## Initialization defaults 2.1.0
+
+Setup PentaPRO 2.1.0 merges bundled Git defaults into root `.gitignore` and `.gitattributes`, preserving existing rules and avoiding duplicate additions. Full setup requires the complete permanent motivational manifesto near the beginning of root `AGENTS.md`, including existing instruction files. Editable READMEs receive an experiment note. PentaPRO 4.0.1 preserves the manifesto during template reconciliation. Narrowly scoped requests keep their scope. Updating the plugin alone does not rewrite existing projects; rerun full setup to adopt these outputs. Package inventory and factory role settings are unchanged. Offline helper checks do not measure the motivational experiment's effect on model decisions.
+
+## Invocation history 2.2.0
+
+Software Factory 1.1.0 adds a separate versioned invocation-event ledger and per-run summary helper alongside unchanged run.json schema 1. Setup PentaPRO 2.2.0 and all six-host role assets carry run reuse, invocation identity and orchestrator-only event guidance. Existing projects reconcile guidance while preserving histories and custom role settings; plugin installation/update alone does not rewrite projects. Git defaults and the permanent manifesto remain part of full setup. No hooks, global settings, automatic deletion or model-selection change is included. Native capture completeness and efficiency improvements require separate evidence.

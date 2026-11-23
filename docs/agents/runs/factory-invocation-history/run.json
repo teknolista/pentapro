@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "run_id": "factory-invocation-history",
+  "record_version": 7,
+  "objective": "Add auditable per-run agent invocation events and update existing local PentaPRO consumers after source publication.",
+  "contracts": [
+    "pentapro/changes/factory-invocation-history/change.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/skills",
+    "branch": "main",
+    "base_commit": "808a33a4d3c73ac1f2281591fb150e2293dc8b81"
+  },
+  "orchestrator": "main-session",
+  "state": "SHIP",
+  "snapshot": {
+    "fingerprint": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+    "head": "808a33a4d3c73ac1f2281591fb150e2293dc8b81"
+  },
+  "gates": [
+    {
+      "id": "spec-review",
+      "kind": "spec-review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "evidence": "docs/agents/runs/factory-invocation-history/spec-review.md",
+      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+    },
+    {
+      "id": "helper-tests",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
+      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+    },
+    {
+      "id": "collection-checks",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
+      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+    },
+    {
+      "id": "verification",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
+      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+    },
+    {
+      "id": "independent-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "evidence": "docs/agents/runs/factory-invocation-history/review-final.md",
+      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T1",
+      "owner": "orchestrator",
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/spec-review.md"
+    },
+    {
+      "id": "T2",
+      "owner": "factory_implementer",
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/implementation.md"
+    },
+    {
+      "id": "T3",
+      "owner": "orchestrator",
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/implementation.md"
+    },
+    {
+      "id": "T4",
+      "owner": "factory_verifier/factory_reviewer",
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md"
+    },
+    {
+      "id": "T5",
+      "owner": "factory_shipper",
+      "status": "running",
+      "evidence": null
+    },
+    {
+      "id": "T6",
+      "owner": "orchestrator",
+      "status": "pending",
+      "evidence": null
+    },
+    {
+      "id": "T7",
+      "owner": "orchestrator",
+      "status": "pending",
+      "evidence": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "source-commit",
+      "kind": "commit",
+      "authorization": "User explicitly requested factory_ship after implementation in this chat.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "source-push",
+      "kind": "push",
+      "authorization": "User explicitly requested normal source push before consumer updates in this chat.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "factory_shipper reviews intended source snapshot, commits and normal-pushes, then verifies exact destination ref; consumer updates wait for confirmation.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "321de8fe614dabe66280a4b1fcb9ac19c67e841d08421ef112dd47972b07602f"
+    },
+    {
+      "record_version": 2,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "321de8fe614dabe66280a4b1fcb9ac19c67e841d08421ef112dd47972b07602f"
+    },
+    {
+      "record_version": 3,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "d78ced1bdb2bc15a5ec8a9105bff1f4efeff263a5aaeccf211189a397d1a5b99"
+    },
+    {
+      "record_version": 4,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "d78ced1bdb2bc15a5ec8a9105bff1f4efeff263a5aaeccf211189a397d1a5b99"
+    },
+    {
+      "record_version": 5,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "287350e1aa69b5f5b0611fc805928a690a1a070f73c83a2c82150f436a0800d7"
+    },
+    {
+      "record_version": 6,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "9a2e6f371618c865a56d2583684bae5fd8739a20d80467f7b1f527def8d5b8f2"
+    },
+    {
+      "record_version": 7,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4"
+    }
+  ]
+}

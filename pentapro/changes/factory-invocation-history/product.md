@@ -1,0 +1,14 @@
+# PRODUCT — invocation audit
+
+| ID | Observable requirement and scenario |
+| --- | --- |
+| INV-01 | A resumed execution reuses its run ID, directory and event file across prompts, sessions, agents and retries. New prompts do not create new runs. No blanket migration or historical fabrication. |
+| INV-02 | Each factory-agent dispatch has a unique invocation identity, task/attempt, concrete role/agent identity when known, concise reason and expected outcome, timezone-aware observed timestamps and input snapshot. Record unsuccessful dispatches and terminal results/interruption when known. Unknown completion remains visibly open, never fabricated. |
+| INV-03 | Only the orchestrator serializes append-only events under docs/agents/runs/<run-id>/events.jsonl. Agents return evidence; state remains in run.json, lessons in lessons-learned.md, detailed product tasks in their existing owner. No raw prompts, secrets or unnecessary personal data. |
+| INV-04 | Requested and observed model/effort are distinguished; unknown duration, tokens and costs remain unavailable, not zero. Retried submissions do not silently duplicate the same event; conflicting IDs and malformed/truncated histories fail without overwriting prior bytes. |
+| INV-05 | A bounded per-run summary exposes invocation/role counts, terminal/open outcomes, available elapsed/usage measures and retries without scanning all runs. Parallel invocation durations are not represented as project wall time. Reviews with no findings are not presumed waste. |
+| INV-06 | Symlinks, hard-linked/non-regular files, traversal and missing/mismatched runs are refused. The helper neither executes event content nor changes Git index/config, publishes, installs hooks or renormalizes product files. Existing run.json format and completed records remain compatible. |
+| INV-07 | Setup/rerun updates explain the history and preserve existing customization, lessons, logs, permissions and indexes. Retention/archival is an explicit project policy; no automatic deletion, directory per prompt or history-wide reads on each task. |
+| INV-08 | After verified source commit/push, update only existing PentaPRO consumers under the developer-selected directory from that revision, preserving custom package/project changes and existing staged/unstaged work. Do not commit/push consumer repositories absent separate authority. |
+
+INV-09: Given an explicitly invoked standalone factory role, the invoking main session reuses an applicable run or creates one minimal real run for that assignment, records its invocation and follow-ups, and keeps ordinary skill use outside telemetry. Missing owner/write access is explicitly pending; no fictitious successful capture. Before managed dispatch, failed logging holds dispatch; after observed effects, recovery retries recording only and first reconciles actual state.

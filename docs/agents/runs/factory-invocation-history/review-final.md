@@ -1,0 +1,3 @@
+# Final scoped review
+
+Invocation review-integrated-2; factory_reviewer, source/index read-only. Fingerprint 9a2e6f371618c865a56d2583684bae5fd8739a20d80467f7b1f527def8d5b8f2. REV-INV-01 resolved: permanent manifesto extraction excludes temporary/adaptation fields. Revised local updater uses actual installed baseline or an exact whole-package match to identified published pre-change source, preserves unknown customization and checks atomic replacement/backups/index/history. Five prompt/template tests and three disposable updater controls passed. No blocking findings in focused rereview; no real-project update or publication performed. Runtime model/usage unavailable. No new lesson identified.

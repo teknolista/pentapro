@@ -3,7 +3,7 @@ name: software-factory
 description: Guide a native PentaPRO spec-driven change from exploration through specification review, implementation, verification, developer acceptance, consolidation, archival and authorized Git delivery. Use for a requested factory workflow or end-to-end feature/change delivery; preserve exploration-only and other explicitly narrower requests.
 license: MIT
 metadata:
-  version: "1.0.1"
+  version: "1.1.0"
 ---
 
 # Coordinate native PentaPRO delivery
@@ -24,6 +24,10 @@ The host's main session is the principal exploration/orchestration agent. A deve
 For cancellation, interruption, conflicting changes and resumption use [closure and recovery](references/closure.md). Cancelled intent is never consolidated as delivered behavior. Preserve and reconcile any retained partial implementation and required recovery before archival; no automatic source rollback.
 
 Maintain one durable execution record for substantial runs following [run persistence](references/run-records.md), before delegation and at external-effect/recovery boundaries. Only the orchestrator writes it. Use an approved project equivalent or the existing optional record helper; it is bookkeeping, not an SDD coordinator or proof of evidence truth. If persistence is unavailable report the recovery gap. Host permissions and actual tool availability govern execution; instruction profiles cannot supply isolation. If delegation is unavailable, do useful authorized work directly, disclose self-review and leave a mandatory independent gate incomplete.
+
+## Agent invocation history
+
+For each factory-role invocation, the orchestrator follows [invocation events](references/invocation-events.md): reuse the applicable run across prompts/sessions/retries, append to its `events.jsonl` before dispatch, record the observed dispatch and terminal outcome, and carry the invocation ID in the packet and return. An isolated factory role uses one minimal real assignment run; ordinary skill calls do not become factory executions. Only the orchestrator writes events. Unknown outcomes/usage remain unknown. A logging failure before managed dispatch holds dispatch; after observed effects, reconcile state and retry recording only. Do not create a run directory per prompt or agent, scan all history during ordinary work, or delete/rotate history automatically. Per-run summaries support retrospective analysis; lessons retain their separate owner and evidence.
 
 ## Continuous improvement for every role
 

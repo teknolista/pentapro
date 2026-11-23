@@ -43,6 +43,8 @@ class PluginPackagingTests(unittest.TestCase):
             self.assertTrue((output / 'bundle-files.json').is_file())
             self.assertEqual((output / 'software-factory/scripts/run_state.py').read_bytes(), (ROOT / 'software-factory/scripts/run_state.py').read_bytes())
             self.assertTrue((output / 'software-factory/references/run-records.md').is_file())
+            self.assertEqual((output / 'software-factory/scripts/run_events.py').read_bytes(), (ROOT / 'software-factory/scripts/run_events.py').read_bytes())
+            self.assertTrue((output / 'software-factory/references/invocation-events.md').is_file())
             self.assertTrue((output / 'setup-pentapro/assets/runs-readme.md').is_file())
             self.assertFalse((output / 'docs/agents/runs').exists())
 

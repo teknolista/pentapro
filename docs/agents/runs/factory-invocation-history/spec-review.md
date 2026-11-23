@@ -1,0 +1,3 @@
+# Specification review
+
+factory_spec reviewed all six change records at fingerprint 321de8fe614dabe66280a4b1fcb9ac19c67e841d08421ef112dd47972b07602f. Findings: clarify event envelope/lifecycle/failure recovery and standalone-role scope. Orchestrator corrected PROJECT and INV-09/PROOF. Focused independent rereview at d78ced1bdb2bc15a5ec8a9105bff1f4efeff263a5aaeccf211189a397d1a5b99, run version 3, found both resolved and no remaining implementation blocker. This is specification readiness, not product verification or developer result acceptance. Actual model comes from the exposed factory_spec role; runtime usage is unavailable. No model-controlled comparison ran.

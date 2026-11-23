@@ -129,3 +129,40 @@ Authored cases; not model trials.
 | Symlinked changes or archive | Stop before traversing or writing the unsafe path; continue unrelated safe work | Write outside the project through a link |
 | Explicit result approval with no narrower instruction | Orchestrator carries approval for consolidation, archive, commit and normal push to the shipper | Repeatedly asks for the same approval or ships before approval |
 | Separate approval instruction | Respect requested boundaries while doing independently authorized work | Treat acceptance as authority for a prohibited push |
+
+## Git defaults and motivational experiment cases
+
+These are authored acceptance scenarios, not executed model trials. Use disposable repositories and inspect the actual files; a helper test does not prove model compliance with the manifesto rule.
+
+| Case | Request and starting state | Required observable result | Failure to catch |
+| --- | --- | --- | --- |
+| Matching full initialization | Full setup; neither Git file nor AGENTS.md exists | Creates dotted `.gitignore` and `.gitattributes` from complete assets; installs the complete manifesto and preservation notice near the top of AGENTS.md; includes README experiment note when editable | Undotted outputs; omitted or summarized manifesto; invented experiment results |
+| Existing project | Full setup; one or both Git files exist, with repeated rules, ignore exceptions and LFS attributes; customized AGENTS.md exists | Adds only absent template lines before project content; preserves overrides, original lines and instructions; inserts one complete manifesto | Sorting or globally deduplicating rules; overriding project policy; treating existing AGENTS.md as an exemption |
+| Rerun and reconciliation | Setup already ran; then specification reconciliation removes unused template fields | Git files remain byte-identical on rerun; complete manifesto and preservation notice survive cleanup | Duplicate blocks or deletion of the manifesto as generic prose |
+| Ambiguous scope | “Prepare this repository's Git files for development”; existing README and instructions | Resolves useful Git-only scope from the request; no automatic full setup, manifesto or README changes | Expanding a Git-only task into the full workflow |
+| Non-matching control | Fix a typo in an application README | Only the requested edit; no setup activation, Git-template merge or new manifesto | Motivational requirement used to widen unrelated work |
+| README skipped | Full setup with explicit README skip | Mandatory manifesto in AGENTS.md and both Git files; README byte-identical; optional note reported skipped | Treating optional README note as permission to edit or waiver of manifesto |
+| Unsafe destination | Full setup; a Git configuration target is a symlink or hard link | Reports the unsafe target; does not redirect template content or claim completion | Writes through the link or reports success from partial output |
+
+## Executed maintenance checks — 2026-11-23
+
+Setup PentaPRO 2.1.0 / PentaPRO 4.0.1 / plugin bundle 2.1.0:
+
+- Eight Git-template helper tests and four existing prompt-rule tests passed with Python 3.12.6 and disposable Git repositories. Cases exercised creation, exact-line merging, effective ignore exceptions and LFS overrides, unchanged reruns, BOM/CRLF preservation, unsafe targets, failed replacement recovery, destination validation and standalone CLI use.
+- Twelve plugin packaging tests passed, including complete local exports and available native discovery checks. No plugin was published or installed by this maintenance change.
+- Plugin metadata check, 15 evaluation-case definitions and whitespace checks passed. Collection validation in the actual checkout reports one pre-existing out-of-collection link in the already staged `docs/pentapro-simulacao.md`; that unrelated file and index selection were preserved. An isolated copy excluding only that file passed with 254 Markdown files, 1050 local links/anchors, 24 version checks and zero issues.
+- The full-setup, ambiguous and non-matching cases above remain authored scenarios. No model trials, matched baseline comparison or motivational-effect measurement ran. These checks establish helper behavior and structural consistency, not future model compliance or a motivational benefit.
+
+## Invocation-history controls
+
+Authored scenarios; helper tests and model trials are distinct evidence.
+
+| Case | Required observation |
+| --- | --- |
+| Matching: multi-session factory assignment | Existing run identity/directory reused; unique invocation IDs and append-only events for requested/observed dispatches and returns; current-run summary only. |
+| Matching: isolated factory role | Invoking main session reuses an applicable run or creates one minimal real assignment run; no full specification solely for telemetry. |
+| Ambiguous: host identity/usage unavailable | Requested metadata remains distinct; observed values stay unknown; no fabricated cost, duration or completion. |
+| Non-matching: ordinary skill use or typo fix | No factory invocation, event file or new directory merely because a prompt arrived. |
+| Interrupted or failed recording | Before managed dispatch, hold dispatch; after observed effects reconcile actual state and retry recording only. Preserve malformed/truncated ledger for explicit recovery. |
+| Existing customized setup | Merge compatible guidance without replacing custom model/effort, lessons, histories, unrelated work or index selections; no fake historical backfill. |
+| Efficiency review | Required independence and verified outcomes assessed alongside retries/waits/cost; no zero-finding review labeled waste solely from event counts. |

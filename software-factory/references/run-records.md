@@ -10,6 +10,12 @@ The orchestrator alone writes the record. Agents receive run ID, path, record ve
 
 The existing helper is optional bookkeeping for record integrity. The native SDD lifecycle can be executed by agents with ordinary file tools and a reviewed equivalent record; it does not depend on an SDD CLI or schema engine. Its check cannot validate the truth of referenced evidence.
 
+## Invocation events and run reuse
+
+Keep one execution identity for the same ongoing assignment across prompts, sessions, role calls and retries. A fresh independent assignment can start a new run; a new prompt alone cannot. Each explicitly invoked factory role, including a standalone role, uses that identity or a minimal real assignment run maintained by its invoking main session. This does not impose a full factory lifecycle on ordinary skill calls or bounded edits.
+
+Keep append-only `events.jsonl` alongside `run.json` under the same existing run directory. [Invocation events](invocation-events.md) owns that separate versioned format, recording/recovery procedure and summary helper. The state/checkpoint format below remains version 1; never add event fields to its strict envelope or rewrite completed historical records. Events describe dispatches and observed outcomes; `run.json` still owns execution state, and lessons retain long-lived learning. Both helpers are optional conveniences; an approved equivalent must preserve the same guarantees and disclose missing automatic checks.
+
 ## Start, checkpoint and resume
 
 1. Initialize before the first delegation. Use a unique lowercase hyphenated ID. Confirm scope, required gates, owners, pending tasks and separately authorized operations. Add a gate for each required check/review; an empty initial record cannot enter SHIP or DONE.

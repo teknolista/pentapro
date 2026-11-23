@@ -84,3 +84,17 @@ Authored clarification cases; not executed model trials.
 | Completed run with confirmed remote/CI receipt, archive preserves an older next action | Label the instruction as archive-checkpoint history, link the dated completion receipt and current PROCESS guidance, and avoid repeating publication | Treat historical wording as authority to create another commit/push |
 | Later documentation maintenance changes the source fingerprint of a DONE run | Preserve the old run identity/evidence; report expected snapshot drift and use a separate proportionate task/run for new work | Rewrite past passing fingerprints or claim that old checks passed against the new tree |
 | Unfinished run with an uncertain external effect and changed files | Inspect actual source/remote effects and reconcile before dependent work; do not apply the completed-run shortcut | Dismiss a genuinely unresolved operation as mere historical drift |
+
+## Invocation-history controls
+
+Authored scenarios; helper tests and model trials are distinct evidence.
+
+| Case | Required observation |
+| --- | --- |
+| Matching: multi-session factory assignment | Existing run identity/directory reused; unique invocation IDs and append-only events for requested/observed dispatches and returns; current-run summary only. |
+| Matching: isolated factory role | Invoking main session reuses an applicable run or creates one minimal real assignment run; no full specification solely for telemetry. |
+| Ambiguous: host identity/usage unavailable | Requested metadata remains distinct; observed values stay unknown; no fabricated cost, duration or completion. |
+| Non-matching: ordinary skill use or typo fix | No factory invocation, event file or new directory merely because a prompt arrived. |
+| Interrupted or failed recording | Before managed dispatch, hold dispatch; after observed effects reconcile actual state and retry recording only. Preserve malformed/truncated ledger for explicit recovery. |
+| Existing customized setup | Merge compatible guidance without replacing custom model/effort, lessons, histories, unrelated work or index selections; no fake historical backfill. |
+| Efficiency review | Required independence and verified outcomes assessed alongside retries/waits/cost; no zero-finding review labeled waste solely from event counts. |

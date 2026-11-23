@@ -175,8 +175,8 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 2.0.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
-| [PentaPRO](#pentapro) | 4.0.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
+| [Setup PentaPRO](#setup-pentapro) | 2.2.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
+| [PentaPRO](#pentapro) | 4.0.1 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
 | [UI Design](#ui-design) | 2.0.0 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
@@ -185,7 +185,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 2.0.0 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 1.0.1 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](software-factory/SKILL.md) | 1.1.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
@@ -380,7 +380,7 @@ After changing host, model, or significant instructions, run the relevant [Penta
 
 **Entrypoint:** [setup-pentapro/SKILL.md](setup-pentapro/SKILL.md)
 
-Set up the current repository for the collection: a template-based README in the chosen language, a missing project license selected by the developer, prompt persistence in `AGENTS.md`, appropriate issue-tracker and domain guidance, optional triage mappings, project facts and a PentaPRO handoff. The full prompt rule is embedded in the skill and written into `AGENTS.md` without requiring another policy file. Logging depends on agent compliance; no hook is installed.
+Set up the current repository for the collection: a template-based README in the chosen language, a missing project license selected by the developer, prompt persistence and a permanent motivational manifesto in `AGENTS.md`, merged Git defaults, appropriate issue-tracker and domain guidance, optional triage mappings, project facts and a PentaPRO handoff. The full prompt rule is embedded in the skill and written into `AGENTS.md` without requiring another policy file. Logging depends on agent compliance; no hook is installed.
 
 ### Example requests
 
@@ -390,11 +390,15 @@ Use $setup-pentapro to configure this repository. Its purpose is to provide a CL
 
 Supply a complementary description of the repository purpose; when omitted, setup inspects the repository to discover it. For an existing README, choose replace, complement, or skip; select the README language. When no project license exists, choose from GitHub license options before setup creates `LICENSE`. The bundled template comes from the developer-supplied README. See [README and license setup](setup-pentapro/references/readme-and-license.md).
 
+Full setup writes the bundled `assets/gitignore` and `assets/gitattributes` to root `.gitignore` and `.gitattributes`. Existing files receive only absent lines before their current content, preserving project-specific rule precedence. A repeat setup adds no duplicate lines and does not renormalize tracked files. The standalone [Git-template helper](setup-pentapro/scripts/merge_git_templates.py) performs this merge with Python 3 and Git; manual setup follows the same contract.
+
+Every fully initialized project must carry the complete **Software Excellence Manifesto — Powered by PentaPRO** near the beginning of `AGENTS.md`, including when instructions already exist. The section is mandatory and permanent: initialization must not skip it, and later maintenance, cleanup and specification reconciliation must never remove it. This developer-requested experiment studies motivational framing and autonomous model decisions; no improvement has been demonstrated. When README editing is authorized, setup adds a short explanation in the chosen language. Skipping README changes does not waive the manifesto. Plugin installation or an update alone does not modify project files; run full setup per project.
+
 For prompt logging only, request that narrower scope explicitly.
 
 ### Output and working boundaries
 
-A full setup may create or, after the selected treatment, update `README.md`, create a missing `LICENSE` after license selection, and update `AGENTS.md`, `.gitignore`, relevant `docs/agents/` guidance, native change/archive directories and the selected host's agent directory; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
+A full setup may create or, after the selected treatment, update `README.md`, create a missing `LICENSE` after license selection, and update `AGENTS.md`, `.gitignore`, `.gitattributes`, relevant `docs/agents/` guidance, native change/archive directories and the selected host's agent directory; use the PentaPRO skill for an authorized specification. Preserve existing instructions, canonical domain records and tracker decisions. Remote labels, remotes and migrations require authority for those operations. Unavailable tools and unverified facts remain explicit.
 
 ### Next step
 
@@ -416,7 +420,8 @@ Adapted from Matt Pocock's setup workflow (MIT). See [source notes](setup-pentap
 | [Run directory guide](setup-pentapro/assets/runs-readme.md) | Durable state location, ownership and recovery boundaries; no active run at setup. |
 | [Lessons template](setup-pentapro/assets/lessons-learned.md) | Empty project record with evidence and confidence fields. |
 | [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
-| [Root instruction template](setup-pentapro/assets/agents.md) | Adaptable project guidance, preserving existing instructions. |
+| [Root instruction template](setup-pentapro/assets/agents.md) | Permanent manifesto and adaptable project guidance, preserving existing instructions. |
+| [Git ignore template](setup-pentapro/assets/gitignore) / [attributes template](setup-pentapro/assets/gitattributes) | Defaults merged into dotted root Git files without duplicate additions. |
 
 
 ## PentaPRO
@@ -725,6 +730,12 @@ The optional bookkeeping [run-state helper](software-factory/scripts/run_state.p
 
 The fingerprint excludes run metadata and local prompt logs; ignored untracked outputs and external inputs need separate evidence. Preserve historical evidence when invalidating a gate. Choose project policy for versioning sanitized checkpoints; helpers never stage, commit or publish them. Post-push records can remain local for the next authorized commit. Existing customized projects adopt this contract through reviewed reconciliation. See the [local directory guide](docs/agents/runs/README.md) and [executed recovery controls](docs/factory-run-persistence.md).
 
+### Invocation history and efficiency
+
+Factory-role calls use append-only `docs/agents/runs/<run-id>/events.jsonl` beside the existing state record. Reuse the execution across prompts, sessions and retries; a prompt or agent does not create a directory. Standalone factory roles use one minimal real assignment run; ordinary skill calls remain outside this history. Only the orchestrator records sanitized reasons, expected/actual outcomes, evidence and observed timing/usage. Unknown metrics remain unavailable. Requested models/effort are separate from observed values.
+
+The [event contract and helper](software-factory/references/invocation-events.md) support explicit appends and per-run summaries without scanning other runs. Failed capture before managed dispatch holds dispatch; after observed effects reconcile state and retry recording only. Events are not proof of complete host capture. Retrospectives can examine rework, repeated assignments, handoff waits and cost per verified outcome without treating fewer reviews as better. Lessons reference this evidence and remain separate long-lived knowledge. Choose retention/versioning explicitly; no automatic history deletion, hooks, global configuration or telemetry service is installed. Existing projects adopt the guidance through reviewed setup reconciliation.
+
 ### Continuous improvement with PDSA
 
 All six factory roles (`factory_spec`, `factory_implementer`, `factory_verifier`, `factory_reviewer`, `factory_retrospective`, `factory_shipper`) use a short Plan-Do-Study-Act cycle, including isolated invocations. Plan against the current project, skills, relevant lessons and checks; execute the task; study results and unexpected conditions; then make authorized corrections and rerun affected checks. Read-only roles report source corrections to their authorized owner. Repeated correction is bounded to two attempts per failure, stopping sooner without progress.
@@ -804,7 +815,7 @@ Offline maintainer checks: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discov
 
 ## Project agent instructions template
 
-[setup-pentapro/assets/agents.md](setup-pentapro/assets/agents.md) is an adaptable project instruction template. Setup preserves existing instructions and embeds its complete prompt rule directly in the target project’s `AGENTS.md`.
+[setup-pentapro/assets/agents.md](setup-pentapro/assets/agents.md) is an adaptable project instruction template. Setup preserves existing instructions, includes the permanent motivational manifesto and embeds its complete prompt rule directly in the target project’s `AGENTS.md`.
 
 When `docs/agents/setup-notes.md` exists, PentaPRO reads its deferred facts on the next pass, preserves their status and provenance, and links them to the owning pillars.
 

@@ -28,6 +28,17 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
             prompt_rule(template_text),
         )
 
+    def test_permanent_manifesto_excludes_temporary_setup_guidance(self):
+        text = TEMPLATE.read_text(encoding="utf-8")
+        start = text.index("## Software Excellence Manifesto — Powered by PentaPRO\n")
+        end = text.index("\n## ", start + 1)
+        section = text[start:end]
+        self.assertIn("Our mission is to build the finest software", section)
+        self.assertIn("mandatory and permanent", section)
+        self.assertNotIn("Setup status: temporary", section)
+        self.assertNotIn("[FILL IN]", section)
+        self.assertNotIn("Adapt this template", section)
+
     def test_rule_is_self_contained_and_logs_only_to_agents_log(self):
         rule = prompt_rule(TEMPLATE.read_text(encoding="utf-8"))
         self.assertIn("`AGENTS.log`", rule)

@@ -39,7 +39,7 @@ The native change workflow adapts ideas from [OpenSpec](https://github.com/Fissi
 
 ## README and project licensing — 2026-11-20
 
-The maintainer supplied `/home/dever/workspace/teknolista/readme.md` as the project README template. The packaged `assets/readme.md.template` preserved the original bytes at introduction (SHA-256 `f700c6520149fe5bf9ff73297c06ec6d2536b987ddf41192a92f373b942ea917`). The closing review removed one trailing space to pass the repository whitespace check (current SHA-256 `90968bf6eb7fc874f341e10675f6eb4d604f377b52d87211d3cefa97ef9aca58`); template examples are adapted to verified target-project facts. This is maintainer-supplied material, not attributed to the Matt Pocock adaptation. GitHub's [license API documentation](https://docs.github.com/en/rest/licenses/licenses) defines current choice discovery and canonical license-body retrieval. No external license text is bundled as a target-project default; the developer selects the license. README language and replace/complement/skip choices are required independently of the collection's English-artifact convention.
+The maintainer supplied `/home/dever/workspace/teknolista/readme.md` as the project README template. The packaged `assets/readme.md.template` preserved the original bytes at introduction (SHA-256 `f700c6520149fe5bf9ff73297c06ec6d2536b987ddf41192a92f373b942ea917`). The closing review removed one trailing space to pass the repository whitespace check (closing-review SHA-256 at that checkpoint `90968bf6eb7fc874f341e10675f6eb4d604f377b52d87211d3cefa97ef9aca58`); template examples are adapted to verified target-project facts. This is maintainer-supplied material, not attributed to the Matt Pocock adaptation. GitHub's [license API documentation](https://docs.github.com/en/rest/licenses/licenses) defines current choice discovery and canonical license-body retrieval. No external license text is bundled as a target-project default; the developer selects the license. README language and replace/complement/skip choices are required independently of the collection's English-artifact convention.
 
 ## Cross-host role identity and closing maintenance — 2026-11-21
 
@@ -48,3 +48,5 @@ The [OpenCode agent documentation](https://opencode.ai/docs/agents/) defines pat
 ## PentaPRO plugin packaging — 2026-11-21
 
 PentaPRO is the collection identity; setup remains project-scoped regardless of package scope. Resolve the plugin-qualified installed skill and the target checkout separately, preserving generated project records through package updates. Root package metadata and per-host adapters do not change the complete prompt rule or install hooks.
+
+Setup PentaPRO 2.2.0 adds the maintainer-requested motivational experiment note to the README template and per-run invocation-history guidance to factory assets. Earlier template hashes above describe historical checkpoints, not the modified current file.

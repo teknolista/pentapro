@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "4.0.0"
+  version: "4.0.1"
 ---
 
 # PentaPRO
@@ -21,7 +21,7 @@ Turn user intent and accepted software changes into a maintained English specifi
 
 In a new repository, `$setup-pentapro` (when installed) can configure prompt persistence and applicable tracker and domain guidance, and hand off deferred project facts; this skill remains usable without it. Before drafting or resuming, read `docs/agents/setup-notes.md` when present and reconcile its deferred facts into the owning active-change dimensions, preserving sources, dates and `Confirmed` / `Proposed` / `Pending` states; do not promote them into the maintained baseline before result approval. Link each migrated fact to its canonical home and retain unresolved conflicts for clarification; notes do not override accepted specification decisions.
 
-A repository configured by `$setup-pentapro` may have a root instruction file carrying the packaged template's `Setup status: temporary` marker. After the first consolidated specification is saved, reconcile that file: fill the remaining `[FILL IN]` fields from confirmed project facts and remove sections that do not apply. Remove the marker only when all material fields are resolved or deliberately marked not applicable. Preserve the project's own instructions and the `## Prompt Logging` rule. Follow [reconciling the root instructions](references/document-maintenance.md#reconcile-the-root-instructions).
+A repository configured by `$setup-pentapro` may have a root instruction file carrying the packaged template's `Setup status: temporary` marker. After the first consolidated specification is saved, reconcile that file: fill the remaining `[FILL IN]` fields from confirmed project facts and remove sections that do not apply. Remove the marker only when all material fields are resolved or deliberately marked not applicable. Preserve the project's own instructions, the `## Prompt Logging` rule and any permanent `## Software Excellence Manifesto — Powered by PentaPRO` section, including its full text and preservation notice. Follow [reconciling the root instructions](references/document-maintenance.md#reconcile-the-root-instructions).
 
 Before changing a specification, identify the requested mode, target snapshot, canonical files/IDs and allowed writes. If context is limited, take one increment at a time and preserve the next action and material gaps in the existing PROCESS record or in the response for read-only work.
 

@@ -2,6 +2,8 @@
 
 Run after the requested implementation, review, publication and archival stages finish. If any requested stage remains incomplete, label the assessment provisional, identify the missing evidence and record the follow-up retrospective as the next action after completion. Inspect the reconciled durable run record (including version, snapshots, incomplete operations and checkpoint history), original request and later changes, review findings, check output, revision/remote evidence, archived change and actual session records when available. Do not assume all conversations or cost data exist.
 
+Read the selected run's invocation history and, when useful, derive its summary with the packaged event helper. Identify open or missing dispatch/terminal observations, retries for the same task, redundant scopes and handoff waits. Reconcile with actual host receipts where available; agent-authored events alone do not prove complete capture. Compare similar assignments and separate quality/required independence from call counts. A review without findings is not automatically waste. Unknown metrics remain unavailable; sums of parallel invocation durations are not project wall time. Audit at change completion rather than waiting for the entire project to finish. Keep cross-run aggregation explicit and bounded; ordinary tasks need only their current run.
+
 Produce a concise report:
 
 1. Scope, sources and gaps; identify reviewed and published revisions, archive revision and reviewer independence.
