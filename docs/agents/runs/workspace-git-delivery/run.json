@@ -1,31 +1,101 @@
 {
   "schema_version": 1,
   "run_id": "workspace-git-delivery",
-  "record_version": 1,
+  "record_version": 3,
   "objective": "Review, commit and normal-push pending work in eight Teknolista repositories as explicitly requested.",
-  "contracts": [],
+  "contracts": [
+    "software-factory/references/run-records.md",
+    "software-factory/references/invocation-events.md",
+    "git-ship role; user authorization in current conversation"
+  ],
   "repository": {
     "root": "/home/dever/workspace/teknolista/skills",
     "branch": "main",
     "base_commit": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
   },
   "orchestrator": "main-session",
-  "state": "INTAKE",
+  "state": "REVIEW",
   "snapshot": {
-    "fingerprint": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
-    "head": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
+    "fingerprint": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
+    "head": "535530471af11f03988d33fe2d0a1d7c514bdd9e"
   },
-  "gates": [],
-  "tasks": [],
-  "operations": [],
-  "blockers": [],
-  "next_action": "Define scope, required gates and role packets.",
+  "gates": [
+    {
+      "id": "per-repository-review",
+      "kind": "review",
+      "required": true,
+      "status": "pending",
+      "snapshot": null,
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "checks-and-diff-integrity",
+      "kind": "check",
+      "required": true,
+      "status": "pending",
+      "snapshot": null,
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "remote-ref-confirmation",
+      "kind": "check",
+      "required": true,
+      "status": "pending",
+      "snapshot": null,
+      "evidence": null,
+      "reason": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ship-eight-repositories",
+      "owner": "factory_shipper",
+      "status": "running",
+      "evidence": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "commit-reviewed-pending-work",
+      "kind": "commit",
+      "authorization": "Current user request explicitly authorizes committing pending changes across all Teknolista projects.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "push-reviewed-branches",
+      "kind": "push",
+      "authorization": "Current user request explicitly authorizes normal GitHub pushes across all Teknolista projects.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [
+    "Yo-Fi pending changes require review against repository instructions that still direct work through OpenSpec."
+  ],
+  "next_action": "Complete per-repository ship review; publish safe snapshots and retain any unresolved blockers without altering product scope.",
   "history": [
     {
       "record_version": 1,
       "state": "INTAKE",
       "orchestrator": "main-session",
       "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402"
+    },
+    {
+      "record_version": 2,
+      "state": "BLOCKED",
+      "orchestrator": "main-session",
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
     }
   ]
 }
