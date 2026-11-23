@@ -1,12 +1,13 @@
 {
   "schema_version": 1,
   "run_id": "workspace-git-delivery",
-  "record_version": 5,
+  "record_version": 6,
   "objective": "Review, commit and normal-push pending work in eight Teknolista repositories as explicitly requested.",
   "contracts": [
     "software-factory/references/run-records.md",
     "software-factory/references/invocation-events.md",
-    "git-ship role; user authorization in current conversation"
+    "git-ship role; user authorization in current conversation",
+    "docs/agents/runs/workspace-git-delivery/maintenance-evidence.md"
   ],
   "repository": {
     "root": "/home/dever/workspace/teknolista/skills",
@@ -16,8 +17,8 @@
   "orchestrator": "main-session",
   "state": "REVIEW",
   "snapshot": {
-    "fingerprint": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
-    "head": "8853a1372f58273c77ad4bd8277066022bf1f659"
+    "fingerprint": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397",
+    "head": "664e1451b0f1a33dabd80a7b8887024546954e82"
   },
   "gates": [
     {
@@ -27,7 +28,7 @@
       "status": "pending",
       "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
       "evidence": "events.jsonl#ship-all-retry-completed",
-      "reason": "Recheck current candidate; prior observations remain historical."
+      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
     },
     {
       "id": "checks-and-diff-integrity",
@@ -36,7 +37,7 @@
       "status": "pending",
       "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
       "evidence": "factory_shipper report: git diff --check and secret-pattern scan passed for candidate worktrees",
-      "reason": "Recheck current candidate; prior observations remain historical."
+      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
     },
     {
       "id": "remote-ref-confirmation",
@@ -45,15 +46,27 @@
       "status": "pending",
       "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
       "evidence": "events.jsonl#ship-all-retry-completed; three pushed refs and four no-op origin/main refs independently matched",
-      "reason": "Recheck current candidate; prior observations remain historical."
+      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
     }
   ],
   "tasks": [
     {
       "id": "ship-eight-repositories",
       "owner": "factory_shipper",
-      "status": "blocked",
+      "status": "running",
       "evidence": "events.jsonl#ship-all-retry-completed"
+    },
+    {
+      "id": "reconcile-workspace-documentation",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "maintenance-evidence.md"
+    },
+    {
+      "id": "sync-current-pentapro",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "maintenance-evidence.md"
     }
   ],
   "operations": [
@@ -107,7 +120,7 @@
     }
   ],
   "blockers": [],
-  "next_action": "Invoke factory_shipper for Skills only as requested, then reconcile documentation and sync latest PentaPRO skills and host agents across all eight repositories. Yo-Fi migration choice was supplied; publication of other current changes remains pending review.",
+  "next_action": "Invoke factory_shipper for final authorized review/commit/normal-push of current publishable changes across all eight repositories; retain drafted product decisions and verify exact remote refs. Do not repeat the confirmed first Skills receipt push.",
   "history": [
     {
       "record_version": 1,
@@ -138,6 +151,12 @@
       "state": "REVIEW",
       "orchestrator": "main-session",
       "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
+    },
+    {
+      "record_version": 6,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397"
     }
   ]
 }

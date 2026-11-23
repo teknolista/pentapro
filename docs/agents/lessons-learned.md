@@ -77,3 +77,12 @@ The main session/orchestrator maintains this project record. Factory agents retu
 - Limits/status: fixture behavior and this adoption validated in context; future upgrades and general prevention remain unmeasured/proposed.
 - Next verification: rerun both stale-lock and intentional-local-reversion controls on the next package update; verify hashes and preserved local decisions.
 - Persistence/publication: local post-publication lesson; no additional publication merely to include it.
+
+## LL-006 — Compare host role bodies as well as installed skill packages
+
+- Date: 2026-11-23. Source: main-session eight-project documentation/tooling review.
+- Evidence: [maintenance evidence](runs/workspace-git-delivery/maintenance-evidence.md). All 192 installed skill packages matched current source while several local host role profiles still required the retired workflow; 84 profiles needed reconciliation.
+- Cause/confidence: confirmed propagation gap in the inspected files. Prior package equality and invocation-paragraph updates did not establish whole-role workflow consistency. This does not establish which profiles a host actually selected.
+- Correction/result: compare the complete workflow body for each selected host against its packaged owner; preserve model/effort metadata and explicit custom runtime requirements. Updated known paragraphs and verified matching bodies plus a zero-operation second plan.
+- Proposed prevention: inventory each configured host adapter during collection updates, classify custom differences before writes, and check both package bytes and role-body semantics.
+- Status: correction validated locally; generalized prevention and runtime impact remain unmeasured. Next check: repeat during a later upgrade and inspect real host discovery separately.
