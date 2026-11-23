@@ -1,0 +1,143 @@
+{
+  "source_revision": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448",
+  "results": [
+    {
+      "project": "castas",
+      "packages": 24,
+      "changed_files": 113,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "chutego",
+      "packages": 24,
+      "changed_files": 72,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "chutegpt",
+      "packages": 24,
+      "changed_files": 113,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "skills",
+      "packages": 24,
+      "changed_files": 63,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "softheca",
+      "packages": 24,
+      "changed_files": 112,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "teknolista",
+      "packages": 24,
+      "changed_files": 112,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "teknolista.github.io",
+      "packages": 24,
+      "changed_files": 112,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    },
+    {
+      "project": "yo-fi",
+      "packages": 24,
+      "changed_files": 113,
+      "conflicts": [],
+      "index_preserved": true,
+      "histories_preserved": true
+    }
+  ],
+  "verification": [
+    {
+      "project": "castas",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "chutego",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "chutegpt",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "skills",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "softheca",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "teknolista",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "teknolista.github.io",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    },
+    {
+      "project": "yo-fi",
+      "packages": 24,
+      "published_files_match": true,
+      "rerun_changes": 0,
+      "manifest_and_logging_valid": true,
+      "role_toml_valid": true,
+      "whitespace_exit": 0
+    }
+  ]
+}

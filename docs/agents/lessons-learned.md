@@ -50,3 +50,30 @@ The main session/orchestrator maintains this project record. Factory agents retu
 - Proposed prevention and applicability limits:
 - Status: proposed / in test / validated in context / superseded / discarded
 - Next verification or supersession reference:
+
+
+## LL-004 — Validate permanent instruction sections in their destination context
+
+- Date: 2026-11-23.
+- Source role/task: factory_retrospective, retrospective-1; factory-invocation-history implementation and consumer adoption.
+- Context: Setup PentaPRO 2.2.0 / Software Factory 1.1.0; source publication 24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448 and local adoption in eight projects.
+- Evidence: [independent correction review](runs/factory-invocation-history/review-final.md), [adoption review](runs/factory-invocation-history/rollout-review.md), [consumer checks](runs/factory-invocation-history/consumer-update.md).
+- Observation/cause/confidence: confirmed locally. An H2 extraction initially absorbed temporary template guidance; insertion into an existing instruction file could also absorb its unheaded introduction.
+- Correction/result: explicit boundaries for generic setup and existing project context; source-template and destination-insertion regressions passed. All eight planned and installed manifesto sections matched the intended permanent content; reruns changed nothing.
+- Proposed prevention: validate exact extracted section content after insertion into fresh and customized destinations, including an unheaded introduction, while preserving unrelated guidance.
+- Limits/status: local correction validated; prevention across future templates remains proposed. No model-compliance or motivational benefit measured.
+- Next verification: apply these destination-context controls to the next template insertion and compare the resulting section before delivery.
+- Persistence/publication: local post-publication lesson; do not recommit/push solely to include it.
+
+
+## LL-005 — Establish installation provenance before replacing package files
+
+- Date: 2026-11-23.
+- Source role/task: factory_retrospective, retrospective-1; reviewed eight-project PentaPRO adoption.
+- Evidence: [adoption review](runs/factory-invocation-history/rollout-review.md), [actual consumer results](runs/factory-invocation-history/consumer-update.md) and six disposable updater controls recorded there.
+- Observation/cause/confidence: confirmed design risk in the draft updater. Matching arbitrary old upstream blobs can classify an intentional local reversion as stock; no real-project loss occurred because the draft was corrected before application.
+- Correction/result: use the actual installed baseline or an exact whole-package match to the identified pre-change published baseline; preserve unknown differences as conflicts. Stale-lock and intentional-reversion controls passed; all eight actual adoptions had no unresolved conflicts and matched the published source afterward.
+- Proposed prevention: retain accurate installed revision/hash metadata and review a concrete preservation plan before bulk updates.
+- Limits/status: fixture behavior and this adoption validated in context; future upgrades and general prevention remain unmeasured/proposed.
+- Next verification: rerun both stale-lock and intentional-local-reversion controls on the next package update; verify hashes and preserved local decisions.
+- Persistence/publication: local post-publication lesson; no additional publication merely to include it.

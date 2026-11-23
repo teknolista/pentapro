@@ -1,0 +1,11 @@
+# Retrospective — factory invocation history
+
+factory_retrospective invocation retrospective-1 reviewed run v9 at fingerprint 3e2f8bd1fbee5a9169f194728a4a0e0338b551e74b27f0a2e5ae3a9a8e08aec3 and found no remaining blocker within its bounded scope. It inspected receipts without independently requerying remote/CI. Source publication at 24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448, passing CI, local adoption and pending finished-result acceptance/consolidation/archive remain distinct.
+
+Strengths: independent review caught the manifesto boundary defect before publication; correction had regression/rereview. Adoption used published bytes, preserved staged work and verified 192 installed package copies, histories/indexes and zero-change reruns. Node subprocess and GitHub CLI failures were treated as environment/transport evidence rather than hidden product failures. Bootstrap capture/usage gaps remained explicit.
+
+At review, 26 events covered seven recorded invocations: two verifier, three reviewer, one shipper and this retrospective; six accepted returns, retrospective still awaiting its terminal append. Bootstrap spec/implementation calls predated the helper. Usage observations were zero. These counts do not establish total effort, cost savings, complete capture, efficiency or motivational benefit. Review cycles addressed a demonstrated defect and distinct rollout risks; counts do not justify labeling them redundant.
+
+Proposed lessons: validate exact permanent sections after insertion into both fresh/customized destinations (including unheaded introductions); establish installation provenance using the installed baseline or an exact complete known package, never arbitrary historical blob matching. Local corrections/fixture behavior and eight-project adoption are observed; general prevention remains proposed. Recheck both controls on the next applicable insertion/upgrade. The orchestrator alone persists English lessons. No automatic reusable-skill rewriting is authorized by these proposals.
+
+Retrospective and late execution/lesson records are local post-publication evidence for a later authorized commit. No additional source/consumer publication was performed just for bookkeeping.

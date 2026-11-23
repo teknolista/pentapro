@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "factory-invocation-history",
-  "record_version": 7,
+  "record_version": 10,
   "objective": "Add auditable per-run agent invocation events and update existing local PentaPRO consumers after source publication.",
   "contracts": [
     "pentapro/changes/factory-invocation-history/change.md"
@@ -12,10 +12,10 @@
     "base_commit": "808a33a4d3c73ac1f2281591fb150e2293dc8b81"
   },
   "orchestrator": "main-session",
-  "state": "SHIP",
+  "state": "DONE",
   "snapshot": {
-    "fingerprint": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
-    "head": "808a33a4d3c73ac1f2281591fb150e2293dc8b81"
+    "fingerprint": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
+    "head": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
   },
   "gates": [
     {
@@ -23,45 +23,45 @@
       "kind": "spec-review",
       "required": true,
       "status": "passed",
-      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
       "evidence": "docs/agents/runs/factory-invocation-history/spec-review.md",
-      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+      "reason": "Published source CI and independent verification/review cover unchanged helpers/contracts; actual eight-project adoption checks and final isolated local metadata/link validation cover local configuration and post-publication receipts. Excluded only preserved unrelated staged document."
     },
     {
       "id": "helper-tests",
       "kind": "check",
       "required": true,
       "status": "passed",
-      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
       "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
-      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+      "reason": "Published source CI and independent verification/review cover unchanged helpers/contracts; actual eight-project adoption checks and final isolated local metadata/link validation cover local configuration and post-publication receipts. Excluded only preserved unrelated staged document."
     },
     {
       "id": "collection-checks",
       "kind": "check",
       "required": true,
       "status": "passed",
-      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
       "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
-      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+      "reason": "Published source CI and independent verification/review cover unchanged helpers/contracts; actual eight-project adoption checks and final isolated local metadata/link validation cover local configuration and post-publication receipts. Excluded only preserved unrelated staged document."
     },
     {
       "id": "verification",
       "kind": "check",
       "required": true,
       "status": "passed",
-      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
       "evidence": "docs/agents/runs/factory-invocation-history/verification-final.md",
-      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+      "reason": "Published source CI and independent verification/review cover unchanged helpers/contracts; actual eight-project adoption checks and final isolated local metadata/link validation cover local configuration and post-publication receipts. Excluded only preserved unrelated staged document."
     },
     {
       "id": "independent-review",
       "kind": "review",
       "required": true,
       "status": "passed",
-      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
       "evidence": "docs/agents/runs/factory-invocation-history/review-final.md",
-      "reason": "Independent fixed-snapshot evidence plus scoped revalidation; only factual completion bookkeeping changed since final review, no criteria/helper/template behavior changed."
+      "reason": "Published source CI and independent verification/review cover unchanged helpers/contracts; actual eight-project adoption checks and final isolated local metadata/link validation cover local configuration and post-publication receipts. Excluded only preserved unrelated staged document."
     }
   ],
   "tasks": [
@@ -92,20 +92,20 @@
     {
       "id": "T5",
       "owner": "factory_shipper",
-      "status": "running",
-      "evidence": null
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/publication.md"
     },
     {
       "id": "T6",
       "owner": "orchestrator",
-      "status": "pending",
-      "evidence": null
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/consumer-update.md"
     },
     {
       "id": "T7",
       "owner": "orchestrator",
-      "status": "pending",
-      "evidence": null
+      "status": "done",
+      "evidence": "docs/agents/runs/factory-invocation-history/retrospective.md"
     }
   ],
   "operations": [
@@ -113,21 +113,21 @@
       "id": "source-commit",
       "kind": "commit",
       "authorization": "User explicitly requested factory_ship after implementation in this chat.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448",
+      "observation": "docs/agents/runs/factory-invocation-history/publication.md"
     },
     {
       "id": "source-push",
       "kind": "push",
       "authorization": "User explicitly requested normal source push before consumer updates in this chat.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448",
+      "observation": "docs/agents/runs/factory-invocation-history/publication.md"
     }
   ],
   "blockers": [],
-  "next_action": "factory_shipper reviews intended source snapshot, commits and normal-pushes, then verifies exact destination ref; consumer updates wait for confirmation.",
+  "next_action": "Requested implementation/publication/local adoption complete. Late configuration/receipts/lessons are local; wait for separately authorized consolidation/archive or future publication, never repeat confirmed effects solely for bookkeeping.",
   "history": [
     {
       "record_version": 1,
@@ -170,6 +170,24 @@
       "state": "SHIP",
       "orchestrator": "main-session",
       "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4"
+    },
+    {
+      "record_version": 8,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "9d44928dd45ab957c79d6e514e86d7b3365c355d95d0d0a2f08e878eabc732a4"
+    },
+    {
+      "record_version": 9,
+      "state": "RETROSPECTIVE",
+      "orchestrator": "main-session",
+      "snapshot": "3e2f8bd1fbee5a9169f194728a4a0e0338b551e74b27f0a2e5ae3a9a8e08aec3"
+    },
+    {
+      "record_version": 10,
+      "state": "DONE",
+      "orchestrator": "main-session",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402"
     }
   ]
 }

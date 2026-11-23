@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "run_id": "workspace-git-delivery",
+  "record_version": 1,
+  "objective": "Review, commit and normal-push pending work in eight Teknolista repositories as explicitly requested.",
+  "contracts": [],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/skills",
+    "branch": "main",
+    "base_commit": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
+  },
+  "orchestrator": "main-session",
+  "state": "INTAKE",
+  "snapshot": {
+    "fingerprint": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402",
+    "head": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
+  },
+  "gates": [],
+  "tasks": [],
+  "operations": [],
+  "blockers": [],
+  "next_action": "Define scope, required gates and role packets.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "19a9077b8700adfdbe95739bf808dfa3df3a5d9b54578fe342fa935b668bd402"
+    }
+  ]
+}

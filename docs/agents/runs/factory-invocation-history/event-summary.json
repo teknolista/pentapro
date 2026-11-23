@@ -1,0 +1,123 @@
+{
+  "run_id": "factory-invocation-history",
+  "invocation_count": 7,
+  "roles": {
+    "factory_verifier": 2,
+    "factory_reviewer": 3,
+    "factory_shipper": 1,
+    "factory_retrospective": 1
+  },
+  "outcomes": {
+    "result_accepted": 7
+  },
+  "open_count": 0,
+  "retry_count": 2,
+  "project_wall_time_seconds": null,
+  "invocations": [
+    {
+      "invocation_id": "verify-integrated-1",
+      "task_id": "t4-verification",
+      "role": "factory_verifier",
+      "attempt": 1,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_verifier",
+      "model_requested": "gpt-6.1-terra",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 276.29803,
+      "usage": null
+    },
+    {
+      "invocation_id": "review-integrated-1",
+      "task_id": "t4-review",
+      "role": "factory_reviewer",
+      "attempt": 1,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_reviewer",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 276.48539,
+      "usage": null
+    },
+    {
+      "invocation_id": "review-integrated-2",
+      "task_id": "t4-review",
+      "role": "factory_reviewer",
+      "attempt": 2,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_reviewer",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 103.3336,
+      "usage": null
+    },
+    {
+      "invocation_id": "verify-integrated-2",
+      "task_id": "t4-verification",
+      "role": "factory_verifier",
+      "attempt": 2,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_verifier",
+      "model_requested": "gpt-6.1-terra",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 102.673552,
+      "usage": null
+    },
+    {
+      "invocation_id": "ship-source-1",
+      "task_id": "t5-source-shipping",
+      "role": "factory_shipper",
+      "attempt": 1,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/source_shipper",
+      "model_requested": "gpt-6-luna",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 553.765322,
+      "usage": null
+    },
+    {
+      "invocation_id": "review-rollout-1",
+      "task_id": "t6-rollout-review",
+      "role": "factory_reviewer",
+      "attempt": 1,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_reviewer",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "high",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 137.110158,
+      "usage": null
+    },
+    {
+      "invocation_id": "retrospective-1",
+      "task_id": "t7-retrospective",
+      "role": "factory_retrospective",
+      "attempt": 1,
+      "status": "result_accepted",
+      "open": false,
+      "agent_id": "/root/invocation_retrospective",
+      "model_requested": "gpt-6.1-sol",
+      "effort_requested": "medium",
+      "model_observed": null,
+      "effort_observed": null,
+      "duration_seconds": 141.823279,
+      "usage": null
+    }
+  ]
+}
