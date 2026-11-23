@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "workspace-git-delivery",
-  "record_version": 3,
+  "record_version": 5,
   "objective": "Review, commit and normal-push pending work in eight Teknolista repositories as explicitly requested.",
   "contracts": [
     "software-factory/references/run-records.md",
@@ -17,7 +17,7 @@
   "state": "REVIEW",
   "snapshot": {
     "fingerprint": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
-    "head": "535530471af11f03988d33fe2d0a1d7c514bdd9e"
+    "head": "8853a1372f58273c77ad4bd8277066022bf1f659"
   },
   "gates": [
     {
@@ -25,59 +25,89 @@
       "kind": "review",
       "required": true,
       "status": "pending",
-      "snapshot": null,
-      "evidence": null,
-      "reason": null
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
+      "evidence": "events.jsonl#ship-all-retry-completed",
+      "reason": "Recheck current candidate; prior observations remain historical."
     },
     {
       "id": "checks-and-diff-integrity",
       "kind": "check",
       "required": true,
       "status": "pending",
-      "snapshot": null,
-      "evidence": null,
-      "reason": null
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
+      "evidence": "factory_shipper report: git diff --check and secret-pattern scan passed for candidate worktrees",
+      "reason": "Recheck current candidate; prior observations remain historical."
     },
     {
       "id": "remote-ref-confirmation",
       "kind": "check",
       "required": true,
       "status": "pending",
-      "snapshot": null,
-      "evidence": null,
-      "reason": null
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
+      "evidence": "events.jsonl#ship-all-retry-completed; three pushed refs and four no-op origin/main refs independently matched",
+      "reason": "Recheck current candidate; prior observations remain historical."
     }
   ],
   "tasks": [
     {
       "id": "ship-eight-repositories",
       "owner": "factory_shipper",
-      "status": "running",
-      "evidence": null
+      "status": "blocked",
+      "evidence": "events.jsonl#ship-all-retry-completed"
     }
   ],
   "operations": [
     {
-      "id": "commit-reviewed-pending-work",
+      "id": "commit-skills",
       "kind": "commit",
-      "authorization": "Current user request explicitly authorizes committing pending changes across all Teknolista projects.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "authorization": "Current user explicitly authorized committing all pending Teknolista work.",
+      "status": "confirmed",
+      "expected_revision": "8853a1372f58273c77ad4bd8277066022bf1f659",
+      "observation": "Commit confirmed locally and pushed to origin/main; see event ship-all-retry-completed."
     },
     {
-      "id": "push-reviewed-branches",
+      "id": "push-skills",
       "kind": "push",
-      "authorization": "Current user request explicitly authorizes normal GitHub pushes across all Teknolista projects.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "authorization": "Current user explicitly authorized normal GitHub pushes across Teknolista projects.",
+      "status": "confirmed",
+      "expected_revision": "8853a1372f58273c77ad4bd8277066022bf1f659",
+      "observation": "git ls-remote confirmed refs/heads/main exactly; CI run 45230457426 passed."
+    },
+    {
+      "id": "commit-castas",
+      "kind": "commit",
+      "authorization": "Current user explicitly authorized committing all pending Teknolista work.",
+      "status": "confirmed",
+      "expected_revision": "7b955c4cd26f77e09224a04cb7fcd86204810c43",
+      "observation": "Commit confirmed locally and pushed to origin/main; see event ship-all-retry-completed."
+    },
+    {
+      "id": "push-castas",
+      "kind": "push",
+      "authorization": "Current user explicitly authorized normal GitHub pushes across Teknolista projects.",
+      "status": "confirmed",
+      "expected_revision": "7b955c4cd26f77e09224a04cb7fcd86204810c43",
+      "observation": "git ls-remote confirmed refs/heads/main exactly; CI run 45230517923 passed."
+    },
+    {
+      "id": "commit-chutegpt",
+      "kind": "commit",
+      "authorization": "Current user explicitly authorized committing all pending Teknolista work.",
+      "status": "confirmed",
+      "expected_revision": "37193027d9e2634bff7669e3be904c156ae74ce6",
+      "observation": "Commit confirmed locally and pushed to origin/main; see event ship-all-retry-completed."
+    },
+    {
+      "id": "push-chutegpt",
+      "kind": "push",
+      "authorization": "Current user explicitly authorized normal GitHub pushes across Teknolista projects.",
+      "status": "confirmed",
+      "expected_revision": "37193027d9e2634bff7669e3be904c156ae74ce6",
+      "observation": "git ls-remote confirmed refs/heads/main exactly; repository has no configured workflows."
     }
   ],
-  "blockers": [
-    "Yo-Fi pending changes require review against repository instructions that still direct work through OpenSpec."
-  ],
-  "next_action": "Complete per-repository ship review; publish safe snapshots and retain any unresolved blockers without altering product scope.",
+  "blockers": [],
+  "next_action": "Invoke factory_shipper for Skills only as requested, then reconcile documentation and sync latest PentaPRO skills and host agents across all eight repositories. Yo-Fi migration choice was supplied; publication of other current changes remains pending review.",
   "history": [
     {
       "record_version": 1,
@@ -93,6 +123,18 @@
     },
     {
       "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
+    },
+    {
+      "record_version": 4,
+      "state": "BLOCKED",
+      "orchestrator": "main-session",
+      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
+    },
+    {
+      "record_version": 5,
       "state": "REVIEW",
       "orchestrator": "main-session",
       "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a"
