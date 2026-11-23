@@ -3,7 +3,7 @@ name: setup-pentapro
 description: Configure a repository for the PentaPRO skill collection and software factory. Set up prompt persistence, Git defaults, a permanent motivational manifesto, a project README and missing license, tracker and domain guidance, native change directories and agent roles, and a PentaPRO handoff while preserving existing decisions.
 license: MIT
 metadata:
-  version: "2.2.0"
+  version: "2.3.0"
 ---
 
 # Setup PentaPRO
@@ -20,6 +20,8 @@ Set up the current project for the collection, adapting Matt Pocock's repository
 6. Re-read changed files and validate the setup against selected scope: correct project, both dotted Git files with no duplicate additions and preserved project rules, one complete permanent manifesto near the beginning, single complete logging rule, safe ignore entries, actual tracker/domain decisions, README treatment/language and license outcome, preserved instructions and valid local links. Report created, changed, unchanged and incomplete outputs, required missing tools and external actions not performed. A rerun preserves decisions and avoids duplicate blocks. Provide the next step for `$penta-pro` where relevant.
 
 ## Complete rule to write into AGENTS.md
+
+For an authorized setup rerun or agent update, follow the [existing-role refresh procedure](references/factory-setup.md#review-existing-role-updates). The optional read-only [profile checker](scripts/check_agent_profiles.py) reports workflow differences separately from metadata; it never replaces custom profiles.
 
 ~~~markdown
 ## Prompt Logging

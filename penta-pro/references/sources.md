@@ -92,3 +92,7 @@ The correction preserves current-versus-proposed-versus-deployed scope, evidence
 ## External planning roots — 2026-11-20
 
 The approved refresh adds a conditional exception to the usual repository-local OpenSpec layout when a project selects a registered store. [OpenSpec project/store checks](https://github.com/Fission-AI/OpenSpec/blob/0c737dc1b543249b38b0f4716816fcf493d894dd/skills/openspec-apply-change/SKILL.md) inform the independently written guidance. Existing canonical ownership, versioned evidence and decision supersession remain unchanged; no competing specification tree is introduced.
+
+## Active-change destination clarification — 4.0.2
+
+The quality-bar consumer now explicitly keeps proposed UI detail in the active change and root PRODUCT updates in approved consolidation, matching UI Design 2.0.0 and the existing native change contract. No platform API or new execution authority was introduced.

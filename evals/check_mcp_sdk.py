@@ -1,14 +1,24 @@
 """In-process Streamable HTTP smoke test with the official MCP Python SDK 2.2.0."""
 
 import asyncio
+import sys
 from importlib.metadata import version
 from typing import TypedDict
 
-from httpx2 import ASGITransport, AsyncClient, ReadError
-from mcp import Client
-from mcp.client.streamable_http import streamable_http_client
-from mcp.server.mcpserver import Context, MCPServer
-from mcp.server.mcpserver.exceptions import ToolError
+try:
+    from httpx2 import ASGITransport, AsyncClient, ReadError
+    from mcp import Client
+    from mcp.client.streamable_http import streamable_http_client
+    from mcp.server.mcpserver import Context, MCPServer
+    from mcp.server.mcpserver.exceptions import ToolError
+except ModuleNotFoundError as error:
+    # Do not disguise an incompatible installed SDK or missing internal module as a skip.
+    if error.name not in {"mcp", "httpx2"}:
+        raise
+    print(f"MCP SDK smoke incomplete: missing {error.name}. In an isolated environment, "
+          "install evals/requirements-mcp.txt, then rerun this script. No protocol checks ran.",
+          file=sys.stderr)
+    raise SystemExit(2) from None
 
 LEGACY = "2025-11-25"
 MODERN = "2026-07-28"

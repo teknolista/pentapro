@@ -1,41 +1,47 @@
+# Cenários de SDD nativo com PentaPRO
 
-USO DE PENTAPRO EM PROJETOS GREENFIELD e BROWNFIELD:
+Este guia complementa o [checklist operacional da fábrica](guia-fabrica-changes.md). A sessão principal é o agente de exploração e orquestração; os seis especialistas são acionados quando necessários e disponíveis no host. Os nomes lógicos, como `factory_shipper`, precisam ser resolvidos para os identificadores descobertos pelo ambiente.
 
-Passo 0: Desenvolvedor instala plugin pentapro e realiza configuração inicial com setup-pentapro.
+## Preparação comum
 
+Instale uma única fonte da coleção por host/projeto e execute `setup-pentapro` no repositório correto. Preserve instruções, configurações, logs e personalizações. Confira a descoberta dos agentes e os modelos/esforços selecionados. Arquivos instalados não demonstram execução nem isolamento de permissões.
 
-CENÁRIO 1: Início de projeto (greenfield), sem especificação na pasta "/pentapro"
+O setup prepara a estrutura, mas não cria uma change fictícia nem aceita requisitos. O fluxo usa `pentapro/` na raiz do repositório. A especificação segue PRODUCT, PROJECT, PRODUCTION, PROOF e PROCESS. Cada change ativa possui seis arquivos: `change.md`, `product.md`, `project.md`, `production.md`, `proof.md` e `process.md`.
 
-* Passo 1.1: Desenvolvedor aciona agente de exploração no prompt e explica pro agente o que pretente desenvolver, respondendo a todos os questionamentos do agente. O interrogatório é feito para identificar tudo o que será necessário para especificar as 5 dimensões do software: PRODUCT, PRODUCTION, PROOF, PROJECT, PROCESS.
+Para solicitar implementação pela fábrica, descreva o resultado e a autoridade pretendida:
 
-* Passo 1.2: agente cria um nome para designar essa implementação inicial e salva uma pasta com esse nome em "/pentapro/changes". O detalhamento obtido da exploração é usado para criar a especificação inicial do software que será salva em artefatos na pasta "/pentapro/changes".
+```text
+Use software-factory para especificar e implementar este incremento: [resultado].
+Preserve as decisões existentes e apresente o resultado verificado para minha aceitação.
+```
 
-* Passo 1.3: Após realizar todo o detalhamento da especificação, agente aciona outro agente para revisar a especificação e verificar se está seguindo o padrão de pentapro. Se houver erros ou necessidade de maiores esclarecimentos, novas perguntas são feitas ao desenvolvedor para atualizar os artefatos criados até então dentro da change.
+Se pedir somente exploração ou especificação, o trabalho termina nesse escopo; uma especificação revisada não autoriza implementação por si só.
 
-* Passo 1.4: Estando tudo ok, agente aciona o agente responsável pela implementação. o agente de implementação consulta as especificações e inicia planejamento das tarefas necessárias. Em seguida já inicia a execução das tarefas. Esta etapa é bem semelhate à correspondente do OpenSpec. Todas as nossas skills voltadas a implementação e testes podem ser acionadas nesse passo.
+## Cenário 1: projeto novo, sem especificação consolidada
 
-* Passo 1.5: Finalizada a implementação, é acionado o(s) agente(s) para revisão dos trabalhos. Se houver algum problema, retorna para o agente de implementação fazer correções e novos testes. Em seguida, aciona novamente o agente de revisão e fica em loop até concluir toda a change e atender a todos os critérios de aceitação.
+1. **Explorar.** A sessão principal identifica usuário, problema, resultado observável, restrições e decisões relevantes. Ela aproveita informações existentes e pergunta apenas o necessário para resolver incertezas que afetem o incremento.
+2. **Salvar a proposta.** O agente cria `pentapro/changes/<nome>/` com os seis arquivos. Os tópicos da raiz permanecem modelos pendentes até a consolidação aprovada. A proposta distingue fatos confirmados, sugestões e questões abertas.
+3. **Revisar a especificação.** `factory_spec` reconstrói a jornada, examina as cinco dimensões e aponta ambiguidades, riscos e critérios sem verificação viável. O orquestrador resolve os achados e preserva decisões ainda pendentes. Se a revisão independente obrigatória não puder ocorrer, esse gate permanece incompleto.
+4. **Planejar e implementar.** Quando a implementação estiver autorizada, a sessão principal usa `software-delivery` para organizar tarefas delimitadas. `factory_implementer` aplica as skills pertinentes e produz mudanças e verificações proporcionais aos critérios. Cada tarefa identifica arquivos de responsabilidade e dependências; o projeto não precisa executar todas as skills.
+5. **Verificar e revisar.** `factory_verifier` confere critérios e evidências no snapshot integrado. `factory_reviewer` procura defeitos sustentados por evidência em contexto separado quando disponível. Achados retornam ao responsável pela correção. Limite as tentativas repetidas para a mesma falha conforme o protocolo da fábrica; diante de falta de progresso, reavalie a causa e registre o bloqueio, em vez de manter um loop ilimitado.
+6. **Apresentar para aceitação.** O orquestrador informa o resultado, o que foi realmente verificado, lacunas e efeitos pendentes. Feedback que altera requisitos atualiza a change e reabre apenas os gates afetados. A confirmação do desenvolvedor, e não o parecer de um agente ou o silêncio, estabelece aceitação.
+7. **Consolidar e entregar.** Por padrão, uma aprovação explícita do resultado verificado autoriza consolidar os requisitos nos tópicos da raiz, arquivar em `pentapro/changes/archive/YYYY-MM-DD_<nome>/`, commitar e fazer push normal. Respeite instruções mais restritas, como entrega somente local ou aprovações separadas. O orquestrador reconcilia os cinco pilares antes do arquivo; `factory_shipper`, usando `git-ship`, revisa o conjunto e confirma o SHA no destino real. Merge, release e deploy mantêm sua própria autoridade.
 
-* Passo 1.6: Quando a change for considerada pronta, notifica o desenvolvedor para que ele valide a change e dê feedback ao agente. Se o feedback for negativo, então é acionado o agente explorado para coletar novas informações ou especificações, alterar o planejamento, criar novas tarefas, realizar correções, fazer revisão e então notificar novamente o desenvolvedor. Fica em loop até o desenvolvedor confirmar a finalização da change.
+## Cenário 2: projeto existente, nova feature ou alteração
 
-* Passo 1.7: Desenvolvedor aciona agente e notifica que pode arquivar a change. O agente seguirá processo semelhante ao do OpenSpec, sincronizando toda a especificação da change nas 5 dimensões de especificação principais da pasta "/pentapro". Em seguida, move as changes concluídas e consideradas arquivadas para a subpasta "/pentapro/changes/archive". Uma vez que as changes estiverem arquivadas e a documentação principal do pentapro do projeto estiver corretamente sincronizada com a change, o agente software-shipper é acionado para publicar todas as mudanças no repositório remoto (commit e push).
+O ciclo de revisão, implementação autorizada, verificação, aceitação e entrega é o mesmo. A diferença está na referência inicial:
 
----
+1. Leia os contratos, consumidores, dados e comportamento atuais. Identifique a revisão e as diferenças locais relevantes. Se não houver PentaPRO, registre as fontes que ainda governam o projeto; não invente uma baseline aceita.
+2. Preserve a especificação consolidada enquanto a mudança é proposta e implementada em `pentapro/changes/<nome>/`. Identifique requisitos adicionados, modificados, removidos ou renomeados, preservando IDs e cenários não afetados.
+3. Nas dimensões sem impacto, explique por que permanecem iguais e aponte para seu registro real. Nas dimensões afetadas, registre compatibilidade, migração, recuperação, critérios e verificações necessárias.
+4. Depois da aceitação explícita, confira cada alteração contra a baseline anterior, reconcilie os cinco pilares e verifique os links a partir do destino de arquivo. Um movimento de pasta bem-sucedido não demonstra consistência nem funcionamento do software.
 
-CENÁRIO 2: Retomada de projeto (greenfield ou brownfield), adição de nova feature ou modificação de feature existente
+## Retomada, cancelamento e melhoria contínua
 
-* Passo 2.1: Desenvolvedor aciona agente de exploração no prompt e explica pro agente o que pretente adicionar, alterar ou remover, respondendo a todos os questionamentos do agente. O interrogatório é feito para identificar tudo o que será necessário para especificar as 5 dimensões do software: PRODUCT, PRODUCTION, PROOF, PROJECT, PROCESS.
+Em trabalho substancial ou com agentes da fábrica, o orquestrador mantém um registro em `docs/agents/runs/<run-id>/`. Reutilize a mesma execução para a mesma tarefa através de prompts, sessões e tentativas. Cada despacho recebe uma identidade e um evento; não crie um diretório por prompt. Apenas o orquestrador escreve o estado, os eventos e as lições.
 
-* Passo 2.2: agente cria um nome para designar essa nova change e salva uma pasta com esse nome em "/pentapro/changes". O detalhamento obtido da exploração é usado para criar a especificação da change será salva em artefatos na pasta "/pentapro/changes".
+Na retomada, confira arquivos, evidências e efeitos reais antes de repetir uma operação. Um push confirmado não deve ser repetido só porque faltou registrar o recibo. Arquivos, métricas ou conclusões históricas conservam sua revisão e limites.
 
-* Passo 2.3: Após realizar todo o detalhamento da especificação da change, agente aciona outro agente para revisar a especificação e verificar se está seguindo o padrão de pentapro. Se houver erros ou necessidade de maiores esclarecimentos, novas perguntas são feitas ao desenvolvedor para atualizar os artefatos criados até então dentro da change.
+Uma change cancelada registra a decisão, efeitos parciais e recuperação necessária, sem promover requisitos abandonados nem reverter código automaticamente. Após a entrega ou um bloqueio relevante, `factory_retrospective` propõe melhorias com evidências; o orquestrador registra as lições em inglês. Mudanças reutilizáveis na coleção precisam de seu próprio escopo e avaliação.
 
-* Passo 2.4: Estando tudo ok, agente aciona o agente responsável pela implementação. o agente de implementação consulta as especificações e inicia planejamento das tarefas necessárias. Em seguida já inicia a execução das tarefas. Esta etapa é bem semelhate à correspondente do OpenSpec. Todas as nossas skills voltadas a implementação e testes podem ser acionadas nesse passo.
-
-* Passo 2.5: Finalizada a implementação, é acionado o(s) agente(s) para revisão dos trabalhos. Se houver algum problema, retorna para o agente de implementação fazer correções e novos testes. Em seguida, aciona novamente o agente de revisão e fica em loop até concluir toda a change e atender a todos os critérios de aceitação.
-
-* Passo 2.6: Quando a change for considerada pronta, notifica o desenvolvedor para que ele valide a change e dê feedback ao agente. Se o feedback for negativo, então é acionado o agente explorado para coletar novas informações ou especificações, alterar o planejamento, criar novas tarefas, realizar correções, fazer revisão e então notificar novamente o desenvolvedor. Fica em loop até o desenvolvedor confirmar a finalização da change.
-
-* Passo 2.7: Desenvolvedor aciona agente e notifica que pode arquivar a change. O agente seguirá processo semelhante ao do OpenSpec, sincronizando toda a especificação da change nas 5 dimensões de especificação principais da pasta "/pentapro". Em seguida, move as changes concluídas e consideradas arquivadas para a subpasta "/pentapro/changes/archive". Uma vez que as changes estiverem arquivadas e a documentação principal do pentapro do projeto estiver corretamente sincronizada com a change, o agente software-shipper é acionado para publicar todas as mudanças no repositório remoto (commit e push).
-
---------------------------------------------------------------------------------
+Consulte os contratos atuais de [fábrica](../software-factory/SKILL.md), [PentaPRO](../penta-pro/SKILL.md), [entrega Git](../git-ship/SKILL.md) e [registros de execução](../software-factory/references/run-records.md).

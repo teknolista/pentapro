@@ -8,6 +8,10 @@ The [frontier-model trial record](evals/RESULTS.md) reports the first baseline a
 
 The [final maintenance review](FINAL-SKILL-REVIEW.md) records the subsequent per-skill assessment, corrections and verification limits.
 
+## Coverage and selection
+
+Evaluation is sampled by consequence and changed boundaries, not certified across all 24 skills or every host/model. [Coverage inventory](evaluation-coverage.md) separates authored scenario briefs, registered executable cases, actual trials and helper tests. Prioritize external effects, authorization, irreversible changes and routes changed by maintenance; use matching, ambiguous and nonmatching requests with positive and negative controls. A scenario file is not an executed trial, and passing case definitions does not establish model behavior.
+
 ## Reproduce the synthetic Codex trials
 
 Use a POSIX host (such as Linux or macOS), Python 3.12 or later, Git, and an authenticated Codex CLI with the intended model available. The runner writes fresh repositories and raw events to a new temporary directory, using Codex workspace-write sandboxing and no approval prompts. It terminates the run's process group on timeout; this does not contain a process that deliberately escapes that group or undo external effects. Use only synthetic inputs. Confirm the host has no user-installed copies of the tested packages that could leak into the control arm. Built-in and other host skills may still be available in every arm.
@@ -95,8 +99,10 @@ For a project pilot, compare changes of similar consequence. Track time spent cl
 
 ## Reproduce the MCP SDK smoke test
 
-In an isolated Python development environment, install `mcp==2.2.0` and run `python3 evals/check_mcp_sdk.py`. The [fixture](evals/check_mcp_sdk.py) uses the official server and a modern SDK client through in-process ASGI, with explicit legacy wire requests and a simulated lost response. Its synthetic principals, in-memory effects, and JSON response mode exercise routing and application checks in that fixture. Deployments still need their actual authentication, persistence, transports, and clients verified.
+In an isolated Python development environment, install the optional pinned SDK with `python3 -m pip install -r evals/requirements-mcp.txt` and run `python3 evals/check_mcp_sdk.py`. The [fixture](evals/check_mcp_sdk.py) uses the official server and a modern SDK client through in-process ASGI, with explicit legacy wire requests and a simulated lost response. Its synthetic principals, in-memory effects, and JSON response mode exercise routing and application checks in that fixture. Deployments still need their actual authentication, persistence, transports, and clients verified.
 
+
+Missing top-level `mcp` or `httpx2` makes the smoke exit 2 with an incomplete diagnostic; no protocol checks ran. A present but incompatible SDK still fails. Exit 2 is not a passing result. No SDK is installed by ordinary collection validation.
 
 ## Factory persistence controls
 

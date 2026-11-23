@@ -38,6 +38,10 @@ The main session/orchestrator maintains this project record. Factory agents retu
 - Next check: exercise a future completed/cancelled archive and inspect wording against authoritative receipts.
 - Persistence/publication: local post-publication entry, pending a future authorized commit; do not republish merely to add it.
 
+## Publication context
+
+Dated persistence/publication notes below describe each entry's original observation, not a current pending-work queue. Some late entries were subsequently committed. Inspect actual Git state and the current owning run; never rewrite a completed run or repeat a confirmed push merely to make an old note current.
+
 ## Entry format
 
 - ID and date:

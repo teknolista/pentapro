@@ -50,3 +50,7 @@ The [OpenCode agent documentation](https://opencode.ai/docs/agents/) defines pat
 PentaPRO is the collection identity; setup remains project-scoped regardless of package scope. Resolve the plugin-qualified installed skill and the target checkout separately, preserving generated project records through package updates. Root package metadata and per-host adapters do not change the complete prompt rule or install hooks.
 
 Setup PentaPRO 2.2.0 adds the maintainer-requested motivational experiment note to the README template and per-run invocation-history guidance to factory assets. Earlier template hashes above describe historical checkpoints, not the modified current file.
+
+## Installed-profile diagnostics — 2.3.0
+
+The developer-requested harness review added an optional read-only profile comparator, safe refresh guidance and explicit preservation of custom model/effort/host settings. Templates retain their existing role contracts. The helper does not establish native discovery, enforce permissions or overwrite installed profiles.

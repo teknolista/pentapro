@@ -28,6 +28,12 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
             prompt_rule(template_text),
         )
 
+    def test_checkout_instructions_preserve_the_same_complete_rule(self):
+        text = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        start = text.index("## Prompt Logging\n")
+        end = text.index("\n## Project Context and Navigation", start)
+        self.assertEqual(text[start:end].rstrip(), prompt_rule(TEMPLATE.read_text(encoding="utf-8")))
+
     def test_permanent_manifesto_excludes_temporary_setup_guidance(self):
         text = TEMPLATE.read_text(encoding="utf-8")
         start = text.index("## Software Excellence Manifesto — Powered by PentaPRO\n")

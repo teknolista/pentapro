@@ -28,6 +28,8 @@ npx skills@latest add teknolista/skills --skill '*' -a antigravity-cli
 
 These are alternatives. No `-g` means project scope. Omit `-a` to select interactively; omit `--skill '*'` to choose individual skills. For editable independent copies, select copy in the installer or add `--copy`. Use `npx skills@latest check` and `npx skills@latest update` for installer-managed skills; review changes before adoption. [Installer reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
 
+`skills-lock.json` is installation provenance, not a hash of `SKILL.md` alone: its installer-defined `computedHash` covers the skill folder. This collection ignores its own local installation lock; that repository policy is not a rule for consuming projects. The upstream skills CLI supports versioning project locks for reproducibility. Use the installer corresponding to the existing route, preserve custom copies, and update provenance only after checking the installed content. A lock pointing to a newer commit does not prove that the bytes were updated. [Installer lock semantics](https://github.com/vercel-labs/skills/blob/main/src/local-lock.ts)
+
 **Native plugin, project-scoped:** use the local bundle recipes below. They configure the project/session. Codex also requires installation through the host and an effective-scope check. Some hosts still cache package bytes in a user directory; project activation and cache storage are different. Use the skills CLI route when you require skill files to live entirely in the project and no plugin cache installation.
 
 **Native plugin, user-wide:** these commands change the host's user installation/configuration and are optional:
@@ -48,6 +50,8 @@ opencode plugin add github:teknolista/skills
 agy plugin install https://github.com/teknolista/skills
 ```
 
+OpenCode native discovery was not established in the recorded V2 probe; use the project-scoped skills CLI fallback when the plugin is absent from its registry. See [discovery evidence and limitations](docs/plugin-distribution.md).
+
 Check the installed CLI's help before using these commands on older versions. These use a repository source, not a published npm package or an official marketplace listing. Remote installation requires the committed manifests to be available on GitHub. Updating local files in this checkout does not publish them. Host update/removal commands and policy vary; see [plugin operations](docs/plugin-distribution.md).
 
 To install only skills globally, add `-g` to the selected skills CLI command. Global availability affects multiple repositories; a shared update can change behavior in all of them. Project copies can diverge or shadow global skills. Keep one active copy per skill/host and inspect the effective registered path before removing duplicates. No global setup or background action is required.
@@ -62,7 +66,7 @@ Use project-local settings only and preserve existing files and decisions.
 The project purpose is: [describe your project].
 ```
 
-Setup preserves existing instructions, asks for unresolved README/license choices, prepares relevant project guidance and available tools, installs the selected-host agent templates and initializes the PDSA protocol and empty lessons record. It never writes into the plugin cache or turns a user-wide installation into global project configuration. Repeat per repository even when the plugin is installed globally. Existing customized agents/records are preserved on rerun; plugin updates do not silently replace them. See [Setup PentaPRO](#setup-pentapro).
+Setup preserves existing instructions, asks for unresolved README/license choices, prepares relevant project guidance and available tools, installs the selected-host agent templates and initializes the PDSA protocol and empty lessons record. It never writes into the plugin cache or turns a user-wide installation into global project configuration. Repeat per repository even when the plugin is installed globally. Existing customized agents/records are preserved on rerun; plugin updates do not silently replace them. Use the [safe profile refresh and read-only checker](setup-pentapro/references/factory-setup.md#review-existing-role-updates) to identify outdated workflow bodies without discarding project choices. See [Setup PentaPRO](#setup-pentapro).
 
 ### Project-local native plugin recipes
 
@@ -175,8 +179,8 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 2.2.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
-| [PentaPRO](#pentapro) | 4.0.1 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
+| [Setup PentaPRO](#setup-pentapro) | 2.3.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
+| [PentaPRO](#pentapro) | 4.0.2 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.10.4 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
 | [UI Design](#ui-design) | 2.0.0 | Specify, refine, review, and implement web and Android screens. Maintain the project screen contract when documentation is in scope. |
@@ -315,7 +319,7 @@ A skill stored in this repository is not automatically installed into other proj
 
 ### Activation
 
-The skills support automatic selection for matching tasks. In Codex, mention a skill name such as `$penta-pro`, `$http-api`, or `$android-data-layer` to select it explicitly. PentaPRO, Peer Review, Cybersecurity, UI Design, and Production Operations ship optional `agents/openai.yaml` display metadata and default prompts. Select the model through the host controls. Use `$pr-quiz` for a requested comprehension quiz or quiz setup.
+The skills support automatic selection for matching tasks. In Codex, mention a skill name such as `$penta-pro`, `$http-api`, or `$android-data-layer` to select it explicitly. PentaPRO, Peer Review, Cybersecurity, UI Design, and Production Operations ship optional `agents/openai.yaml` display metadata and default prompts. Those presentation entrypoints were selected for their existing display/prompt integration; metadata is not a capability or quality tier, and other packages do not require it for Agent Skills discovery. Select the model through the host controls. Use `$pr-quiz` for a requested comprehension quiz or quiz setup.
 
 The core instructions use Markdown and package-local references and templates. Skills refer to optional companions by name. The optional prototype helper uses Python. Publishing a requested PR quiz requires Python, `gh` and actual GitHub access, and its optional grader uses GitHub Actions. Use the tools, access and writable destinations required by the task. Installing a skill supplies instructions and package assets.
 
@@ -829,6 +833,7 @@ The PDFs are Portuguese teaching editions dated November 2026. The development g
 - [Castas Android retrospective](docs/relatorio-retrospectiva-castas-android.pdf) shows how environment checks, cross-platform parity, device tests and release evidence changed during one project.
 - [SDD walkthrough notes](docs/SDD_step-by-step.md) collect separate working drafts for product discovery and project constitutions using Spec Kit. Use the workflow above for current collection guidance.
 - [Software factory v1 comparison](docs/software-factory-v1-comparison.md) explains the current portable package and remaining pilot evidence. The [original factory proposal](docs/software-factory-workflow.md) is a dated design record.
+- [Greenfield and brownfield scenarios](docs/pentapro-cenarios-sdd.md) explain the native lifecycle in Portuguese, including authority, bounded correction and resumption.
 - [Guia da fábrica para changes](docs/guia-fabrica-changes.md) is a Portuguese checklist for setting up a project, requesting a change, reviewing delivery and conducting the retrospective.
 - [Adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md), [evaluation procedure](SKILL-EVALUATION.md) and [maintenance review](FINAL-SKILL-REVIEW.md) describe how to adopt or evaluate changes to the collection.
 
@@ -839,6 +844,10 @@ Each skill lives directly under this repository's root and follows the [Agent Sk
 ```text
 skills/
 ├── README.md
+├── AGENTS.md                  Repository instructions and local prompt-log policy
+├── pentapro/                  Baseline, active changes and process status
+├── .codex/agents/             Tracked Codex role definitions
+├── .github/agents/            Tracked Copilot role definitions
 ├── LICENSE
 ├── THIRD-PARTY-NOTICES.md
 ├── SKILL-ROUTING.md
@@ -853,7 +862,7 @@ skills/
 ├── .codex-plugin/              Codex compatibility manifest
 ├── .antigravity-plugin/        Antigravity overlay
 ├── .claude-plugin/             Compatibility marketplace catalog
-├── docs/
+├── docs/                       Guides, reviews and docs/agents/ records
 ├── .github/workflows/validate.yml
 ├── evals/
 ├── scripts/
@@ -920,6 +929,8 @@ skills/
     └── scripts/
 ```
 
+The tree is a navigation overview, not a complete inventory. `plugin/catalog.json` is generated by `scripts/package_plugin.py`; canonical agent templates live in `setup-pentapro/assets/agents/`, not the installed host copies.
+
 The documentation and maintenance directories serve different readers:
 
 - `docs/` holds the [guides and case studies](#guides-and-case-studies) for developers and maintainers.
@@ -953,6 +964,8 @@ git diff --check
 ```
 
 These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](SKILL-EVALUATION.md).
+
+See the [script/test and readiness assessment](docs/harness-review-2026-11-23.md) and [review history index](docs/reviews.md) for the current evidence and historical report scope.
 
 Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [review-report follow-up](docs/review-followup-2026-11-22.md) records the latest bounded corrections, fresh checks and limits. The [native SDD maintenance review](docs/native-sdd-review.md) preserves its migration checks and limits. The [earlier maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md) preserves its evaluated snapshot. The [earlier closing maintenance audit](docs/maintenance-review-2026-11-21.md) records its evaluated snapshot; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 

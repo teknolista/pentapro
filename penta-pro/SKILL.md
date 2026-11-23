@@ -3,7 +3,7 @@ name: penta-pro
 description: "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review."
 license: MIT
 metadata:
-  version: "4.0.1"
+  version: "4.0.2"
 ---
 
 # PentaPRO
@@ -94,7 +94,7 @@ For material assumptions, separate permission to proceed from evidence that the 
 
 ## Quality bar
 
-For native Android projects, product context, requirements, architecture decisions, verification plans and readiness remain findable through these five pillars. During migration or an active change, project-selected requirements, contracts and task lists can remain in their existing artifacts; the pillars index and link them until accepted behavior is reconciled into PentaPRO. An installed `android-module-structure` package supplies concrete Gradle/module implementation procedures after implementation is authorized; it does not run a second product interview or replace a pillar. The `ui-design` skill may author detailed screen files under `pentapro/product/`; security assessment belongs to `cybersec`, and code/test review to `peer-review`.
+For native Android projects, product context, requirements, architecture decisions, verification plans and readiness remain findable through these five pillars. During migration or an active change, project-selected requirements, contracts and task lists can remain in their existing artifacts; the pillars index and link them until accepted behavior is reconciled into PentaPRO. An installed `android-module-structure` package supplies concrete Gradle/module implementation procedures after implementation is authorized; it does not run a second product interview or replace a pillar. The `ui-design` skill authors proposed screen detail in the active change; root `pentapro/product/` records are updated only during approved consolidation. Security assessment belongs to `cybersec`, and code/test review to `peer-review`.
 
 Before presenting a draft, check for these failure modes:
 

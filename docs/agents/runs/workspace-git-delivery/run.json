@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "workspace-git-delivery",
-  "record_version": 6,
+  "record_version": 7,
   "objective": "Review, commit and normal-push pending work in eight Teknolista repositories as explicitly requested.",
   "contracts": [
     "software-factory/references/run-records.md",
@@ -15,58 +15,58 @@
     "base_commit": "24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448"
   },
   "orchestrator": "main-session",
-  "state": "REVIEW",
+  "state": "DONE",
   "snapshot": {
     "fingerprint": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397",
-    "head": "664e1451b0f1a33dabd80a7b8887024546954e82"
+    "head": "3411801ac12fbfc92be1349a636dccae130daa29"
   },
   "gates": [
     {
       "id": "per-repository-review",
       "kind": "review",
       "required": true,
-      "status": "pending",
-      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
-      "evidence": "events.jsonl#ship-all-retry-completed",
-      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
+      "status": "passed",
+      "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397",
+      "evidence": "final-publication.md; maintenance-evidence.md",
+      "reason": "Documentary/tooling scope reviewed and checked; exact actual destination refs independently reconfirmed. Runtime product acceptance is separate."
     },
     {
       "id": "checks-and-diff-integrity",
       "kind": "check",
       "required": true,
-      "status": "pending",
-      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
-      "evidence": "factory_shipper report: git diff --check and secret-pattern scan passed for candidate worktrees",
-      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
+      "status": "passed",
+      "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397",
+      "evidence": "final-publication.md; maintenance-evidence.md",
+      "reason": "Documentary/tooling scope reviewed and checked; exact actual destination refs independently reconfirmed. Runtime product acceptance is separate."
     },
     {
       "id": "remote-ref-confirmation",
       "kind": "check",
       "required": true,
-      "status": "pending",
-      "snapshot": "27583eec272ed14ed9c5db597f88cbd5474963987dce64e4766ac4e20167c85a",
-      "evidence": "events.jsonl#ship-all-retry-completed; three pushed refs and four no-op origin/main refs independently matched",
-      "reason": "Final authorized multi-repository delivery requires independent shipper review and exact remote confirmation of current snapshots."
+      "status": "passed",
+      "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397",
+      "evidence": "final-publication.md; maintenance-evidence.md",
+      "reason": "Documentary/tooling scope reviewed and checked; exact actual destination refs independently reconfirmed. Runtime product acceptance is separate."
     }
   ],
   "tasks": [
     {
       "id": "ship-eight-repositories",
       "owner": "factory_shipper",
-      "status": "running",
-      "evidence": "events.jsonl#ship-all-retry-completed"
+      "status": "done",
+      "evidence": "final-publication.md; maintenance-evidence.md"
     },
     {
       "id": "reconcile-workspace-documentation",
       "owner": "main-session",
       "status": "done",
-      "evidence": "maintenance-evidence.md"
+      "evidence": "final-publication.md; maintenance-evidence.md"
     },
     {
       "id": "sync-current-pentapro",
       "owner": "main-session",
       "status": "done",
-      "evidence": "maintenance-evidence.md"
+      "evidence": "final-publication.md; maintenance-evidence.md"
     }
   ],
   "operations": [
@@ -117,10 +117,138 @@
       "status": "confirmed",
       "expected_revision": "37193027d9e2634bff7669e3be904c156ae74ce6",
       "observation": "git ls-remote confirmed refs/heads/main exactly; repository has no configured workflows."
+    },
+    {
+      "id": "final-commit-skills",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "3411801ac12fbfc92be1349a636dccae130daa29",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-skills",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "3411801ac12fbfc92be1349a636dccae130daa29",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-castas",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "38ad14437798f10c80309c5e555d4324f13f3fe0",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-castas",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "38ad14437798f10c80309c5e555d4324f13f3fe0",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-chutegpt",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "9b2d31f17915891153d7922fe9347db2a2deb099",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-chutegpt",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "9b2d31f17915891153d7922fe9347db2a2deb099",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-chutego",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "f8e349d95bf42cb655a834f4c3fce4fdee47470c",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-chutego",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "f8e349d95bf42cb655a834f4c3fce4fdee47470c",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-softheca",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "6cb2f13442ab0abdb6369fae81c520eedb6a228e",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-softheca",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "6cb2f13442ab0abdb6369fae81c520eedb6a228e",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-teknolista",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "ba22cb980ef0ed4770f5a4b999584c4506c4124e",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-teknolista",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "ba22cb980ef0ed4770f5a4b999584c4506c4124e",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-teknolista-github-io",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "791b262130861510b84e0e46e50ec04c44a646df",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-teknolista-github-io",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "791b262130861510b84e0e46e50ec04c44a646df",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-commit-yo-fi",
+      "kind": "commit",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "17f613718b711c197b0f20ebf6ba5e75b6ec6549",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
+    },
+    {
+      "id": "final-push-yo-fi",
+      "kind": "push",
+      "authorization": "Explicit standing all-project commit/normal-push request and request to finish pending corrections and synchronize current PentaPRO.",
+      "status": "confirmed",
+      "expected_revision": "17f613718b711c197b0f20ebf6ba5e75b6ec6549",
+      "observation": "Factory shipper delivery report and independently repeated actual push-destination ref query on resume; final-publication.md"
     }
   ],
   "blockers": [],
-  "next_action": "Invoke factory_shipper for final authorized review/commit/normal-push of current publishable changes across all eight repositories; retain drafted product decisions and verify exact remote refs. Do not repeat the confirmed first Skills receipt push.",
+  "next_action": "Requested documentation reconciliation, all eight normal pushes and final installed PentaPRO synchronization are complete. Preserve late receipts and later local changes. Do not repeat confirmed pushes. Future product discovery/corrections resume from their Draft records under a new scoped assignment.",
   "history": [
     {
       "record_version": 1,
@@ -155,6 +283,12 @@
     {
       "record_version": 6,
       "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397"
+    },
+    {
+      "record_version": 7,
+      "state": "DONE",
       "orchestrator": "main-session",
       "snapshot": "6cfdc471f0e2c06c95f1bf25a2ec3d7981c5149b4f3f2c23caa345b280bcf397"
     }

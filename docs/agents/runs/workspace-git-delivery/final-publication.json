@@ -1,0 +1,142 @@
+{
+  "observed_at": "2026-11-23T18:38:07.593596-03:00",
+  "observer": "main-session actual post-resume ls-remote, GitHub Actions queries and installation checks; factory_shipper original publication report",
+  "repositories": [
+    {
+      "project": "skills",
+      "expected": "3411801ac12fbfc92be1349a636dccae130daa29",
+      "remote": "3411801ac12fbfc92be1349a636dccae130daa29",
+      "matches": true
+    },
+    {
+      "project": "castas",
+      "expected": "38ad14437798f10c80309c5e555d4324f13f3fe0",
+      "remote": "38ad14437798f10c80309c5e555d4324f13f3fe0",
+      "matches": true
+    },
+    {
+      "project": "chutegpt",
+      "expected": "9b2d31f17915891153d7922fe9347db2a2deb099",
+      "remote": "9b2d31f17915891153d7922fe9347db2a2deb099",
+      "matches": true
+    },
+    {
+      "project": "chutego",
+      "expected": "f8e349d95bf42cb655a834f4c3fce4fdee47470c",
+      "remote": "f8e349d95bf42cb655a834f4c3fce4fdee47470c",
+      "matches": true
+    },
+    {
+      "project": "softheca",
+      "expected": "6cb2f13442ab0abdb6369fae81c520eedb6a228e",
+      "remote": "6cb2f13442ab0abdb6369fae81c520eedb6a228e",
+      "matches": true
+    },
+    {
+      "project": "teknolista",
+      "expected": "ba22cb980ef0ed4770f5a4b999584c4506c4124e",
+      "remote": "ba22cb980ef0ed4770f5a4b999584c4506c4124e",
+      "matches": true
+    },
+    {
+      "project": "teknolista.github.io",
+      "expected": "791b262130861510b84e0e46e50ec04c44a646df",
+      "remote": "791b262130861510b84e0e46e50ec04c44a646df",
+      "matches": true
+    },
+    {
+      "project": "yo-fi",
+      "expected": "17f613718b711c197b0f20ebf6ba5e75b6ec6549",
+      "remote": "17f613718b711c197b0f20ebf6ba5e75b6ec6549",
+      "matches": true
+    }
+  ],
+  "ci": {
+    "skills": {
+      "run": 45248603392,
+      "status": "success",
+      "url": "https://github.com/teknolista/skills/actions/runs/45248603392"
+    },
+    "castas": {
+      "run": 45248602565,
+      "status": "success",
+      "url": "https://github.com/teknolista/castas/actions/runs/45248602565"
+    },
+    "teknolista.github.io": {
+      "run": 45248602498,
+      "status": "success",
+      "url": "https://github.com/teknolista/teknolista.github.io/actions/runs/45248602498"
+    }
+  },
+  "installation": {
+    "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29",
+    "version": "2.2.0",
+    "projects": [
+      {
+        "project": "castas",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "chutego",
+        "packages": 24,
+        "roles": 6,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "chutegpt",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "skills",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "softheca",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "teknolista",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "teknolista.github.io",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      },
+      {
+        "project": "yo-fi",
+        "packages": 24,
+        "roles": 24,
+        "source_revision": "3411801ac12fbfc92be1349a636dccae130daa29"
+      }
+    ],
+    "packages": 192,
+    "roles": 174,
+    "remaining_content_changes": 0
+  },
+  "later_local_changes_preserved": {
+    "castas": [
+      " D pentapro/changes/archive/2026-11-08-castas-native-android/.openspec.yaml",
+      " D pentapro/changes/archive/2026-11-08-prepare-android-play-release/.openspec.yaml",
+      " D pentapro/changes/archive/legacy-openspec-config.yaml"
+    ],
+    "chutegpt": [
+      " D pentapro/changes/archive/2026-11-16-interactive-strategy-analysis-draft/.openspec.yaml",
+      " D pentapro/changes/archive/2026-11-19-atualizar-resultados-diarios/.openspec.yaml",
+      " D pentapro/changes/archive/2026-11-19-estrategy-create/.openspec.yaml"
+    ]
+  },
+  "policy": "Late completion receipts stay local; do not repeat confirmed pushes solely to publish bookkeeping. Later local deletions are outside the delivered snapshot and were not staged, restored or attributed.",
+  "timing_limit": "Final terminal capture was delayed until resumption. Helper elapsed time includes the interruption and delayed recording, not actual agent processing time. Original terminal timestamp and usage were unavailable."
+}

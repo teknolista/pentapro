@@ -1,0 +1,238 @@
+{
+  "baseline": "3411801ac12fbfc92be1349a636dccae130daa29 plus local candidate",
+  "bundle_version": "2.3.0",
+  "setup_version": "2.3.0",
+  "pentapro_version": "4.0.2",
+  "environment": {
+    "python": "3.12.6",
+    "node": "v27.0.0-alpha.0.0.0",
+    "ci_node": "24; no fresh hosted CI for this candidate"
+  },
+  "checks": [
+    {
+      "name": "root-python",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "scripts/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 34.34,
+      "tail": [
+        "test_package_link_cannot_escape_installed_directory (test_validate_collection.CollectionValidationTests.test_package_link_cannot_escape_installed_directory) ... ok",
+        "test_real_duplicate_headings_and_code_examples (test_validate_collection.CollectionValidationTests.test_real_duplicate_headings_and_code_examples) ... ok",
+        "test_valid_collection_with_optional_host_metadata (test_validate_collection.CollectionValidationTests.test_valid_collection_with_optional_host_metadata) ... ok",
+        "test_valid_host_icon_and_explicit_policy (test_validate_collection.CollectionValidationTests.test_valid_host_icon_and_explicit_policy) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 110 tests in 33.354s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "name": "penta-python",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "penta-pro/scripts/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 2.16,
+      "tail": [
+        "test_rejects_symlinked_specification_directory (test_init_pentapro.InitializationTests.test_rejects_symlinked_specification_directory) ... ok",
+        "test_requires_the_repository_root (test_init_pentapro.InitializationTests.test_requires_the_repository_root) ... ok",
+        "test_rerun_preserves_changes_archive_and_their_indexes (test_init_pentapro.InitializationTests.test_rerun_preserves_changes_archive_and_their_indexes) ... ok",
+        "test_second_run_preserves_existing_files_and_recreates_deleted_ones (test_init_pentapro.InitializationTests.test_second_run_preserves_existing_files_and_recreates_deleted_ones) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 14 tests in 1.380s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "name": "ui-python",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "ui-design/scripts/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 7.84,
+      "tail": [
+        "test_translucent_background_is_error (test_prototype_tools.PrototypeTests.test_translucent_background_is_error) ... ok",
+        "test_unhashable_pair_fields_fail_cleanly (test_prototype_tools.PrototypeTests.test_unhashable_pair_fields_fail_cleanly) ... ok",
+        "test_unknown_and_absent_themes_are_errors (test_prototype_tools.PrototypeTests.test_unknown_and_absent_themes_are_errors) ... ok",
+        "test_unknown_usage_is_error_not_zero_threshold (test_prototype_tools.PrototypeTests.test_unknown_usage_is_error_not_zero_threshold) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 26 tests in 7.125s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "name": "quiz-python",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "pr-quiz/scripts/tests",
+        "-v"
+      ],
+      "exit": 0,
+      "seconds": 0.89,
+      "tail": [
+        "test_question_and_options_render_as_literal_text (test_publish_quiz.QuizTests.test_question_and_options_render_as_literal_text) ... ok",
+        "test_replacement_preserves_outside_text_and_backslashes (test_publish_quiz.QuizTests.test_replacement_preserves_outside_text_and_backslashes) ... ok",
+        "test_shuffled_key_matches_visible_correct_option (test_publish_quiz.QuizTests.test_shuffled_key_matches_visible_correct_option) ... ok",
+        "test_stale_draft_and_head_change_abort_before_write (test_publish_quiz.QuizTests.test_stale_draft_and_head_change_abort_before_write) ... ok",
+        "",
+        "----------------------------------------------------------------------",
+        "Ran 15 tests in 0.060s",
+        "",
+        "OK"
+      ]
+    },
+    {
+      "name": "quiz-node",
+      "command": [
+        "node",
+        "pr-quiz/scripts/tests/workflow.cjs"
+      ],
+      "exit": 0,
+      "seconds": 0.68,
+      "tail": [
+        "\u2714 a key for a removed option and duplicated visible options both remain pending (0.807374ms)",
+        "\u2139 tests 27",
+        "\u2139 suites 0",
+        "\u2139 pass 27",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 263.403525"
+      ]
+    },
+    {
+      "name": "logger-node",
+      "command": [
+        "node",
+        "--test",
+        "scripts/tests/test_agents_log.mjs"
+      ],
+      "exit": 0,
+      "seconds": 1.71,
+      "tail": [
+        "\u2714 attachment labels receive the same credential redaction as prompt text (0.653207ms)",
+        "\u2139 tests 16",
+        "\u2139 suites 0",
+        "\u2139 pass 16",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 1428.987161"
+      ]
+    },
+    {
+      "name": "opencode-node",
+      "command": [
+        "node",
+        "--test",
+        "scripts/tests/test_opencode_plugin.mjs"
+      ],
+      "exit": 0,
+      "seconds": 0.63,
+      "tail": [
+        "\u2714 rejects escaping paths and duplicate IDs before registration (73.899147ms)",
+        "\u2139 tests 4",
+        "\u2139 suites 0",
+        "\u2139 pass 4",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 423.813659"
+      ]
+    },
+    {
+      "name": "isolation",
+      "command": [
+        "python3",
+        "scripts/run_skill_evals.py",
+        "--check-isolation"
+      ],
+      "exit": 0,
+      "seconds": 1.0,
+      "tail": [
+        "Mount isolation passed."
+      ]
+    },
+    {
+      "name": "optional-mcp",
+      "command": [
+        "python3",
+        "evals/check_mcp_sdk.py"
+      ],
+      "exit": 2,
+      "seconds": 0.8,
+      "tail": [
+        "MCP SDK smoke incomplete: missing httpx2. In an isolated environment, install evals/requirements-mcp.txt, then rerun this script. No protocol checks ran."
+      ]
+    }
+  ],
+  "final_root_python_repeat": {
+    "tests": 110,
+    "result": "OK"
+  },
+  "python_tests": 165,
+  "node_tests": 47,
+  "skips_in_required_suites": 0,
+  "mcp_smoke": "incomplete; httpx2 missing; no SDK protocol checks ran",
+  "new_model_trials": "not run",
+  "independence": "maintainer self-review; no independent agent review claimed",
+  "executable_sha256": {
+    "scripts/eval_outcomes.py": "a51873ad67e0540cf5d2a6aa1b19c1b96f09e79445bd40520fb8c3723f01671c",
+    "scripts/run_skill_evals.py": "439779591e3193406d1bb3a830e41b0f2e003fab258165a3c6c2f3a7a6e7b934",
+    "scripts/eval_isolation.py": "d8a60627280a1df23b528a39afd1c0771960b718e78cdc447c24422aaed4ef97",
+    "software-factory/scripts/run_state.py": "471c90bcaeaad5f624da5cdbb5b2618550f74bb555d01b9d43a1529d98c0989e",
+    "pr-quiz/scripts/publish_quiz.py": "627619ca260e50e9d25e132c5c4ca2abc48f1a8a9e456826d6fa1590c2329c51",
+    "evals/check_mcp_sdk.py": "ed197b99307533a7440160f8faaff381a5a7b1fa29b7a80974cacd2cecd76813",
+    "ui-design/scripts/prototype_tools.py": "e547b4cd6f74dc5d839e59462244d0314c21c0051616897354ba077d60c885b4",
+    "setup-pentapro/scripts/check_agent_profiles.py": "2429a2a0740907ff41dcc572500b03fd33790b378825ae362426dd27bf444c3b",
+    "setup-pentapro/scripts/merge_git_templates.py": "41395b4b7918768b223b714d2830b98628401e0da2f26e4260a01cd7eba1d5ce",
+    "scripts/package_plugin.py": "c87edf71b786df3d2bdcecaaddd89be6a887ecedabb33665fb4cee0fbe665661",
+    "software-factory/scripts/run_events.py": "6f3677c9a147295ea383b96c962b204d5e06df5515c6efa1be49da1c603ff26c",
+    "evals/check_receipts.py": "f6d7a859a25be59ce10afe168560f8e715c6a7ece56eb96da5ceaf03521a9be5",
+    "scripts/validate_collection.py": "61762c95a85de6b31b72ef32ea1164eb317e908fb49fd513ca3e8656faf073a5",
+    "setup-pentapro/assets/prompt-logging/opencode.ts": "4afed1fdbe61e8c5b197ec1eeef7af2e33ab0fab24de5705b7d508fabd9a3bf5",
+    "setup-pentapro/assets/prompt-logging/log-prompt.mjs": "32616a03598a50196962f5b77418ee430da8fdd6f6091a47f2fd1ba2e702ec03",
+    "setup-pentapro/assets/prompt-logging/core.mjs": "cb9f50e8797e66e21646a6c3a4201583cb2818defa4a98b3a8506ccfbc88e92a",
+    "penta-pro/scripts/init_pentapro.py": "61e8efdb963bfe6beb3c90f7be7523900d483dd004d3599ebbcf3858d300f93e",
+    "plugin/opencode.mjs": "083af6c18f4e15317eff7d3f0e7333840df55b030b5d9300ef525a5728002a11"
+  },
+  "final_structural_checks": {
+    "markdown_files": 290,
+    "local_links_and_anchors": 1123,
+    "skill_versions": 24,
+    "issues": 0,
+    "case_definitions": 15,
+    "whitespace": "passed"
+  }
+}

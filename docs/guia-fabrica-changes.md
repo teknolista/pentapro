@@ -62,3 +62,5 @@ Uma change cancelada preserva o motivo, efeitos parciais, decisões de recupera�
 Em interrupções, confira os arquivos reais, a branch, a versão testada e os efeitos externos antes de repetir uma operação. Um push ou movimento de diretório pode ter ocorrido mesmo se o registro local falhou. Changes sobre os mesmos requisitos precisam de integração serializada.
 
 O orquestrador mantém um registro durável para execuções substanciais e recolhe candidatos a lições dos agentes. Somente ele escreve o registro de lições, em inglês. O helper existente de registros é opcional e verifica consistência local; não coordena o SDD nem comprova a verdade das evidências. Consulte o [guia de registros](agents/runs/README.md), o [protocolo PDSA](agents/continuous-improvement.md) e o [contrato de fechamento](../software-factory/references/closure.md).
+
+Os [cenários de projeto novo e projeto existente](pentapro-cenarios-sdd.md) mostram a aplicação deste ciclo sem depender de outra ferramenta de SDD.

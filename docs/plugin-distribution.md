@@ -1,6 +1,6 @@
 # PentaPRO plugin distribution
 
-PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and bundle 2.0.0 adopted native PentaPRO SDD and bundle 2.0.1 corrects setup/closure guidance, and bundle 2.1.0 adds Git defaults and the permanent motivational manifesto, and the current 2.2.0 bundle adds per-run factory invocation history; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
+PentaPRO is the collection/plugin brand and `pentapro` its machine ID. `teknolista/skills`, all existing skill IDs (including `penta-pro`) and their top-level source directories remain unchanged. The aggregate plugin started at version 1.0.0; bundle 1.1.0 added execution-state resources and bundle 1.1.1 reconciled role invocation and model-choice guidance, and bundle 1.2.0 added Cursor role templates and bundle 2.0.0 adopted native PentaPRO SDD and bundle 2.0.1 corrects setup/closure guidance, and bundle 2.1.0 adds Git defaults and the permanent motivational manifesto, and bundle 2.2.0 added per-run factory invocation history and the current 2.3.0 candidate adds read-only installed-profile diagnostics and safe refresh guidance; each skill retains its own version. Plugin versioning describes a bundle release, not a claim that every skill changed.
 
 ## Ownership and formats
 
@@ -71,3 +71,7 @@ Setup PentaPRO 2.1.0 merges bundled Git defaults into root `.gitignore` and `.gi
 ## Invocation history 2.2.0
 
 Software Factory 1.1.0 adds a separate versioned invocation-event ledger and per-run summary helper alongside unchanged run.json schema 1. Setup PentaPRO 2.2.0 and all six-host role assets carry run reuse, invocation identity and orchestrator-only event guidance. Existing projects reconcile guidance while preserving histories and custom role settings; plugin installation/update alone does not rewrite projects. Git defaults and the permanent manifesto remain part of full setup. No hooks, global settings, automatic deletion or model-selection change is included. Native capture completeness and efficiency improvements require separate evidence.
+
+## Installed-profile diagnostics 2.3.0
+
+Setup PentaPRO 2.3.0 adds an optional package-local read-only checker and a reviewed refresh procedure. Matching workflow bodies and custom host metadata are separate outcomes; custom bodies require review and are never deleted or automatically overwritten. Current host syntax/discovery and actual model selection remain separate checks. The bundle also improves sampled scenario coverage and optional SDK smoke diagnostics. No new host, runtime permission or model policy is introduced. These source changes are not published merely by regenerating metadata.

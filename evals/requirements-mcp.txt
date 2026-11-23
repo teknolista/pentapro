@@ -1,0 +1,2 @@
+# Optional SDK smoke only; not a prerequisite for installing skills.
+mcp==2.2.0
