@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "run_id": "skills-harness-ship",
+  "record_version": 4,
+  "objective": "Review, commit and normal-push the requested Skills harness maintenance.",
+  "contracts": [
+    "pentapro/changes/harness-review-hardening/change.md",
+    "git-ship/SKILL.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/skills",
+    "branch": "main",
+    "base_commit": "3411801ac12fbfc92be1349a636dccae130daa29"
+  },
+  "orchestrator": "main-session",
+  "state": "DONE",
+  "snapshot": {
+    "fingerprint": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7",
+    "head": "e0a426dfa0841f27c6d60b7368f8390168f01263"
+  },
+  "gates": [
+    {
+      "id": "shipper-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7",
+      "evidence": "events.jsonl#skills-harness-ship-result-accepted",
+      "reason": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ship-skills-harness",
+      "owner": "factory_shipper",
+      "status": "done",
+      "evidence": "events.jsonl#skills-harness-ship-completed"
+    }
+  ],
+  "operations": [
+    {
+      "id": "skills-harness-commit",
+      "kind": "commit",
+      "authorization": "Developer directly invoked factory_shipper in Skills.",
+      "status": "confirmed",
+      "expected_revision": "e0a426dfa0841f27c6d60b7368f8390168f01263",
+      "observation": "Shipper reviewed and created commit e0a426d."
+    },
+    {
+      "id": "skills-harness-push",
+      "kind": "push",
+      "authorization": "Developer directly invoked factory_shipper in Skills.",
+      "status": "confirmed",
+      "expected_revision": "e0a426dfa0841f27c6d60b7368f8390168f01263",
+      "observation": "Shipper queried git@github.com:teknolista/skills.git refs/heads/main and matched e0a426d."
+    }
+  ],
+  "blockers": [],
+  "next_action": "Requested Skills delivery completed; GitHub Actions run 45280461427 passed for e0a426d. Preserve late run receipts; resume separate ChuteGo assignment.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 2,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 4,
+      "state": "DONE",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    }
+  ]
+}
