@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "run_id": "skills-receipts-delivery",
+  "record_version": 4,
+  "objective": "Review and deliver the pending Skills run receipts as directly requested.",
+  "contracts": [
+    "git-ship/SKILL.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/skills",
+    "branch": "main",
+    "base_commit": "e0a426dfa0841f27c6d60b7368f8390168f01263"
+  },
+  "orchestrator": "main-session",
+  "state": "DONE",
+  "snapshot": {
+    "fingerprint": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7",
+    "head": "9700274ba929c019010d85823e8e24a2a1daedd7"
+  },
+  "gates": [
+    {
+      "id": "delivery-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7",
+      "evidence": "events.jsonl#skills-receipts-ship-result-accepted",
+      "reason": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ship-receipts",
+      "owner": "factory_shipper",
+      "status": "done",
+      "evidence": "events.jsonl#skills-receipts-ship-completed"
+    }
+  ],
+  "operations": [
+    {
+      "id": "commit-receipts",
+      "kind": "commit",
+      "authorization": "Developer directly invoked factory_shipper.",
+      "status": "confirmed",
+      "expected_revision": "9700274ba929c019010d85823e8e24a2a1daedd7",
+      "observation": "Shipper committed reviewed receipt files."
+    },
+    {
+      "id": "push-receipts",
+      "kind": "push",
+      "authorization": "Developer directly invoked factory_shipper.",
+      "status": "confirmed",
+      "expected_revision": "9700274ba929c019010d85823e8e24a2a1daedd7",
+      "observation": "Shipper verified actual GitHub main equals commit."
+    }
+  ],
+  "blockers": [],
+  "next_action": "Delivery complete; GitHub Actions run 45349495472 succeeded for 9700274. Preserve this late receipt; no repeated push is necessary.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 2,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    },
+    {
+      "record_version": 4,
+      "state": "DONE",
+      "orchestrator": "main-session",
+      "snapshot": "b51388995ab04a353a4e1c57aa0d2e8077ba02ae12e53cad7479ef96fc87a2a7"
+    }
+  ]
+}
