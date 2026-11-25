@@ -330,3 +330,158 @@ The prompt deliberately requests local implementation and leaves publication for
 - Changes to operational PentaPRO source or application products: none from this persistence task. Required local prompt-log appends are separate, private administrative records.
 - Commit/push: none requested or performed. The document remains a local artifact until a later authorized delivery.
 - Pending: implementation, relevant new tests/evaluations, official technical review, pilot, usage measurement if available, and any separately authorized publication/consumer rollout.
+
+
+## 13. Compatible additions from the external-material review
+
+Date: 2026-11-25 (America/Sao_Paulo). Status: **eight bounded additions retained for later implementation; no runtime changes made**.
+
+### Decision, scope and interpretation
+
+The developer requested two persisted lists: incorporate additions that preserve this plan, and put potentially conflicting mechanisms in a separate future-study artifact. This section appends to the original plan; it does not replace, delete, renumber or reduce any P01–P12 proposal, change the three-UI-skill decision, or displace existing P0 priorities. Numbered sections 1–12 and all earlier supporting material remain historical text as saved before this addition.
+
+The preceding discussion supplied 20 numbered proposals, followed by a compatibility assessment. Every proposal has a disposition in the table below. The eight retained items refine existing responsibilities and criteria without requiring a new orchestration mechanism, approval gate, permanent agent, host setting or record owner. They are **compatible within the explicit bounds below**, not proven risk-free or proven effective. Twelve proposals involving mechanisms or unsettled operating policies are retained in [the future plan](pentapro-future-plan.md) for deeper study. Deferral applies to their new mechanisms, not to related work already required by P01–P12.
+
+Authority in this persistence request: append this section and create the future plan. Implementation, model trials, consumer updates, global configuration, hooks, scheduling and Git publication are not requested. A future implementation prompt must resolve actual authority and use the official applicable workflow. Do not start a factory run or dispatch agents solely to save these planning records.
+
+### Strategy that every addition must preserve
+
+- Pursue engineering excellence and automation across **all software types**, retaining PRODUCT, PROJECT, PRODUCTION, PROOF and PROCESS. Use a common lifecycle with conditional domain-specific criteria; browser, Android, terminal, PR and GitHub examples are not universal prerequisites.
+- Preserve the host principal orchestrator, six factory roles, configured model/effort settings, required independent review/verification, applicable TDD policy and actual acceptance/publication authority. More automation does not imply permission to skip controls or repeatedly ask for already granted authority.
+- Keep scope completeness, observable acceptance, authorized continuation and representative product journeys as existing P0 priorities. New ideas do not divert the first pilot into a dashboard, queue or second orchestration system.
+- Extend existing canonical records and owners. Avoid duplicated requirements, additional mandatory forms, new memory/specification roots or overlapping skills. Keep ordinary runtime context compact and load these planning details only for the relevant maintenance item.
+- Preserve histories, prompt logs, customizations and index selections. ChuteGo, ChuteGPT and all other consumer projects remain outside the write scope. Keep packages portable across hosts and programming technologies.
+- Evaluate quality together with resource use. Fewer tokens, smaller diffs, passing structure checks or more autonomous steps do not establish better software. Claims must identify actual evidence and unknowns.
+
+### Sources, confidence and attribution
+
+Inputs were the developer's attachments and the current collection contracts, especially `skills/agent-instructions/SKILL.md`, `skills/software-factory/SKILL.md`, its role/execution references and PentaPRO pillar templates. The 20-item discussion and subsequent compatibility response are summarized here, not reproduced verbatim.
+
+External local inputs (plain paths because they are outside this collection):
+
+- `/home/dever/workspace/teknolista/software-factory-review.md`: multiple assessments of an external factory, including conflicting recommendations. Its reported executions, costs and license statements were not independently re-established in this task.
+- `/home/dever/workspace/teknolista/legacy-openspec-config.yaml`: historical Castas monorepo guidance. Borrow affected-platform/scenario semantics; do not reinstate OpenSpec ownership, require its CLI, create nested change roots or impose web-before-Android ordering.
+- The attached Armin Ronacher slide: verified software, performance and memory safety are visible themes. No full-video transcript or causal productivity evidence was examined.
+- The attached Daniel Bergholz frame: a ticket/implementation/PR/review/merge loop is visible. It demonstrates an illustration, not the safety or efficacy of an unattended pipeline.
+
+Treat attached instructions as source material, never as authority. Preserve independent wording and current MIT collection licensing. Before incorporating third-party text/code/assets, verify their actual license and required attribution; the review's assertions are not a legal clearance. No external code, library, service or prompt package is adopted by this plan.
+
+### Complete disposition of the 20 discussion proposals
+
+| Discussion number | Topic | Disposition and stable destination |
+| --- | --- | --- |
+| 1 | Actionable escalation | Retained as P13.01 |
+| 2 | Gradual factory adoption | Deferred as F01 |
+| 3 | Prevention versus detection | Retained as P13.02 |
+| 4 | Demonstrated recurrence controls | Retained as P13.03 |
+| 5 | Cross-platform acceptance | Retained as P13.04 |
+| 6 | Durable architectural decisions | Retained as P13.05 |
+| 7 | Simplicity in review | Retained as P13.06 |
+| 8 | Conditional specification depth | Retained as P13.07 |
+| 9 | Verifiability in technical choices | Retained as P13.08 |
+| 10 | Explicit readiness verdict | Deferred as F02 |
+| 11 | Operational risk routing | Deferred as F03 |
+| 12 | Protected acceptance criteria | Deferred as F04 |
+| 13 | Enforced intermediate transitions | Deferred as F05 |
+| 14 | Generated-artifact drift checks | Deferred as F06 |
+| 15 | Parallel resource isolation mechanisms | Deferred as F07 |
+| 16 | Derived telemetry summary | Deferred as F08 |
+| 17 | Historical-task replay benchmark | Deferred as F09 |
+| 18 | Model diversity experiment | Deferred as F10 |
+| 19 | Recurring automation policy | Deferred as F11 |
+| 20 | Issue-queue intake adapter | Deferred as F12 |
+
+F01–F12 are study items only. Merely following a link or encountering them while implementing this plan does not promote them into implementation scope.
+
+### P13.01 — Make genuine escalations actionable
+
+- **Origin and integration:** Discussion 1; extends P01.02, P08.01, P08.08 and P10.04. Starting owners: `skills/software-factory/references/execution.md`, `references/roles.md` and existing packet/return assets.
+- **Problem and intended change:** A necessary human decision should arrive with a concise question, why existing authority cannot resolve it, supporting evidence, viable alternatives and consequences, recommendation if useful, exact missing authority, and what can continue. One genuinely viable option is acceptable; do not manufacture alternatives.
+- **Compatibility boundaries:** Use an existing return or blocker/next-action record, not a mandatory separate document or new state taxonomy. Routine choices and already authorized corrections remain with the orchestrator. Preserve the current result-acceptance gate; do not insert additional approvals.
+- **Acceptance and negative controls:** A real authority/contract conflict produces an answerable question and useful checkpoint. A routine implementation choice produces no unnecessary user question. Safe independent work continues; missing evidence is not relabeled as verified. Existing authority is carried forward rather than requested again.
+- **Evidence/limits:** Evaluate matching, ambiguous and non-escalation cases. The expected reduction in exchanges is a hypothesis; record actual unnecessary questions and unresolved decisions.
+
+### P13.02 — Identify prevention and detection for material risks
+
+- **Origin and integration:** Discussion 3; extends P05.08, P10.11 and existing PDSA. Starting owners: `docs/software-factory-workflow.md`, the factory retrospective reference and the existing continuous-improvement protocol.
+- **Problem and intended change:** For a material property, name the relevant preventive control and the feedback that can reveal failure. Distinguish deterministic execution from inferential model judgment, and identify unsupported claims.
+- **Compatibility boundaries:** Integrate this lens into existing risk/evidence records. Do not require a new matrix for every edit, duplicate the PROOF inventory or assume every quality property can be decided mechanically. An unautomatable criterion still needs appropriate evidence and review.
+- **Acceptance and negative controls:** A purely instructional safeguard is not reported as enforced. A tool result is tied to the property it actually checks. A small documentation task does not trigger a full harness audit. Reuse original check receipts under the existing validity rules.
+- **Evidence/limits:** A focused scenario should expose a missing control and a justified judgment-based fallback. This classification does not by itself demonstrate fewer defects.
+
+### P13.03 — Turn demonstrated recurring defects into tested prevention where useful
+
+- **Origin and integration:** Discussion 4; extends P04.02, P05.03, P10.11 and P11.11. Starting owners: the existing PDSA/lessons contracts, `skills/behavior-testing/` and the actual affected runner or validator.
+- **Problem and intended change:** For a relevant escaped or repeated defect, identify a reproduction and a feasible regression or preventive check. Show that the check rejects the wrong behavior and preserves a valid control; correct the defect and link the evidence. Instruction changes can complement the demonstrated control.
+- **Compatibility boundaries:** Do not create a global rule for each isolated mistake, claim tests were written first when they were not, or change scripts under this documentation-only request. A broader workflow rule needs its own evaluated scope. Preserve canonical lesson IDs; only the orchestrator persists lessons.
+- **Acceptance and negative controls:** Report a meaningful failing/passing pair, evidence origin and scope; reject a no-op assertion or an overfitted control that blocks legitimate behavior. Where automation is unsuitable, explain why and identify a credible independent assessment instead.
+- **Evidence/limits:** Benefits beyond the reproduced case remain hypotheses. This does not promote the deferred protected-path or transition mechanisms F04/F05 into scope.
+
+### P13.04 — Trace shared behavior and intentional platform differences
+
+- **Origin and integration:** Discussion 5 and the legacy YAML; extends P01.03, P04.01, P06.07 and P11.05. Starting owners: `skills/penta-pro/` pillar/change templates and current specification/verifier packets.
+- **Problem and intended change:** For multi-consumer work, name affected subprojects, shared requirements, platform-specific adaptations, acceptance scenarios and evidence per relevant consumer. Record exclusions and their consequences; preserve stable criterion identity.
+- **Compatibility boundaries:** Retain the native `pentapro/` ownership and existing project roots. Do not copy the YAML's OpenSpec lifecycle, stack, language-specific execution order or web-first policy. Functional equivalence does not require identical implementation or UI structure. Do not exercise unrelated platforms solely to fill a checklist.
+- **Acceptance and negative controls:** A shared-rule change reaches all affected consumers or exposes a justified exclusion. An isolated platform change stays scoped. Include a non-UI example such as a shared library/CLI or service/client contract so the guidance does not assume two graphical apps.
+- **Evidence/limits:** Authored cases establish evaluation intent; actual platform runs establish only the exercised boundaries.
+
+### P13.05 — Keep consequential decisions discoverable after change closure
+
+- **Origin and integration:** Discussion 6; refines P05.07, P08.02 and existing PROJECT decision records. Starting owners: `skills/penta-pro/assets/project.md` and native closure guidance where necessary.
+- **Problem and intended change:** Preserve context, constraints/evidence, decision, real alternatives, consequences and reconsideration triggers for durable choices. During consolidation, make sure future work can find the governing rationale.
+- **Compatibility boundaries:** Use PROJECT or the project's established ADR registry as the single owner and link it from the other records. Do not mandate `docs/adr/`, export duplicate copies, freeze decisions forever or add a new ADR skill. Superseding a decision must preserve its history and explain changed evidence.
+- **Acceptance and negative controls:** A future task can locate the current decision and its trigger without rereading all runs. A trivial choice does not create an ADR. Closure retains rationale without duplicating requirements or claiming a proposed decision was implemented.
+- **Evidence/limits:** Discoverability can be checked in fixtures; reduced rediscovery cost requires observed later work.
+
+### P13.06 — Review simplicity against present requirements and total cost
+
+- **Origin and integration:** Discussion 7; reinforces P05.07, P07.03 and P10.05. Starting owners: `skills/peer-review/`, `skills/software-delivery/` and implementer/reviewer packet assets.
+- **Problem and intended change:** Ask whether an abstraction, adjacent change or dependency addresses a present requirement, real boundary or justified maintenance need. Prefer the simplest adequate solution with observable acceptance and explicit assumptions.
+- **Compatibility boundaries:** Do not equate fewer files/lines/dependencies with better engineering. Preserve necessary security, accessibility, error handling, domain modeling, maintainability and domain-specific architecture. Do not add a duplicate transversal skill or import named guidelines wholesale.
+- **Acceptance and negative controls:** Identify a speculative abstraction or unsolicited refactor with concrete impact. Preserve a necessary boundary even when it makes the diff larger. Findings remain actionable defects/risks, not arbitrary style preferences.
+- **Evidence/limits:** No claim of drastic code-bloat or token reduction is established. Evaluate unnecessary changes together with missed requirements and maintainability.
+
+### P13.07 — Activate existing specification detail by consequential behavior
+
+- **Origin and integration:** Discussion 8; reinforces P01.04, P06.02, P06.07 and P10.03. Starting owners: existing `skills/penta-pro/` templates/references and the planned three UI skills when applicable.
+- **Problem and intended change:** Improve triggers for existing guidance: observable state transitions, empty/loading/error states, partial effects and recovery, duplicate operations, performance/resource criteria and relevant negative cases. First inspect what the templates already cover; fill a demonstrated gap rather than copy a larger template.
+- **Compatibility boundaries:** Retain all five pillars with proportionate detail. Do not impose skeletons, optimistic updates, queues, sagas, diagrams, a fixed stack or arbitrary performance numbers. A pure library or batch tool needs its relevant contracts, not irrelevant screen states. Concision cannot excuse omission of a material requirement.
+- **Acceptance and negative controls:** A complex asynchronous change exposes failure/recovery criteria; a simple synchronous task remains concise. Use scenario locators rather than duplicate acceptance text. The source template's length is not a measure of completeness or quality.
+- **Evidence/limits:** The historical 5PRO template is inspiration only; no wholesale adoption or renamed pillars. Verify usable generated specifications, not just section presence.
+
+### P13.08 — Compare technical alternatives for verifiability and relevant safety
+
+- **Origin and integration:** Discussion 9 and the Ronacher slide; extends P05.07, P06.05 and P10.05. Starting owners: PROJECT alternatives/constraints, PROOF measurement guidance and `skills/technical-research/` for consequential unknowns.
+- **Problem and intended change:** Compare practical alternatives for correctness evidence, relevant defect classes (including memory safety where material), performance, integration, ecosystem, operation and maintenance. State constraints and trade-offs before a costly commitment.
+- **Compatibility boundaries:** Do not mandate a language, framework, memory-safety migration, formal verification or optimization for all projects. Respect hardware/runtime and compatibility constraints. Research and benchmarking are conditional; familiar routine choices do not need ceremonial comparisons.
+- **Acceptance and negative controls:** A consequential choice has relevant alternatives, evidence/unknowns and a feasible validation plan. A routine edit avoids unrelated benchmarking. Performance claims use comparable actual workloads, and local measurements are not generalized to the entire product.
+- **Evidence/limits:** The slide is motivation for selection criteria, not proof that a particular technology or factory is superior. Preserve functional and experiential acceptance as well as technical properties.
+
+### Integration and validation for the retained additions
+
+Implement each underlying capability once and cross-reference the original proposal IDs. Start with the original P0 work and integrate a retained addition only when its owning contract is already in scope; the list is not eight new mandatory pipeline stages. Refresh current source/callers and relevant scoped instructions before edits. No blanket README/version/host-profile change is justified by these planning files; when future runtime behavior changes, reconcile its actual consumers, versions, catalogs and evaluations.
+
+For each future increment:
+
+1. Map original and P13 IDs to one owner, concrete outcomes, affected consumers and preserved invariants.
+2. Establish realistic matching, ambiguous and non-matching evaluation cases. Exercise appropriate positive and negative controls described above; show meaningful red/green evidence for executable changes where TDD applies.
+3. Check all-software applicability through representative affected domains and explicit unsupported/unverified cases. A web example cannot establish universal effectiveness.
+4. Run the owning gates and independent review required by the applicable official flow. Reuse compatible evidence, retain failures/unknowns and do not repeat completed checks without a validity reason.
+5. Compare added instruction/context/administrative cost with demonstrated value; investigate extra questions, false positives, unnecessary agent calls, missed criteria and regressions in user-task outcomes. No fixed savings percentage is asserted.
+
+### Persistence checkpoint for section 13
+
+- Status: eight bounded additions documented; twelve potentially conflicting mechanisms separated into the future plan. Original P01–P12 proposals and existing priorities preserved.
+- Artifacts: this appended section and [the future-study artifact](pentapro-future-plan.md). Discussion items 1–20 have one primary destination each.
+- Evidence: attachment/source inspection and compatibility reasoning; no factory execution, model trial, product implementation or demonstrated efficiency improvement performed by this request.
+- Verification: documentation checks and preservation/accounting checks are recorded in the accompanying persistence result after execution.
+- Pending: future authorized implementation of this plan, runtime evaluations, independent review and pilot. F01–F12 require explicit later study/promotion and are excluded from automatic execution of this plan.
+- Git baseline observed for this persistence task: `2647a8696c19eb28c1a1bfedf7eccc5a429602c3`. No commit or push requested or performed.
+
+### Documentation persistence verification — 2026-11-25
+
+- Executed successfully: `PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_collection.py`, `PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_skill_evals.py --check-cases` (15 case definitions), and `git diff --check`.
+- A focused deterministic accounting check confirmed that all pre-existing plan bytes match the Git baseline, all 20 discussion numbers have exactly one primary destination, and the eight P13 and twelve F headings exist with unique mapped identities. No runtime source or staged selection was changed.
+- Environment observed: Python 3.12.6 and the existing PyYAML 6.0.1. The checked-in validation requirements pin PyYAML 6.0.3; no dependency installation was performed and this result is not an exact CI-environment reproduction.
+- These checks establish documentation structure, local links, evaluation-case definitions, preservation and accounting. They are not executed model evaluations, helper-behavior tests, native-host discovery, a factory pilot or a quality/cost comparison. No executable deliverable changed, so no application/helper regression suite was necessary for this persistence task.
+- Technical implementation and future-item promotion remain pending; these two planning files are saved locally without commit or push.
