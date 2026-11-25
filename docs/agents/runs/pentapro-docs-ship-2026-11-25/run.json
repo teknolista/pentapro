@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "pentapro-docs-ship-2026-11-25",
+  "record_version": 7,
+  "objective": "Review and publish all intended PentaPRO planning and specification artifacts requested by the developer.",
+  "contracts": [
+    "skills/git-ship/SKILL.md",
+    "docs/pentapro-improvement-plan-2026-11-25.md",
+    "docs/pentapro-future-plan.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "2647a8696c19eb28c1a1bfedf7eccc5a429602c3"
+  },
+  "orchestrator": "main-session",
+  "state": "DONE",
+  "snapshot": {
+    "fingerprint": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f",
+    "head": "2ee6a1856377e73c41f69587eca5a3f267f8f5f4"
+  },
+  "gates": [
+    {
+      "id": "shipper-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f",
+      "evidence": "checkpoint.md",
+      "reason": null
+    },
+    {
+      "id": "required-quality-checks",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f",
+      "evidence": "checkpoint.md",
+      "reason": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "publish-pentapro-docs",
+      "owner": "factory_shipper",
+      "status": "done",
+      "evidence": "checkpoint.md"
+    }
+  ],
+  "operations": [
+    {
+      "id": "pentapro-docs-commit",
+      "kind": "commit",
+      "authorization": "Developer explicitly requested factory_shipper to commit and push the complete PentaPRO project including new artifacts.",
+      "status": "confirmed",
+      "expected_revision": "2ee6a1856377e73c41f69587eca5a3f267f8f5f4",
+      "observation": "Local commit created after exact staged-path audit; see checkpoint.md. Push is pending."
+    },
+    {
+      "id": "pentapro-docs-push",
+      "kind": "push",
+      "authorization": "Developer explicitly requested factory_shipper to commit and push the complete PentaPRO project including new artifacts.",
+      "status": "confirmed",
+      "expected_revision": "2ee6a1856377e73c41f69587eca5a3f267f8f5f4",
+      "observation": "Normal push to git@github.com:teknolista/pentapro.git refs/heads/main succeeded; independent git ls-remote matched the intended SHA. CI run 45669053853 was still in progress at checkpoint."
+    }
+  ],
+  "blockers": [],
+  "next_action": "PentaPRO planning artifacts published; GitHub validation passed and exact main ref verified.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "131c45e8f2a2d0feb493cb61b8a9288a99e3fee0d6a28696422eb93bd2aca1a9"
+    },
+    {
+      "record_version": 2,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "131c45e8f2a2d0feb493cb61b8a9288a99e3fee0d6a28696422eb93bd2aca1a9"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "798b572ad9708f18f82655246916be2a63fe398f39f4f6b7d106c077db2bfb08"
+    },
+    {
+      "record_version": 4,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f"
+    },
+    {
+      "record_version": 5,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f"
+    },
+    {
+      "record_version": 6,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f"
+    },
+    {
+      "record_version": 7,
+      "state": "DONE",
+      "orchestrator": "main-session",
+      "snapshot": "5d2ba6efed8a01946b2bbf3290f9b7a91bbd9e5f2a90f7895d6775943f40df8f"
+    }
+  ]
+}
