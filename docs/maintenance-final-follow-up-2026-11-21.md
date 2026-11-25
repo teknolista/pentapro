@@ -45,12 +45,12 @@ A separate test file per source file is unnecessary when another suite exercises
 | `scripts/run_skill_evals.py`, `eval_outcomes.py`, `eval_isolation.py` | `test_run_skill_evals.py`; lifecycle/grading/controls with the actual grader; the separate isolation probe exercises mount/socket/resource boundaries. Module splitting does not require duplicate test files. |
 | `evals/check_receipts.py` | Runner suite exercises clean, seeded-defect and misleading-result cases. Independent synthetic grading is covered; it does not prove application correctness. |
 | `evals/check_mcp_sdk.py` | Assertion-based in-process SDK smoke, itself a verification script. No separate unit suite is required for this fixture, but its SDK compatibility must be exercised before relying on it. Not run: `mcp` and `httpx2` are absent; no dependencies installed. |
-| `software-factory/scripts/run_state.py` | `test_factory_runs.py`; stale source/gates/writers, identity, locks, uncertain effects, forbidden paths and preservation. The helper validates local records, never the truth of referenced remote evidence. |
-| `penta-pro/scripts/init_pentapro.py` | 11 dedicated tests for initialization, existing content and unsafe paths. Live interviews and migration acceptance remain separate. |
-| `ui-design/scripts/prototype_tools.py` | 26 dedicated tests for inputs, contrast/fragments, injection bounds and exports. No browser/native accessibility certification follows. |
-| `pr-quiz/scripts/publish_quiz.py` | 15 dedicated tests with controlled publication/freshness behavior. Live GitHub permissions and concurrent editors remain adoption concerns. |
-| `pr-quiz/assets/pr-quiz.yml` | 27 offline scenarios execute the embedded handler with API doubles, including stale events, eligibility and reflected markers. No hosted workflow executed. |
-| `setup-pentapro/assets/prompt-logging/{core,log-prompt}.mjs` | 16 Node tests for redaction, formatting, safe append and CLI paths. Legacy adapters remain historical opt-in material, not current setup enforcement. |
+| `skills/software-factory/scripts/run_state.py` | `test_factory_runs.py`; stale source/gates/writers, identity, locks, uncertain effects, forbidden paths and preservation. The helper validates local records, never the truth of referenced remote evidence. |
+| `skills/penta-pro/scripts/init_pentapro.py` | 11 dedicated tests for initialization, existing content and unsafe paths. Live interviews and migration acceptance remain separate. |
+| `skills/ui-design/scripts/prototype_tools.py` | 26 dedicated tests for inputs, contrast/fragments, injection bounds and exports. No browser/native accessibility certification follows. |
+| `skills/pr-quiz/scripts/publish_quiz.py` | 15 dedicated tests with controlled publication/freshness behavior. Live GitHub permissions and concurrent editors remain adoption concerns. |
+| `skills/pr-quiz/assets/pr-quiz.yml` | 27 offline scenarios execute the embedded handler with API doubles, including stale events, eligibility and reflected markers. No hosted workflow executed. |
+| `skills/setup-pentapro/assets/prompt-logging/{core,log-prompt}.mjs` | 16 Node tests for redaction, formatting, safe append and CLI paths. Legacy adapters remain historical opt-in material, not current setup enforcement. |
 | Legacy `prompt-logging/opencode.ts` | Core behavior covered indirectly; actual host API integration is untested. Acceptable only with its existing legacy/adoption limitations, not as a certified current integration. |
 | `plugin/opencode.mjs` | Four offline tests for actual resource loading, registration/disposal, conflicts and rejected API/paths. Native OpenCode success remains unestablished; use the documented skills installation fallback. |
 | Distributed role adapters | Six factory-agent tests parse metadata and check canonical instruction parity, role schema and PDSA clauses. These cannot prove that a host selects or obeys a role. |
@@ -62,10 +62,10 @@ No untested maintained production helper was identified without either indirect 
 Python 3.12.6 and Node 27.0.0-alpha.0.0.0 were available; CI targets Python 3.12 and Node 24. No global dependencies, hooks or host settings were installed or changed.
 
 - `python3 -m unittest discover -s scripts/tests`: 72 passed, including local package/discovery and factory-record controls.
-- `python3 -m unittest discover -s penta-pro/scripts/tests`: 11 passed.
-- `python3 -m unittest discover -s ui-design/scripts/tests`: 26 passed.
-- `python3 -m unittest discover -s pr-quiz/scripts/tests`: 15 passed.
-- `node pr-quiz/scripts/tests/workflow.cjs`: 27 passed.
+- `python3 -m unittest discover -s skills/penta-pro/scripts/tests`: 11 passed.
+- `python3 -m unittest discover -s skills/ui-design/scripts/tests`: 26 passed.
+- `python3 -m unittest discover -s skills/pr-quiz/scripts/tests`: 15 passed.
+- `node skills/pr-quiz/scripts/tests/workflow.cjs`: 27 passed.
 - `node --test scripts/tests/test_opencode_plugin.mjs`: four adapter controls passed.
 - `node --test scripts/tests/test_agents_log.mjs`: 16 passed outside the host subprocess restriction. The first restricted attempt failed; that failure is retained as an environment limit, not silently counted as passing.
 - `python3 scripts/run_skill_evals.py --check-isolation --grade`: mount, socket and resource probes passed without model calls.

@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PACKAGE = ROOT / "setup-pentapro"
+PACKAGE = ROOT / "skills" / "setup-pentapro"
 spec = importlib.util.spec_from_file_location(
     "merge_git_templates", PACKAGE / "scripts/merge_git_templates.py"
 )

@@ -29,20 +29,20 @@ Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if an
 ## Project Context and Navigation
 
 - [README.md](README.md) owns the collection catalog, installation guidance, compatibility notes, and maintenance commands.
-- `plugin.json` owns PentaPRO plugin identity/version and its skill paths. `scripts/package_plugin.py` owns generated host metadata and non-destructive local exports; [distribution notes](docs/plugin-distribution.md) record supported routes and actual evidence. Keep the existing top-level skill sources canonical.
+- `plugin.json` owns PentaPRO plugin identity/version and its skill paths. `scripts/package_plugin.py` owns generated host metadata and non-destructive local exports; [distribution notes](docs/plugin-distribution.md) record supported routes and actual evidence. Keep the skill sources under `skills/` canonical.
 - [SKILL-ROUTING.md](SKILL-ROUTING.md) owns skill boundaries and integration choices. Select a skill by the requested outcome; keep ordinary edits proportionate.
-- Each top-level skill directory owns its `SKILL.md` entrypoint and any package-local `references/`, `assets/`, `agents/`, `scripts/`, and `evals/` resources. Inspect callers before changing shared templates or helpers.
+- Each directory under `skills/` owns its `SKILL.md` entrypoint and any package-local `references/`, `assets/`, `agents/`, `scripts/`, and `evals/` resources. Inspect callers before changing shared templates or helpers.
 - [scripts/validate_collection.py](scripts/validate_collection.py) validates collection metadata, links, catalogs, licenses, and standalone package portability. [The CI workflow](.github/workflows/validate.yml) defines automated collection checks.
 - [SKILL-EVALUATION.md](SKILL-EVALUATION.md) owns the evaluation procedure. Root `evals/` contains synthetic fixtures, policy overlays, cases, and recorded trials. Instruction files inside fixtures apply to those simulated projects, not to collection maintenance.
-- `software-factory/references/run-records.md` owns execution-record persistence; its package-local helper validates checkpoints. The project directory guide is `docs/agents/runs/README.md`.
-- `docs/` contains developer guides and case studies. [The software-factory design](docs/software-factory-workflow.md) provides design context; [Software Factory](software-factory/SKILL.md) owns the reusable execution workflow. Historical review reports describe their evaluated snapshots; verify current source before reusing their conclusions.
+- `skills/software-factory/references/run-records.md` owns execution-record persistence; its package-local helper validates checkpoints. The project directory guide is `docs/agents/runs/README.md`.
+- `docs/` contains developer guides and case studies. [The software-factory design](docs/software-factory-workflow.md) provides design context; [Software Factory](skills/software-factory/SKILL.md) owns the reusable execution workflow. Historical review reports describe their evaluated snapshots; verify current source before reusing their conclusions.
 
 ## Authoring Skills and Processes
 
 - Write reusable instructions, templates, agent assets, and maintenance documentation in English. Use the user's preferred language in conversation. Preserve the intended language of existing localized guides and user-facing examples unless translation is requested.
 - Keep a matching lowercase skill directory and frontmatter `name`, a precise activation `description`, and concise runtime instructions. Put conditional detail in linked package-local references and output material in assets. Add scripts when deterministic execution improves a recurring operation.
 - Keep shipped packages usable after standalone installation. Use relative links within the package; mention optional companion skills by name and handle their absence honestly. Repository-level guides may link across packages.
-- Preserve one owner for each workflow and canonical record. Improve an existing owner before adding an overlapping skill or forwarding alias. Consult [Agent Instructions](agent-instructions/SKILL.md) for instruction maintenance and the routing map when boundaries change.
+- Preserve one owner for each workflow and canonical record. Improve an existing owner before adding an overlapping skill or forwarding alias. Consult [Agent Instructions](skills/agent-instructions/SKILL.md) for instruction maintenance and the routing map when boundaries change.
 - Preserve user intent, existing decisions, selected hosts, and actual action authority. Define concrete outcomes, completion criteria, failure handling, and useful fallbacks. A template, accepted specification, or agent role does not authorize implementation, publication, or deployment on its own.
 - Keep instructions portable across supported hosts. Separate host metadata and examples from workflow requirements. Preserve invocation policies; changing a skill does not authorize changing global configuration or installing hooks.
 - When public behavior, package inventory, or a published interface changes, reconcile affected version metadata, the README catalog, installation guidance, templates, references, and evaluation cases. Follow established version conventions and retain MIT licensing and accurate upstream attribution in the relevant notices.
@@ -52,13 +52,13 @@ Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if an
 
 Use the source packages in this checkout when maintaining the collection; they are the deliverables, not proof of installation in the current host.
 
-- [Setup PentaPRO](setup-pentapro/SKILL.md): initialize repository guidance and prompt persistence while preserving existing files.
-- [Agent Instructions](agent-instructions/SKILL.md): create and maintain skills, agent workflows, and project instructions.
-- [PentaPRO](penta-pro/SKILL.md): requested specification work across the five pillars; preserve the project's existing canonical records.
-- [Software Delivery](software-delivery/SKILL.md): coordinate dependent implementation tasks.
-- [Software Factory](software-factory/SKILL.md): coordinate an explicitly requested factory run. Maintaining factory assets alone does not start a multi-agent run. Verify available roles and host capabilities rather than inferring them from template files.
-- [Peer Review](peer-review/SKILL.md), [Behavior Testing](behavior-testing/SKILL.md), and [Cybersecurity](cybersec/SKILL.md): implementation review, test authoring, and security assessment according to the requested outcome.
-- [Git Ship](git-ship/SKILL.md): perform authorized Git delivery on the reviewed snapshot. Keep commit, push, PR, merge, archive, release, and deployment authority explicit and reuse authority already granted.
+- [Setup PentaPRO](skills/setup-pentapro/SKILL.md): initialize repository guidance and prompt persistence while preserving existing files.
+- [Agent Instructions](skills/agent-instructions/SKILL.md): create and maintain skills, agent workflows, and project instructions.
+- [PentaPRO](skills/penta-pro/SKILL.md): requested specification work across the five pillars; preserve the project's existing canonical records.
+- [Software Delivery](skills/software-delivery/SKILL.md): coordinate dependent implementation tasks.
+- [Software Factory](skills/software-factory/SKILL.md): coordinate an explicitly requested factory run. Maintaining factory assets alone does not start a multi-agent run. Verify available roles and host capabilities rather than inferring them from template files.
+- [Peer Review](skills/peer-review/SKILL.md), [Behavior Testing](skills/behavior-testing/SKILL.md), and [Cybersecurity](skills/cybersec/SKILL.md): implementation review, test authoring, and security assessment according to the requested outcome.
+- [Git Ship](skills/git-ship/SKILL.md): perform authorized Git delivery on the reviewed snapshot. Keep commit, push, PR, merge, archive, release, and deployment authority explicit and reuse authority already granted.
 
 ## Validation and Evidence
 
@@ -76,7 +76,7 @@ Run affected helper tests when changing executable behavior. The complete offlin
 
 For substantive workflow changes, follow the evaluation procedure with realistic matching, ambiguous, and non-matching requests. Keep synthetic fixtures and independent checks separate from the task context. Structural validation, an authored scenario, an executed behavioral trial, and a controlled comparison establish different kinds of evidence. Report exactly what ran; avoid universal reliability, security, production-readiness, or performance claims from structural checks alone.
 
-When updating the prompt rule, keep the complete rule in `setup-pentapro/SKILL.md` synchronized with `setup-pentapro/assets/agents.md`; root `AGENTS.md` must preserve that complete rule. Verify append behavior without exposing historical prompts, and retain the existing log.
+When updating the prompt rule, keep the complete rule in `skills/setup-pentapro/SKILL.md` synchronized with `skills/setup-pentapro/assets/agents.md`; root `AGENTS.md` must preserve that complete rule. Verify append behavior without exposing historical prompts, and retain the existing log.
 
 ## Scope, Safety, and Handoff
 

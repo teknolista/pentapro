@@ -60,17 +60,28 @@ class ProcessLifetimeTests(unittest.TestCase):
 
 
 class PilotControlTests(unittest.TestCase):
+    def test_inventory_supports_legacy_and_nested_baselines(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            old = root / "old" / "sample"
+            new = root / "new" / "skills" / "sample"
+            for package in (old, new):
+                package.mkdir(parents=True)
+                (package / "SKILL.md").touch()
+            self.assertEqual(runner.inventory(root / "old"), ["sample"])
+            self.assertEqual(runner.inventory(root / "new"), ["sample"])
+
     def test_candidate_exports_only_distribution_paths(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
             source = root / "source"
-            package = source / "sample"
+            package = source / "skills" / "sample"
             package.mkdir(parents=True)
             runner.git("init", "-q", cwd=source)
-            (source / ".gitignore").write_text("sample/private.txt\n")
+            (source / ".gitignore").write_text("skills/sample/private.txt\n")
             (package / "SKILL.md").write_text("staged version")
             (package / "removed.md").touch()
-            runner.git("add", "--", "sample", cwd=source)
+            runner.git("add", "--", "skills/sample", cwd=source)
             (package / "SKILL.md").write_text("candidate version")
             (package / "removed.md").unlink()
             (package / "new.md").touch()
@@ -85,8 +96,8 @@ class PilotControlTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as folder:
             source = Path(folder)
             runner.git("init", "-q", cwd=source)
-            package = source / "sample"
-            package.mkdir()
+            package = source / "skills" / "sample"
+            package.mkdir(parents=True)
             (package / "SKILL.md").touch()
             (package / "link").symlink_to("/path/outside/fixture")
             with self.assertRaisesRegex(ValueError, "symbolic link"):

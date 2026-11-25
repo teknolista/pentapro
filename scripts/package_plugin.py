@@ -23,24 +23,24 @@ def encoded(value):
 def expected(root):
     import yaml  # Maintenance-only metadata generation; not an OpenCode dependency.
     manifest = json.loads((root / 'plugin.json').read_text())
-    if manifest['name'] != 'pentapro' or manifest['repository'] != 'https://github.com/teknolista/skills':
+    if manifest['name'] != 'pentapro' or manifest['repository'] != 'https://github.com/teknolista/pentapro':
         raise ValueError('PentaPRO identity/repository changed')
     if not re.fullmatch(r'(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)', manifest['version']) or manifest.get('license') != 'MIT':
         raise ValueError('Invalid plugin version or license')
-    names = sorted(p.parent.name for p in root.glob('*/SKILL.md'))
-    if not names or manifest['skills'] != ['./' + n for n in names]:
+    names = sorted(p.parent.name for p in (root / 'skills').glob('*/SKILL.md'))
+    if not names or manifest['skills'] != ['./skills/' + n for n in names]:
         raise ValueError('plugin.json must list every source skill exactly once')
     catalog = []
     for name in names:
-        source = (root / name / 'SKILL.md').read_text()
+        source = (root / 'skills' / name / 'SKILL.md').read_text()
         data = yaml.safe_load(source.split('---', 2)[1])
         if data['name'] != name:
             raise ValueError('Skill name mismatch: ' + name)
-        catalog.append({'id': name, 'description': data['description'], 'path': name + '/SKILL.md', 'autoinvoke': not data.get('disable-model-invocation', False)})
+        catalog.append({'id': name, 'description': data['description'], 'path': 'skills/' + name + '/SKILL.md', 'autoinvoke': not data.get('disable-model-invocation', False)})
     codex = manifest | {'interface': {'displayName': 'PentaPRO', 'shortDescription': 'Software engineering skills and factory agents', 'developerName': 'Teknolista'}}
     anti = manifest | {'$schema': 'https://antigravity.google/schemas/v1/plugin.json', 'displayName': 'PentaPRO'}
     marketplace = {'name': 'teknolista', 'owner': {'name': 'Teknolista'}, 'plugins': [{'name': 'pentapro', 'source': './', 'description': manifest['description']}]}
-    package = {'name': 'pentapro', 'version': manifest['version'], 'private': True, 'type': 'module', 'description': manifest['description'], 'license': 'MIT', 'repository': {'type': 'git', 'url': 'https://github.com/teknolista/skills.git'}, 'exports': {'.': './plugin/opencode.mjs'}, 'files': ['plugin', 'plugin.json', '.codex-plugin', '.antigravity-plugin', '.github/plugin', '.claude-plugin', 'LICENSE', 'THIRD-PARTY-NOTICES.md', *names]}
+    package = {'name': 'pentapro', 'version': manifest['version'], 'private': True, 'type': 'module', 'description': manifest['description'], 'license': 'MIT', 'repository': {'type': 'git', 'url': 'https://github.com/teknolista/pentapro.git'}, 'exports': {'.': './plugin/opencode.mjs'}, 'files': ['plugin', 'plugin.json', '.codex-plugin', '.antigravity-plugin', '.github/plugin', '.claude-plugin', 'LICENSE', 'THIRD-PARTY-NOTICES.md', 'skills']}
     return {'.codex-plugin/plugin.json': codex, '.antigravity-plugin/plugin.json': anti,
             '.github/plugin/marketplace.json': marketplace, '.claude-plugin/marketplace.json': marketplace,
             'package.json': package, 'plugin/catalog.json': catalog}
@@ -86,7 +86,7 @@ def export(root, output, host):
         if not raw:
             continue
         relative = Path(os.fsdecode(raw))
-        if len(relative.parts) < 2 or Path(relative.parts[0]) not in allowed:
+        if not any(relative.is_relative_to(package) for package in allowed):
             continue
         path = root / relative
         if path.is_symlink() or path.resolve() != path:
@@ -116,7 +116,7 @@ def export(root, output, host):
             shutil.copy2(root / relative, target)
         for name in ('LICENSE', 'THIRD-PARTY-NOTICES.md'):
             shutil.copy2(root / name, staged / name)
-        (staged / 'README.md').write_text(f"PentaPRO {manifest['version']}\n\nUse the packaged setup-pentapro skill in the target project. Source and instructions: https://github.com/teknolista/skills\n")
+        (staged / 'README.md').write_text(f"PentaPRO {manifest['version']}\n\nUse the packaged setup-pentapro skill in the target project. Source and instructions: https://github.com/teknolista/pentapro\n")
         if host == 'codex':
             (staged / '.codex-plugin').mkdir()
             shutil.copy2(root / '.codex-plugin/plugin.json', staged / '.codex-plugin/plugin.json')

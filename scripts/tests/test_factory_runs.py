@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
-SPEC = importlib.util.spec_from_file_location('run_state', ROOT / 'software-factory/scripts/run_state.py')
+SPEC = importlib.util.spec_from_file_location('run_state', ROOT / 'skills/software-factory/scripts/run_state.py')
 runs = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(runs)
 
@@ -225,7 +225,7 @@ class FactoryRunTests(unittest.TestCase):
         self.assertNotEqual(before, runs.snapshot(self.root))
 
     def test_cli_creates_checks_and_saves_without_model_or_external_effects(self):
-        script = ROOT / 'software-factory/scripts/run_state.py'
+        script = ROOT / 'skills/software-factory/scripts/run_state.py'
         args = ['python3', str(script)]
         created = subprocess.run(args + ['init', '--project', str(self.root), '--run-id', 'cli-run', '--objective', 'CLI initialization', '--contract', 'issue/43'], capture_output=True, text=True)
         self.assertEqual(created.returncode, 0, created.stderr)

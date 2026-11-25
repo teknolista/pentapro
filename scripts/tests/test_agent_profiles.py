@@ -8,7 +8,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPT = ROOT / 'setup-pentapro/scripts/check_agent_profiles.py'
+SCRIPT = ROOT / 'skills/setup-pentapro/scripts/check_agent_profiles.py'
 spec = importlib.util.spec_from_file_location('profiles', SCRIPT)
 profiles = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(profiles)

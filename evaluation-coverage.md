@@ -12,23 +12,23 @@ Selection: prioritize authorization/external effects, preservation, changed rout
 | android-di-koin | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
 | android-error-handling | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
 | android-integration-testing | No package brief; use applicable cross-boundary case and add one when this route changes | `android-route` |
-| android-module-structure | [Authored brief](android-module-structure/evals/scenarios.md) | None registered |
+| android-module-structure | [Authored brief](skills/android-module-structure/evals/scenarios.md) | None registered |
 | android-ui-testing | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
 | android-unit-testing | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
 | behavior-testing | No package brief; use applicable cross-boundary case and add one when this route changes | `behavior-denied-effect` |
-| cybersec | [Authored brief](cybersec/evals/scenarios.md) | None registered |
-| diagnose-defect | [Authored brief](diagnose-defect/evals/scenarios.md) | `diagnose-misdirection` |
-| git-ship | [Authored brief](git-ship/evals/scenarios.md) | None registered |
-| http-api | [Authored brief](http-api/evals/scenarios.md) | `delivery-sdd`, `delivery-plain` |
-| mcp-server | [Authored brief](mcp-server/evals/scenarios.md) | `mcp-revisions` |
-| peer-review | [Authored brief](peer-review/evals/scenarios.md) | `review-injection`, `review-clean` |
-| penta-pro | [Authored brief](penta-pro/evals/scenarios.md) | `sdd-full-scope` |
+| cybersec | [Authored brief](skills/cybersec/evals/scenarios.md) | None registered |
+| diagnose-defect | [Authored brief](skills/diagnose-defect/evals/scenarios.md) | `diagnose-misdirection` |
+| git-ship | [Authored brief](skills/git-ship/evals/scenarios.md) | None registered |
+| http-api | [Authored brief](skills/http-api/evals/scenarios.md) | `delivery-sdd`, `delivery-plain` |
+| mcp-server | [Authored brief](skills/mcp-server/evals/scenarios.md) | `mcp-revisions` |
+| peer-review | [Authored brief](skills/peer-review/evals/scenarios.md) | `review-injection`, `review-clean` |
+| penta-pro | [Authored brief](skills/penta-pro/evals/scenarios.md) | `sdd-full-scope` |
 | pr-quiz | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
-| production-operations | [Authored brief](production-operations/evals/scenarios.md) | `production-target-mismatch`, `production-stale-green` |
-| setup-pentapro | [Authored brief](setup-pentapro/evals/scenarios.md) | None registered |
-| software-delivery | [Authored brief](software-delivery/evals/scenarios.md) | `delivery-contract-conflict`, `delivery-native-sdd` |
-| software-factory | [Authored brief](software-factory/evals/scenarios.md) | None registered |
+| production-operations | [Authored brief](skills/production-operations/evals/scenarios.md) | `production-target-mismatch`, `production-stale-green` |
+| setup-pentapro | [Authored brief](skills/setup-pentapro/evals/scenarios.md) | None registered |
+| software-delivery | [Authored brief](skills/software-delivery/evals/scenarios.md) | `delivery-contract-conflict`, `delivery-native-sdd` |
+| software-factory | [Authored brief](skills/software-factory/evals/scenarios.md) | None registered |
 | technical-research | No package brief; use applicable cross-boundary case and add one when this route changes | `research-pinned-version` |
-| ui-design | [Authored brief](ui-design/evals/scenarios.md) | None registered |
+| ui-design | [Authored brief](skills/ui-design/evals/scenarios.md) | None registered |
 
 The four new high-consequence briefs (Git Ship, HTTP API, MCP Server and Diagnose Defect) have not been executed with models in this maintenance. The 15 registered definitions remain unchanged. The next comparison should use matching, ambiguous and nonmatching tasks, independent outcome controls and the actual host/model; record failures and unavailable evidence. No minimum file count can replace that comparison.

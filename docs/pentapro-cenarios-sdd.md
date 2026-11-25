@@ -44,4 +44,4 @@ Na retomada, confira arquivos, evidências e efeitos reais antes de repetir uma 
 
 Uma change cancelada registra a decisão, efeitos parciais e recuperação necessária, sem promover requisitos abandonados nem reverter código automaticamente. Após a entrega ou um bloqueio relevante, `factory_retrospective` propõe melhorias com evidências; o orquestrador registra as lições em inglês. Mudanças reutilizáveis na coleção precisam de seu próprio escopo e avaliação.
 
-Consulte os contratos atuais de [fábrica](../software-factory/SKILL.md), [PentaPRO](../penta-pro/SKILL.md), [entrega Git](../git-ship/SKILL.md) e [registros de execução](../software-factory/references/run-records.md).
+Consulte os contratos atuais de [fábrica](../skills/software-factory/SKILL.md), [PentaPRO](../skills/penta-pro/SKILL.md), [entrega Git](../skills/git-ship/SKILL.md) e [registros de execução](../skills/software-factory/references/run-records.md).

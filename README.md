@@ -9,21 +9,21 @@ The collection's skill instructions and reusable artifacts are written in Englis
 >
 > All 24 skills are distributed under the [MIT License](LICENSE), with source attribution in the [third-party notices](THIRD-PARTY-NOTICES.md).
 >
-> Feedback from actual use, constructive criticism, and suggestions are very welcome through [GitHub Issues](https://github.com/teknolista/skills/issues).
+> Feedback from actual use, constructive criticism, and suggestions are very welcome through [GitHub Issues](https://github.com/teknolista/pentapro/issues).
 
 ## Install PentaPRO
 
-PentaPRO is the collection/package name; the repository remains `teknolista/skills` and the specification skill remains `penta-pro`. Choose **one installation method per host/project**. Installing both the plugin and copied skills can advertise duplicates. The bundle contains all 24 original skills and the six factory-agent templates; setup creates the actual selected-host agents in each project. Installing the plugin does not run setup, enable prompt hooks, select a model, or publish Git changes.
+PentaPRO is the collection/package name; the repository is `teknolista/pentapro` and the specification skill remains `penta-pro`. Choose **one installation method per host/project**. Installing both the plugin and copied skills can advertise duplicates. The bundle contains all 24 original skills and the six factory-agent templates; setup creates the actual selected-host agents in each project. Installing the plugin does not run setup, enable prompt hooks, select a model, or publish Git changes.
 
 ### 1. Choose the installation scope
 
 **Recommended: project-scoped skills.** Run one command from the target repository (choose your agent):
 
 ```sh
-npx skills@latest add teknolista/skills --skill '*' -a codex
-npx skills@latest add teknolista/skills --skill '*' -a github-copilot
-npx skills@latest add teknolista/skills --skill '*' -a opencode
-npx skills@latest add teknolista/skills --skill '*' -a antigravity-cli
+npx skills@latest add teknolista/pentapro --skill '*' -a codex
+npx skills@latest add teknolista/pentapro --skill '*' -a github-copilot
+npx skills@latest add teknolista/pentapro --skill '*' -a opencode
+npx skills@latest add teknolista/pentapro --skill '*' -a antigravity-cli
 ```
 
 These are alternatives. No `-g` means project scope. Omit `-a` to select interactively; omit `--skill '*'` to choose individual skills. For editable independent copies, select copy in the installer or add `--copy`. Use `npx skills@latest check` and `npx skills@latest update` for installer-managed skills; review changes before adoption. [Installer reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md)
@@ -36,18 +36,18 @@ These are alternatives. No `-g` means project scope. Omit `-a` to select interac
 
 ```sh
 # Codex
-codex plugin marketplace add teknolista/skills
+codex plugin marketplace add teknolista/pentapro
 codex plugin add pentapro@teknolista
 
 # GitHub Copilot CLI
-copilot plugin marketplace add teknolista/skills
+copilot plugin marketplace add teknolista/pentapro
 copilot plugin install pentapro@teknolista
 
 # OpenCode V2
-opencode plugin add github:teknolista/skills
+opencode plugin add github:teknolista/pentapro
 
 # Antigravity CLI
-agy plugin install https://github.com/teknolista/skills
+agy plugin install https://github.com/teknolista/pentapro
 ```
 
 OpenCode native discovery was not established in the recorded V2 probe; use the project-scoped skills CLI fallback when the plugin is absent from its registry. See [discovery evidence and limitations](docs/plugin-distribution.md).
@@ -66,18 +66,18 @@ Use project-local settings only and preserve existing files and decisions.
 The project purpose is: [describe your project].
 ```
 
-Setup preserves existing instructions, asks for unresolved README/license choices, prepares relevant project guidance and available tools, installs the selected-host agent templates and initializes the PDSA protocol and empty lessons record. It never writes into the plugin cache or turns a user-wide installation into global project configuration. Repeat per repository even when the plugin is installed globally. Existing customized agents/records are preserved on rerun; plugin updates do not silently replace them. Use the [safe profile refresh and read-only checker](setup-pentapro/references/factory-setup.md#review-existing-role-updates) to identify outdated workflow bodies without discarding project choices. See [Setup PentaPRO](#setup-pentapro).
+Setup preserves existing instructions, asks for unresolved README/license choices, prepares relevant project guidance and available tools, installs the selected-host agent templates and initializes the PDSA protocol and empty lessons record. It never writes into the plugin cache or turns a user-wide installation into global project configuration. Repeat per repository even when the plugin is installed globally. Existing customized agents/records are preserved on rerun; plugin updates do not silently replace them. Use the [safe profile refresh and read-only checker](skills/setup-pentapro/references/factory-setup.md#review-existing-role-updates) to identify outdated workflow bodies without discarding project choices. See [Setup PentaPRO](#setup-pentapro).
 
 ### Project-local native plugin recipes
 
-From a separate source checkout of `teknolista/skills`, use Python 3.12+ with [maintenance dependencies](scripts/requirements-validation.txt) in an existing suitable environment. Export to a **new** directory in the target project. Replace the absolute example paths; never overwrite an existing plugin or host config. The exporter only copies distribution-eligible skill files and writes the selected-host manifest; it does not install anything or edit host settings.
+From a separate source checkout of `teknolista/pentapro`, use Python 3.12+ with [maintenance dependencies](scripts/requirements-validation.txt) in an existing suitable environment. Export to a **new** directory in the target project. Replace the absolute example paths; never overwrite an existing plugin or host config. The exporter only copies distribution-eligible skill files and writes the selected-host manifest; it does not install anything or edit host settings.
 
 | Host | Export command | Activate only in the target project |
 | --- | --- | --- |
-| Codex | `python3 /path/to/skills/scripts/package_plugin.py --host codex --output /path/to/project/plugins/pentapro` | Merge the repository marketplace and trusted-project config below; install from the local Plugins Directory, then verify effective scope. |
-| Copilot CLI | `python3 /path/to/skills/scripts/package_plugin.py --host copilot --output /path/to/project/plugins/pentapro` | From that project run `copilot --plugin-dir ./plugins/pentapro`; this mounts for that session without a user-wide install. |
-| OpenCode V2 | `python3 /path/to/skills/scripts/package_plugin.py --host opencode --output /path/to/project/plugins/pentapro` | Merge `"plugins": ["./plugins/pentapro"]` into project `opencode.json(c)` and restart; preserve other entries. Requires V2 `skill.transform`. |
-| Antigravity CLI | `python3 /path/to/skills/scripts/package_plugin.py --host antigravity-cli --output /path/to/project/.agents/plugins/pentapro` | Start `agy` in the project; inspect `/plugin` and `/skills`. Optionally validate first with `agy plugin validate --strict /path/to/project/.agents/plugins/pentapro`. |
+| Codex | `python3 /path/to/pentapro/scripts/package_plugin.py --host codex --output /path/to/project/plugins/pentapro` | Merge the repository marketplace and trusted-project config below; install from the local Plugins Directory, then verify effective scope. |
+| Copilot CLI | `python3 /path/to/pentapro/scripts/package_plugin.py --host copilot --output /path/to/project/plugins/pentapro` | From that project run `copilot --plugin-dir ./plugins/pentapro`; this mounts for that session without a user-wide install. |
+| OpenCode V2 | `python3 /path/to/pentapro/scripts/package_plugin.py --host opencode --output /path/to/project/plugins/pentapro` | Merge `"plugins": ["./plugins/pentapro"]` into project `opencode.json(c)` and restart; preserve other entries. Requires V2 `skill.transform`. |
+| Antigravity CLI | `python3 /path/to/pentapro/scripts/package_plugin.py --host antigravity-cli --output /path/to/project/.agents/plugins/pentapro` | Start `agy` in the project; inspect `/plugin` and `/skills`. Optionally validate first with `agy plugin validate --strict /path/to/project/.agents/plugins/pentapro`. |
 
 For Codex, merge this catalog into `.agents/plugins/marketplace.json` in the target project (retain other plugins):
 
@@ -189,20 +189,20 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 2.0.0 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](software-factory/SKILL.md) | 1.1.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](skills/software-factory/SKILL.md) | 1.1.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.1.0 | Resolve technical uncertainty with traceable evidence. |
 | [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
 | [Agent Instructions](#agent-instructions) | 1.1.5 | Maintain portable software-development agent guidance. |
-| [Android modules](android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
-| [Android data](android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
-| [Android errors](android-error-handling/SKILL.md) | 1.2.4 | Implement typed domain/HTTP/storage error handling. |
-| [Android Koin](android-di-koin/SKILL.md) | 1.2.4 | Implement dependency bindings and Android lifetimes. |
-| [Android background](android-background/SKILL.md) | 1.2.4 | Implement durable WorkManager jobs and retries. |
-| [Android unit testing](android-unit-testing/SKILL.md) | 1.2.4 | Author/run/debug isolated logic tests. |
-| [Android integration testing](android-integration-testing/SKILL.md) | 1.3.0 | Author/run/debug non-UI integration tests. |
-| [Android UI testing](android-ui-testing/SKILL.md) | 1.3.0 | Author/run/debug native device/emulator Compose tests. |
-| [PR Quiz](pr-quiz/SKILL.md) | 2.0.0 | Explicitly requested PR decision-comprehension aid, separate from review approval. |
+| [Android modules](skills/android-module-structure/SKILL.md) | 1.4.0 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
+| [Android data](skills/android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
+| [Android errors](skills/android-error-handling/SKILL.md) | 1.2.4 | Implement typed domain/HTTP/storage error handling. |
+| [Android Koin](skills/android-di-koin/SKILL.md) | 1.2.4 | Implement dependency bindings and Android lifetimes. |
+| [Android background](skills/android-background/SKILL.md) | 1.2.4 | Implement durable WorkManager jobs and retries. |
+| [Android unit testing](skills/android-unit-testing/SKILL.md) | 1.2.4 | Author/run/debug isolated logic tests. |
+| [Android integration testing](skills/android-integration-testing/SKILL.md) | 1.3.0 | Author/run/debug non-UI integration tests. |
+| [Android UI testing](skills/android-ui-testing/SKILL.md) | 1.3.0 | Author/run/debug native device/emulator Compose tests. |
+| [PR Quiz](skills/pr-quiz/SKILL.md) | 2.0.0 | Explicitly requested PR decision-comprehension aid, separate from review approval. |
 
 The [routing and consolidation map](SKILL-ROUTING.md) records the 14 Android/quiz source skills. The [closure review](COLLECTION-REVIEW.md) maps all 54 entrypoints in the two requested upstream repositories. Four Android UI skills are internal UI Design procedures; Android security is a Cybersecurity reference. Those five overlapping names are deliberately not separate installable skills.
 
@@ -213,8 +213,8 @@ The current collection contains **24 skills**. It is a curated adaptation, not a
 In a new project, use the [installation prerequisites](#install-with-the-skills-cli), install `setup-pentapro` first, then the working skills you need. This example installs the setup skill and PentaPRO for Codex from the published collection.
 
 ```sh
-npx skills@latest add teknolista/skills --skill setup-pentapro -a codex
-npx skills@latest add teknolista/skills --skill penta-pro -a codex
+npx skills@latest add teknolista/pentapro --skill setup-pentapro -a codex
+npx skills@latest add teknolista/pentapro --skill penta-pro -a codex
 ```
 
 Open a Codex session in that project, select `$setup-pentapro`, and ask:
@@ -223,7 +223,7 @@ Open a Codex session in that project, select `$setup-pentapro`, and ask:
 
 Setup configures prompt persistence and the relevant tracker and domain guidance. It uses the supplied purpose or discovers it from the repository. Choose whether to replace, complement or skip an existing README, select the language for the generated README and choose a license when the project lacks one.
 
-Full setup also prepares native change/archive directories and six factory roles for the selected host (Codex, Claude Code, Cursor, GitHub Copilot, Antigravity or OpenCode) in the project when the installed tools support a safe project-scoped setup. Codex templates use Terra for implementation and verification and Sol for specification review, code review and retrospective, with high effort except medium for retrospective. The shipper defaults to GPT-6 Luna with high effort. These role settings were chosen with developer costs in mind; they are defaults, not a guarantee of the lowest cost for every task. Respect the configured model and effort, and do not silently substitute them. Developers may change their project-local settings for their host. Claude Code and Cursor templates inherit the session model by default; role-level selection and actual support depend on the host. Other host templates inherit the available session model where role-level selection is unsupported. A direct request to invoke a factory role without further detail requests its defined workflow in the current project and session; for the shipper, that includes git-ship review, commit and normal push, subject to scope, checks and host permissions. The setup reports unavailable prerequisites and preserves existing role files. See [factory setup](setup-pentapro/references/factory-setup.md). A new Codex session may be needed to discover roles and skills.
+Full setup also prepares native change/archive directories and six factory roles for the selected host (Codex, Claude Code, Cursor, GitHub Copilot, Antigravity or OpenCode) in the project when the installed tools support a safe project-scoped setup. Codex templates use Terra for implementation and verification and Sol for specification review, code review and retrospective, with high effort except medium for retrospective. The shipper defaults to GPT-6 Luna with high effort. These role settings were chosen with developer costs in mind; they are defaults, not a guarantee of the lowest cost for every task. Respect the configured model and effort, and do not silently substitute them. Developers may change their project-local settings for their host. Claude Code and Cursor templates inherit the session model by default; role-level selection and actual support depend on the host. Other host templates inherit the available session model where role-level selection is unsupported. A direct request to invoke a factory role without further detail requests its defined workflow in the current project and session; for the shipper, that includes git-ship review, commit and normal push, subject to scope, checks and host permissions. The setup reports unavailable prerequisites and preserves existing role files. See [factory setup](skills/setup-pentapro/references/factory-setup.md). A new Codex session may be needed to discover roles and skills.
 
 For specification work, introduce the software, its users, the problem and the first useful outcome.
 
@@ -237,15 +237,15 @@ Use a short request for a clear, reversible, low-risk edit. Work from the existi
 
 For consequential work or when the project requires spec-driven development (SDD), use the governing specification or change record before implementation. The agent can draft it from the developer's intent, repository evidence and examples, then ask for unresolved decisions that affect the outcome. Use [PentaPRO](#pentapro) for a broader specification and [Software Delivery](#software-delivery) for dependent implementation tasks. Preserve the project's authoritative tickets, schemas and acceptance checks, and link them from the specification where useful.
 
-Follow the native change contract at `pentapro/changes/<name>/`. Review the six fixed artifacts before dependent implementation, preserve the maintained baseline while building, and map the accepted scenarios to real entry-point checks. The change remains active until result acceptance, consolidation and archival. [Delivery example](software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd) · [Specification ownership](penta-pro/references/document-maintenance.md#change-ownership)
+Follow the native change contract at `pentapro/changes/<name>/`. Review the six fixed artifacts before dependent implementation, preserve the maintained baseline while building, and map the accepted scenarios to real entry-point checks. The change remains active until result acceptance, consolidation and archival. [Delivery example](skills/software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd) · [Specification ownership](skills/penta-pro/references/document-maintenance.md#change-ownership)
 
 If you require the entire selected scope specified before coding, say so in the request or project policy. Otherwise settle each increment's behavior, constraints and checks before implementing that increment. Give the agent autonomy over routine implementation choices within the agreed scope. Keep verification and any release authority explicit. For a hosted backend, use [Production Operations](#production-operations) when planning environments, configuring the release pipeline or carrying out an authorized deployment and verifying the running service. The [routing guide](SKILL-ROUTING.md#choose-the-depth-of-the-workflow) shows how to apply this to common tasks.
 
 ## Start a pilot
 
 1. Choose one maintained repository or a new project's first useful slice. Record the intended user outcome, relevant boundary, and one check that exercises it. Run `$setup-pentapro` to configure prompt persistence and the applicable tracker and domain guidance.
-2. Install the primary skill and any specialist the work needs. For direct work, start with the agreed behavior and focused check. For vibe coding, define what the isolated experiment should demonstrate. Use the [prototype promotion example](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype) if it will become maintained code.
-3. Open or resume a native change with the factory. Link its five-dimensional specification and acceptance scenarios to checks through the actual product entry point; retain revision-bound evidence and pending gates. Use the [delivery example](software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd).
+2. Install the primary skill and any specialist the work needs. For direct work, start with the agreed behavior and focused check. For vibe coding, define what the isolated experiment should demonstrate. Use the [prototype promotion example](skills/software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype) if it will become maintained code.
+3. Open or resume a native change with the factory. Link its five-dimensional specification and acceptance scenarios to checks through the actual product entry point; retain revision-bound evidence and pending gates. Use the [delivery example](skills/software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd).
 4. Run a working control and a meaningful failure check where the risk warrants it. Record the command, revision, result and any required check still pending in the project's existing PR or verification record. For consequential changes, follow the project's review, security and release gates. Record what a new session would need to resume.
 5. Use the [pilot measurement procedure](SKILL-EVALUATION.md#score-the-outputs) to compare outcomes and record friction or failures. See the [adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md) for the rationale and sequence.
 
@@ -260,25 +260,25 @@ Install [Node.js 22.20 or later](https://github.com/vercel-labs/skills#install-a
 To set up a new project for the collection, install `setup-pentapro` first:
 
 ```bash
-npx skills@latest add teknolista/skills --skill setup-pentapro -a codex
+npx skills@latest add teknolista/pentapro --skill setup-pentapro -a codex
 ```
 
 Then install the working skills you need. To install PentaPRO for Codex or list the available skills, use the corresponding command:
 
 ```bash
-npx skills@latest add teknolista/skills --skill penta-pro -a codex
-npx skills@latest add teknolista/skills --list
+npx skills@latest add teknolista/pentapro --skill penta-pro -a codex
+npx skills@latest add teknolista/pentapro --list
 ```
 
 The wildcard command installs all 24 skills, including `setup-pentapro`. Quoting `'*'` passes the wildcard to the installer.
 
 ```bash
-npx skills@latest add teknolista/skills --skill '*' -a codex -y
+npx skills@latest add teknolista/pentapro --skill '*' -a codex -y
 ```
 
 Replace `codex` with another [supported agent identifier](https://github.com/vercel-labs/skills/blob/main/docs/agents.md), such as `claude-code` or `cursor`. Installation defaults to the current project. Add `-g` for user-level installation across projects.
 
-To pilot edits from a local checkout, run `npx skills@latest add /path/to/skills --skill '*' -a codex --copy -y` from the pilot project. Use an absolute path to the checkout whose files you want to test.
+To pilot edits from a local checkout, run `npx skills@latest add /path/to/pentapro --skill '*' -a codex --copy -y` from the pilot project. Use an absolute path to the checkout whose files you want to test.
 
 The installer installs the selected skill packages and can link agent directories to a canonical copy. Use `--copy` when independent copies are needed; see the [installation methods](https://github.com/vercel-labs/skills/blob/main/docs/commands.md#installation-methods). The repository's root `evals/` and `scripts/` stay in the collection checkout, even when you install all 24 skills. For a manual installation, copy only the selected skill directories. See [what belongs to the collection and to each package](#repository-structure).
 
@@ -329,7 +329,7 @@ The core instructions use Markdown and package-local references and templates. S
 2. Run `$setup-pentapro` to configure the project for the collection, including the complete prompt-persistence rule, README and license choices, tracker and domain guidance. Re-running preserves unrelated instructions and existing decisions. See [Setup PentaPRO](#setup-pentapro).
 3. Open the software project's root and provide the intended outcome, relevant constraints and expected result. Reuse existing project instructions and preserve their prompt-persistence rule.
 4. Choose the [workflow depth](#choose-a-workflow). For a new specification, ask `Use $penta-pro to specify an offline notes application. Save the specification and identify unresolved decisions before implementation.` For an existing accepted plan, ask `Use $software-delivery to implement the next ready increment and run the required checks.` For a clear copy edit, identify the exact text and intended replacement directly.
-5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
+5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](skills/production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
 6. Inspect the actual artifacts and verification evidence. Confirm that the result meets the requested behavior, preserves existing constraints and names untested boundaries. Review and release follow the project's own gates. Resume material work from its saved contracts and evidence.
 
 The collection supplies reusable methods and selected platform procedures. Generic workflows apply across stacks, with implementation procedures for native Android, web UI, HTTP APIs and MCP, and deployment guides for AWS, Azure, Google Cloud, Cloudflare and VPS. Other stacks require their own tooling and applicable documentation. Installation, a generated specification and passing collection tests do not certify the software produced with these skills. Consult the [maintenance review](FINAL-SKILL-REVIEW.md) and [evaluation results](evals/RESULTS.md) for the scope actually checked.
@@ -356,7 +356,7 @@ Invocation and consent differ by host. For example, Codex documents `$name`, Cla
 
 | Task | Necessary access | If unavailable |
 | --- | --- | --- |
-| Setup and factory | Writable project, applicable package assets and selected host tools | Resolve setup choices, keep unavailable capabilities pending and use a separate review context where required. See [factory setup](setup-pentapro/references/factory-setup.md) and [role packets](software-factory/references/roles.md). |
+| Setup and factory | Writable project, applicable package assets and selected host tools | Resolve setup choices, keep unavailable capabilities pending and use a separate review context where required. See [factory setup](skills/setup-pentapro/references/factory-setup.md) and [role packets](skills/software-factory/references/roles.md). |
 | PentaPRO creation/update | User intent, relevant existing context, package assets, and a writable requested destination | Ask only consequential missing questions; retain proposals and blockers. If writing is unavailable, return the draft and disclose that it was not saved. |
 | PentaPRO review | The actual specification and relevant authoritative context | Report missing material rather than treating an absent document as ready. |
 | UI Design specification and implementation | Relevant requirements/design context and a writable target project; source/toolchain for implementation, browser or Android environment for runtime checks | Save a partial specification and mark pending decisions/checks; never claim rendered, device, accessibility or user validation without evidence. |
@@ -378,11 +378,11 @@ Portable workflows let the project and host choose models. The optional project-
 
 Choose a currently available model with sufficient reasoning, domain competence, context capacity, and reliable tool use for the task. Escalate difficult requirements or review risks when evidence warrants it. The documented [OpenAI model options](https://learn.chatgpt.com/docs/models) include the repository's example implementation/review pairing; availability and suitability depend on the host/account and observed results. A model name is not a quality gate.
 
-After changing host, model, or significant instructions, run the relevant [PentaPRO cases](penta-pro/evals/scenarios.md), [Peer Review cases](peer-review/evals/scenarios.md), [Cybersecurity cases](cybersec/evals/scenarios.md), and [UI Design cases](ui-design/evals/scenarios.md). Check correct activation, preserved user decisions, meaningful defects versus false positives, honest evidence/coverage, and unintended edits. Compare matched tasks before claiming better accuracy, cost, or latency. Official format support does not establish a cross-vendor performance benchmark.
+After changing host, model, or significant instructions, run the relevant [PentaPRO cases](skills/penta-pro/evals/scenarios.md), [Peer Review cases](skills/peer-review/evals/scenarios.md), [Cybersecurity cases](skills/cybersec/evals/scenarios.md), and [UI Design cases](skills/ui-design/evals/scenarios.md). Check correct activation, preserved user decisions, meaningful defects versus false positives, honest evidence/coverage, and unintended edits. Compare matched tasks before claiming better accuracy, cost, or latency. Official format support does not establish a cross-vendor performance benchmark.
 
 ## Setup PentaPRO
 
-**Entrypoint:** [setup-pentapro/SKILL.md](setup-pentapro/SKILL.md)
+**Entrypoint:** [skills/setup-pentapro/SKILL.md](skills/setup-pentapro/SKILL.md)
 
 Set up the current repository for the collection: a template-based README in the chosen language, a missing project license selected by the developer, prompt persistence and a permanent motivational manifesto in `AGENTS.md`, merged Git defaults, appropriate issue-tracker and domain guidance, optional triage mappings, project facts and a PentaPRO handoff. The full prompt rule is embedded in the skill and written into `AGENTS.md` without requiring another policy file. Logging depends on agent compliance; no hook is installed.
 
@@ -392,9 +392,9 @@ Set up the current repository for the collection: a template-based README in the
 Use $setup-pentapro to configure this repository. Its purpose is to provide a CLI for tracking local tasks.
 ```
 
-Supply a complementary description of the repository purpose; when omitted, setup inspects the repository to discover it. For an existing README, choose replace, complement, or skip; select the README language. When no project license exists, choose from GitHub license options before setup creates `LICENSE`. The bundled template comes from the developer-supplied README. See [README and license setup](setup-pentapro/references/readme-and-license.md).
+Supply a complementary description of the repository purpose; when omitted, setup inspects the repository to discover it. For an existing README, choose replace, complement, or skip; select the README language. When no project license exists, choose from GitHub license options before setup creates `LICENSE`. The bundled template comes from the developer-supplied README. See [README and license setup](skills/setup-pentapro/references/readme-and-license.md).
 
-Full setup writes the bundled `assets/gitignore` and `assets/gitattributes` to root `.gitignore` and `.gitattributes`. Existing files receive only absent lines before their current content, preserving project-specific rule precedence. A repeat setup adds no duplicate lines and does not renormalize tracked files. The standalone [Git-template helper](setup-pentapro/scripts/merge_git_templates.py) performs this merge with Python 3 and Git; manual setup follows the same contract.
+Full setup writes the bundled `assets/gitignore` and `assets/gitattributes` to root `.gitignore` and `.gitattributes`. Existing files receive only absent lines before their current content, preserving project-specific rule precedence. A repeat setup adds no duplicate lines and does not renormalize tracked files. The standalone [Git-template helper](skills/setup-pentapro/scripts/merge_git_templates.py) performs this merge with Python 3 and Git; manual setup follows the same contract.
 
 Every fully initialized project must carry the complete **Software Excellence Manifesto — Powered by PentaPRO** near the beginning of `AGENTS.md`, including when instructions already exist. The section is mandatory and permanent: initialization must not skip it, and later maintenance, cleanup and specification reconciliation must never remove it. This developer-requested experiment studies motivational framing and autonomous model decisions; no improvement has been demonstrated. When README editing is authorized, setup adds a short explanation in the chosen language. Skipping README changes does not waive the manifesto. Plugin installation or an update alone does not modify project files; run full setup per project.
 
@@ -410,27 +410,27 @@ For specification work, invoke [PentaPRO](#pentapro) and describe the software, 
 
 ### Provenance
 
-Adapted from Matt Pocock's setup workflow (MIT). See [source notes](setup-pentapro/references/sources.md) and [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro).
+Adapted from Matt Pocock's setup workflow (MIT). See [source notes](skills/setup-pentapro/references/sources.md) and [third-party notices](THIRD-PARTY-NOTICES.md#setup-pentapro).
 
 ### Resources
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](setup-pentapro/SKILL.md) | Setup workflow and self-contained prompt-persistence rule. |
-| [Repository setup](setup-pentapro/references/repository-setup.md) | Tracker, triage, domain, project facts and handoff procedure. |
-| [README and license](setup-pentapro/references/readme-and-license.md) | Project purpose, template, language and licensing choices. |
-| [Factory setup](setup-pentapro/references/factory-setup.md) | Native changes, cross-host agents, PDSA records, models and verification. |
-| [PDSA protocol template](setup-pentapro/assets/continuous-improvement.md) | Contextual execution, bounded recovery and orchestrator-owned learning. |
-| [Run directory guide](setup-pentapro/assets/runs-readme.md) | Durable state location, ownership and recovery boundaries; no active run at setup. |
-| [Lessons template](setup-pentapro/assets/lessons-learned.md) | Empty project record with evidence and confidence fields. |
-| [Evaluation scenarios](setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
-| [Root instruction template](setup-pentapro/assets/agents.md) | Permanent manifesto and adaptable project guidance, preserving existing instructions. |
-| [Git ignore template](setup-pentapro/assets/gitignore) / [attributes template](setup-pentapro/assets/gitattributes) | Defaults merged into dotted root Git files without duplicate additions. |
+| [Entrypoint](skills/setup-pentapro/SKILL.md) | Setup workflow and self-contained prompt-persistence rule. |
+| [Repository setup](skills/setup-pentapro/references/repository-setup.md) | Tracker, triage, domain, project facts and handoff procedure. |
+| [README and license](skills/setup-pentapro/references/readme-and-license.md) | Project purpose, template, language and licensing choices. |
+| [Factory setup](skills/setup-pentapro/references/factory-setup.md) | Native changes, cross-host agents, PDSA records, models and verification. |
+| [PDSA protocol template](skills/setup-pentapro/assets/continuous-improvement.md) | Contextual execution, bounded recovery and orchestrator-owned learning. |
+| [Run directory guide](skills/setup-pentapro/assets/runs-readme.md) | Durable state location, ownership and recovery boundaries; no active run at setup. |
+| [Lessons template](skills/setup-pentapro/assets/lessons-learned.md) | Empty project record with evidence and confidence fields. |
+| [Evaluation scenarios](skills/setup-pentapro/evals/scenarios.md) | Authored cases for full and scoped setup. |
+| [Root instruction template](skills/setup-pentapro/assets/agents.md) | Permanent manifesto and adaptable project guidance, preserving existing instructions. |
+| [Git ignore template](skills/setup-pentapro/assets/gitignore) / [attributes template](skills/setup-pentapro/assets/gitattributes) | Defaults merged into dotted root Git files without duplicate additions. |
 
 
 ## PentaPRO
 
-**Entrypoint:** [penta-pro/SKILL.md](penta-pro/SKILL.md)
+**Entrypoint:** [skills/penta-pro/SKILL.md](skills/penta-pro/SKILL.md)
 
 For everyday software, PentaPRO is the canonical product record and the default starting point for specification work in a new project. [Setup PentaPRO](#setup-pentapro) can prepare the repository first but is not required. When setup has produced temporary root instruction fields, the first consolidated specification pass reconciles them with confirmed project facts and preserves unresolved fields.
 
@@ -450,7 +450,7 @@ An exploration-only request stays in the conversation until the user asks to cap
 
 The preferred order for initial detail and document presentation is PRODUCT → PROJECT → PRODUCTION → PROOF → PROCESS. Establish behavior, acceptance criteria, and consequential conditions of real use in PRODUCT. Choose a feasible solution in PROJECT, detail its operation in PRODUCTION, then define complete checks and evidence in PROOF. Maintain PROCESS authority and resume state throughout. Reconcile affected pillars as decisions change; the order does not impose sequential development phases.
 
-The template connects product strategy and stopping criteria to discovery evidence, outcomes, requirements, contracts, verification, and post-release learning. It includes a consolidated identifier and status model, increment readiness, decision and uncertainty records, privacy and accessibility considerations, delivery dependencies, documentation, launch and support readiness, and operational recovery evidence. Conditional profiles cover services, installed/offline apps, CLI tools, infrastructure, libraries, data/scientific workloads, AI features, embedded systems, interactive media, and commercial launch. For Android/KMP projects, an [additional overlay](penta-pro/references/android-kmp.md) details cross-platform contracts, test boundaries, state retention, dependency lifetimes and release evidence within the five pillar directories. Combine profiles for hybrid products; they are not an exhaustive taxonomy.
+The template connects product strategy and stopping criteria to discovery evidence, outcomes, requirements, contracts, verification, and post-release learning. It includes a consolidated identifier and status model, increment readiness, decision and uncertainty records, privacy and accessibility considerations, delivery dependencies, documentation, launch and support readiness, and operational recovery evidence. Conditional profiles cover services, installed/offline apps, CLI tools, infrastructure, libraries, data/scientific workloads, AI features, embedded systems, interactive media, and commercial launch. For Android/KMP projects, an [additional overlay](skills/penta-pro/references/android-kmp.md) details cross-platform contracts, test boundaries, state retention, dependency lifetimes and release evidence within the five pillar directories. Combine profiles for hybrid products; they are not an exhaustive taxonomy.
 
 Discovery resolves ambiguous domain terms with examples and counterexamples, compares material alternatives, and records the authority behind decisions. Binding principles become verifiable requirements. The selected increment includes a useful outcome and a check that can demonstrate it before later features exist. Detailed patterns address uncertain completion, retries, concurrent actions, access changes during queued work, and migration coexistence.
 
@@ -466,15 +466,15 @@ Use $penta-pro to review whether the first increment is ready for development.
 
 ### Output and working boundaries
 
-A first specification is authored in `pentapro/changes/<name>/` using `change.md`, `product.md`, `project.md`, `production.md`, `proof.md` and `process.md`. Root topic files under the five pillars represent the consolidated baseline; initial scaffolds remain Pending until the implemented change is accepted and consolidated. The existing optional initializer prepares those directories without overwriting records. Use ordinary file tools if the helper is unavailable. See [change specification](penta-pro/references/change-specification.md).
+A first specification is authored in `pentapro/changes/<name>/` using `change.md`, `product.md`, `project.md`, `production.md`, `proof.md` and `process.md`. Root topic files under the five pillars represent the consolidated baseline; initial scaffolds remain Pending until the implemented change is accepted and consolidated. The existing optional initializer prepares those directories without overwriting records. Use ordinary file tools if the helper is unavailable. See [change specification](skills/penta-pro/references/change-specification.md).
 
 Existing PentaPRO specifications require an inventory and reconciliation before the new topic files become authoritative. Preserve legacy paths as redirects when callers need them.
 
-PentaPRO owns both the maintained five-pillar baseline and the specification inside active changes. The factory coordinates their lifecycle; Software Delivery plans and implements tasks. A completed or cancelled change moves to `pentapro/changes/archive/YYYY-MM-DD_<name>/`, with disposition and publication recorded separately. [Ownership and reconciliation](penta-pro/references/document-maintenance.md#change-ownership).
+PentaPRO owns both the maintained five-pillar baseline and the specification inside active changes. The factory coordinates their lifecycle; Software Delivery plans and implements tasks. A completed or cancelled change moves to `pentapro/changes/archive/YYYY-MM-DD_<name>/`, with disposition and publication recorded separately. [Ownership and reconciliation](skills/penta-pro/references/document-maintenance.md#change-ownership).
 
 Creation saves the first draft in the selected format and location before pausing for answers. The initializer creates linked topic drafts across all five pillars. Later rounds update the affected records, with stable IDs or locators and links to authoritative definitions. PROCESS records `In progress` for material updates across files and `Consistent` after reconciliation. Resumption inspects actual contents and completes any interrupted update. Proposed changes retain their baseline, compatibility commitments, and separate status until settled.
 
-For consequential ideas, PentaPRO records a working hypothesis and challenges it from the perspectives that could change the decision. Before handoff or authorized implementation, it reviews the consolidated specification by reconstructing a representative journey from the artifacts, comparing that reading with confirmed intent, and tracing material dependencies through the pillars. PROCESS holds the scoped review result, open items and next action. The author can run this review directly. Fresh independent review is available when authorized and supported by the host. [Specification review](penta-pro/references/specification-review.md)
+For consequential ideas, PentaPRO records a working hypothesis and challenges it from the perspectives that could change the decision. Before handoff or authorized implementation, it reviews the consolidated specification by reconstructing a representative journey from the artifacts, comparing that reading with confirmed intent, and tracing material dependencies through the pillars. PROCESS holds the scoped review result, open items and next action. The author can run this review directly. Fresh independent review is available when authorized and supported by the host. [Specification review](skills/penta-pro/references/specification-review.md)
 
 The skill distinguishes confirmed information, proposals, and pending decisions. Routine decisions made within explicit delegation are attributed to the agent and can be settled for readiness without being presented as user requirements or document acceptance. When the user is unavailable, retain consequential blockers and complete independent specification work. If saving is unavailable, return an explicitly unsaved draft.
 
@@ -490,25 +490,25 @@ The workflow is model-neutral. Use a host that can load the complete skill folde
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](penta-pro/SKILL.md) | Scope, interview workflow, document maintenance, readiness, and handoff. |
-| [Template index](penta-pro/assets/penta-pro-template.md) | Authoring guidance and links to the five pillar templates. |
-| [Initializer](penta-pro/scripts/init_pentapro.py) | Creates the five-pillar specification in a repository root, preserving existing files; offline tests live in the package's `scripts/tests/`. |
-| [Document maintenance](penta-pro/references/document-maintenance.md) | Canonical ownership, coordinated updates, resumption, and migration. |
-| [Focused discovery](penta-pro/references/discovery.md) | Conditional techniques for unclear intent, dependent questions, alternatives, and consequential missing information. |
-| [Specification review](penta-pro/references/specification-review.md) | Artifact-based comprehension, cross-pillar checks, finding resolution and readiness handoff. |
-| [Software profiles](penta-pro/references/software-profiles.md) | Coverage prompts for software types and cross-cutting concerns, including accessibility, privacy, and impacts on people and the environment. |
-| [Specification patterns](penta-pro/references/specification-patterns.md) | Conditional forms for data, interfaces, decisions, threats, evidence, and runbooks. |
-| [Worked example](penta-pro/references/worked-example.md) | Fictional example of linked requirements and planned evidence, with explicit uncertainty. |
-| [Analyst review assessment](penta-pro/references/analyst-review-assessment.md) | Assessment of the supplied reviews, adopted improvements, and recommendations adapted or not adopted. |
-| [Source notes](penta-pro/references/sources.md) | Discovery, proposal, project-rule, and operational research, with inspected revisions and adaptation decisions. |
-| [Evaluation scenarios](penta-pro/evals/scenarios.md) | Discovery, interview, update, delegation, and scope cases, with validation records. |
-| [OpenAI metadata](penta-pro/agents/openai.yaml) | Optional Codex display metadata and example invocation. |
+| [Entrypoint](skills/penta-pro/SKILL.md) | Scope, interview workflow, document maintenance, readiness, and handoff. |
+| [Template index](skills/penta-pro/assets/penta-pro-template.md) | Authoring guidance and links to the five pillar templates. |
+| [Initializer](skills/penta-pro/scripts/init_pentapro.py) | Creates the five-pillar specification in a repository root, preserving existing files; offline tests live in the package's `scripts/tests/`. |
+| [Document maintenance](skills/penta-pro/references/document-maintenance.md) | Canonical ownership, coordinated updates, resumption, and migration. |
+| [Focused discovery](skills/penta-pro/references/discovery.md) | Conditional techniques for unclear intent, dependent questions, alternatives, and consequential missing information. |
+| [Specification review](skills/penta-pro/references/specification-review.md) | Artifact-based comprehension, cross-pillar checks, finding resolution and readiness handoff. |
+| [Software profiles](skills/penta-pro/references/software-profiles.md) | Coverage prompts for software types and cross-cutting concerns, including accessibility, privacy, and impacts on people and the environment. |
+| [Specification patterns](skills/penta-pro/references/specification-patterns.md) | Conditional forms for data, interfaces, decisions, threats, evidence, and runbooks. |
+| [Worked example](skills/penta-pro/references/worked-example.md) | Fictional example of linked requirements and planned evidence, with explicit uncertainty. |
+| [Analyst review assessment](skills/penta-pro/references/analyst-review-assessment.md) | Assessment of the supplied reviews, adopted improvements, and recommendations adapted or not adopted. |
+| [Source notes](skills/penta-pro/references/sources.md) | Discovery, proposal, project-rule, and operational research, with inspected revisions and adaptation decisions. |
+| [Evaluation scenarios](skills/penta-pro/evals/scenarios.md) | Discovery, interview, update, delegation, and scope cases, with validation records. |
+| [OpenAI metadata](skills/penta-pro/agents/openai.yaml) | Optional Codex display metadata and example invocation. |
 
 For creation, read the template index and five pillar templates. For updates and reviews, consult relevant sections for structural gaps or readiness. Screen profiles for new specifications or material scope changes and read detailed patterns as needed. Source notes, the analyst assessment, and evaluation cases are maintainer resources.
 
 ## Peer Review
 
-**Entrypoint:** [peer-review/SKILL.md](peer-review/SKILL.md)
+**Entrypoint:** [skills/peer-review/SKILL.md](skills/peer-review/SKILL.md)
 
 Use Peer Review for backend services, frontend applications, Android software, and the effectiveness of their tests. It supports local edits, selected files or snippets, pull requests, commit comparisons, independent second opinions, and re-review after fixes. Reports separate substantiated defects, verification gaps, optional improvements, and remaining release requirements.
 
@@ -540,11 +540,11 @@ The report gives coverage, evidence, limitations, and one verdict:
 
 The review preserves the selected source and Git state. Fixes, remote comments or approvals, merging, and releasing follow actual user authorization and project gates. Reports and filled handoffs belong to the reviewed project or requested output location, not the reusable skill folder. Existing `REVIEW.md` guidance is optional; the skill does not create or change project policy automatically.
 
-The reviewer follows consequential behavior from its contract through entry points, guards, effects, and consumers. Concrete inputs and event order help investigate authorization, races, retries, and stale asynchronous results. Existing protections and unknown premises are checked before retaining a finding. Cross-file change maps and guided summaries are reconciled with the full in-scope diff. For related PRs, the skill checks shared behavior and distinguishes branch evidence from the actual integration state. [Conditional coordination guidance](peer-review/references/independent-review.md#coordinate-related-changes) covers owners, dependencies, review capacity and workflow evaluation without imposing queue limits or authorizing Git integration.
+The reviewer follows consequential behavior from its contract through entry points, guards, effects, and consumers. Concrete inputs and event order help investigate authorization, races, retries, and stale asynchronous results. Existing protections and unknown premises are checked before retaining a finding. Cross-file change maps and guided summaries are reconciled with the full in-scope diff. For related PRs, the skill checks shared behavior and distinguishes branch evidence from the actual integration state. [Conditional coordination guidance](skills/peer-review/references/independent-review.md#coordinate-related-changes) covers owners, dependencies, review capacity and workflow evaluation without imposing queue limits or authorizing Git integration.
 
-The [automated-check layer](peer-review/references/verification.md#establish-automated-check-evidence) separates formatting/static/build checks, security/secret scans and behavioral tests from semantic review. Evidence must match the snapshot; required gates retain their consequences. Migrations, authentication/configuration, dependencies and weakened test/CI protection trigger deeper tracing. Test retirement or replacement is assessed against the affected contract and remaining protection. For known escaped defects, the [learning loop](peer-review/references/verification.md#learn-from-escaped-defects) connects the root cause to a meaningful regression check and proportionate process improvement under the existing authorization.
+The [automated-check layer](skills/peer-review/references/verification.md#establish-automated-check-evidence) separates formatting/static/build checks, security/secret scans and behavioral tests from semantic review. Evidence must match the snapshot; required gates retain their consequences. Migrations, authentication/configuration, dependencies and weakened test/CI protection trigger deeper tracing. Test retirement or replacement is assessed against the affected contract and remaining protection. For known escaped defects, the [learning loop](skills/peer-review/references/verification.md#learn-from-escaped-defects) connects the root cause to a meaningful regression check and proportionate process improvement under the existing authorization.
 
-Follow-up reviews compare the current snapshot with the last reviewed one, check outstanding findings and trace affected paths. For consequential releases, the reviewer checks what the proposed recovery would actually restore. [Focused re-review](peer-review/references/independent-review.md#focus-the-next-pass) · [Risk and recovery](peer-review/references/review-method.md#choose-proportionate-depth)
+Follow-up reviews compare the current snapshot with the last reviewed one, check outstanding findings and trace affected paths. For consequential releases, the reviewer checks what the proposed recovery would actually restore. [Focused re-review](skills/peer-review/references/independent-review.md#focus-the-next-pass) · [Risk and recovery](skills/peer-review/references/review-method.md#choose-proportionate-depth)
 
 ### Test effectiveness
 
@@ -555,7 +555,7 @@ Peer Review examines the tests relied on for changed behavior, including their d
 - Derive expected results from the contract. Review skips, focus filters, weakened assertions, and regenerated snapshots against any authorized requirement change.
 - Inspect helpers and framework semantics before judging a smoke test, snapshot, interaction check, or type assertion.
 
-The verification guidance incorporates lessons from Hollowtest. Its CLI is optional and must support the actual language and runner. Static diagnostics and scores are review evidence to investigate. Mutation probes use a disposable copy and a passing baseline, then distinguish meaningful assertion failures from equivalent mutations, compilation errors, timeouts, and incorrect test selection. The [verification guide](peer-review/references/verification.md) contains the detailed checks and execution boundaries.
+The verification guidance incorporates lessons from Hollowtest. Its CLI is optional and must support the actual language and runner. Static diagnostics and scores are review evidence to investigate. Mutation probes use a disposable copy and a passing baseline, then distinguish meaningful assertion failures from equivalent mutations, compilation errors, timeouts, and incorrect test selection. The [verification guide](skills/peer-review/references/verification.md) contains the detailed checks and execution boundaries.
 
 ### Independent review and models
 
@@ -579,19 +579,19 @@ Confirm how a managed reviewer receives instructions. Including only the body of
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](peer-review/SKILL.md) | Scope, routing, evidence requirements, independence, and follow-up. |
-| [Review method](peer-review/references/review-method.md) | Target selection, trusted policy, confidence, severity, coverage, and verdicts. |
-| [Backend](peer-review/references/backend.md) | APIs, authorization, data, concurrency, failure recovery, and operations. |
-| [Frontend](peer-review/references/frontend.md) | UI state, contracts, accessibility, browser boundaries, and performance. |
-| [Android](peer-review/references/android.md) | Lifecycle, coroutines, Flow, Compose/Views, platform security, and release variants. |
-| [Android/KMP test effectiveness](peer-review/references/android-testing.md) | Coroutine schedulers, Flow, Compose synchronization, restoration and target coverage. |
-| [Verification](peer-review/references/verification.md) | Test effectiveness, assertion execution, false-positive checks, isolated mutation probes, model correspondence, performance claims, and evidence reporting. |
-| [Independent review](peer-review/references/independent-review.md) | Fresh context, model selection, review lenses, and feedback loops. |
-| [Report template](peer-review/assets/review-report-template.md) | Optional structure for substantial or saved reviews. |
-| [Handoff template](peer-review/assets/review-handoff-template.md) | Factual packet for another reviewer or model. |
-| [Source research](peer-review/references/sources.md) | Original sources, official guidance, and synthesis decisions. |
-| [Evaluation scenarios](peer-review/evals/scenarios.md) | Calibration, scope, policy, host behavior, and validation records. |
-| [OpenAI metadata](peer-review/agents/openai.yaml) | Optional Codex display metadata and example invocation. |
+| [Entrypoint](skills/peer-review/SKILL.md) | Scope, routing, evidence requirements, independence, and follow-up. |
+| [Review method](skills/peer-review/references/review-method.md) | Target selection, trusted policy, confidence, severity, coverage, and verdicts. |
+| [Backend](skills/peer-review/references/backend.md) | APIs, authorization, data, concurrency, failure recovery, and operations. |
+| [Frontend](skills/peer-review/references/frontend.md) | UI state, contracts, accessibility, browser boundaries, and performance. |
+| [Android](skills/peer-review/references/android.md) | Lifecycle, coroutines, Flow, Compose/Views, platform security, and release variants. |
+| [Android/KMP test effectiveness](skills/peer-review/references/android-testing.md) | Coroutine schedulers, Flow, Compose synchronization, restoration and target coverage. |
+| [Verification](skills/peer-review/references/verification.md) | Test effectiveness, assertion execution, false-positive checks, isolated mutation probes, model correspondence, performance claims, and evidence reporting. |
+| [Independent review](skills/peer-review/references/independent-review.md) | Fresh context, model selection, review lenses, and feedback loops. |
+| [Report template](skills/peer-review/assets/review-report-template.md) | Optional structure for substantial or saved reviews. |
+| [Handoff template](skills/peer-review/assets/review-handoff-template.md) | Factual packet for another reviewer or model. |
+| [Source research](skills/peer-review/references/sources.md) | Original sources, official guidance, and synthesis decisions. |
+| [Evaluation scenarios](skills/peer-review/evals/scenarios.md) | Calibration, scope, policy, host behavior, and validation records. |
+| [OpenAI metadata](skills/peer-review/agents/openai.yaml) | Optional Codex display metadata and example invocation. |
 
 Android/KMP guidance also examines typed-result fallback/decoding semantics, dependency lifetimes and shared-platform boundaries. Test review distinguishes scheduler/clock ownership, conflated Flow states, device execution and actual OS restoration.
 
@@ -599,7 +599,7 @@ Load the review method and applicable references. Source research and evaluation
 
 ## Cybersecurity
 
-**Entrypoint:** [cybersec/SKILL.md](cybersec/SKILL.md)
+**Entrypoint:** [skills/cybersec/SKILL.md](skills/cybersec/SKILL.md)
 
 Use Cybersecurity for explicit security assessments, threat modeling, secure implementation, hardening, and security readiness checks. It covers web/frontends, backend/APIs, desktop/native applications, Android/iOS, CI/CD, supply chains, cloud/IaC/containers, enterprise IT, and AI/agentic systems when present. It selects the relevant surfaces instead of running every checklist for every project.
 
@@ -637,30 +637,30 @@ Concrete traces connect attacker-controlled input, the protected resource and ru
 
 The assessment can conclude `Action required`, `No blocking findings` within completed agreed coverage, or `Incomplete` when material evidence is missing. Zero findings is valid. Reports and filled templates belong in the target project or requested location; report files are written only when requested or required by the calling workflow. Without project artifacts, the output is a plan or scoped threat model rather than a fabricated audit.
 
-The skill was informed by Silva97's [Bem-vindo ao ciberapocalipse](https://www.tabnews.com.br/Silva97/bem-vindo-ao-ciberapocalipse) and accessible related material, with technical guidance checked against primary NIST, OWASP, and platform sources. Opinionated article claims are not treated as standards. See [source notes](cybersec/references/sources.md) for access limits and [third-party notices](THIRD-PARTY-NOTICES.md) for attribution.
+The skill was informed by Silva97's [Bem-vindo ao ciberapocalipse](https://www.tabnews.com.br/Silva97/bem-vindo-ao-ciberapocalipse) and accessible related material, with technical guidance checked against primary NIST, OWASP, and platform sources. Opinionated article claims are not treated as standards. See [source notes](skills/cybersec/references/sources.md) for access limits and [third-party notices](THIRD-PARTY-NOTICES.md) for attribution.
 
 ### Resources
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](cybersec/SKILL.md) | Modes, authority, target scope, routing, and working loop. |
-| [Assessment method](cybersec/references/assessment-method.md) | Threat reasoning, repository baseline, evidence, severity/status, coverage, and conclusions. |
-| [Threat coverage and verification](cybersec/references/threat-coverage.md) | Traceable coverage, combined attack paths, negative/positive checks, structural guarantees, security-model limits, and reassessment triggers. |
-| [Web and API](cybersec/references/web-api.md) | Browser/service trust, authorization, business logic, inputs, and data. |
-| [Credential and cryptographic controls](cybersec/references/web-api.md#credentials-and-cryptographic-controls) | Passwords, security tokens, encryption, and key handling across relevant platforms. |
-| [Desktop and native](cybersec/references/desktop-native.md) | IPC/bridges, file access, privileged helpers, distribution, updates, and native boundaries. |
-| [Mobile](cybersec/references/mobile.md) | Android/iOS release, platform, storage, network, and inter-app boundaries. |
-| [DevOps and supply chain](cybersec/references/devops-supply-chain.md) | Dependencies, CI/build/artifact trust, cloud, IaC, containers, and Kubernetes. |
-| [IT operations](cybersec/references/it-operations.md) | Assets, enterprise identities, endpoints, networks, incident readiness, and recovery. |
-| [AI and agentic systems](cybersec/references/ai-agentic.md) | Prompt/tool boundaries, retrieval/memory isolation, unsafe output, and action scope. |
-| [Assessment template](cybersec/assets/security-assessment-template.md) | Adaptable threat/control/finding/evidence report. |
-| [Source notes](cybersec/references/sources.md) | Article attribution, primary sources, adaptation decisions, and unavailable readings. |
-| [Evaluation scenarios](cybersec/evals/scenarios.md) | Discovery, platform/CI/IT risks, guard controls, authorization, evidence, and validation records. |
-| [OpenAI metadata](cybersec/agents/openai.yaml) | Optional host display metadata and invocation prompt; no model selection. |
+| [Entrypoint](skills/cybersec/SKILL.md) | Modes, authority, target scope, routing, and working loop. |
+| [Assessment method](skills/cybersec/references/assessment-method.md) | Threat reasoning, repository baseline, evidence, severity/status, coverage, and conclusions. |
+| [Threat coverage and verification](skills/cybersec/references/threat-coverage.md) | Traceable coverage, combined attack paths, negative/positive checks, structural guarantees, security-model limits, and reassessment triggers. |
+| [Web and API](skills/cybersec/references/web-api.md) | Browser/service trust, authorization, business logic, inputs, and data. |
+| [Credential and cryptographic controls](skills/cybersec/references/web-api.md#credentials-and-cryptographic-controls) | Passwords, security tokens, encryption, and key handling across relevant platforms. |
+| [Desktop and native](skills/cybersec/references/desktop-native.md) | IPC/bridges, file access, privileged helpers, distribution, updates, and native boundaries. |
+| [Mobile](skills/cybersec/references/mobile.md) | Android/iOS release, platform, storage, network, and inter-app boundaries. |
+| [DevOps and supply chain](skills/cybersec/references/devops-supply-chain.md) | Dependencies, CI/build/artifact trust, cloud, IaC, containers, and Kubernetes. |
+| [IT operations](skills/cybersec/references/it-operations.md) | Assets, enterprise identities, endpoints, networks, incident readiness, and recovery. |
+| [AI and agentic systems](skills/cybersec/references/ai-agentic.md) | Prompt/tool boundaries, retrieval/memory isolation, unsafe output, and action scope. |
+| [Assessment template](skills/cybersec/assets/security-assessment-template.md) | Adaptable threat/control/finding/evidence report. |
+| [Source notes](skills/cybersec/references/sources.md) | Article attribution, primary sources, adaptation decisions, and unavailable readings. |
+| [Evaluation scenarios](skills/cybersec/evals/scenarios.md) | Discovery, platform/CI/IT risks, guard controls, authorization, evidence, and validation records. |
+| [OpenAI metadata](skills/cybersec/agents/openai.yaml) | Optional host display metadata and invocation prompt; no model selection. |
 
 ## UI Design
 
-**Entrypoint:** [ui-design/SKILL.md](ui-design/SKILL.md)
+**Entrypoint:** [skills/ui-design/SKILL.md](skills/ui-design/SKILL.md)
 
 Use UI Design to discover, specify, refine, review, or implement screens and multi-screen journeys. A shared method covers task completion, hierarchy, content, components, states, accessibility and evidence; conditional references handle web and native Android (Compose/Views). Other platforms use the common method and actual official framework guidance with explicit coverage limits.
 
@@ -680,57 +680,57 @@ When screen documentation is in scope, author UI details in the active change’
 
 When PentaPRO files exist, this UI document supplements their five pillars and links canonical requirements, checks, architecture and process records. Existing design systems remain authoritative for their owned tokens/components. The skill has no mandatory dependency on the other skills, BMAD, Figma, a browser plugin, image generation or a paid service. Runtime checks require available project tools; HTML concepts do not prove Android behavior. Research observations, proposals, accepted decisions and executed checks remain distinct. No production usability or cross-model efficiency benchmark is claimed.
 
-An optional standard-library Python helper checks explicitly declared token contrast pairs and builds local HTML state galleries from editable sources. These concepts support named screen/state/theme/window links and token-derived specimens without remote font/icon services or automatic publication. Existing project formats, native previews and browser tooling remain valid alternatives. See the [prototype workflow](ui-design/references/prototyping.md); calculated pairs and HTML concepts do not establish accessibility conformance or native runtime correctness.
+An optional standard-library Python helper checks explicitly declared token contrast pairs and builds local HTML state galleries from editable sources. These concepts support named screen/state/theme/window links and token-derived specimens without remote font/icon services or automatic publication. Existing project formats, native previews and browser tooling remain valid alternatives. See the [prototype workflow](skills/ui-design/references/prototyping.md); calculated pairs and HTML concepts do not establish accessibility conformance or native runtime correctness.
 
 ### UI Design resources
 
 | Resource | Purpose |
 | --- | --- |
-| [Entrypoint](ui-design/SKILL.md) | Modes, routing, scope and working loop. |
-| [Design method](ui-design/references/design-method.md) | Discovery, task/flow coverage, screen contracts, content and recovery. |
-| [Visual system](ui-design/references/visual-system.md) | Tokens, identity, typography, graphic assets, charts and motion. |
-| [Web](ui-design/references/web.md) | Browser layout, navigation, semantics and checks. |
-| [Android](ui-design/references/android.md) | Compose/Views and conditional implementation procedures for components, presentation, architecture and navigation. |
-| [Feedback and state coverage](ui-design/references/feedback-states.md) | Error surfaces, partial failures, refresh/pagination, control variants and stress states. |
-| [Validation](ui-design/references/validation.md) | Rendered inspection, reproducible journeys, durable outcomes, usability and evidence limits. |
-| [Document maintenance](ui-design/references/document-maintenance.md) | Cumulative updates, stable IDs, ownership and resumption. |
-| [Output template](ui-design/assets/ui-design-template.md) | Adaptable single-file screen and flow specification. |
-| [Prototype workflow](ui-design/references/prototyping.md) | Optional token checks, local state galleries, direction comparison and reproducible review. |
-| [Prototype tools](ui-design/scripts/prototype_tools.py) | Original local checker/builder; no external runtime packages required. |
-| [Prototype starter](ui-design/assets/prototype/manifest.json) | Synthetic editable gallery inputs, not a production design system. |
-| [Design consolidation](ui-design/references/design-consolidation.md) | File-by-file transfer and exclusions from the retired local design skill. |
-| [Worked example](ui-design/references/worked-example.md) | Two-screen Android specification with explicit pending decisions. |
-| [Source research](ui-design/references/sources.md) | Repository coverage, pinned sources, adaptations and research limits. |
-| [Evaluation scenarios](ui-design/evals/scenarios.md) | Realistic cases and validation record. |
-| [OpenAI metadata](ui-design/agents/openai.yaml) | Optional host presentation and invocation prompt. |
+| [Entrypoint](skills/ui-design/SKILL.md) | Modes, routing, scope and working loop. |
+| [Design method](skills/ui-design/references/design-method.md) | Discovery, task/flow coverage, screen contracts, content and recovery. |
+| [Visual system](skills/ui-design/references/visual-system.md) | Tokens, identity, typography, graphic assets, charts and motion. |
+| [Web](skills/ui-design/references/web.md) | Browser layout, navigation, semantics and checks. |
+| [Android](skills/ui-design/references/android.md) | Compose/Views and conditional implementation procedures for components, presentation, architecture and navigation. |
+| [Feedback and state coverage](skills/ui-design/references/feedback-states.md) | Error surfaces, partial failures, refresh/pagination, control variants and stress states. |
+| [Validation](skills/ui-design/references/validation.md) | Rendered inspection, reproducible journeys, durable outcomes, usability and evidence limits. |
+| [Document maintenance](skills/ui-design/references/document-maintenance.md) | Cumulative updates, stable IDs, ownership and resumption. |
+| [Output template](skills/ui-design/assets/ui-design-template.md) | Adaptable single-file screen and flow specification. |
+| [Prototype workflow](skills/ui-design/references/prototyping.md) | Optional token checks, local state galleries, direction comparison and reproducible review. |
+| [Prototype tools](skills/ui-design/scripts/prototype_tools.py) | Original local checker/builder; no external runtime packages required. |
+| [Prototype starter](skills/ui-design/assets/prototype/manifest.json) | Synthetic editable gallery inputs, not a production design system. |
+| [Design consolidation](skills/ui-design/references/design-consolidation.md) | File-by-file transfer and exclusions from the retired local design skill. |
+| [Worked example](skills/ui-design/references/worked-example.md) | Two-screen Android specification with explicit pending decisions. |
+| [Source research](skills/ui-design/references/sources.md) | Repository coverage, pinned sources, adaptations and research limits. |
+| [Evaluation scenarios](skills/ui-design/evals/scenarios.md) | Realistic cases and validation record. |
+| [OpenAI metadata](skills/ui-design/agents/openai.yaml) | Optional host presentation and invocation prompt. |
 
 ## Diagnose Defect
 
-Use for an ambiguous failure, intermittent regression, or slowdown that needs a discriminating reproduction. For example, “Diagnose why retries sometimes lose a queued job.” The result records the cause evidence and remaining uncertainty. A fix and its verification follow the requested scope. [Skill](diagnose-defect/SKILL.md) · [Bisection and input reduction](diagnose-defect/references/localization.md)
+Use for an ambiguous failure, intermittent regression, or slowdown that needs a discriminating reproduction. For example, “Diagnose why retries sometimes lose a queued job.” The result records the cause evidence and remaining uncertainty. A fix and its verification follow the requested scope. [Skill](skills/diagnose-defect/SKILL.md) · [Bisection and input reduction](skills/diagnose-defect/references/localization.md)
 
 ## Behavior Testing
 
-Use when behavior tests are the primary deliverable or test-first implementation is requested. For example, “Add a regression test for submitting twice after a lost response.” Ordinary implementation includes its own regression checks. For native Android test authoring, select the applicable native helper. [Skill](behavior-testing/SKILL.md) · [Test design and intermittent failures](behavior-testing/references/test-design.md)
+Use when behavior tests are the primary deliverable or test-first implementation is requested. For example, “Add a regression test for submitting twice after a lost response.” Ordinary implementation includes its own regression checks. For native Android test authoring, select the applicable native helper. [Skill](skills/behavior-testing/SKILL.md) · [Test design and intermittent failures](skills/behavior-testing/references/test-design.md)
 
 ## HTTP API
 
-Use for concrete server changes under an existing or authorized contract. For example, “Implement this endpoint with retry-safe writes and preserve current client errors.” The output includes contract and implementation changes, caller impact, and executed checks. [Skill](http-api/SKILL.md) · [Limits, caching, and endpoint evolution](http-api/references/lifecycle.md)
+Use for concrete server changes under an existing or authorized contract. For example, “Implement this endpoint with retry-safe writes and preserve current client errors.” The output includes contract and implementation changes, caller impact, and executed checks. [Skill](skills/http-api/SKILL.md) · [Limits, caching, and endpoint evolution](skills/http-api/references/lifecycle.md)
 
 ## MCP Server
 
-Use to implement an MCP server or an exposed capability. For example, “Expose the existing document lookup through our supported MCP client.” Keep protocol revision, transport, permission enforcement, and downstream test effects explicit. The protocol reference covers modern and legacy clients, including shared endpoints. [Skill](mcp-server/SKILL.md) · [Revision checks](mcp-server/references/protocol-revisions.md) · [Remote authorization](mcp-server/references/authorization.md) · [Tool contracts and task evaluation](mcp-server/references/tool-contracts-and-evaluation.md)
+Use to implement an MCP server or an exposed capability. For example, “Expose the existing document lookup through our supported MCP client.” Keep protocol revision, transport, permission enforcement, and downstream test effects explicit. The protocol reference covers modern and legacy clients, including shared endpoints. [Skill](skills/mcp-server/SKILL.md) · [Revision checks](skills/mcp-server/references/protocol-revisions.md) · [Remote authorization](skills/mcp-server/references/authorization.md) · [Tool contracts and task evaluation](skills/mcp-server/references/tool-contracts-and-evaluation.md)
 
 ## Software Factory
 
-Describe the desired software outcome to the host main agent with `$software-factory`. It explores with you, creates or resumes a native change, dispatches specification review, plans and implements through specialists, and verifies/reviews the integrated result. You do not need a command or prompt for each stage. When the result is ready, one explicit approval authorizes consolidation, archival, commit and normal push by default; separate/local-only instructions prevail. Feedback returns to the affected specification/tasks and checks. No SDD CLI or configurable schema is required. See the [native lifecycle](software-factory/references/execution.md), [fixed records](software-factory/references/change-records.md) and [closure/recovery](software-factory/references/closure.md).
+Describe the desired software outcome to the host main agent with `$software-factory`. It explores with you, creates or resumes a native change, dispatches specification review, plans and implements through specialists, and verifies/reviews the integrated result. You do not need a command or prompt for each stage. When the result is ready, one explicit approval authorizes consolidation, archival, commit and normal push by default; separate/local-only instructions prevail. Feedback returns to the affected specification/tasks and checks. No SDD CLI or configurable schema is required. See the [native lifecycle](skills/software-factory/references/execution.md), [fixed records](skills/software-factory/references/change-records.md) and [closure/recovery](skills/software-factory/references/closure.md).
 
 The [first pilot](docs/retrospectiva-piloto-fabrica-2026-11-19.md) exercised local implementation, separate review, repeated setup verification and archival. Custom-role selection and configured models remain unverified in the tested host. Confirm those capabilities in your client before requiring them as delivery gates. Use the [change checklist](docs/guia-fabrica-changes.md) for adoption.
 
 ### Durable execution records
 
-Factory runs and substantial dependent multi-agent changes use one `docs/agents/runs/<run-id>/run.json`, or an approved existing equivalent. The orchestrator alone checkpoints it before delegation, after checked results, before/after external effects and during recovery. It stores English summaries, canonical contract links, owners, pending work, required gates and snapshot-bound evidence. Small bounded single-agent edits can remain lightweight. Setup prepares the [directory guide](setup-pentapro/assets/runs-readme.md) without creating a fictional active run or replacing existing records.
+Factory runs and substantial dependent multi-agent changes use one `docs/agents/runs/<run-id>/run.json`, or an approved existing equivalent. The orchestrator alone checkpoints it before delegation, after checked results, before/after external effects and during recovery. It stores English summaries, canonical contract links, owners, pending work, required gates and snapshot-bound evidence. Small bounded single-agent edits can remain lightweight. Setup prepares the [directory guide](skills/setup-pentapro/assets/runs-readme.md) without creating a fictional active run or replacing existing records.
 
-The optional bookkeeping [run-state helper](software-factory/scripts/run_state.py) uses Python 3.12+ and Git for `init`, `snapshot`, `save` and `check`. It detects outdated record writers, stale fingerprints on passed gates, incomplete required gates and unfinished work at completion; saves use a per-run lock and atomic replacement. Follow the [record format and recovery procedure](software-factory/references/run-records.md) for commands, prerequisites and limits. Check actual files and remote effects before replaying interrupted operations. A local record cannot certify a review or remote publication by itself.
+The optional bookkeeping [run-state helper](skills/software-factory/scripts/run_state.py) uses Python 3.12+ and Git for `init`, `snapshot`, `save` and `check`. It detects outdated record writers, stale fingerprints on passed gates, incomplete required gates and unfinished work at completion; saves use a per-run lock and atomic replacement. Follow the [record format and recovery procedure](skills/software-factory/references/run-records.md) for commands, prerequisites and limits. Check actual files and remote effects before replaying interrupted operations. A local record cannot certify a review or remote publication by itself.
 
 The fingerprint excludes run metadata and local prompt logs; ignored untracked outputs and external inputs need separate evidence. Preserve historical evidence when invalidating a gate. Choose project policy for versioning sanitized checkpoints; helpers never stage, commit or publish them. Post-push records can remain local for the next authorized commit. Existing customized projects adopt this contract through reviewed reconciliation. See the [local directory guide](docs/agents/runs/README.md) and [executed recovery controls](docs/factory-run-persistence.md).
 
@@ -738,7 +738,7 @@ The fingerprint excludes run metadata and local prompt logs; ignored untracked o
 
 Factory-role calls use append-only `docs/agents/runs/<run-id>/events.jsonl` beside the existing state record. Reuse the execution across prompts, sessions and retries; a prompt or agent does not create a directory. Standalone factory roles use one minimal real assignment run; ordinary skill calls remain outside this history. Only the orchestrator records sanitized reasons, expected/actual outcomes, evidence and observed timing/usage. Unknown metrics remain unavailable. Requested models/effort are separate from observed values.
 
-The [event contract and helper](software-factory/references/invocation-events.md) support explicit appends and per-run summaries without scanning other runs. Failed capture before managed dispatch holds dispatch; after observed effects reconcile state and retry recording only. Events are not proof of complete host capture. Retrospectives can examine rework, repeated assignments, handoff waits and cost per verified outcome without treating fewer reviews as better. Lessons reference this evidence and remain separate long-lived knowledge. Choose retention/versioning explicitly; no automatic history deletion, hooks, global configuration or telemetry service is installed. Existing projects adopt the guidance through reviewed setup reconciliation.
+The [event contract and helper](skills/software-factory/references/invocation-events.md) support explicit appends and per-run summaries without scanning other runs. Failed capture before managed dispatch holds dispatch; after observed effects reconcile state and retry recording only. Events are not proof of complete host capture. Retrospectives can examine rework, repeated assignments, handoff waits and cost per verified outcome without treating fewer reviews as better. Lessons reference this evidence and remain separate long-lived knowledge. Choose retention/versioning explicitly; no automatic history deletion, hooks, global configuration or telemetry service is installed. Existing projects adopt the guidance through reviewed setup reconciliation.
 
 ### Continuous improvement with PDSA
 
@@ -746,19 +746,19 @@ All six factory roles (`factory_spec`, `factory_implementer`, `factory_verifier`
 
 Agents return the outcome, evidence/gaps, a concise PDSA summary and any useful lesson candidate; they do not write the shared lessons record. The orchestrator checks evidence, separates cause hypotheses from confirmed causes, consolidates duplicates and alone records lessons in `docs/agents/lessons-learned.md` or the project's established equivalent. For standalone agent calls, the invoking main session serves as orchestrator. Logical names must map to the discovered host IDs; for example OpenCode uses `factory-shipper` from its filename rather than an assumed `factory_shipper` alias. If a custom agent runs as the main session directly, it finishes its role before visibly taking the recording responsibility. If recording is unavailable, the candidate is returned with persistence pending. No new lesson is a valid outcome.
 
-Full `setup-pentapro` installs the [PDSA protocol](setup-pentapro/assets/continuous-improvement.md), an [empty lessons record](setup-pentapro/assets/lessons-learned.md), and project instruction pointers while preserving existing customizations and lesson history. A logging-only setup leaves these artifacts untouched. Agents consult relevant lessons on the next task and revalidate their applicability. Lessons record context, evidence, confidence, correction, prevention hypothesis, status and next verification; every entry is written in English even when the developer keeps PentaPRO specifications in Portuguese, so the collection can reuse lessons for future skill improvements. Lessons never override project policy or grant permission.
+Full `setup-pentapro` installs the [PDSA protocol](skills/setup-pentapro/assets/continuous-improvement.md), an [empty lessons record](skills/setup-pentapro/assets/lessons-learned.md), and project instruction pointers while preserving existing customizations and lesson history. A logging-only setup leaves these artifacts untouched. Agents consult relevant lessons on the next task and revalidate their applicability. Lessons record context, evidence, confidence, correction, prevention hypothesis, status and next verification; every entry is written in English even when the developer keeps PentaPRO specifications in Portuguese, so the collection can reuse lessons for future skill improvements. Lessons never override project policy or grant permission.
 
 Lessons persisted after commit or push may remain local until the next authorized commit. The orchestrator reports persistence and publication separately. This process does not automatically rewrite skills or retrain models. Structural validation and authored scenarios do not establish improved quality or lower cost; evaluate actual runs before making those claims.
 
 ## Software Delivery
 
-Coordinate dependent tasks and verify the integrated result. For example, “Implement the accepted retry change across the API, worker and existing clients.” Use the governing baseline and applicable active change, or establish the intended behavior from the request and existing project contracts. Reconcile material changes with the owning records and keep verification tied to the resulting revision. A clear localized change can use its domain procedure directly. See [Software Delivery](software-delivery/SKILL.md) and its [change contract guide](software-delivery/references/change-contracts.md).
+Coordinate dependent tasks and verify the integrated result. For example, “Implement the accepted retry change across the API, worker and existing clients.” Use the governing baseline and applicable active change, or establish the intended behavior from the request and existing project contracts. Reconcile material changes with the owning records and keep verification tied to the resulting revision. A clear localized change can use its domain procedure directly. See [Software Delivery](skills/software-delivery/SKILL.md) and its [change contract guide](skills/software-delivery/references/change-contracts.md).
 
 ## Production Operations
 
-Use [Production Operations](production-operations/SKILL.md) to choose a deployment model, configure infrastructure and CI/CD, release an exact backend revision, or operate and recover a hosted service. It covers APIs, functions, containers, workers, scheduled and batch jobs, Kubernetes, VMs and stateful dependencies. Load the relevant [AWS](production-operations/references/providers/aws.md), [Azure](production-operations/references/providers/azure.md), [Google Cloud](production-operations/references/providers/gcp.md), [Cloudflare](production-operations/references/providers/cloudflare.md) or [VPS](production-operations/references/providers/vps.md) guide.
+Use [Production Operations](skills/production-operations/SKILL.md) to choose a deployment model, configure infrastructure and CI/CD, release an exact backend revision, or operate and recover a hosted service. It covers APIs, functions, containers, workers, scheduled and batch jobs, Kubernetes, VMs and stateful dependencies. Load the relevant [AWS](skills/production-operations/references/providers/aws.md), [Azure](skills/production-operations/references/providers/azure.md), [Google Cloud](skills/production-operations/references/providers/gcp.md), [Cloudflare](skills/production-operations/references/providers/cloudflare.md) or [VPS](skills/production-operations/references/providers/vps.md) guide.
 
-Give the agent the repository and release ref, exact target environment and resource identifiers, approved login or runner, allowed changes and cost scope, and links to the relevant deployment and recovery procedures. Complete human login, MFA or consent directly with the provider. Supply references to secrets in the approved vault or CI store. The [access guide](production-operations/references/access-and-mcp.md) separates bootstrap, pipeline, runtime and observation identities and explains when to use an official MCP server, CLI or the existing pipeline.
+Give the agent the repository and release ref, exact target environment and resource identifiers, approved login or runner, allowed changes and cost scope, and links to the relevant deployment and recovery procedures. Complete human login, MFA or consent directly with the provider. Supply references to secrets in the approved vault or CI store. The [access guide](skills/production-operations/references/access-and-mcp.md) separates bootstrap, pipeline, runtime and observation identities and explains when to use an official MCP server, CLI or the existing pipeline.
 
 ```text
 Use $production-operations to compare AWS, Cloudflare, and a VPS for this API. Identify compatibility, cost assumptions, and what access staging needs.
@@ -766,15 +766,15 @@ Use $production-operations to prepare the Cloud Run staging pipeline with federa
 Use $production-operations to deploy this image digest to the authorized staging ECS service and verify the running revision and critical API flow.
 ```
 
-The [deployment brief](production-operations/assets/deployment-brief.md) captures inputs and authority. The [operations record](production-operations/assets/operations-record.md) captures what ran, which revision served, observed checks and recovery evidence. See the [worked examples](production-operations/references/worked-examples.md), [evaluation scenarios](production-operations/evals/scenarios.md) and [source notes](production-operations/references/sources.md). Cloud credentials and MCP tools are configured separately for the actual target.
+The [deployment brief](skills/production-operations/assets/deployment-brief.md) captures inputs and authority. The [operations record](skills/production-operations/assets/operations-record.md) captures what ran, which revision served, observed checks and recovery evidence. See the [worked examples](skills/production-operations/references/worked-examples.md), [evaluation scenarios](skills/production-operations/evals/scenarios.md) and [source notes](skills/production-operations/references/sources.md). Cloud credentials and MCP tools are configured separately for the actual target.
 
 ## Technical Research
 
-Resolve technical uncertainty with traceable evidence. Read [technical-research/SKILL.md](technical-research/SKILL.md) for scope and conditional resources. Invoke `$technical-research` for this outcome. Existing project tools, contracts and authorization remain authoritative.
+Resolve technical uncertainty with traceable evidence. Read [skills/technical-research/SKILL.md](skills/technical-research/SKILL.md) for scope and conditional resources. Invoke `$technical-research` for this outcome. Existing project tools, contracts and authorization remain authoritative.
 
 ## Git Ship
 
-Review, commit and publish an authorized Git snapshot, and prepare a pull request when asked. Read [git-ship/SKILL.md](git-ship/SKILL.md) for scope and conditional resources. Existing project tools, contracts and authorization remain authoritative.
+Review, commit and publish an authorized Git snapshot, and prepare a pull request when asked. Read [skills/git-ship/SKILL.md](skills/git-ship/SKILL.md) for scope and conditional resources. Existing project tools, contracts and authorization remain authoritative.
 
 ```text
 Use $git-ship to review this branch, commit the intended fix and push it.
@@ -788,7 +788,7 @@ The workflow keeps the safety boundaries visible: mutable Git state is establish
 
 ## Agent Instructions
 
-Maintain portable software-development agent guidance. Read [agent-instructions/SKILL.md](agent-instructions/SKILL.md) for scope and conditional resources. Invoke `$agent-instructions` for this outcome. Existing project tools, contracts and authorization remain authoritative.
+Maintain portable software-development agent guidance. Read [skills/agent-instructions/SKILL.md](skills/agent-instructions/SKILL.md) for scope and conditional resources. Invoke `$agent-instructions` for this outcome. Existing project tools, contracts and authorization remain authoritative.
 
 ## Native Android implementation and testing
 
@@ -796,30 +796,30 @@ These helpers implement concrete native Kotlin/JVM/Android changes. They do not 
 
 | Helper | Example request | Main supporting resources |
 | --- | --- | --- |
-| [android-module-structure](android-module-structure/SKILL.md) | Add the approved notes data module using the existing Gradle conventions. | [Build logic](android-module-structure/references/build-logic.md), [execution](android-module-structure/references/execution.md), [maintenance cases](android-module-structure/evals/scenarios.md) |
-| [android-data-layer](android-data-layer/SKILL.md) | Implement atomic refresh while retaining cached notes after failure. | Repository/storage/transport procedures and typed-domain examples in the entrypoint |
-| [android-error-handling](android-error-handling/SKILL.md) | Implement cancellation-preserving HTTP error mapping with TLS failures distinguished. | Typed Result and Ktor boundary examples in the entrypoint |
-| [android-di-koin](android-di-koin/SKILL.md) | Wire the existing repository and destination ViewModel with the correct owner. | Binding, startup and lifetime procedures in the entrypoint |
-| [android-background](android-background/SKILL.md) | Implement an account-scoped idempotent synchronization worker. | WorkManager retry/initialization and Koin procedures in the entrypoint |
-| [android-unit-testing](android-unit-testing/SKILL.md) | Write a deterministic test for a delayed refresh cancelled during logout. | [Case catalogue](android-unit-testing/references/test-cases.md), [Notes fake](android-unit-testing/references/notes-fake.md) |
-| [android-integration-testing](android-integration-testing/SKILL.md) | Write the Room migration/data-preservation test for this schema update. | Native boundary, storage and transport test procedures in the entrypoint |
-| [android-ui-testing](android-ui-testing/SKILL.md) | Write a device test for the retry button and retained content. | Native host, selectors, scheduling and cleanup procedures in the entrypoint |
+| [android-module-structure](skills/android-module-structure/SKILL.md) | Add the approved notes data module using the existing Gradle conventions. | [Build logic](skills/android-module-structure/references/build-logic.md), [execution](skills/android-module-structure/references/execution.md), [maintenance cases](skills/android-module-structure/evals/scenarios.md) |
+| [android-data-layer](skills/android-data-layer/SKILL.md) | Implement atomic refresh while retaining cached notes after failure. | Repository/storage/transport procedures and typed-domain examples in the entrypoint |
+| [android-error-handling](skills/android-error-handling/SKILL.md) | Implement cancellation-preserving HTTP error mapping with TLS failures distinguished. | Typed Result and Ktor boundary examples in the entrypoint |
+| [android-di-koin](skills/android-di-koin/SKILL.md) | Wire the existing repository and destination ViewModel with the correct owner. | Binding, startup and lifetime procedures in the entrypoint |
+| [android-background](skills/android-background/SKILL.md) | Implement an account-scoped idempotent synchronization worker. | WorkManager retry/initialization and Koin procedures in the entrypoint |
+| [android-unit-testing](skills/android-unit-testing/SKILL.md) | Write a deterministic test for a delayed refresh cancelled during logout. | [Case catalogue](skills/android-unit-testing/references/test-cases.md), [Notes fake](skills/android-unit-testing/references/notes-fake.md) |
+| [android-integration-testing](skills/android-integration-testing/SKILL.md) | Write the Room migration/data-preservation test for this schema update. | Native boundary, storage and transport test procedures in the entrypoint |
+| [android-ui-testing](skills/android-ui-testing/SKILL.md) | Write a device test for the retry button and retained content. | Native host, selectors, scheduling and cleanup procedures in the entrypoint |
 
 Implementation results are source/configuration changes and proportionate executed checks, with missing SDK/device/service evidence disclosed. Existing stacks, versions, supported behavior and user authorization govern the work. Each package retains essential instructions for standalone use and names optional companions for distinct tasks. Use the project's existing commands and contracts when a companion is absent.
 
 ## PR Quiz
 
-[pr-quiz](pr-quiz/SKILL.md) creates an explicitly requested decision-comprehension quiz for a specific GitHub PR. It is generic across platforms and separate from Peer Review: passing questions does not establish defect freedom, security or independent approval. Creating a PR alone never activates it.
+[pr-quiz](skills/pr-quiz/SKILL.md) creates an explicitly requested decision-comprehension quiz for a specific GitHub PR. It is generic across platforms and separate from Peer Review: passing questions does not establish defect freedom, security or independent approval. Creating a PR alone never activates it.
 
-Example: `Use $pr-quiz to draft a quiz about the caching and retry decisions in PR 123.` Drafting stays local; publishing requires the requested PR-edit scope. The [Python helper](pr-quiz/scripts/publish_quiz.py) previews with `--dry-run` without GitHub access, then can preserve surrounding PR text while publishing through `gh` when authorized. Resolve its installed path in the target repository. Publishing requires the intended repository in `--repo` and the reviewed commit in `--head`. Earlier helper versions accepted implicit targets. Update any publication scripts to pass both options. The helper checks the current head and body before the edit and confirms the result afterward.
+Example: `Use $pr-quiz to draft a quiz about the caching and retry decisions in PR 123.` Drafting stays local; publishing requires the requested PR-edit scope. The [Python helper](skills/pr-quiz/scripts/publish_quiz.py) previews with `--dry-run` without GitHub access, then can preserve surrounding PR text while publishing through `gh` when authorized. Resolve its installed path in the target repository. Publishing requires the intended repository in `--repo` and the reviewed commit in `--head`. Earlier helper versions accepted implicit targets. Update any publication scripts to pass both options. The helper checks the current head and body before the edit and confirms the result afterward.
 
-The [optional workflow asset](pr-quiz/assets/pr-quiz.yml) grades through trusted GitHub metadata events, without running PR-head code. It is not installed as an active workflow here. Authors are ineligible by default; passes bind to the quiz content, ID and head SHA. Comment answers use the current revision token shown in the pending status. Review team policy, the pinned action, and token permissions before enabling the template. Keep its commit status informational because PRs can share the same commit SHA. Use repository review requirements for merge authorization.
+The [optional workflow asset](skills/pr-quiz/assets/pr-quiz.yml) grades through trusted GitHub metadata events, without running PR-head code. It is not installed as an active workflow here. Authors are ineligible by default; passes bind to the quiz content, ID and head SHA. Comment answers use the current revision token shown in the pending status. Review team policy, the pinned action, and token permissions before enabling the template. Keep its commit status informational because PRs can share the same commit SHA. Use repository review requirements for merge authorization.
 
-Offline maintainer checks: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s pr-quiz/scripts/tests -v` and `node pr-quiz/scripts/tests/workflow.cjs`. They exercise rendering/body preservation and the actual embedded grader with API doubles; they do not validate a live GitHub deployment or branch rule.
+Offline maintainer checks: `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v` and `node skills/pr-quiz/scripts/tests/workflow.cjs`. They exercise rendering/body preservation and the actual embedded grader with API doubles; they do not validate a live GitHub deployment or branch rule.
 
 ## Project agent instructions template
 
-[setup-pentapro/assets/agents.md](setup-pentapro/assets/agents.md) is an adaptable project instruction template. Setup preserves existing instructions, includes the permanent motivational manifesto and embeds its complete prompt rule directly in the target project’s `AGENTS.md`.
+[skills/setup-pentapro/assets/agents.md](skills/setup-pentapro/assets/agents.md) is an adaptable project instruction template. Setup preserves existing instructions, includes the permanent motivational manifesto and embeds its complete prompt rule directly in the target project’s `AGENTS.md`.
 
 When `docs/agents/setup-notes.md` exists, PentaPRO reads its deferred facts on the next pass, preserves their status and provenance, and links them to the owning pillars.
 
@@ -827,7 +827,9 @@ The template supplies rules for native changes, scoped work, implementation, val
 
 ## Guides and case studies
 
-The PDFs are Portuguese teaching editions dated November 2026. The development guide shows 22 skills and the Castas retrospective shows 21; their five-file PentaPRO examples predate the repository-root topic layout. Follow the current [catalog](#available-skills), [routing map](SKILL-ROUTING.md) and [PentaPRO skill](penta-pro/SKILL.md) for new projects and specification updates. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. These PDFs are historical teaching material; use the native lifecycle and migration guide for current adoption.
+See the [2026-11-25 harness review](docs/harness-review-2026-11-25.md) for the current maintenance checks, script/test inventory and remaining readiness limits.
+
+The PDFs are Portuguese teaching editions dated November 2026. The development guide shows 22 skills and the Castas retrospective shows 21; their five-file PentaPRO examples predate the repository-root topic layout. Follow the current [catalog](#available-skills), [routing map](SKILL-ROUTING.md) and [PentaPRO skill](skills/penta-pro/SKILL.md) for new projects and specification updates. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. These PDFs are historical teaching material; use the native lifecycle and migration guide for current adoption.
 
 - [Development with agents](docs/guia-consolidado-desenvolvimento-com-agentes.pdf) covers direct changes, vibe coding and prototype promotion, project-native SDD and OpenSpec, Android, web, desktop, HTTP APIs, MCP servers, workers, and deployment. The revised edition explains OpenSpec 2.0 discovery and distinguishes delta validation from verification of the consolidated capability.
 - [Castas Android retrospective](docs/relatorio-retrospectiva-castas-android.pdf) shows how environment checks, cross-platform parity, device tests and release evidence changed during one project.
@@ -839,10 +841,10 @@ The PDFs are Portuguese teaching editions dated November 2026. The development g
 
 ## Repository structure
 
-Each skill lives directly under this repository's root and follows the [Agent Skills specification](https://agentskills.io/specification). Shared usage documentation and notices live at the root. Every skill carries the MIT notice inside its directory for standalone installation.
+Each skill lives in its own directory under `skills/` at the repository root and follows the [Agent Skills specification](https://agentskills.io/specification). Shared usage documentation and notices live at the root. Every skill carries the MIT notice inside its directory for standalone installation.
 
 ```text
-skills/
+pentapro/
 ├── README.md
 ├── AGENTS.md                  Repository instructions and local prompt-log policy
 ├── pentapro/                  Baseline, active changes and process status
@@ -866,70 +868,71 @@ skills/
 ├── .github/workflows/validate.yml
 ├── evals/
 ├── scripts/
-├── software-delivery/
-├── software-factory/
-├── production-operations/
-│   ├── SKILL.md
-│   ├── agents/
-│   ├── assets/
-│   ├── evals/
-│   └── references/
-├── technical-research/
-├── setup-pentapro/
-│   ├── SKILL.md
-│   ├── assets/
-│   ├── evals/
-│   └── references/
-├── git-ship/
-├── agent-instructions/
-├── diagnose-defect/
-├── behavior-testing/
-├── http-api/
-├── mcp-server/
-├── android-module-structure/
-├── android-data-layer/
-├── android-error-handling/
-├── android-di-koin/
-├── android-background/
-├── android-unit-testing/
-├── android-integration-testing/
-├── android-ui-testing/
-├── pr-quiz/
-├── penta-pro/
-│   ├── SKILL.md
-│   ├── agents/
-│   ├── assets/
-│   │   ├── penta-pro-template.md
-│   │   ├── product.md
-│   │   ├── project.md
-│   │   ├── production.md
-│   │   ├── proof.md
-│   │   └── process.md
-│   ├── evals/
-│   ├── scripts/
-│   └── references/
-├── peer-review/
-│   ├── SKILL.md
-│   ├── agents/
-│   ├── assets/
-│   ├── evals/
-│   └── references/
-├── cybersec/
-│   ├── SKILL.md
-│   ├── agents/
-│   ├── assets/
-│   ├── evals/
-│   └── references/
-└── ui-design/
-    ├── SKILL.md
-    ├── agents/
-    ├── assets/
-    ├── evals/
-    ├── references/
-    └── scripts/
+└── skills/                   Canonical skill packages
+    ├── software-delivery/
+    ├── software-factory/
+    ├── production-operations/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── assets/
+    │   ├── evals/
+    │   └── references/
+    ├── technical-research/
+    ├── setup-pentapro/
+    │   ├── SKILL.md
+    │   ├── assets/
+    │   ├── evals/
+    │   └── references/
+    ├── git-ship/
+    ├── agent-instructions/
+    ├── diagnose-defect/
+    ├── behavior-testing/
+    ├── http-api/
+    ├── mcp-server/
+    ├── android-module-structure/
+    ├── android-data-layer/
+    ├── android-error-handling/
+    ├── android-di-koin/
+    ├── android-background/
+    ├── android-unit-testing/
+    ├── android-integration-testing/
+    ├── android-ui-testing/
+    ├── pr-quiz/
+    ├── penta-pro/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── assets/
+    │   │   ├── penta-pro-template.md
+    │   │   ├── product.md
+    │   │   ├── project.md
+    │   │   ├── production.md
+    │   │   ├── proof.md
+    │   │   └── process.md
+    │   ├── evals/
+    │   ├── scripts/
+    │   └── references/
+    ├── peer-review/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── assets/
+    │   ├── evals/
+    │   └── references/
+    ├── cybersec/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── assets/
+    │   ├── evals/
+    │   └── references/
+    └── ui-design/
+        ├── SKILL.md
+        ├── agents/
+        ├── assets/
+        ├── evals/
+        ├── references/
+        └── scripts/
 ```
 
-The tree is a navigation overview, not a complete inventory. `plugin/catalog.json` is generated by `scripts/package_plugin.py`; canonical agent templates live in `setup-pentapro/assets/agents/`, not the installed host copies.
+The tree is a navigation overview, not a complete inventory. `plugin/catalog.json` is generated by `scripts/package_plugin.py`; canonical agent templates live in `skills/setup-pentapro/assets/agents/`, not the installed host copies.
 
 The documentation and maintenance directories serve different readers:
 
@@ -937,7 +940,7 @@ The documentation and maintenance directories serve different readers:
 - `evals/` holds [evaluation cases](evals/cases.json), synthetic project fixtures, project-policy overlays, independent checks, and [trial results](evals/RESULTS.md). These let maintainers compare agent behavior on the same tasks and inspect the resulting artifacts.
 - `scripts/` holds the [collection validator](scripts/validate_collection.py), its dependency list, the [evaluation runner](scripts/run_skill_evals.py), and offline validator/runner tests. Use the [validation instructions](#validation-and-improvement) and [evaluation procedure](SKILL-EVALUATION.md) from a checkout of the collection. A full repository clone includes both directories.
 
-Inside a skill package, `SKILL.md` contains metadata and runtime instructions. Optional `agents/` files adapt host presentation, `assets/` holds output templates, and `references/` holds conditional detail. Some packages also carry their own `evals/` maintenance cases or `scripts/` helpers and tests. These nested directories belong to the package and can accompany its installation. For example, UI Design carries its [local prototype helper](ui-design/scripts/prototype_tools.py). Create only the directories a skill needs.
+Inside a skill package, `SKILL.md` contains metadata and runtime instructions. Optional `agents/` files adapt host presentation, `assets/` holds output templates, and `references/` holds conditional detail. Some packages also carry their own `evals/` maintenance cases or `scripts/` helpers and tests. These nested directories belong to the package and can accompany its installation. For example, UI Design carries its [local prototype helper](skills/ui-design/scripts/prototype_tools.py). Create only the directories a skill needs.
 
 ## Maintenance and new skills
 
@@ -954,10 +957,10 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/package_plugin.py --check
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_collection.py
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/run_skill_evals.py --check-cases
 PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s scripts/tests -v
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s penta-pro/scripts/tests -v
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s ui-design/scripts/tests -v
-PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s pr-quiz/scripts/tests -v
-node pr-quiz/scripts/tests/workflow.cjs
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/penta-pro/scripts/tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/ui-design/scripts/tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v
+node skills/pr-quiz/scripts/tests/workflow.cjs
 node --test scripts/tests/test_agents_log.mjs
 node --test scripts/tests/test_opencode_plugin.mjs
 git diff --check
@@ -998,7 +1001,7 @@ Where present, evaluation files and executable tests record the package's actual
 
 All 24 packages use the [MIT License](LICENSE) and include a copy of its notice. This covers the imported Android and PR Quiz material, including references embedded in UI Design and Cybersecurity, and the adapted Setup PentaPRO package, under the MIT redistribution permission confirmed by the repository maintainer. Retain the license and applicable attribution when redistributing a package. See [third-party notices](THIRD-PARTY-NOTICES.md) for the source mapping.
 
-The source research for [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), [Cybersecurity](cybersec/references/sources.md), and [UI Design](ui-design/references/sources.md) records their inputs and adaptation decisions. [Third-party notices](THIRD-PARTY-NOTICES.md) preserve upstream attribution; the repository license does not relicense external articles. Attribution does not imply affiliation, endorsement, or a runtime dependency.
+The source research for [PentaPRO](skills/penta-pro/references/sources.md), [Peer Review](skills/peer-review/references/sources.md), [Cybersecurity](skills/cybersec/references/sources.md), and [UI Design](skills/ui-design/references/sources.md) records their inputs and adaptation decisions. [Third-party notices](THIRD-PARTY-NOTICES.md) preserve upstream attribution; the repository license does not relicense external articles. Attribution does not imply affiliation, endorsement, or a runtime dependency.
 
 ## Data privacy
 

@@ -2,13 +2,13 @@
 
 Historical design/evaluation record. It describes its original snapshot, not the current runtime contract. Use the [native workflow guide](guia-fabrica-changes.md) and the maintained skill entrypoints for current work.
 
-Status: **historical proposal**. Its portable first version is now the [Software Factory skill](../software-factory/SKILL.md); the gates, pilot and rollout below remain proposed design material, not evidence of an executed factory run. For day-to-day use, follow the [operational checklist](guia-fabrica-changes.md).
+Status: **historical proposal**. Its portable first version is now the [Software Factory skill](../skills/software-factory/SKILL.md); the gates, pilot and rollout below remain proposed design material, not evidence of an executed factory run. For day-to-day use, follow the [operational checklist](guia-fabrica-changes.md).
 
 Date: 2026-11-19.
 
 This document proposes a sequential, gate-based agent and subagent workflow for taking a prompt or an accepted change from specification review to implementation, verification, code review, records, publication and, only when separately authorized, release. It is based on the Castas project history and on the maintenance history of this skill collection.
 
-The proposal does not replace the existing owners. It composes them. [PentaPRO](../penta-pro/SKILL.md) still owns the specification, [Software Delivery](../software-delivery/SKILL.md) still owns implementation coordination, [Peer Review](../peer-review/SKILL.md) still owns read-only code assessment, [Git Ship](../git-ship/SKILL.md) still owns Git publication, and [Production Operations](../production-operations/SKILL.md) still owns deployment and runtime evidence.
+The proposal does not replace the existing owners. It composes them. [PentaPRO](../skills/penta-pro/SKILL.md) still owns the specification, [Software Delivery](../skills/software-delivery/SKILL.md) still owns implementation coordination, [Peer Review](../skills/peer-review/SKILL.md) still owns read-only code assessment, [Git Ship](../skills/git-ship/SKILL.md) still owns Git publication, and [Production Operations](../skills/production-operations/SKILL.md) still owns deployment and runtime evidence.
 
 ## Why this layer is missing
 
@@ -155,7 +155,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Stop conditions:** ambiguous repository or scope; conflicting instructions; detached HEAD or an in-progress merge/rebase/cherry-pick; missing authority for a requested irreversible action; no executable target path for work that requires one.
 
-**Skills:** [Agent Instructions](../agent-instructions/SKILL.md) for project guidance; [Software Delivery](../software-delivery/SKILL.md) for baseline and execution controls.
+**Skills:** [Agent Instructions](../skills/agent-instructions/SKILL.md) for project guidance; [Software Delivery](../skills/software-delivery/SKILL.md) for baseline and execution controls.
 
 ### G1 — Specification review
 
@@ -185,7 +185,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** no blocking ambiguity; the contract is accepted or explicitly scoped for incremental specification; every criterion maps to at least one planned check.
 
-**Skills:** [PentaPRO](../penta-pro/SKILL.md), OpenSpec `explore`/`propose`, [UI Design](../ui-design/SKILL.md) when the interface contract changes, [Cybersecurity](../cybersec/SKILL.md) when risk is material.
+**Skills:** [PentaPRO](../skills/penta-pro/SKILL.md), OpenSpec `explore`/`propose`, [UI Design](../skills/ui-design/SKILL.md) when the interface contract changes, [Cybersecurity](../skills/cybersec/SKILL.md) when risk is material.
 
 ### G2 — Plan and slice
 
@@ -208,7 +208,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** every acceptance criterion is covered; the dependency graph has no cycles; the first slice is runnable on the target.
 
-**Skills:** [Software Delivery](../software-delivery/SKILL.md), OpenSpec `apply-change` task list when applicable.
+**Skills:** [Software Delivery](../skills/software-delivery/SKILL.md), OpenSpec `apply-change` task list when applicable.
 
 ### G3 — Build
 
@@ -231,7 +231,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** the task check passes; the diff is within the packet's scope; no new behavior is left without a check or a named follow-up.
 
-**Skills:** [Software Delivery](../software-delivery/SKILL.md) plus the domain owner: [UI Design](../ui-design/SKILL.md), [HTTP API](../http-api/SKILL.md), [MCP Server](../mcp-server/SKILL.md), or the relevant native Android helper.
+**Skills:** [Software Delivery](../skills/software-delivery/SKILL.md) plus the domain owner: [UI Design](../skills/ui-design/SKILL.md), [HTTP API](../skills/http-api/SKILL.md), [MCP Server](../skills/mcp-server/SKILL.md), or the relevant native Android helper.
 
 ### G4 — Verify
 
@@ -254,7 +254,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** all required checks have evidence or an authorized waiver; no acceptance criterion is silently unverified.
 
-**Skills:** [Behavior Testing](../behavior-testing/SKILL.md), native Android test helpers, [Peer Review](../peer-review/SKILL.md) verification reference, [Production Operations](../production-operations/SKILL.md) for deployment checks.
+**Skills:** [Behavior Testing](../skills/behavior-testing/SKILL.md), native Android test helpers, [Peer Review](../skills/peer-review/SKILL.md) verification reference, [Production Operations](../skills/production-operations/SKILL.md) for deployment checks.
 
 ### G5 — Code review
 
@@ -277,7 +277,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** no P0/P1 blockers; P2 findings have an explicit disposition; coverage is stated.
 
-**Skills:** [Peer Review](../peer-review/SKILL.md) with the relevant backend, frontend, Android or verification reference.
+**Skills:** [Peer Review](../skills/peer-review/SKILL.md) with the relevant backend, frontend, Android or verification reference.
 
 ### G6 — Fix and re-review
 
@@ -316,7 +316,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** no stale claim, broken link, unreconciled task or orphaned asset remains in the changed scope.
 
-**Skills:** [PentaPRO](../penta-pro/SKILL.md), OpenSpec `archive-change`/`sync-specs`, [Agent Instructions](../agent-instructions/SKILL.md).
+**Skills:** [PentaPRO](../skills/penta-pro/SKILL.md), OpenSpec `archive-change`/`sync-specs`, [Agent Instructions](../skills/agent-instructions/SKILL.md).
 
 ### G8 — Ship
 
@@ -340,7 +340,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** the remote ref matches the reviewed commit; CI is reported as pending, passing or failing; any failure is retained and explained.
 
-**Skills:** [Git Ship](../git-ship/SKILL.md).
+**Skills:** [Git Ship](../skills/git-ship/SKILL.md).
 
 ### G9 — Release and deploy
 
@@ -361,7 +361,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** the intended artifact is served or installed and verified; recovery is understood; unresolved risks have an owner.
 
-**Skills:** [Production Operations](../production-operations/SKILL.md) for hosted services; project release procedures for mobile and desktop packages.
+**Skills:** [Production Operations](../skills/production-operations/SKILL.md) for hosted services; project release procedures for mobile and desktop packages.
 
 ### G10 — Retrospective
 
@@ -405,7 +405,7 @@ Model names are intentionally omitted. Assign the smallest model that passes the
 
 ## Handoff artifacts
 
-Keep the run folder small. The canonical specification stays in the project; the run folder links to it. The current runtime contract is [durable run persistence](../software-factory/references/run-records.md), which supersedes the earlier `.factory/runs/` proposal. Only `run.json` is required for the default persisted format; the other files below are optional evidence locations, reused from existing project records where available.
+Keep the run folder small. The canonical specification stays in the project; the run folder links to it. The current runtime contract is [durable run persistence](../skills/software-factory/references/run-records.md), which supersedes the earlier `.factory/runs/` proposal. Only `run.json` is required for the default persisted format; the other files below are optional evidence locations, reused from existing project records where available.
 
 ```text
 docs/agents/runs/<run-id>/
@@ -427,7 +427,7 @@ If the project already has a run record or tracker, use it and link the artifact
 
 ### Run manifest
 
-The [packaged helper](../software-factory/scripts/run_state.py) initializes the complete versioned envelope and validates compare-and-save checkpoints. Use its [format version 1](../software-factory/references/run-records.md#format-version-1) rather than the former design-only intent/repo/G0-G10 JSON shape. Record state, repository/branch/base commit, source fingerprint, canonical references, gates, tasks, authorized operations, blockers, next action and checkpoint history. Only the orchestrator writes; agents return evidence against the supplied record version and input snapshot. This is a local record contract with deterministic structural checks, not a general distributed workflow engine.
+The [packaged helper](../skills/software-factory/scripts/run_state.py) initializes the complete versioned envelope and validates compare-and-save checkpoints. Use its [format version 1](../skills/software-factory/references/run-records.md#format-version-1) rather than the former design-only intent/repo/G0-G10 JSON shape. Record state, repository/branch/base commit, source fingerprint, canonical references, gates, tasks, authorized operations, blockers, next action and checkpoint history. Only the orchestrator writes; agents return evidence against the supplied record version and input snapshot. This is a local record contract with deterministic structural checks, not a general distributed workflow engine.
 
 ### Task packet
 
@@ -602,7 +602,7 @@ Adopt the **gates and handoffs** before adopting any orchestration product. The 
 5. A records gate that keeps OpenSpec, PentaPRO, README and links true.
 6. A ship gate that distinguishes commit, push, release and deploy.
 
-The first [software-factory skill](../software-factory/SKILL.md) now owns the portable sequence, packets, gates and evidence ledger. A pilot should test its value before claiming an efficiency gain. It does not reimplement [PentaPRO](../penta-pro/SKILL.md), [Peer Review](../peer-review/SKILL.md), [Git Ship](../git-ship/SKILL.md) or [Production Operations](../production-operations/SKILL.md); those skills remain the source of their methods.
+The first [software-factory skill](../skills/software-factory/SKILL.md) now owns the portable sequence, packets, gates and evidence ledger. A pilot should test its value before claiming an efficiency gain. It does not reimplement [PentaPRO](../skills/penta-pro/SKILL.md), [Peer Review](../skills/peer-review/SKILL.md), [Git Ship](../skills/git-ship/SKILL.md) or [Production Operations](../skills/production-operations/SKILL.md); those skills remain the source of their methods.
 
 ## Related records
 

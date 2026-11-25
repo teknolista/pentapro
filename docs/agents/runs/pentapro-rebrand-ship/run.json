@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "run_id": "pentapro-rebrand-ship",
+  "record_version": 2,
+  "objective": "Review, commit and normal-push the complete PentaPRO rebrand, skills relocation, harness review, and all publishable project artifacts requested by the developer.",
+  "contracts": [
+    "skills/git-ship/SKILL.md",
+    "docs/harness-review-2026-11-25.md",
+    "docs/skill-directory-migration.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "b6a9a96137a7ee996d16bf6eefe7a22648c82703"
+  },
+  "orchestrator": "main-session",
+  "state": "REVIEW",
+  "snapshot": {
+    "fingerprint": "c3be358b7b3ee325886452ad1b87d1f435bf00715d30b9ae273528462887ecfa",
+    "head": "b6a9a96137a7ee996d16bf6eefe7a22648c82703"
+  },
+  "gates": [
+    {
+      "id": "shipper-review",
+      "kind": "review",
+      "required": true,
+      "status": "pending",
+      "snapshot": "c3be358b7b3ee325886452ad1b87d1f435bf00715d30b9ae273528462887ecfa",
+      "evidence": null,
+      "reason": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "publish-pentapro-rebrand",
+      "owner": "factory_shipper",
+      "status": "running",
+      "evidence": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "pentapro-rebrand-commit",
+      "kind": "commit",
+      "authorization": "Developer directly invoked factory_shipper to commit and push the whole publishable project.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "pentapro-rebrand-push",
+      "kind": "push",
+      "authorization": "Developer directly invoked factory_shipper to commit and push the whole publishable project.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "Factory shipper reviews the full intended snapshot and required gates before staging.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "c3be358b7b3ee325886452ad1b87d1f435bf00715d30b9ae273528462887ecfa"
+    },
+    {
+      "record_version": 2,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "c3be358b7b3ee325886452ad1b87d1f435bf00715d30b9ae273528462887ecfa"
+    }
+  ]
+}

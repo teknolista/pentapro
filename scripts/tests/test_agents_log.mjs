@@ -25,10 +25,10 @@ import {
 	redact,
 	resolveLogPath,
 	rfc5322,
-} from "../../setup-pentapro/assets/prompt-logging/core.mjs"
+} from "../../skills/setup-pentapro/assets/prompt-logging/core.mjs"
 
 const here = dirname(fileURLToPath(import.meta.url))
-const cli = join(here, "..", "..", "setup-pentapro", "assets", "prompt-logging", "log-prompt.mjs")
+const cli = join(here, "..", "..", "skills", "setup-pentapro", "assets", "prompt-logging", "log-prompt.mjs")
 const temporary = []
 
 function temporaryDirectory() {

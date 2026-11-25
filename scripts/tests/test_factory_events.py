@@ -11,7 +11,7 @@ import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
-SCRIPTS = ROOT / 'software-factory/scripts'
+SCRIPTS = ROOT / 'skills/software-factory/scripts'
 sys.path.insert(0, str(SCRIPTS))
 import run_state as runs
 import run_events as events

@@ -29,7 +29,8 @@ def git(*args, cwd=ROOT):
 
 
 def inventory(directory):
-    return sorted(path.parent.name for path in directory.glob("*/SKILL.md"))
+    base = directory / "skills" if (directory / "skills").is_dir() else directory
+    return sorted(path.parent.name for path in base.glob("*/SKILL.md"))
 
 
 def copy_candidate(source, destination):
@@ -37,12 +38,12 @@ def copy_candidate(source, destination):
     source = source.resolve()
     listed = git("ls-files", "--cached", "--others", "--exclude-standard", "-z", cwd=source)
     paths = {Path(os.fsdecode(raw)) for raw in listed.split(b"\0") if raw}
-    packages = {path.parts[0] for path in paths
-                if len(path.parts) == 2 and path.name == "SKILL.md" and (source / path).exists()}
+    packages = {path.parts[1] for path in paths
+                if len(path.parts) == 3 and path.parts[0] == "skills" and path.name == "SKILL.md" and (source / path).exists()}
     if not packages:
         raise ValueError("candidate has no skill packages")
     for path in sorted(paths):
-        if len(path.parts) < 2 or path.parts[0] not in packages:
+        if len(path.parts) < 3 or path.parts[0] != "skills" or path.parts[1] not in packages:
             continue
         entry = source / path
         if entry.is_symlink() or entry.resolve() != entry:
@@ -51,7 +52,7 @@ def copy_candidate(source, destination):
             continue
         if not entry.is_file():
             raise ValueError(f"candidate package path is not a regular file: {path}")
-        target = destination / path
+        target = destination / Path(*path.parts[1:])
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(entry, target)
 
@@ -165,7 +166,7 @@ def run_case(job, cases, options, output, sources, tools):
     if arm in sources:
         source = sources[arm]
         for name in inventory(source):
-            shutil.copytree(source / name, installed / name)
+            shutil.copytree((source / "skills" if (source / "skills").is_dir() else source) / name, installed / name)
 
     prompt = case["prompt"]
     explicitly_invoked = bool(options.explicit and arm in sources and case["owner"])
@@ -331,7 +332,7 @@ def main():
         candidate = Path(source_dir) / "candidate"
         if "baseline" in options.arms:
             paths = git("ls-tree", "-rz", "--name-only", revision).decode().split("\0")
-            packages = [path.split("/")[0] for path in paths if path.count("/") == 1 and path.endswith("/SKILL.md")]
+            packages = [path.rsplit("/", 1)[0] for path in paths if path.endswith("/SKILL.md") and (path.count("/") == 1 or (path.startswith("skills/") and path.count("/") == 2))]
             if not packages:
                 parser.error("baseline has no skill packages")
             with tarfile.open(fileobj=io.BytesIO(git("archive", revision, "--", *packages))) as archive:

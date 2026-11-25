@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/teknolista/skills.git"
+    "url": "https://github.com/teknolista/pentapro.git"
   },
   "exports": {
     ".": "./plugin/opencode.mjs"
@@ -21,29 +21,6 @@
     ".claude-plugin",
     "LICENSE",
     "THIRD-PARTY-NOTICES.md",
-    "agent-instructions",
-    "android-background",
-    "android-data-layer",
-    "android-di-koin",
-    "android-error-handling",
-    "android-integration-testing",
-    "android-module-structure",
-    "android-ui-testing",
-    "android-unit-testing",
-    "behavior-testing",
-    "cybersec",
-    "diagnose-defect",
-    "git-ship",
-    "http-api",
-    "mcp-server",
-    "peer-review",
-    "penta-pro",
-    "pr-quiz",
-    "production-operations",
-    "setup-pentapro",
-    "software-delivery",
-    "software-factory",
-    "technical-research",
-    "ui-design"
+    "skills"
   ]
 }

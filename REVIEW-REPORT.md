@@ -15,36 +15,36 @@ A prior closure review took place on 2026-11-06, with all 21 skill packages pass
 ### 1.1 Spec-Driven Development (SDD) Integration Enhancement
 The project mentions the option to incorporate SDD with OpenSpec, but several skills could better integrate SDD patterns:
 
-- **PentaPRO** (`penta-pro/SKILL.md`): While version 2.8.0 is comprehensive, add explicit SDD workflow markers and OpenSpec change integration patterns. Document how PentaPRO specifications interface with OpenSpec change scenarios, including the "accepted change" vs. "proposed change" distinction seen in evaluation cases.
+- **PentaPRO** (`skills/penta-pro/SKILL.md`): While version 2.8.0 is comprehensive, add explicit SDD workflow markers and OpenSpec change integration patterns. Document how PentaPRO specifications interface with OpenSpec change scenarios, including the "accepted change" vs. "proposed change" distinction seen in evaluation cases.
 
-- **HTTP API** (`http-api/SKILL.md`): Strengthen OpenAPI 3.1 integration patterns. Add explicit guidance on how API changes should be documented through PentaPRO before implementation, and how regression tests should be generated from spec changes.
+- **HTTP API** (`skills/http-api/SKILL.md`): Strengthen OpenAPI 3.1 integration patterns. Add explicit guidance on how API changes should be documented through PentaPRO before implementation, and how regression tests should be generated from spec changes.
 
-- **Software Delivery** (`software-delivery/SKILL.md`): Add explicit SDD change contract guidance. Reference how accepted OpenSpec changes should flow through the software delivery workflow, including task list updates and verification sequences.
+- **Software Delivery** (`skills/software-delivery/SKILL.md`): Add explicit SDD change contract guidance. Reference how accepted OpenSpec changes should flow through the software delivery workflow, including task list updates and verification sequences.
 
 - **All skills**: Add a consistent "SDD compatibility" note where relevant, indicating whether and how the skill integrates with specification-driven development workflows.
 
 ### 1.2 Executable Check Expansion
 Several skills have verification sections but could benefit from more systematic executable check patterns:
 
-- **Peer Review** (`peer-review/SKILL.md`): Expand the "Examine evidence" workflow to include systematic mutation testing probes and automated assertion effectiveness checks. Reference the [verification guide](peer-review/references/verification.md) more explicitly for test effectiveness patterns.
+- **Peer Review** (`skills/peer-review/SKILL.md`): Expand the "Examine evidence" workflow to include systematic mutation testing probes and automated assertion effectiveness checks. Reference the [verification guide](skills/peer-review/references/verification.md) more explicitly for test effectiveness patterns.
 
-- **Cybersecurity** (`cybersec/SKILL.md`): Add systematic scan integration guidance that distinguishes between "evidence of controls observed in source" vs. "deployed/runtime evidence." Include guidance on when to use static vs. dynamic analysis.
+- **Cybersecurity** (`skills/cybersec/SKILL.md`): Add systematic scan integration guidance that distinguishes between "evidence of controls observed in source" vs. "deployed/runtime evidence." Include guidance on when to use static vs. dynamic analysis.
 
-- **Behavior Testing** (`behavior-testing/SKILL.md`): Add patterns for regression test generation from spec changes and explicit baseline comparison checks.
+- **Behavior Testing** (`skills/behavior-testing/SKILL.md`): Add patterns for regression test generation from spec changes and explicit baseline comparison checks.
 
-- **HTTP API** (`http-api/SKILL.md`): Add explicit receipt verification patterns (as seen in evaluation check_receipts.py) for write effects and idempotency key reuse.
+- **HTTP API** (`skills/http-api/SKILL.md`): Add explicit receipt verification patterns (as seen in evaluation check_receipts.py) for write effects and idempotency key reuse.
 
 ### 1.3 Evidence-First Methodology
 Several skills could more explicitly distinguish between evidence and assumptions:
 
-- **Diagnose Defect** (`diagnose-defect/SKILL.md`): Add explicit "hypothesis vs. evidence" framing for all conclusions. Include a pattern for labeling findings as "confirmed," "hypothesis," or "inconclusive" with required evidence.
+- **Diagnose Defect** (`skills/diagnose-defect/SKILL.md`): Add explicit "hypothesis vs. evidence" framing for all conclusions. Include a pattern for labeling findings as "confirmed," "hypothesis," or "inconclusive" with required evidence.
 
 - **All skills**: Add a standard "Evidence statement" section or footnote pattern that requires contributors to distinguish observed behavior from inferred causes. This is particularly important for AI-assisted development where model hallucinations can masquerade as code defects.
 
 ### 1.4 Model-Agnostic Design Explicitness
 The skills already note model neutrality, but could be more explicit about when human judgment is required:
 
-- **Agent Instructions** (`agent-instructions/SKILL.md`): Add a "Model limitation acknowledgment" section that explicitly states which tasks require model-specific capabilities and where human review is mandatory.
+- **Agent Instructions** (`skills/agent-instructions/SKILL.md`): Add a "Model limitation acknowledgment" section that explicitly states which tasks require model-specific capabilities and where human review is mandatory.
 
 - **All skills**: Add a standard "Model dependency" field in metadata that rates the skill's reliance on model reasoning capacity (e.g., "low: pattern-matching", "medium: contract adherence", "high: creative problem-solving").
 
@@ -53,7 +53,7 @@ Improve terminology and pattern consistency across related skills:
 
 - **Terminology alignment**: Ensure "contract," "specification," "spec," "change," and "agreement" are used consistently across PentaPRO, HTTP API, Software Delivery, and Peer Review.
 
-- **Handoff patterns**: Standardize the handoff template format across PentaPRO, Software Delivery, and Production Operations. The current templates (penta-pro/assets/penta-pro-template.md, production-operations/assets/deployment-brief.md, etc.) could reference a common base format.
+- **Handoff patterns**: Standardize the handoff template format across PentaPRO, Software Delivery, and Production Operations. The current templates (skills/penta-pro/assets/penta-pro-template.md, skills/production-operations/assets/deployment-brief.md, etc.) could reference a common base format.
 
 - **Version metadata**: Ensure all skills consistently use the `metadata.version` field and that version bumping follows a predictable schema (major.minor.patch for breaking/feature/minor changes).
 
@@ -271,7 +271,7 @@ Improve the flow from specification to implementation across PentaPRO → Softwa
 ### 3.2 Android Skill Integration
 The 14 Android-related skills could better coordinate:
 
-- **Consolidated references**: Android UI Design references (`ui-design/references/android/`) should consistently reference the native implementation procedures from `android-module-structure`
+- **Consolidated references**: Android UI Design references (`skills/ui-design/references/android/`) should consistently reference the native implementation procedures from `android-module-structure`
 - **Error handling chain**: `android-error-handling` → `android-data-layer` → `android-integration-testing` should have explicit error propagation patterns
 - **DI-background-data flow**: `android-di-koin` → `android-background` → `android-data-layer` should have initialization ordering guarantees
 - **Test hierarchy**: `android-unit-testing` → `android-integration-testing` → `android-ui-testing` should have clear boundary definitions

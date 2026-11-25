@@ -29,7 +29,7 @@ The supplied scenarios require implementation feedback loops and developer valid
 - Six host adapters remain syntactically valid, distributed, discoverable by documented identifiers and consistent with canonical role behavior. Actual native discovery/inference remains an execution gap when unavailable.
 - Catalog/version/installation/routing/templates/documentation/evaluations and tests are reconciled; portable packages retain licenses and required provenance.
 - Inventory executable helpers and map their direct/indirect tests; run affected regressions and required collection checks and report unavailable evidence honestly.
-- Keep existing customized work, index selections, dated historical evidence and required legal notices. Remove obsolete operational references; retain a concise origin/attribution statement. A pre-existing `w` prefix in `setup-pentapro/references/factory-setup.md` belongs to the initial dirty snapshot and must not be silently reverted.
+- Keep existing customized work, index selections, dated historical evidence and required legal notices. Remove obsolete operational references; retain a concise origin/attribution statement. A pre-existing `w` prefix in `skills/setup-pentapro/references/factory-setup.md` belongs to the initial dirty snapshot and must not be silently reverted.
 
 ## Settled implementation decisions
 

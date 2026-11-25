@@ -1,7 +1,7 @@
 # PROCESS — tasks and authority
 
 - [x] T1 Orchestrator: save contract/run record; specification review before implementation.
-- [x] T2 Implementer: event helper and behavior tests (software-factory/scripts/run_events.py, scripts/tests/test_factory_events.py).
+- [x] T2 Implementer: event helper and behavior tests (skills/software-factory/scripts/run_events.py, scripts/tests/test_factory_events.py).
 - [x] T3 Orchestrator: reconcile workflow/setup/project guidance, scenarios, versions and catalogs.
 - [x] T4 Verifier/reviewer: independent fixed-snapshot verification and code review; route corrections.
 - [x] T5 factory_shipper: review intended changes, commit and normal push; preserve unrelated staged document. Verify exact remote revision and CI where available.

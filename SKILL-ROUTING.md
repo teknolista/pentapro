@@ -6,7 +6,7 @@ Ordinary backend, CLI or other implementation can proceed under the project's in
 
 ## Choose the depth of the workflow
 
-Select the owner by outcome. Select the specification depth, agent authority and verification separately. The [change contract guide](software-delivery/references/change-contracts.md) defines when to proceed directly, explore in isolation, or establish a material change contract before implementation.
+Select the owner by outcome. Select the specification depth, agent authority and verification separately. The [change contract guide](skills/software-delivery/references/change-contracts.md) defines when to proceed directly, explore in isolation, or establish a material change contract before implementation.
 
 | Request | Route |
 | --- | --- |
@@ -18,35 +18,35 @@ Select the owner by outcome. Select the specification depth, agent authority and
 
 Use an existing issue, specification, schema or contract to record decisions at its owning location. In a combined request, draft and review the scope the user or policy requires before coding. If implementation reveals a material conflict, pause only dependent work and resolve it with the appropriate owner. Keep the actual code, canonical artifacts, tests and evidence aligned through the handoff.
 
-For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). Software Delivery has worked examples for [project-native SDD](software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd), and [prototype adoption](software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype).
+For a first project pilot, follow the [pilot setup](README.md#start-a-pilot). Software Delivery has worked examples for [project-native SDD](skills/software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd), and [prototype adoption](skills/software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype).
 
 ## Generic owners
 
 | Requested result | Primary owner | Boundary |
 | --- | --- | --- |
-| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, native changes and factory roles, and PentaPRO handoff |
-| Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
-| Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
-| Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
-| Threat modeling, security audit, authorized hardening or security gate | [Cybersecurity](cybersec/SKILL.md) | One threat/control/evidence record, native Android controls loaded conditionally |
-| Ambiguous defect, intermittent failure, or performance regression | [Diagnose Defect](diagnose-defect/SKILL.md) | Reproduction, cause evidence, and verification of an authorized fix |
-| Tests as the primary deliverable or requested test-first implementation outside native Android | [Behavior Testing](behavior-testing/SKILL.md) | Executed behavioral checks in the existing runner |
-| Concrete HTTP API server changes | [HTTP API](http-api/SKILL.md) | Handler and integration implementation against the caller contract |
-| Concrete MCP server changes | [MCP Server](mcp-server/SKILL.md) | Protocol capabilities, transport, and actual downstream behavior |
-| Hosted backend deployment plan, infrastructure/pipeline configuration, authorized rollout, live verification or operational recovery | [Production Operations](production-operations/SKILL.md) | Target identity, deployed revision and operational effects |
+| A fresh repository to configure for the collection, once per project | [Setup PentaPRO](skills/setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, native changes and factory roles, and PentaPRO handoff |
+| Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](skills/penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
+| Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](skills/ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
+| Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](skills/peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
+| Threat modeling, security audit, authorized hardening or security gate | [Cybersecurity](skills/cybersec/SKILL.md) | One threat/control/evidence record, native Android controls loaded conditionally |
+| Ambiguous defect, intermittent failure, or performance regression | [Diagnose Defect](skills/diagnose-defect/SKILL.md) | Reproduction, cause evidence, and verification of an authorized fix |
+| Tests as the primary deliverable or requested test-first implementation outside native Android | [Behavior Testing](skills/behavior-testing/SKILL.md) | Executed behavioral checks in the existing runner |
+| Concrete HTTP API server changes | [HTTP API](skills/http-api/SKILL.md) | Handler and integration implementation against the caller contract |
+| Concrete MCP server changes | [MCP Server](skills/mcp-server/SKILL.md) | Protocol capabilities, transport, and actual downstream behavior |
+| Hosted backend deployment plan, infrastructure/pipeline configuration, authorized rollout, live verification or operational recovery | [Production Operations](skills/production-operations/SKILL.md) | Target identity, deployed revision and operational effects |
 
 The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**, Setup PentaPRO to **23**, and Software Factory to the current **24**. See [upstream dispositions](COLLECTION-REVIEW.md).
 
-- [Setup PentaPRO](setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, native changes and factory roles, and a PentaPRO handoff.
+- [Setup PentaPRO](skills/setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, native changes and factory roles, and a PentaPRO handoff.
 
-- [Software Delivery](software-delivery/SKILL.md) — Coordinate dependent implementation tasks or increments and verify their integrated result.
-- [Software Factory](software-factory/SKILL.md) — Coordinate an explicitly requested multi-agent delivery run across existing owners, authorized publication, archival and retrospective.
+- [Software Delivery](skills/software-delivery/SKILL.md) — Coordinate dependent implementation tasks or increments and verify their integrated result.
+- [Software Factory](skills/software-factory/SKILL.md) — Coordinate an explicitly requested multi-agent delivery run across existing owners, authorized publication, archival and retrospective.
 
-- [Technical Research](technical-research/SKILL.md) — Resolve technical uncertainty with traceable evidence.
+- [Technical Research](skills/technical-research/SKILL.md) — Resolve technical uncertainty with traceable evidence.
 
-- [Git Ship](git-ship/SKILL.md) — Review, commit, publish or prepare the PR for the authorized Git snapshot.
+- [Git Ship](skills/git-ship/SKILL.md) — Review, commit, publish or prepare the PR for the authorized Git snapshot.
 
-- [Agent Instructions](agent-instructions/SKILL.md) — Maintain portable software-development agent guidance.
+- [Agent Instructions](skills/agent-instructions/SKILL.md) — Maintain portable software-development agent guidance.
 
 ## Every Android source skill and its destination
 
@@ -54,20 +54,20 @@ Source inventory: the 14 entrypoints in the user-supplied local `android-skills`
 
 | Source | Destination | Decision / requested result |
 | --- | --- | --- |
-| `android-compose-architecture` | [UI Design / Compose architecture](ui-design/references/android/compose-architecture.md) | Consolidated: screen structure, state, performance and input implementation already fall within UI Design |
-| `android-compose-components` | [UI Design / components](ui-design/references/android/compose-components.md) | Consolidated: component design/implementation, resources and semantics |
-| `android-presentation-mvi` | [UI Design / presentation](ui-design/references/android/presentation-mvi.md) | Consolidated: native screen integration; MVI remains a conditional project choice |
-| `android-navigation` | [UI Design / navigation](ui-design/references/android/navigation.md) | Consolidated: flows and native screen/navigation implementation |
-| `android-security` | [Cybersecurity / Android controls](cybersec/references/android-controls.md) | Consolidated: security assessment/hardening already has a generic owner |
-| `android-module-structure` | [Native module implementation](android-module-structure/SKILL.md) | Retained: concrete Gradle/module changes, not PentaPRO architecture discovery/specification |
-| `android-data-layer` | [Native data implementation](android-data-layer/SKILL.md) | Retained: repository, network, database and synchronization code |
-| `android-error-handling` | [Native typed errors](android-error-handling/SKILL.md) | Retained: typed-result/transport/storage implementation; UX feedback design stays in UI Design |
-| `android-di-koin` | [Native Koin wiring](android-di-koin/SKILL.md) | Retained: dependency graph/lifetime implementation, not screen design or independent assessment |
-| `android-background` | [Native background work](android-background/SKILL.md) | Retained: durable job implementation/debugging, not product planning or security audit |
-| `android-unit-testing` | [Unit-test authoring](android-unit-testing/SKILL.md) | Retained: write/run/debug isolated tests; effectiveness review stays in Peer Review |
-| `android-integration-testing` | [Integration-test authoring](android-integration-testing/SKILL.md) | Retained: write/run/debug non-UI boundary tests |
-| `android-ui-testing` | [Native UI-test authoring](android-ui-testing/SKILL.md) | Retained: automate device/emulator tests; visual/interaction critique stays in UI Design |
-| `pr-quiz` | [PR decision quiz](pr-quiz/SKILL.md) | Retained, generic: explicitly requested comprehension exercise, not review approval/security evidence |
+| `android-compose-architecture` | [UI Design / Compose architecture](skills/ui-design/references/android/compose-architecture.md) | Consolidated: screen structure, state, performance and input implementation already fall within UI Design |
+| `android-compose-components` | [UI Design / components](skills/ui-design/references/android/compose-components.md) | Consolidated: component design/implementation, resources and semantics |
+| `android-presentation-mvi` | [UI Design / presentation](skills/ui-design/references/android/presentation-mvi.md) | Consolidated: native screen integration; MVI remains a conditional project choice |
+| `android-navigation` | [UI Design / navigation](skills/ui-design/references/android/navigation.md) | Consolidated: flows and native screen/navigation implementation |
+| `android-security` | [Cybersecurity / Android controls](skills/cybersec/references/android-controls.md) | Consolidated: security assessment/hardening already has a generic owner |
+| `android-module-structure` | [Native module implementation](skills/android-module-structure/SKILL.md) | Retained: concrete Gradle/module changes, not PentaPRO architecture discovery/specification |
+| `android-data-layer` | [Native data implementation](skills/android-data-layer/SKILL.md) | Retained: repository, network, database and synchronization code |
+| `android-error-handling` | [Native typed errors](skills/android-error-handling/SKILL.md) | Retained: typed-result/transport/storage implementation; UX feedback design stays in UI Design |
+| `android-di-koin` | [Native Koin wiring](skills/android-di-koin/SKILL.md) | Retained: dependency graph/lifetime implementation, not screen design or independent assessment |
+| `android-background` | [Native background work](skills/android-background/SKILL.md) | Retained: durable job implementation/debugging, not product planning or security audit |
+| `android-unit-testing` | [Unit-test authoring](skills/android-unit-testing/SKILL.md) | Retained: write/run/debug isolated tests; effectiveness review stays in Peer Review |
+| `android-integration-testing` | [Integration-test authoring](skills/android-integration-testing/SKILL.md) | Retained: write/run/debug non-UI boundary tests |
+| `android-ui-testing` | [Native UI-test authoring](skills/android-ui-testing/SKILL.md) | Retained: automate device/emulator tests; visual/interaction critique stays in UI Design |
+| `pr-quiz` | [PR decision quiz](skills/pr-quiz/SKILL.md) | Retained, generic: explicitly requested comprehension exercise, not review approval/security evidence |
 
 The Android integration stage brought the collection to **13 discoverable skills**. With the four engineering packages above, that research stage reached **17**. The five consolidated Android names are not separate SKILL.md entrypoints or forwarding aliases, preventing duplicate discovery. Their material remains in conditional references, with local links redirected to the canonical owner.
 
@@ -123,9 +123,9 @@ Executed checks for the resulting collection:
 
 - All **13** packages passed `skill-creator/scripts/quick_validate.py`; names, README versions, UI metadata, consolidated-entrypoint absence and inactive workflow placement were checked.
 - **77 Markdown files / 498 local links and anchors** passed the local resource check. The 21 files in the original local import source retained their recorded hashes.
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s ui-design/scripts/tests -v`: **20 passed**.
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s pr-quiz/scripts/tests -v`: **9 passed**.
-- `node pr-quiz/scripts/tests/workflow.cjs`: **19 passed**, executing the actual embedded handler with offline API doubles on local Node 26.10.0. Includes checkbox-event freshness, structured/stale pass caches, author/reviewer eligibility and explanation reflection; no GitHub calls.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/ui-design/scripts/tests -v`: **20 passed**.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v`: **9 passed**.
+- `node skills/pr-quiz/scripts/tests/workflow.cjs`: **19 passed**, executing the actual embedded handler with offline API doubles on local Node 26.10.0. Includes checkbox-event freshness, structured/stale pass caches, author/reviewer eligibility and explanation reflection; no GitHub calls.
 - Re-extracted the current typed-result, repository and Notes fake snippets and compiled them with the installed Kotlin compiler and real coroutine library: **7 behavioral groups plus 4 concurrency/fake conditions passed**. This verifies host orchestration, not AndroidX/Ktor imports, database transactions or TLS behavior.
 - `git diff --check` and a separate whitespace/final-newline check of untracked text files passed; dedicated README sections and the versioned PentaPRO output template match the current entrypoints.
 
@@ -160,4 +160,4 @@ PentaPRO names the collection and plugin; `penta-pro` remains the specification 
 
 ### Durable factory execution state
 
-Software Factory owns the [run-record contract](software-factory/references/run-records.md) and package-local helper. Setup PentaPRO prepares the directory guide and host pointers; it does not create runs or overwrite customized records. Default to one orchestrator-owned English checkpoint record per substantial run under `docs/agents/runs/`, reusing existing equivalent trackers. Lessons remain separate. Bounded single-agent edits do not acquire a factory run merely because the assets are installed.
+Software Factory owns the [run-record contract](skills/software-factory/references/run-records.md) and package-local helper. Setup PentaPRO prepares the directory guide and host pointers; it does not create runs or overwrite customized records. Default to one orchestrator-owned English checkpoint record per substantial run under `docs/agents/runs/`, reusing existing equivalent trackers. Lessons remain separate. Bounded single-agent edits do not acquire a factory run merely because the assets are installed.

@@ -4,8 +4,8 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SKILL = ROOT / "setup-pentapro" / "SKILL.md"
-TEMPLATE = ROOT / "setup-pentapro" / "assets" / "agents.md"
+SKILL = ROOT / "skills" / "setup-pentapro" / "SKILL.md"
+TEMPLATE = ROOT / "skills" / "setup-pentapro" / "assets" / "agents.md"
 
 
 def prompt_rule(text, *, skill=False):
@@ -62,8 +62,8 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
 
     def test_deferred_setup_facts_have_an_explicit_consumer(self):
         setup = SKILL.read_text(encoding="utf-8")
-        consumer = (ROOT / "penta-pro" / "SKILL.md").read_text(encoding="utf-8")
-        maintenance = (ROOT / "penta-pro" / "references" / "document-maintenance.md").read_text(encoding="utf-8")
+        consumer = (ROOT / "skills" / "penta-pro" / "SKILL.md").read_text(encoding="utf-8")
+        maintenance = (ROOT / "skills" / "penta-pro" / "references" / "document-maintenance.md").read_text(encoding="utf-8")
         self.assertIn("`docs/agents/setup-notes.md`", setup)
         self.assertIn("read `docs/agents/setup-notes.md` when present", consumer)
         self.assertIn("preserving sources, dates", consumer)

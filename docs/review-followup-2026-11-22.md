@@ -33,11 +33,11 @@ A dedicated test file for every source module is unnecessary when meaningful cov
 | scripts/run_skill_evals.py, eval_outcomes.py, eval_isolation.py | Runner suite tests actual grading/task/proof/scope failures and controls; separate mount/socket/resource probes exercise isolation. Separate filenames per module are not required. |
 | evals/check_receipts.py | Actual clean, seeded and misleading-result inputs exercised by the runner suite. Synthetic grading, not deployed behavior. |
 | evals/check_mcp_sdk.py | Optional self-checking assertion-based SDK smoke; not run because mcp/httpx2 are absent. No separate unit file is necessary for the smoke fixture, but compatibility remains unverified. |
-| software-factory/scripts/run_state.py | Dedicated identity, stale evidence/writer, lock, uncertain effect and preservation tests. Optional record bookkeeping; does not certify review truth. |
-| penta-pro/scripts/init_pentapro.py | 14 tests for directories/files, rerun preservation and unsafe paths. Optional bootstrap, no implicit result acceptance/archive. |
-| ui-design/scripts/prototype_tools.py | 26 bounded-helper regressions. Does not establish browser/native accessibility or production usability. |
-| pr-quiz/scripts/publish_quiz.py | 15 preview/input/publication tests with controlled API behavior; live GitHub permissions remain separate. |
-| pr-quiz/assets/pr-quiz.yml | 27 actual embedded-handler scenarios using API doubles, including stale/unauthorized/reflection controls. No hosted quiz event executed. |
+| skills/software-factory/scripts/run_state.py | Dedicated identity, stale evidence/writer, lock, uncertain effect and preservation tests. Optional record bookkeeping; does not certify review truth. |
+| skills/penta-pro/scripts/init_pentapro.py | 14 tests for directories/files, rerun preservation and unsafe paths. Optional bootstrap, no implicit result acceptance/archive. |
+| skills/ui-design/scripts/prototype_tools.py | 26 bounded-helper regressions. Does not establish browser/native accessibility or production usability. |
+| skills/pr-quiz/scripts/publish_quiz.py | 15 preview/input/publication tests with controlled API behavior; live GitHub permissions remain separate. |
+| skills/pr-quiz/assets/pr-quiz.yml | 27 actual embedded-handler scenarios using API doubles, including stale/unauthorized/reflection controls. No hosted quiz event executed. |
 | Legacy prompt logger core.mjs/log-prompt.mjs | 16 formatting/redaction/safe append/CLI controls in synthetic temporary directories. No current capture hook was installed. |
 | Legacy prompt logger opencode.ts | Core logic covered indirectly; actual host integration remains untested legacy material, not certified setup behavior. |
 | plugin/opencode.mjs | Four offline resource/registration/disposal/API/path controls. Live native runtime and all-host support cannot be inferred. |

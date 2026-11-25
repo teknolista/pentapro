@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](penta-pro/references/sources.md), [Peer Review](peer-review/references/sources.md), and [UI Design](ui-design/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record, and the `setup-pentapro` package redistributes adapted upstream text from one upstream skill (see [Setup PentaPRO](#setup-pentapro)). These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
+This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](skills/penta-pro/references/sources.md), [Peer Review](skills/peer-review/references/sources.md), and [UI Design](skills/ui-design/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record, and the `setup-pentapro` package redistributes adapted upstream text from one upstream skill (see [Setup PentaPRO](#setup-pentapro)). These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
 
 | Work | Copyright notice | License |
 | --- | --- | --- |
@@ -57,11 +57,11 @@ SOFTWARE.
 
 Accessible related readings by the author include [AppSec learning guidance](https://www.tabnews.com.br/Silva97/82bae07a-ca41-4655-b7ee-dc699e807b7f), [Você deveria aprender a ouvir críticas](https://www.tabnews.com.br/Silva97/voce-deveria-aprender-a-ouvir-criticas), [Threat modeling](https://www.tabnews.com.br/Silva97/threat-modeling), and [Dividir para proteger](https://www.tabnews.com.br/Silva97/dividir-para-proteger). The original article also links [Cibersegurança para desenvolvedores](https://blog.freedev.com.br/ciberseguran%C3%A7a-para-desenvolvedores-a37385cf5d23) and [Como sobreviver a um RCE](https://blog.freedev.com.br/como-sobreviver-a-um-rce-833d5c6bc1f1); their full text was unavailable during this review and is not claimed as verified support.
 
-Cybersecurity is an original English synthesis; no article text, code, or illustrations are redistributed. The MIT permission notice above concerns the identified MIT-licensed works, not these articles. Article rights and any source terms remain with their owners. [Cybersecurity source notes](cybersec/references/sources.md) identify primary technical references, adaptations, and access limitations. Attribution does not imply endorsement or affiliation.
+Cybersecurity is an original English synthesis; no article text, code, or illustrations are redistributed. The MIT permission notice above concerns the identified MIT-licensed works, not these articles. Article rights and any source terms remain with their owners. [Cybersecurity source notes](skills/cybersec/references/sources.md) identify primary technical references, adaptations, and access limitations. Attribution does not imply endorsement or affiliation.
 
 ## UI Design: researched skills, standards and discovery sources
 
-[UI Design source notes](ui-design/references/sources.md) record the 2026-11-05 survey of all nine previously cited skill repositories, their pinned revisions, relevant entrypoints, additional design collections, adoption decisions and limits. The guidance added from that survey was independently written. The later Android references have a separate [import record](#pl-coding-android-and-pr-quiz-skills). Linked external materials retain their own terms.
+[UI Design source notes](skills/ui-design/references/sources.md) record the 2026-11-05 survey of all nine previously cited skill repositories, their pinned revisions, relevant entrypoints, additional design collections, adoption decisions and limits. The guidance added from that survey was independently written. The later Android references have a separate [import record](#pl-coding-android-and-pr-quiz-skills). Linked external materials retain their own terms.
 
 Additional primary sources consulted conceptually:
 
@@ -95,22 +95,22 @@ The affected package directories are the eight `android-*` packages and `pr-quiz
 
 | Repository file | Local bundle source |
 | --- | --- |
-| [Compose architecture](ui-design/references/android/compose-architecture.md) | `android-compose-architecture/SKILL.md` |
-| [Compose components](ui-design/references/android/compose-components.md) | `android-compose-components/SKILL.md` |
-| [Navigation](ui-design/references/android/navigation.md) | `android-navigation/SKILL.md` |
-| [Presentation and MVI](ui-design/references/android/presentation-mvi.md) | `android-presentation-mvi/SKILL.md` |
-| [Android security controls](cybersec/references/android-controls.md) | `android-security/SKILL.md` |
+| [Compose architecture](skills/ui-design/references/android/compose-architecture.md) | `android-compose-architecture/SKILL.md` |
+| [Compose components](skills/ui-design/references/android/compose-components.md) | `android-compose-components/SKILL.md` |
+| [Navigation](skills/ui-design/references/android/navigation.md) | `android-navigation/SKILL.md` |
+| [Presentation and MVI](skills/ui-design/references/android/presentation-mvi.md) | `android-presentation-mvi/SKILL.md` |
+| [Android security controls](skills/cybersec/references/android-controls.md) | `android-security/SKILL.md` |
 
 ## Peer Review: review-coordination article
 
-Centelha's [Mais agentes, mais PRs: como organizar a revisão](https://www.tabnews.com.br/Centelha/mais-agentes-mais-prs-como-organizar-a-revisao), published on TabNews on 2026-11-06, was consulted through the public content API on the same date. It informed independently written guidance on change maps, related-change review, integration evidence and reviewer capacity. No article text, code or illustrations are redistributed. Article rights remain with their owners; this repository's MIT license does not relicense it. Attribution implies no affiliation or endorsement. [Peer Review source notes](peer-review/references/sources.md#review-coordination--version-170) record the adaptation and its limits.
+Centelha's [Mais agentes, mais PRs: como organizar a revisão](https://www.tabnews.com.br/Centelha/mais-agentes-mais-prs-como-organizar-a-revisao), published on TabNews on 2026-11-06, was consulted through the public content API on the same date. It informed independently written guidance on change maps, related-change review, integration evidence and reviewer capacity. No article text, code or illustrations are redistributed. Article rights remain with their owners; this repository's MIT license does not relicense it. Attribution implies no affiliation or endorsement. [Peer Review source notes](skills/peer-review/references/sources.md#review-coordination--version-170) record the adaptation and its limits.
 
 
 ## Cursor pstack research
 
 On 2026-11-06, screened all 58 skill entrypoints in [pstack/skills](https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049/pstack/skills) at commit `2776ddd2355d6d6c8747d3964600f28daf62f049`. Names/descriptions were screened across the complete tree; relevant architecture, testing, verification, state-model, measurement and writing bodies and selected references were read in detail. The browser's cached directory listing differed from the current tree; the pinned non-truncated Git tree determined this inventory. Supporting resources were retrieved for inspection, not all audited. No upstream code or automation was executed.
 
-The useful methods informed [PentaPRO](penta-pro/references/sources.md#pstack-synthesis--version-250), [Peer Review](peer-review/references/sources.md#pstack-synthesis--version-180), [Cybersecurity](cybersec/references/sources.md#pstack-synthesis--version-140), and [UI Design](ui-design/references/sources.md#pstack-synthesis--version-130). General explanation, catch-up, personalization, setup, orchestration and style workflows did not warrant new dependencies or separate skills. Many principles were already covered and were not repeated merely to enlarge the packages.
+The useful methods informed [PentaPRO](skills/penta-pro/references/sources.md#pstack-synthesis--version-250), [Peer Review](skills/peer-review/references/sources.md#pstack-synthesis--version-180), [Cybersecurity](skills/cybersec/references/sources.md#pstack-synthesis--version-140), and [UI Design](skills/ui-design/references/sources.md#pstack-synthesis--version-130). General explanation, catch-up, personalization, setup, orchestration and style workflows did not warrant new dependencies or separate skills. Many principles were already covered and were not repeated merely to enlarge the packages.
 
 The synthesis retains task authority and proportionality. It does not adopt mandatory named models, parallel agents, scripts for every nontrivial edit, run-only findings, unconditional trust of internal types, automatic Git integration, blanket compatibility removal, hard-coded host tooling, or fixed prototype/benchmark counts. Formal verification and measurements remain conditional on the actual risk and evidence needs.
 
@@ -119,7 +119,7 @@ The inspected pstack license is MIT, copyright 2026 Lauren Tan; its notice is pr
 
 ## Local design-skill consolidation — 2026-11-06
 
-At the user's request, inspected all 18 files of the local `android-skills/design` package and consolidated its relevant lessons into UI Design 1.4.0. [The transfer inventory](ui-design/references/design-consolidation.md) records existing coverage, original additions and deliberate exclusions before retirement of the local source skill. Its source text, Python implementation, viewer, styles, templates, palettes and token data are not redistributed here. The optional prototype checker/builder, examples and tests added to UI Design are newly written for this repository. They implement general token-checking and local gallery concepts without a runtime dependency on the source package.
+At the user's request, inspected all 18 files of the local `android-skills/design` package and consolidated its relevant lessons into UI Design 1.4.0. [The transfer inventory](skills/ui-design/references/design-consolidation.md) records existing coverage, original additions and deliberate exclusions before retirement of the local source skill. Its source text, Python implementation, viewer, styles, templates, palettes and token data are not redistributed here. The optional prototype checker/builder, examples and tests added to UI Design are newly written for this repository. They implement general token-checking and local gallery concepts without a runtime dependency on the source package.
 
 A bounded source experiment reproduced upstream token-checker omissions; it is recorded as source investigation, not an endorsement or a claim of full source-tool validation. The local source folder is removed only after destination validation, with a recovery copy outside the repositories. Historical research and trial records retain their original dates and scope. The repository license does not grant rights to external source material or imply affiliation.
 
@@ -138,11 +138,11 @@ On 2026-11-07, reviewed the seven [Elephant & Goldfish Model skill entrypoints](
 
 Brainstorm and Draft informed PentaPRO's hypothesis challenge and reuse of decision rationale. Review, Review Loop and Resolve informed reconstruction from saved artifacts, scoped review evidence, finding disposition and rechecking. Drift Report informed targeted comparisons between current claims and the selected source revision. Bootstrap's baseline mapping was assessed against the existing canonical artifact guidance. Its recursive document generation and separate repository contracts did not fit the five-pillar output. This collection uses its existing artifact layout and permission rules rather than adopting EGM's required agent orchestration, reports or fixed loop controls.
 
-See the [PentaPRO](penta-pro/references/sources.md#elephant--goldfish-model--260), [Peer Review](peer-review/references/sources.md#elephant--goldfish-model--191), and [UI Design](ui-design/references/sources.md#elephant--goldfish-model--153) source notes for the adaptations. Cybersecurity already separates threat models, intended controls, source and deployed evidence. The Android implementation/test helpers and PR Quiz keep their existing narrower roles. No independent model comparison or production result is claimed by this research.
+See the [PentaPRO](skills/penta-pro/references/sources.md#elephant--goldfish-model--260), [Peer Review](skills/peer-review/references/sources.md#elephant--goldfish-model--191), and [UI Design](skills/ui-design/references/sources.md#elephant--goldfish-model--153) source notes for the adaptations. Cybersecurity already separates threat models, intended controls, source and deployed evidence. The Android implementation/test helpers and PR Quiz keep their existing narrower roles. No independent model comparison or production result is claimed by this research.
 
 ## Peer Review: Claude Code engineering article
 
-[How the Claude Code team does code review](https://claude.dev/blog/solving-code-review-at-anthropic/), by Addy Osmani, Morgan Westlee Lunt, and Qing Wang, informed original guidance on follow-up review, recovery evidence and reviewer evaluation. The repository redistributes no article prose, illustrations or code. Attribution implies no affiliation or endorsement. See the [Peer Review source notes](peer-review/references/sources.md#claude-code-review-process--1100).
+[How the Claude Code team does code review](https://claude.dev/blog/solving-code-review-at-anthropic/), by Addy Osmani, Morgan Westlee Lunt, and Qing Wang, informed original guidance on follow-up review, recovery evidence and reviewer evaluation. The repository redistributes no article prose, illustrations or code. Attribution implies no affiliation or endorsement. See the [Peer Review source notes](skills/peer-review/references/sources.md#claude-code-review-process--1100).
 
 ## Software factory skill research
 
@@ -158,13 +158,13 @@ The [complete disposition map](COLLECTION-REVIEW.md#upstream-coverage) records 3
 
 ## Production Operations
 
-[Production Operations](production-operations/SKILL.md) uses original workflow instructions and templates based on the primary technical references in its [source notes](production-operations/references/sources.md). OpenAI's Skill Creator and Matt Pocock's [Writing for Agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) informed the authoring structure. The Matt Pocock license is listed above. No external skill, provider code, deployment template or connector is redistributed. Linked works and services retain their respective terms.
+[Production Operations](skills/production-operations/SKILL.md) uses original workflow instructions and templates based on the primary technical references in its [source notes](skills/production-operations/references/sources.md). OpenAI's Skill Creator and Matt Pocock's [Writing for Agents](https://github.com/mattpocock/skills/tree/main/skills/productivity/writing-for-agents) informed the authoring structure. The Matt Pocock license is listed above. No external skill, provider code, deployment template or connector is redistributed. Linked works and services retain their respective terms.
 
 ## Setup PentaPRO
 
-[Setup PentaPRO](setup-pentapro/SKILL.md) is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md), inspected on 2026-11-18 at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c`. Matt Pocock's skills repository is MIT-licensed, Copyright (c) 2026 Matt Pocock (see the table and the common permission notice above).
+[Setup PentaPRO](skills/setup-pentapro/SKILL.md) is an adaptation of Matt Pocock's [setup-matt-pocock-skills](https://github.com/mattpocock/skills/blob/59db609eb1e18aaf59b63284d0e52255aff0c63c/skills/engineering/setup-matt-pocock-skills/SKILL.md), inspected on 2026-11-18 at commit `59db609eb1e18aaf59b63284d0e52255aff0c63c`. Matt Pocock's skills repository is MIT-licensed, Copyright (c) 2026 Matt Pocock (see the table and the common permission notice above).
 
-Unlike the rest of this collection, Setup PentaPRO redistributes **adapted upstream text and templates**, not only independently written work. The adapted files are `setup-pentapro/SKILL.md` and the packaged templates `setup-pentapro/assets/issue-tracker-github.md`, `issue-tracker-gitlab.md`, `issue-tracker-local.md`, `triage-labels.md` and `domain.md`. The packaged `setup-pentapro/assets/agents.md` and `setup-pentapro/assets/prompt-logging.md` are original to this collection, not upstream adaptations. The `setup-pentapro/assets/prompt-logging/` core, command-line adapter, OpenCode adapter and host recipes are also original; the host configuration shapes follow the public documentation cited in the source notes. The upstream copyright and permission notice are reproduced above; the package ships under the repository's [MIT license](setup-pentapro/LICENSE) and records [source notes](setup-pentapro/references/sources.md) with the upstream revision, each file's adaptation, and the reasons for the deviations.
+Unlike the rest of this collection, Setup PentaPRO redistributes **adapted upstream text and templates**, not only independently written work. The adapted files are `skills/setup-pentapro/SKILL.md` and the packaged templates `skills/setup-pentapro/assets/issue-tracker-github.md`, `issue-tracker-gitlab.md`, `issue-tracker-local.md`, `triage-labels.md` and `domain.md`. The packaged `skills/setup-pentapro/assets/agents.md` and `skills/setup-pentapro/assets/prompt-logging.md` are original to this collection, not upstream adaptations. The `skills/setup-pentapro/assets/prompt-logging/` core, command-line adapter, OpenCode adapter and host recipes are also original; the host configuration shapes follow the public documentation cited in the source notes. The upstream copyright and permission notice are reproduced above; the package ships under the repository's [MIT license](skills/setup-pentapro/LICENSE) and records [source notes](skills/setup-pentapro/references/sources.md) with the upstream revision, each file's adaptation, and the reasons for the deviations.
 
 The main adaptations are:
 
@@ -173,11 +173,11 @@ The main adaptations are:
 - The `triage` label section is retained only for projects that also install an upstream `triage` skill; no `triage` skill ships in this collection.
 - Upstream `wayfinder` references remain only when the project also installs upstream `wayfinder`; this collection does not ship it.
 - The upstream `disable-model-invocation` flag is not used; this collection selects skills by description and explicit invocation.
-- Attribution retargeting: "never file issues into mattpocock/skills" now references `teknolista/skills`.
+- Attribution retargeting: "never file issues into mattpocock/skills" now references `teknolista/pentapro`.
 
 Setup is the first skill run per new project, so the whole collection documents it as the required opening step. No upstream plugin, script or hook is installed by the package, and the adaptation grants no trademark rights, endorsement or affiliation.
 
-The project README template bundled by Setup PentaPRO was supplied by the maintainer. Its provenance is recorded with the [setup source notes](setup-pentapro/references/sources.md#readme-and-project-licensing--2026-11-20).
+The project README template bundled by Setup PentaPRO was supplied by the maintainer. Its provenance is recorded with the [setup source notes](skills/setup-pentapro/references/sources.md#readme-and-project-licensing--2026-11-20).
 
 ## Targeted upstream refresh — 2026-11-20
 

@@ -44,7 +44,7 @@ directories = {root}
 for file in files:
     directories.update(parent for parent in file.parents if root in parent.parents)
 markdown = sorted(file for file in files if file.suffix == ".md")
-entries = sorted(file for file in markdown if file.name == "SKILL.md" and file.parent.parent == root)
+entries = sorted(file for file in markdown if file.name == "SKILL.md" and file.parent.parent == root / "skills")
 package_roots = {entry.parent for entry in entries}
 headings = re.compile(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", re.M)
 links = re.compile(r"(?<!!)\[[^\]\n]*\]\((<[^>]+>|[^)\s]+)\)")
@@ -83,7 +83,8 @@ for file in markdown:
     if not file.is_file() or file.resolve() not in files:
         problems.append(f"{file.relative_to(root)} is missing or resolves outside the collection")
         continue
-    package = root / file.relative_to(root).parts[0]
+    parts = file.relative_to(root).parts
+    package = root / "skills" / parts[1] if len(parts) > 1 and parts[0] == "skills" else root
     for number, row in prose_lines(file):
         for raw in links.findall(row):
             parsed = urlsplit(raw.strip("<>"))
@@ -201,10 +202,10 @@ for entry in entries:
         slug = label.lower().replace(" ", "-")
         if f"| [{label}](#{slug}) | {version} |" not in readme:
             problems.append(f"README version mismatch for {package}")
-    elif f"]({package}/SKILL.md) | {version} |" not in readme:
+    elif f"](skills/{package}/SKILL.md) | {version} |" not in readme:
         problems.append(f"README version mismatch for {package}")
 
-process_template = root / "penta-pro/assets/process.md"
+process_template = root / "skills/penta-pro/assets/process.md"
 if (
     "penta-pro" not in versions
     or process_template not in files

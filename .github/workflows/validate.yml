@@ -35,10 +35,10 @@ jobs:
       - name: Run offline helper tests
         run: |
           python3 -m unittest discover -s scripts/tests -v
-          python3 -m unittest discover -s penta-pro/scripts/tests -v
-          python3 -m unittest discover -s ui-design/scripts/tests -v
-          python3 -m unittest discover -s pr-quiz/scripts/tests -v
-          node pr-quiz/scripts/tests/workflow.cjs
+          python3 -m unittest discover -s skills/penta-pro/scripts/tests -v
+          python3 -m unittest discover -s skills/ui-design/scripts/tests -v
+          python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v
+          node skills/pr-quiz/scripts/tests/workflow.cjs
           node --test scripts/tests/test_agents_log.mjs
           node --test scripts/tests/test_opencode_plugin.mjs
       - name: Check changed lines for whitespace errors

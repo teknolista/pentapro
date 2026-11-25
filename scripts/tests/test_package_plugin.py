@@ -26,7 +26,7 @@ class PluginPackagingTests(unittest.TestCase):
         names = [p[2:] for p in json.loads((self.source / 'plugin.json').read_text())['skills']]
         for host in package.HOSTS:
             output = package.export(self.source, self.root / host, host)
-            self.assertEqual(sorted(p.parent.name for p in output.glob('*/SKILL.md')), sorted(names))
+            self.assertEqual(sorted(str(p.parent.relative_to(output)) for p in output.glob('skills/*/SKILL.md')), sorted(names))
             for name in names:
                 self.assertEqual((output / name / 'LICENSE').read_bytes(), (ROOT / 'LICENSE').read_bytes())
                 self.assertEqual((output / name / 'SKILL.md').read_bytes(), (ROOT / name / 'SKILL.md').read_bytes())
@@ -35,17 +35,17 @@ class PluginPackagingTests(unittest.TestCase):
             self.assertFalse((output / 'docs/agents/lessons-learned.md').exists())
             manifest = output / ('.codex-plugin/plugin.json' if host == 'codex' else 'plugin.json')
             self.assertEqual(json.loads(manifest.read_text())['name'], 'pentapro')
-            self.assertTrue((output / 'setup-pentapro/assets/agents/factory-shipper/codex.toml').is_file())
+            self.assertTrue((output / 'skills/setup-pentapro/assets/agents/factory-shipper/codex.toml').is_file())
             for host_profile in ('claude-code.md', 'cursor.md'):
                 for role in ('spec', 'implementer', 'verifier', 'reviewer', 'retrospective', 'shipper'):
-                    self.assertTrue((output / 'setup-pentapro/assets/agents' / ('factory-' + role) / host_profile).is_file())
-            self.assertTrue((output / 'setup-pentapro/assets/lessons-learned.md').is_file())
+                    self.assertTrue((output / 'skills/setup-pentapro/assets/agents' / ('factory-' + role) / host_profile).is_file())
+            self.assertTrue((output / 'skills/setup-pentapro/assets/lessons-learned.md').is_file())
             self.assertTrue((output / 'bundle-files.json').is_file())
-            self.assertEqual((output / 'software-factory/scripts/run_state.py').read_bytes(), (ROOT / 'software-factory/scripts/run_state.py').read_bytes())
-            self.assertTrue((output / 'software-factory/references/run-records.md').is_file())
-            self.assertEqual((output / 'software-factory/scripts/run_events.py').read_bytes(), (ROOT / 'software-factory/scripts/run_events.py').read_bytes())
-            self.assertTrue((output / 'software-factory/references/invocation-events.md').is_file())
-            self.assertTrue((output / 'setup-pentapro/assets/runs-readme.md').is_file())
+            self.assertEqual((output / 'skills/software-factory/scripts/run_state.py').read_bytes(), (ROOT / 'skills/software-factory/scripts/run_state.py').read_bytes())
+            self.assertTrue((output / 'skills/software-factory/references/run-records.md').is_file())
+            self.assertEqual((output / 'skills/software-factory/scripts/run_events.py').read_bytes(), (ROOT / 'skills/software-factory/scripts/run_events.py').read_bytes())
+            self.assertTrue((output / 'skills/software-factory/references/invocation-events.md').is_file())
+            self.assertTrue((output / 'skills/setup-pentapro/assets/runs-readme.md').is_file())
             self.assertFalse((output / 'docs/agents/runs').exists())
 
     def test_refuses_existing_destination_without_modifying_it(self):
@@ -63,14 +63,14 @@ class PluginPackagingTests(unittest.TestCase):
             self.assertFalse(output.exists())
 
     def test_rejects_source_symlink_and_does_not_copy_ignored_secrets(self):
-        (self.source / 'git-ship/private.md').symlink_to('/etc/hosts')
+        (self.source / 'skills/git-ship/private.md').symlink_to('/etc/hosts')
         with self.assertRaises(ValueError):
             package.export(self.source, self.root / 'unsafe', 'codex')
         self.assertFalse((self.root / 'unsafe').exists())
-        (self.source / 'git-ship/private.md').unlink()
-        (self.source / 'git-ship/.env').write_text('synthetic private fixture')
+        (self.source / 'skills/git-ship/private.md').unlink()
+        (self.source / 'skills/git-ship/.env').write_text('synthetic private fixture')
         output = package.export(self.source, self.root / 'safe', 'codex')
-        self.assertFalse((output / 'git-ship/.env').exists())
+        self.assertFalse((output / 'skills/git-ship/.env').exists())
 
     def test_stale_catalog_blocks_export_until_synchronized(self):
         catalog = self.source / 'plugin/catalog.json'
@@ -114,7 +114,7 @@ class PluginPackagingTests(unittest.TestCase):
 
     def test_refuses_required_skill_resource_excluded_from_inventory(self):
         with (self.source / '.gitignore').open('a') as ignored:
-            ignored.write('\n/git-ship/LICENSE\n')
+            ignored.write('\n/skills/git-ship/LICENSE\n')
         output = self.root / 'incomplete'
         with self.assertRaisesRegex(ValueError, 'required resources'):
             package.export(self.source, output, 'copilot')

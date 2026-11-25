@@ -4,7 +4,7 @@
 
 The recurring failure is lost or stale execution context between agents/sessions, especially source changes after review and uncertain external effects. Software Factory owns one small durable record and its local validation helper; Setup PentaPRO prepares only the directory guide and selected-host pointers. Reuse existing equivalent project trackers and keep bounded single-agent edits proportionate. Requirements, lessons and execution state retain separate owners.
 
-Current locations and format are defined in [run persistence](../software-factory/references/run-records.md). The former `.factory/runs/` proposal in the design guide is reconciled to `docs/agents/runs/<run-id>/run.json`. Record summaries and all persisted lessons are English even when specifications use Portuguese. Run records are not automatic sources of authority. Installation does not execute a run or register a new daemon/hook.
+Current locations and format are defined in [run persistence](../skills/software-factory/references/run-records.md). The former `.factory/runs/` proposal in the design guide is reconciled to `docs/agents/runs/<run-id>/run.json`. Record summaries and all persisted lessons are English even when specifications use Portuguese. Run records are not automatic sources of authority. Installation does not execute a run or register a new daemon/hook.
 
 ## Deterministic controls and limits
 

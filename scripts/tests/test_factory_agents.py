@@ -5,7 +5,7 @@ import unittest
 import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
-TEMPLATES = ROOT / "setup-pentapro/assets/agents"
+TEMPLATES = ROOT / "skills/setup-pentapro/assets/agents"
 
 
 class FactoryAgentTests(unittest.TestCase):
@@ -37,9 +37,9 @@ class FactoryAgentTests(unittest.TestCase):
         self.assertEqual((role["model"], role["model_reasoning_effort"]), ("gpt-6-luna", "high"))
 
     def test_native_workflow_does_not_depend_on_external_sdd_tool(self):
-        entrypoint = (ROOT / "setup-pentapro/SKILL.md").read_text()
-        guidance = (ROOT / "setup-pentapro/references/factory-setup.md").read_text()
-        project_instructions = (ROOT / "setup-pentapro/assets/agents.md").read_text()
+        entrypoint = (ROOT / "skills/setup-pentapro/SKILL.md").read_text()
+        guidance = (ROOT / "skills/setup-pentapro/references/factory-setup.md").read_text()
+        project_instructions = (ROOT / "skills/setup-pentapro/assets/agents.md").read_text()
         for text in (entrypoint, guidance, project_instructions):
             self.assertNotIn("openspec", text.lower())
         self.assertIn("pentapro/changes/archive/", guidance)
@@ -68,7 +68,7 @@ class FactoryAgentTests(unittest.TestCase):
                     self.assertIn("Read-only roles report required fixes", body)
 
     def test_setup_bundles_protocol_and_empty_record_separately(self):
-        assets = ROOT / "setup-pentapro/assets"
+        assets = ROOT / "skills/setup-pentapro/assets"
         protocol = (assets / "continuous-improvement.md").read_text()
         for clause in ("orchestrator alone", "after commit or push", "Never amend", "cause confidence"):
             self.assertIn(clause, protocol)

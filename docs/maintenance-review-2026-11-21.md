@@ -53,10 +53,10 @@ A distinct test file for every module is not necessary; observable contract cove
 
 | Executable/helper | Coverage and judgment |
 | --- | --- |
-| `penta-pro/scripts/init_pentapro.py` | Dedicated `test_init_pentapro.py`; initialization, rerun, existing content and unsafe-path cases. Appropriate offline regression coverage for the maintained contract, with live project workflows still separate. |
-| `ui-design/scripts/prototype_tools.py` | Dedicated `test_prototype_tools.py`; inputs, contrast, fragments, injection boundaries and export behavior. Appropriate bounded-helper coverage, not browser/native accessibility certification. |
-| `pr-quiz/scripts/publish_quiz.py` | Dedicated `test_publish_quiz.py`; invalid JSON/options, rendering and mocked publication/freshness controls. No live GitHub write performed. |
-| `pr-quiz/assets/pr-quiz.yml` | Actual embedded handler exercised by `pr-quiz/scripts/tests/workflow.cjs` with offline API doubles; hosted events/token permissions remain separate. |
+| `skills/penta-pro/scripts/init_pentapro.py` | Dedicated `test_init_pentapro.py`; initialization, rerun, existing content and unsafe-path cases. Appropriate offline regression coverage for the maintained contract, with live project workflows still separate. |
+| `skills/ui-design/scripts/prototype_tools.py` | Dedicated `test_prototype_tools.py`; inputs, contrast, fragments, injection boundaries and export behavior. Appropriate bounded-helper coverage, not browser/native accessibility certification. |
+| `skills/pr-quiz/scripts/publish_quiz.py` | Dedicated `test_publish_quiz.py`; invalid JSON/options, rendering and mocked publication/freshness controls. No live GitHub write performed. |
+| `skills/pr-quiz/assets/pr-quiz.yml` | Actual embedded handler exercised by `skills/pr-quiz/scripts/tests/workflow.cjs` with offline API doubles; hosted events/token permissions remain separate. |
 | `scripts/validate_collection.py` | Dedicated `test_validate_collection.py`; metadata/link/portability defects and valid controls. Also runs against the complete candidate inventory. |
 | `scripts/run_skill_evals.py` | `test_run_skill_evals.py` exercises candidate export, lifecycle, status, manifests, grading and controls; model execution is not part of default offline checks. |
 | `scripts/eval_outcomes.py` | Indirect tests in the same runner suite cover actual scoring and clean/seeded fixtures; separate filename not required. |
@@ -72,10 +72,10 @@ A distinct test file for every module is not necessary; observable contract cove
 Python 3.12.6, PyYAML 6.0.1, Node v27.0.0-alpha.0.0.0 and installed OpenSpec CLI. CI specifies Python 3.12, PyYAML 6.0.3 and Node 24; the exact CI runtime was not recreated locally. No dependencies were installed globally.
 
 - `python3 -m unittest discover -s scripts/tests`: 42 passed after the additional adapter test.
-- `python3 -m unittest discover -s penta-pro/scripts/tests`: 11 passed.
-- `python3 -m unittest discover -s ui-design/scripts/tests`: 26 passed.
-- `python3 -m unittest discover -s pr-quiz/scripts/tests`: 15 passed.
-- `node pr-quiz/scripts/tests/workflow.cjs`: 27 passed.
+- `python3 -m unittest discover -s skills/penta-pro/scripts/tests`: 11 passed.
+- `python3 -m unittest discover -s skills/ui-design/scripts/tests`: 26 passed.
+- `python3 -m unittest discover -s skills/pr-quiz/scripts/tests`: 15 passed.
+- `node skills/pr-quiz/scripts/tests/workflow.cjs`: 27 passed.
 - `node --test scripts/tests/test_agents_log.mjs`: 16 passed after the attachment fix, outside the host sandbox restriction on Node `spawnSync`. The original 15 tests failed inside that restriction and passed after the scoped retry; Python execution of the same synthetic CLI also succeeded.
 - `python3 scripts/run_skill_evals.py --check-isolation --grade`: mount, socket and resource probes passed, without a model call.
 - `python3 scripts/run_skill_evals.py --check-cases`: case definitions checked; this does not execute model trials.

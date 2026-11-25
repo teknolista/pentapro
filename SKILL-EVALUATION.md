@@ -1,6 +1,6 @@
 # Evaluating software development skills
 
-The canonical [evaluation procedure](agent-instructions/references/evaluation.md) is bundled with the portable [Agent Instructions skill](agent-instructions/SKILL.md). It covers candidate screening, matched baseline trials, routing controls, evidence, cost and adoption decisions.
+The canonical [evaluation procedure](skills/agent-instructions/references/evaluation.md) is bundled with the portable [Agent Instructions skill](skills/agent-instructions/SKILL.md). It covers candidate screening, matched baseline trials, routing controls, evidence, cost and adoption decisions.
 
 See the [initial assessment](SKILL-ASSESSMENT.md) and [closure review](COLLECTION-REVIEW.md) for executed checks and their limits. Maintenance records are not loaded during ordinary application work.
 
@@ -69,7 +69,7 @@ The runner records the seed and hashes of the evaluator files with `--grade`. Ea
 
 ## Score the outputs
 
-- **Production target mismatch.** Check that the plan distinguishes the runner's wrong workload target from a legitimate separate federation project, holds all live actions, and gives a usable staging handoff. Require a single resumable migration execution, compatibility with the old writer and proof on a tagged revision before shifting traffic. Check the tool trace for writes and distinguish suggested from observed evidence. See the [package scenarios](production-operations/evals/scenarios.md) for further cases.
+- **Production target mismatch.** Check that the plan distinguishes the runner's wrong workload target from a legitimate separate federation project, holds all live actions, and gives a usable staging handoff. Require a single resumable migration execution, compatibility with the old writer and proof on a tagged revision before shifting traffic. Check the tool trace for writes and distinguish suggested from observed evidence. See the [package scenarios](skills/production-operations/evals/scenarios.md) for further cases.
 
 - **Stale green deployment.** Distinguish the applied candidate from the revision serving normal traffic. The candidate failed the tagged write check. Expect promotion held, current traffic preserved, and the missing job-effect evidence identified. Verify the assessment used only supplied observations.
 - **Receipt delivery.** Compare changed paths and contract files first. The independent checker exercises tenant and key isolation, exact and conflicting replay, and rejected calls with the registered seed. To grade a retained workspace, substitute its path in the checker command above. Review whether generated regressions catch both seeded defects when run against the original handler inside a suitable execution boundary. Check the claimed results in the event log and compare owner selection and effort separately from correctness.

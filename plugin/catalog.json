@@ -2,145 +2,145 @@
   {
     "id": "agent-instructions",
     "description": "Create or improve software-development SKILL.md packages and project agent instructions. Use when maintaining reusable agent workflows, activation descriptions, supporting resources, or AGENTS.md guidance. Ordinary product documentation and application implementation have separate owners.",
-    "path": "agent-instructions/SKILL.md",
+    "path": "skills/agent-instructions/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-background",
     "description": "Implement or debug native Android WorkManager jobs, constraints, retries, idempotency and worker initialization. Use for concrete durable-work changes; use penta-pro for product/operating requirements and cybersec for security assessment.",
-    "path": "android-background/SKILL.md",
+    "path": "skills/android-background/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-data-layer",
     "description": "Implement or debug native Android repositories, Ktor/OkHttp clients, Room persistence, DataStore and synchronization. Use for data-layer code changes; use peer-review for independent assessment and cybersec for security audits.",
-    "path": "android-data-layer/SKILL.md",
+    "path": "skills/android-data-layer/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-di-koin",
     "description": "Implement or debug Koin bindings, Android ViewModel ownership and application/worker dependency wiring. Use for concrete DI code changes; use peer-review for independent inspection and ui-design for screen design.",
-    "path": "android-di-koin/SKILL.md",
+    "path": "skills/android-di-koin/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-error-handling",
     "description": "Implement or debug typed results and expected domain, HTTP and storage error mapping in native Android Kotlin code. Use for concrete error-handling changes; use peer-review for read-only assessment and ui-design for user-facing error interaction design.",
-    "path": "android-error-handling/SKILL.md",
+    "path": "skills/android-error-handling/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-integration-testing",
     "description": "Author, run or debug non-UI native Android boundary tests for Room, Ktor clients, DataStore, DI and WorkManager. Use for integration-test implementation; use peer-review for independent evidence assessment and cybersec for security audits.",
-    "path": "android-integration-testing/SKILL.md",
+    "path": "skills/android-integration-testing/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-module-structure",
     "description": "Implement native Android/Kotlin JVM module boundaries, Gradle conventions and build configuration in an existing or authorized project. Use for concrete module/build changes; use penta-pro for requirements, architecture proposals and readiness specifications, and peer-review for read-only code review.",
-    "path": "android-module-structure/SKILL.md",
+    "path": "skills/android-module-structure/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-ui-testing",
     "description": "Author, run or debug automated native Android Compose interaction tests on devices/emulators. Use for UI-test implementation; use ui-design for screen design, usability/accessibility critique or visual acceptance, and peer-review for independent code/test review.",
-    "path": "android-ui-testing/SKILL.md",
+    "path": "skills/android-ui-testing/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-unit-testing",
     "description": "Author, run or debug isolated Kotlin/JVM and Android logic tests using fakes and deterministic coroutine scheduling. Use for test implementation tasks; use peer-review to assess test effectiveness without changing source and ui-design for screen acceptance design.",
-    "path": "android-unit-testing/SKILL.md",
+    "path": "skills/android-unit-testing/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "behavior-testing",
     "description": "Author automated behavior tests outside native Android. Use when tests are the primary deliverable or test-first implementation is requested.",
-    "path": "behavior-testing/SKILL.md",
+    "path": "skills/behavior-testing/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "cybersec",
     "description": "Assesses cybersecurity risks and controls in software, DevOps, cloud, and IT systems. Use for threat modeling, security reviews, hardening, security-focused implementation, or security release checks across web/API, desktop, and mobile projects; not ordinary coding or general peer review.",
-    "path": "cybersec/SKILL.md",
+    "path": "skills/cybersec/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "diagnose-defect",
     "description": "Investigate ambiguous, intermittent, cross-boundary, or performance defects in software. Use when the cause of a reported failure is unclear or prior fixes failed. Produce evidence for the cause and verify any authorized fix. Use the owning platform skill for clear, localized implementation or test failures.",
-    "path": "diagnose-defect/SKILL.md",
+    "path": "skills/diagnose-defect/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "git-ship",
     "description": "Review and package a requested Git commit, normal branch push, or pull request, preserving unrelated work and verifying the published revision. Use for commit, ship, push, or PR preparation. Implementation completion alone does not authorize publication, merge, or deployment.",
-    "path": "git-ship/SKILL.md",
+    "path": "skills/git-ship/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "http-api",
     "description": "Implement or change HTTP API server endpoints and their upstream integrations against a concrete contract. Use for server handler, error, authorization, retry, compatibility, or migration behavior. Requirements discovery, MCP implementation, and independent review have separate workflows.",
-    "path": "http-api/SKILL.md",
+    "path": "skills/http-api/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "mcp-server",
     "description": "Implement or change a Model Context Protocol server, its exposed capabilities, or its client-facing transport and authorization behavior. Use for concrete MCP server work. General HTTP implementation, requirements discovery, and independent security review have separate workflows.",
-    "path": "mcp-server/SKILL.md",
+    "path": "skills/mcp-server/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "peer-review",
     "description": "Reviews code changes, pull requests, commit ranges, selected files, and test effectiveness for substantiated defects. Use for reviews of backend, frontend, Android, or test code, pre-merge checks, independent second opinions, and re-review after fixes; not ordinary implementation or specification review.",
-    "path": "peer-review/SKILL.md",
+    "path": "skills/peer-review/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "penta-pro",
     "description": "Create and maintain a project's five-pillar PentaPRO specification in the repository-root pentapro/ directory. Use for new software, change-impact updates, specification resumption, and requirements or readiness review.",
-    "path": "penta-pro/SKILL.md",
+    "path": "skills/penta-pro/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "pr-quiz",
     "description": "Create or regenerate a decision-comprehension quiz for a GitHub pull request when explicitly requested. Use for PR quizzes or their optional grading workflow; not code review, security assessment, test validation, or automatic action after creating a PR.",
-    "path": "pr-quiz/SKILL.md",
+    "path": "skills/pr-quiz/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "production-operations",
     "description": "Plan, configure, deploy, verify, operate, or recover a hosted backend. Use for cloud or VPS infrastructure, deployment pipelines, runtime identities, rollouts, database cutovers, observability, or operational incidents.",
-    "path": "production-operations/SKILL.md",
+    "path": "skills/production-operations/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "setup-pentapro",
     "description": "Configure a repository for the PentaPRO skill collection and software factory. Set up prompt persistence, Git defaults, a permanent motivational manifesto, a project README and missing license, tracker and domain guidance, native change directories and agent roles, and a PentaPRO handoff while preserving existing decisions.",
-    "path": "setup-pentapro/SKILL.md",
+    "path": "skills/setup-pentapro/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "software-delivery",
     "description": "Coordinate software implementation across dependent tasks or increments. Use for an existing delivery plan, a cross-component change, or resuming multi-step implementation.",
-    "path": "software-delivery/SKILL.md",
+    "path": "skills/software-delivery/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "software-factory",
     "description": "Guide a native PentaPRO spec-driven change from exploration through specification review, implementation, verification, developer acceptance, consolidation, archival and authorized Git delivery. Use for a requested factory workflow or end-to-end feature/change delivery; preserve exploration-only and other explicitly narrower requests.",
-    "path": "software-factory/SKILL.md",
+    "path": "skills/software-factory/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "technical-research",
     "description": "Resolve a software engineering question using primary sources, project evidence, or a bounded feasibility experiment. Use for library or platform investigations, architecture tradeoffs, and technical spikes. Product interviews and visual UI exploration have separate owners.",
-    "path": "technical-research/SKILL.md",
+    "path": "skills/technical-research/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "ui-design",
     "description": "Design, specify, prototype, refine, review, or implement web and Android screens and user flows. Maintain the project's screen specification, using PentaPRO PRODUCT when selected.",
-    "path": "ui-design/SKILL.md",
+    "path": "skills/ui-design/SKILL.md",
     "autoinvoke": true
   }
 ]

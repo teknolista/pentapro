@@ -42,7 +42,7 @@
         "unittest",
         "discover",
         "-s",
-        "penta-pro/scripts/tests",
+        "skills/penta-pro/scripts/tests",
         "-v"
       ],
       "exit": 0,
@@ -67,7 +67,7 @@
         "unittest",
         "discover",
         "-s",
-        "ui-design/scripts/tests",
+        "skills/ui-design/scripts/tests",
         "-v"
       ],
       "exit": 0,
@@ -92,7 +92,7 @@
         "unittest",
         "discover",
         "-s",
-        "pr-quiz/scripts/tests",
+        "skills/pr-quiz/scripts/tests",
         "-v"
       ],
       "exit": 0,
@@ -113,7 +113,7 @@
       "name": "quiz-node",
       "command": [
         "node",
-        "pr-quiz/scripts/tests/workflow.cjs"
+        "skills/pr-quiz/scripts/tests/workflow.cjs"
       ],
       "exit": 0,
       "seconds": 0.68,
@@ -211,20 +211,20 @@
     "scripts/eval_outcomes.py": "a51873ad67e0540cf5d2a6aa1b19c1b96f09e79445bd40520fb8c3723f01671c",
     "scripts/run_skill_evals.py": "439779591e3193406d1bb3a830e41b0f2e003fab258165a3c6c2f3a7a6e7b934",
     "scripts/eval_isolation.py": "d8a60627280a1df23b528a39afd1c0771960b718e78cdc447c24422aaed4ef97",
-    "software-factory/scripts/run_state.py": "471c90bcaeaad5f624da5cdbb5b2618550f74bb555d01b9d43a1529d98c0989e",
-    "pr-quiz/scripts/publish_quiz.py": "627619ca260e50e9d25e132c5c4ca2abc48f1a8a9e456826d6fa1590c2329c51",
+    "skills/software-factory/scripts/run_state.py": "471c90bcaeaad5f624da5cdbb5b2618550f74bb555d01b9d43a1529d98c0989e",
+    "skills/pr-quiz/scripts/publish_quiz.py": "627619ca260e50e9d25e132c5c4ca2abc48f1a8a9e456826d6fa1590c2329c51",
     "evals/check_mcp_sdk.py": "ed197b99307533a7440160f8faaff381a5a7b1fa29b7a80974cacd2cecd76813",
-    "ui-design/scripts/prototype_tools.py": "e547b4cd6f74dc5d839e59462244d0314c21c0051616897354ba077d60c885b4",
-    "setup-pentapro/scripts/check_agent_profiles.py": "2429a2a0740907ff41dcc572500b03fd33790b378825ae362426dd27bf444c3b",
-    "setup-pentapro/scripts/merge_git_templates.py": "41395b4b7918768b223b714d2830b98628401e0da2f26e4260a01cd7eba1d5ce",
+    "skills/ui-design/scripts/prototype_tools.py": "e547b4cd6f74dc5d839e59462244d0314c21c0051616897354ba077d60c885b4",
+    "skills/setup-pentapro/scripts/check_agent_profiles.py": "2429a2a0740907ff41dcc572500b03fd33790b378825ae362426dd27bf444c3b",
+    "skills/setup-pentapro/scripts/merge_git_templates.py": "41395b4b7918768b223b714d2830b98628401e0da2f26e4260a01cd7eba1d5ce",
     "scripts/package_plugin.py": "c87edf71b786df3d2bdcecaaddd89be6a887ecedabb33665fb4cee0fbe665661",
-    "software-factory/scripts/run_events.py": "6f3677c9a147295ea383b96c962b204d5e06df5515c6efa1be49da1c603ff26c",
+    "skills/software-factory/scripts/run_events.py": "6f3677c9a147295ea383b96c962b204d5e06df5515c6efa1be49da1c603ff26c",
     "evals/check_receipts.py": "f6d7a859a25be59ce10afe168560f8e715c6a7ece56eb96da5ceaf03521a9be5",
     "scripts/validate_collection.py": "61762c95a85de6b31b72ef32ea1164eb317e908fb49fd513ca3e8656faf073a5",
-    "setup-pentapro/assets/prompt-logging/opencode.ts": "4afed1fdbe61e8c5b197ec1eeef7af2e33ab0fab24de5705b7d508fabd9a3bf5",
-    "setup-pentapro/assets/prompt-logging/log-prompt.mjs": "32616a03598a50196962f5b77418ee430da8fdd6f6091a47f2fd1ba2e702ec03",
-    "setup-pentapro/assets/prompt-logging/core.mjs": "cb9f50e8797e66e21646a6c3a4201583cb2818defa4a98b3a8506ccfbc88e92a",
-    "penta-pro/scripts/init_pentapro.py": "61e8efdb963bfe6beb3c90f7be7523900d483dd004d3599ebbcf3858d300f93e",
+    "skills/setup-pentapro/assets/prompt-logging/opencode.ts": "4afed1fdbe61e8c5b197ec1eeef7af2e33ab0fab24de5705b7d508fabd9a3bf5",
+    "skills/setup-pentapro/assets/prompt-logging/log-prompt.mjs": "32616a03598a50196962f5b77418ee430da8fdd6f6091a47f2fd1ba2e702ec03",
+    "skills/setup-pentapro/assets/prompt-logging/core.mjs": "cb9f50e8797e66e21646a6c3a4201583cb2818defa4a98b3a8506ccfbc88e92a",
+    "skills/penta-pro/scripts/init_pentapro.py": "61e8efdb963bfe6beb3c90f7be7523900d483dd004d3599ebbcf3858d300f93e",
     "plugin/opencode.mjs": "083af6c18f4e15317eff7d3f0e7333840df55b030b5d9300ef525a5728002a11"
   },
   "final_structural_checks": {
