@@ -79,3 +79,11 @@ Setup PentaPRO 2.3.0 adds an optional package-local read-only checker and a revi
 ## Receipt closeout bundle 3.1.0
 
 Git Ship 2.2.0, Software Factory 1.3.0 and Setup PentaPRO 2.5.0 coordinate one optional administrative receipt commit after primary delivery. The parent orchestrator owns this stage and freezes its tracked records afterward, using external refs/CI/conversation for the final confirmation. The source validate job has an actual-diff receipt lane; source/mixed changes retain full checks. The packaged checker supports staged local validation and committed CI validation without installing dependencies or executing record text. Read the [bounded procedure](../skills/software-factory/references/delivery-closeout.md). No consumer workflow, global setting or customized local role is updated automatically. Hosted adoption and publication remain separately observed effects.
+
+## ChuteGo lesson follow-up bundle 3.1.1
+
+Behavior Testing 1.3.1 adds conditional numeric boundary guidance across parsing, calculation, rounding and presentation, with independent expected values and valid controls. Git Ship 2.2.1 obtains the full candidate SHA from Git after commit/hooks and reconciles it with the reviewed commit before using the refspec. Authored matching, ambiguous and nonmatching cases cover these instructions; no new script, host profile or automatic consumer update is introduced. See the [lesson adoption review](chutego-lessons-adoption-2026-11-26.md) for scope and verification limits.
+
+## Final maintenance bundle 3.1.2
+
+Setup PentaPRO 2.5.1 rejects mandatory sections hidden in fenced/commented examples when planning an instruction update; the conservative parser remains read-only. Software Factory 1.3.1 reconciles its retrospective reference with the bounded run-receipt closeout. The README contribution path and current review/publication navigation were corrected. Numeric and Git identity guidance from 3.1.1 is retained. See the [final review](maintenance-review-2026-11-26.md) for executed tests, local profile refresh and explicit runtime limits.

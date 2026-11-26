@@ -1,6 +1,8 @@
 # Factory quality maintenance assessment
 
-Status: source maintenance implemented and independently reviewed; awaiting developer result acceptance. Baseline `6eaf9b9`; source changes are local and not published. Developer result acceptance, baseline consolidation and archival remain pending. No ChuteGo/ChuteGPT, other consumer project, global setting, historical run or ignored local profile was modified by this maintenance.
+Navigation update — 2026-11-26: the implementation described below was subsequently published in `d1746784a41c0f745fb5a101f318d0cee3c793d2`; bounded receipt closeout followed in `1b0a205` and `7be4717`. The statuses/counts below describe their original evaluated snapshot. See the [current maintenance review](maintenance-review-2026-11-26.md) for later local source corrections and limits; publication does not imply developer acceptance or archival.
+
+Status: source maintenance implemented and independently reviewed; awaiting developer result acceptance. Baseline `6eaf9b9`; source changes are local and not published. Developer result acceptance, baseline consolidation and archival remain pending. No ChuteGPT, other consumer project, global setting, historical run or ignored local profile was modified by this maintenance.
 
 ## Delivered source contracts
 

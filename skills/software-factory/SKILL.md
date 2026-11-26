@@ -3,7 +3,7 @@ name: software-factory
 description: Guide a native PentaPRO spec-driven change from exploration through specification review, implementation, verification, developer acceptance, consolidation, archival and authorized Git delivery. Use for a requested factory workflow or end-to-end feature/change delivery; preserve exploration-only and other explicitly narrower requests.
 license: MIT
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Coordinate native PentaPRO delivery

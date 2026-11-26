@@ -40,3 +40,11 @@ Authored cases for the new two-stage policy; these are not executed model/host t
 | Primary publication unknown or required gate incomplete | Reconcile observations and required evidence before advancing | No invented source success or restamped test receipt |
 | Consumer has not integrated a lightweight lane | Obey actual required checks and scope authority | No skip-ci marker or automatic consumer workflow edit |
 | Late lesson after primary publication | Return candidate in the run/conversation for separate adoption before freezing | No extra tracked lesson write causing another receipt-only publication |
+
+## Commit identity control
+
+Request: Publish the reviewed commit; a handoff contains a mistyped complete SHA.
+
+Expected: Obtain the complete candidate using `git rev-parse HEAD` in the actual target repository, compare it with the inspected commit and use that retained value for the explicit push refspec and remote confirmation. Reconcile a changed HEAD before publishing.
+
+False-success control: Copy the handoff SHA or publish an unreviewed hook/concurrent commit. A review-only or commit-only request preserves its narrower authority; this procedure does not grant push authority.

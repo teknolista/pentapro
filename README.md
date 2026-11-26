@@ -179,7 +179,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 2.5.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
+| [Setup PentaPRO](#setup-pentapro) | 2.5.1 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
 | [PentaPRO](#pentapro) | 4.1.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.11.0 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -187,14 +187,14 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [UI Design Android](#ui-design-android) | 1.0.0 | Design, review and implement native Android screens and flows. |
 | [UI Design Terminal](#ui-design-terminal) | 1.0.0 | Design, review and implement CLI/TUI interaction and readable output. |
 | [Diagnose Defect](#diagnose-defect) | 1.1.1 | Reproduce unclear failures, distinguish causes, and verify authorized fixes. |
-| [Behavior Testing](#behavior-testing) | 1.3.0 | Author behavior and regression tests or use a requested test-first workflow outside native Android. |
+| [Behavior Testing](#behavior-testing) | 1.3.1 | Author behavior and regression tests or use a requested test-first workflow outside native Android. |
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 2.1.0 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](skills/software-factory/SKILL.md) | 1.3.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](skills/software-factory/SKILL.md) | 1.3.1 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.2.0 | Resolve technical uncertainty with traceable evidence. |
-| [Git Ship](#git-ship) | 2.2.0 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
+| [Git Ship](#git-ship) | 2.2.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
 | [Agent Instructions](#agent-instructions) | 1.2.0 | Maintain portable software-development agent guidance. |
 | [Android modules](skills/android-module-structure/SKILL.md) | 1.4.1 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](skills/android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
@@ -953,7 +953,7 @@ git diff --check
 
 These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](docs/SKILL-EVALUATION.md).
 
-See the [current source assessment](docs/factory-quality-maintenance.md), [script inventory](docs/factory-script-inventory.md) and [review history index](docs/reviews.md) for current evidence and historical report scope.
+See the [current maintenance review](docs/maintenance-review-2026-11-26.md), [factory-quality implementation assessment](docs/factory-quality-maintenance.md), [script inventory](docs/factory-script-inventory.md) and [review history index](docs/reviews.md) for current evidence and historical report scope.
 
 Use the [evaluation procedure and synthetic Codex trials](docs/SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [review-report follow-up](docs/review-followup-2026-11-22.md) records the latest bounded corrections, fresh checks and limits. The [native SDD maintenance review](docs/native-sdd-review.md) preserves its migration checks and limits. The [earlier maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md) preserves its evaluated snapshot. The [earlier closing maintenance audit](docs/maintenance-review-2026-11-21.md) records its evaluated snapshot; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](docs/SKILL-ASSESSMENT.md) and [collection review](docs/COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](docs/FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 
@@ -977,7 +977,7 @@ Where present, evaluation files and executable tests record the package's actual
 
 ### Adding a new skill
 
-1. Create a root-level directory whose name matches the skill's `name`, using lowercase letters and hyphens.
+1. Create `skills/<name>/`, with a lowercase hyphenated directory name matching the skill's frontmatter `name`. The plugin manifest and collection validators discover packages under `skills/`.
 2. Add `SKILL.md` with a clear description, focused instructions, and only the supporting resources the workflow needs.
 3. Add an entry to [Available skills](#available-skills) and a dedicated section in this README covering purpose, example requests, output/boundaries, and resource links. Keep shared installation and maintenance guidance in their common sections.
 4. Keep the shared README and canonical MIT notice at the repository root. Include a matching `LICENSE` inside each skill for standalone installation. Establish redistribution terms for any new import and preserve its applicable notices. Validate metadata and internal links, and run meaningful evaluation cases before claiming improvements.

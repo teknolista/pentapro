@@ -2,7 +2,8 @@
 
 Current sources are the skill packages under `skills/`, packaged role templates, README, routing map and evaluation procedure. Reports describe their own snapshots and do not override those owners or certify future behavior.
 
-- [Current harness assessment](harness-review-2026-11-25.md): source relocation/identity review, script/test inventory, executed checks and remaining readiness limits.
+- [Current maintenance review](maintenance-review-2026-11-26.md): final source/script/agent review, corrections and executed verification limits.
+- [2026-11-25 harness assessment](harness-review-2026-11-25.md): source relocation/identity review, script/test inventory, executed checks and remaining readiness limits.
 - [2026-11-23 harness assessment](harness-review-2026-11-23.md): earlier model-report dispositions and maintenance evidence.
 - [Review-report follow-up](review-followup-2026-11-22.md), [native SDD review](native-sdd-review.md) and [earlier closing audit](maintenance-review-2026-11-21.md): dated maintenance evidence.
 - [Collection review](COLLECTION-REVIEW.md), [final skill review](FINAL-SKILL-REVIEW.md), [review report](REVIEW-REPORT.md) and [skill assessment](SKILL-ASSESSMENT.md): preserved historical snapshots, with original evidence and scope.

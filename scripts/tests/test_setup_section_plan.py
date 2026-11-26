@@ -48,6 +48,28 @@ class SectionPlanTests(unittest.TestCase):
             with self.assertRaises(ValueError): self.plan()
             self.assertEqual(self.path.read_bytes(), payload)
 
+    def test_example_sections_are_not_installed_instructions(self):
+        canonical = self.plan()
+        for opening, closing in ((b'```markdown\n', b'```\n'),
+                                 (b'~~~markdown\n', b'~~~\n'),
+                                 (b'<!--\n', b'-->\n')):
+            with self.subTest(opening=opening):
+                payload = opening + canonical + closing
+                self.path.write_bytes(payload)
+                with self.assertRaisesRegex(ValueError, 'context'):
+                    self.plan()
+                self.assertEqual(self.path.read_bytes(), payload)
+
+    def test_closed_unrelated_examples_leave_live_sections_valid(self):
+        canonical = self.plan()
+        for prefix in (b'```text\n<!-- example\n```\n',
+                       b'~~~markdown <!-- literal\nexample\n~~~\n',
+                       b'<!--\n``` example\n-->\n'):
+            with self.subTest(prefix=prefix):
+                payload = prefix + canonical
+                self.path.write_bytes(payload)
+                self.assertEqual(self.plan(), payload)
+
     def test_links_and_stale_before_hash_refused(self):
         other = self.root / 'other'
         other.write_bytes(b'keep')

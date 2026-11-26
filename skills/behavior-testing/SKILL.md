@@ -3,7 +3,7 @@ name: behavior-testing
 description: Author automated behavior tests outside native Android. Use when tests are the primary deliverable or test-first implementation is requested.
 license: MIT
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Test observable behavior
@@ -24,7 +24,7 @@ For regression checks that accompany an ordinary product change, use the impleme
 
 Use isolated fixtures, disposable services, and synthetic data. Keep real credentials and production systems out of default tests. Follow project policy and authorized scope for changes to dependencies, runners, or CI. Choose coverage by failure consequence and contract. Preserve meaningful assertions, including status, payload, and unchanged state where a failure must have no effect.
 
-For a flaky test or a choice between competing test boundaries, use [test design and intermittent failures](references/test-design.md).
+For numeric parsing, calculation or formatting, a flaky test, or a choice between competing test boundaries, use [test design and intermittent failures](references/test-design.md).
 
 Report the behavior and boundary exercised, commands and actual outcomes, baseline or fault-sensitivity evidence where available, and remaining gaps. A mocked response establishes behavior against that substitute. It cannot establish that a live provider meets the contract.
 

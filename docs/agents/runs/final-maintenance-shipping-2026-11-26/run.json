@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "run_id": "final-maintenance-shipping-2026-11-26",
+  "record_version": 3,
+  "objective": "Review and publish the final factory maintenance and preserved pending repository work",
+  "contracts": [
+    "docs/maintenance-review-2026-11-26.md",
+    "skills/git-ship/SKILL.md",
+    "skills/software-factory/references/delivery-closeout.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "7be471763b322bec91399e8929c36c47fccd69d0"
+  },
+  "orchestrator": "main-session",
+  "state": "REVIEW",
+  "snapshot": {
+    "fingerprint": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765",
+    "head": "7be471763b322bec91399e8929c36c47fccd69d0"
+  },
+  "gates": [
+    {
+      "id": "collection-checks",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765",
+      "evidence": "docs/agents/runs/final-maintenance-shipping-2026-11-26/precommit-review.md",
+      "reason": "Fresh package metadata, collection, evaluation, factory journey, full documented offline tests and whitespace checks passed for the reviewed source snapshot."
+    },
+    {
+      "id": "delivery-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765",
+      "evidence": "docs/agents/runs/final-maintenance-shipping-2026-11-26/precommit-review.md",
+      "reason": "Factory shipper reviewed intended diff, concurrent edits, privacy, index and destination; no blocker. Self-review only."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "review-and-deliver",
+      "owner": "factory_shipper",
+      "status": "running",
+      "evidence": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "primary-commit",
+      "kind": "commit",
+      "authorization": "Developer directly requested factory_shipper after comprehensive maintenance review; normal review, commit and push authorized.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "primary-push",
+      "kind": "push",
+      "authorization": "Developer directly requested factory_shipper after comprehensive maintenance review; normal review, commit and push authorized.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "factory_shipper reviews all pending intended work and checks; orchestrator records ready gates before commit.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
+    },
+    {
+      "record_version": 2,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
+    }
+  ]
+}

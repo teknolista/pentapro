@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import os
+import re
 from pathlib import Path
 import stat
 import subprocess
@@ -15,6 +16,40 @@ TEMPLATE = Path(__file__).resolve().parent.parent / 'assets/agents.md'
 
 def template_section(text, start, end):
     return text[text.index(start + '\n'):text.index(end + '\n')].rstrip('\n')
+
+
+def instruction_headings(text):
+    """Locate exact mandatory headings and reject fenced/commented examples."""
+    positions = {}
+    fence = None
+    comment = False
+    offset = 0
+    for line in text.splitlines(keepends=True):
+        content = line.rstrip('\r\n')
+        if content in (MANIFESTO, LOGGING):
+            if fence is not None or comment:
+                raise ValueError('mandatory section appears in example/comment context; review required')
+            positions.setdefault(content, []).append(offset)
+        if fence is not None:
+            if re.fullmatch(r' {0,3}' + re.escape(fence[0]) + '{' + str(fence[1]) + r',}[ \t]*', content):
+                fence = None
+        elif not comment and (match := re.match(r'^ {0,3}(`{3,}|~{3,})(.*)$', content)) and (match[1][0] != '`' or '`' not in match[2]):
+            fence = (match[1][0], len(match[1]))
+        else:
+            remaining = content
+            while remaining:
+                if comment:
+                    _, end, remaining = remaining.partition('-->')
+                    if not end:
+                        break
+                    comment = False
+                else:
+                    _, start, remaining = remaining.partition('<!--')
+                    if not start:
+                        break
+                    comment = True
+        offset += len(line)
+    return positions
 
 
 def plan(root, expected=None):
@@ -50,13 +85,15 @@ def plan(root, expected=None):
     template = TEMPLATE.read_text(encoding='utf-8')
     sections = [template_section(template, MANIFESTO, '## Instruction setup and scope'),
                 template_section(template, LOGGING, '## Project Facts and Navigation')]
+    headings = instruction_headings(current)
     missing = []
     for heading, section in zip((MANIFESTO, LOGGING), sections):
-        count = current.splitlines().count(heading)
+        locations = headings.get(heading, [])
+        count = len(locations)
         if count > 1:
             raise ValueError('duplicate mandatory section')
         if count == 1:
-            if section not in current:
+            if not current.startswith(section, locations[0]):
                 raise ValueError('customized mandatory section needs review')
         else:
             missing.append(section)

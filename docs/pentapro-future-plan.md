@@ -16,7 +16,7 @@ The split is conservative: the items below introduce enforcement, policy, resour
 - Build toward excellent automated engineering for all software types. GitHub/PR/browser/cloud examples must not become universal requirements. Domain-specific evidence can differ; required correctness and authority do not disappear.
 - Preserve the project's actual authority, configured models/effort, permissions, required independent gates and result acceptance. An automation, label, model judgment or template does not confer authority; already granted authority must not be needlessly requested again.
 - Keep one canonical record per fact and preserve customizations, logs, histories and effect reconciliation. Do not replay confirmed writes/pushes to repair missing bookkeeping.
-- Study in isolated fixtures or an explicitly authorized pilot. ChuteGo, ChuteGPT, other consumer projects and global host settings are not write targets for this backlog. No hooks, schedulers, external orchestrators, issue/PR messages, installs or publication are authorized by creating this document.
+- Study in isolated fixtures or an explicitly authorized pilot. ChuteGPT, other consumer projects and global host settings are not write targets for this backlog. No hooks, schedulers, external orchestrators, issue/PR messages, installs or publication are authorized by creating this document.
 - Preserve the original P0 order: scope/acceptance, authorized continuation and observable product journeys. New infrastructure must not become a prerequisite for implementing that work.
 - Verify original licenses and attribution before any incorporation; use independently written designs for the MIT collection. Attachment claims about licenses, external costs and past executions are not newly verified facts.
 
@@ -24,7 +24,7 @@ The split is conservative: the items below introduce enforcement, policy, resour
 
 This list comes from `software-factory-review.md`, `legacy-openspec-config.yaml`, two attached video frames and the ensuing compatibility discussion, compared with current source contracts. External inputs are listed in the current plan's section 13. The review contains multiple assessments; agreement between them is not an independent behavioral trial. No external factory, full video, queue, dashboard or provider-diversity trial was executed for this persistence task.
 
-Expected cost/quality benefits are hypotheses. The historical ChuteGo invocation counts are not token or cost measurements. Where host metadata, usage, readiness or an operation outcome cannot be reliably observed, preserve unknowns rather than zero or success. A planning checklist is not an executed check.
+Expected cost/quality benefits are hypotheses. The historical ChuteGPT invocation counts are not token or cost measurements. Where host metadata, usage, readiness or an operation outcome cannot be reliably observed, preserve unknowns rather than zero or success. A planning checklist is not an executed check.
 
 ## F01 — Guide adoption depth without creating competing factory modes
 

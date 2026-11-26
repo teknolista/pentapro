@@ -619,7 +619,7 @@ Otimizações candidatas: parsing incremental orientado a conteúdo; não ler o 
 
 ### 9.3. Protocolo de benchmark de IA e consumo
 
-Usar projetos controlados, por exemplo ChuteGo/ChuteGPT (paridade funcional entre linguagens) e o próprio Engine. Escolher uma revisão inicial, escopo e critérios idênticos; fixar modelo/effort/host ou registrar variações. Repetir trials e informar dispersão, falhas, cache e condições.
+Usar projetos controlados, por exemplo ChuteGPT e o próprio Engine. Escolher uma revisão inicial, escopo e critérios idênticos; fixar modelo/effort/host ou registrar variações. Repetir trials e informar dispersão, falhas, cache e condições.
 
 | Grupo | Configuração |
 |---|---|

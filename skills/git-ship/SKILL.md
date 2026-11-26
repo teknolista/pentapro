@@ -3,7 +3,7 @@ name: git-ship
 description: Review and package a requested Git commit, normal branch push, or pull request, preserving unrelated work and verifying the published revision. Use for commit, ship, push, or PR preparation. Implementation completion alone does not authorize publication, merge, or deployment.
 license: MIT
 metadata:
-  version: "2.2.0"
+  version: "2.2.1"
 ---
 
 # Ship reviewed Git changes
@@ -37,6 +37,8 @@ Inspect the commit and post-hook worktree afterward. Reconcile and review hook c
 ## Push and confirm
 
 Resolve the effective push URLs and ref configuration before sending data. Inspect all push URLs with the local equivalent of `git remote get-url --push --all <remote>` without exposing embedded credentials. Use the established destination; use `origin` and the current branch only if unambiguous. If multiple push URLs, mirror settings, or automatic tag following would widen publication, stop and report the configuration instead of changing it. Use the local Git documentation to choose an explicit branch-only command for the actual setup.
+
+Obtain the complete candidate SHA from `git rev-parse HEAD` in the actual repository after commit/hooks, compare it with the inspected commit, and retain that exact value for the explicit refspec and subsequent remote comparison. If it differs, reconcile and review the changed candidate before publication. Derive the value from Git rather than transcribing or reconstructing it from a summary or abbreviated hash.
 
 Record the reviewed commit ID and destination branch ref before push. Query the effective push repository for that ref. A named remote can resolve to a different repository for fetch and for push. If it exists, obtain enough history from that same repository through a scoped safe fetch when needed and verify it is an ancestor of the intended commit. Inspect outgoing commits. Stop on divergence; do not pull, rebase, merge, force-push or rewrite history. For a standard single-destination setup, use an explicit remote and `<reviewed-commit>:refs/heads/<destination-branch>` refspec, disabling incidental tag following with a supported command option if needed. Do not set upstream configuration or change remote settings unless the user asked for that change.
 

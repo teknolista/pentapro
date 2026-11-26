@@ -7,7 +7,6 @@ The requested corrections were reviewed and normal-pushed by factory_shipper in 
 | skills | `3411801ac12fbfc92be1349a636dccae130daa29` |
 | castas | `38ad14437798f10c80309c5e555d4324f13f3fe0` |
 | chutegpt | `9b2d31f17915891153d7922fe9347db2a2deb099` |
-| chutego | `f8e349d95bf42cb655a834f4c3fce4fdee47470c` |
 | softheca | `6cb2f13442ab0abdb6369fae81c520eedb6a228e` |
 | teknolista | `ba22cb980ef0ed4770f5a4b999584c4506c4124e` |
 | teknolista.github.io | `791b262130861510b84e0e46e50ec04c44a646df` |
@@ -34,7 +33,7 @@ At resumption, six unstaged deletions of archived metadata/config files were pre
 
 Plan: reconcile the interrupted record with actual publication and installation evidence. Do: verify eight refs, current CI and installed content; preserve later edits. Study: delivery and synchronization succeeded before the receipt-write failure. Act: append actual completion events and close the original run without redispatching the shipper or repeating pushes.
 
-The shipper's proposed lesson is to use explicit git -C <project> for each repository-scoped index/object/ref query. One query initially read Skills README while discussing ChuteGo; actual indexed/worktree evidence resolved the mismatch without a file change. This is a prevention proposal, not measured efficiency evidence.
+The shipper's proposed lesson is to use explicit git -C <project> for each repository-scoped index/object/ref query. One query initially read Skills README while discussing ChuteGPT; actual indexed/worktree evidence resolved the mismatch without a file change. This is a prevention proposal, not measured efficiency evidence.
 
 These final receipts are local post-publication bookkeeping, not a reason for additional self-referential receipt commits. Future maintenance must inspect the later local edits and use its own scope rather than reopening this completed delivery.
 

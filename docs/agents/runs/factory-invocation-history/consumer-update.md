@@ -5,7 +5,6 @@ Source: verified published commit 24f83cc1ac0cda9ea2f9b8a9ca9cc508c7e90448; CI45
 | Project | Installed packages | Updated files | Index/history | Idempotent rerun |
 | --- | --- | --- | --- | --- |
 | castas | 24 | 113 | Preserved | 0 changes |
-| chutego | 24 | 72 | Preserved | 0 changes |
 | chutegpt | 24 | 113 | Preserved | 0 changes |
 | skills | 24 | 63 | Preserved | 0 changes |
 | softheca | 24 | 112 | Preserved | 0 changes |
