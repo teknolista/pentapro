@@ -22,13 +22,15 @@ Selection: prioritize authorization/external effects, preservation, changed rout
 | http-api | [Authored brief](../skills/http-api/evals/scenarios.md) | `delivery-sdd`, `delivery-plain` |
 | mcp-server | [Authored brief](../skills/mcp-server/evals/scenarios.md) | `mcp-revisions` |
 | peer-review | [Authored brief](../skills/peer-review/evals/scenarios.md) | `review-injection`, `review-clean` |
-| penta-pro | [Authored brief](../skills/penta-pro/evals/scenarios.md) | `sdd-full-scope` |
+| penta-pro | [Authored brief](../skills/penta-pro/evals/scenarios.md) | `sdd-full-scope`, `port-journey` |
 | pr-quiz | No package brief; use applicable cross-boundary case and add one when this route changes | None registered |
 | production-operations | [Authored brief](../skills/production-operations/evals/scenarios.md) | `production-target-mismatch`, `production-stale-green` |
 | setup-pentapro | [Authored brief](../skills/setup-pentapro/evals/scenarios.md) | None registered |
 | software-delivery | [Authored brief](../skills/software-delivery/evals/scenarios.md) | `delivery-contract-conflict`, `delivery-native-sdd` |
-| software-factory | [Authored brief](../skills/software-factory/evals/scenarios.md) | None registered |
+| software-factory | [Authored brief](../skills/software-factory/evals/scenarios.md) | `factory-recovery` |
 | technical-research | No package brief; use applicable cross-boundary case and add one when this route changes | `research-pinned-version` |
-| ui-design | [Authored brief](../skills/ui-design/evals/scenarios.md) | None registered |
+| ui-design-web | [Authored brief](../skills/ui-design-web/evals/scenarios.md) | `ui-web-boundary` |
+| ui-design-android | [Authored brief](../skills/ui-design-android/evals/scenarios.md) | `ui-android-boundary` |
+| ui-design-terminal | [Authored brief](../skills/ui-design-terminal/evals/scenarios.md) | `ui-terminal-journey` |
 
-The four new high-consequence briefs (Git Ship, HTTP API, MCP Server and Diagnose Defect) have not been executed with models in this maintenance. The 15 registered definitions remain unchanged. The next comparison should use matching, ambiguous and nonmatching tasks, independent outcome controls and the actual host/model; record failures and unavailable evidence. No minimum file count can replace that comparison.
+The four new high-consequence briefs (Git Ship, HTTP API, MCP Server and Diagnose Defect) have not been executed with models in this maintenance. The previous 15 definitions remain; five new read-only definitions cover porting, repair and the three UI routes. Their automatic grader checks only mutation boundaries; semantic quality requires the explicitly recorded qualitative pilot assessment. The next comparison should use matching, ambiguous and nonmatching tasks, independent outcome controls and the actual host/model; record failures and unavailable evidence. No minimum file count can replace that comparison.

@@ -1,9 +1,9 @@
 ---
 name: android-error-handling
-description: Implement or debug typed results and expected domain, HTTP and storage error mapping in native Android Kotlin code. Use for concrete error-handling changes; use peer-review for read-only assessment and ui-design for user-facing error interaction design.
+description: Implement or debug typed results and expected domain, HTTP and storage error mapping in native Android Kotlin code. Use for concrete error-handling changes; use peer-review for read-only assessment and ui-design-android for user-facing error interaction design.
 license: MIT
 metadata:
-  version: "1.2.4"
+  version: "1.2.5"
 ---
 
 # Android Error Handling
@@ -14,7 +14,7 @@ metadata:
 2. Before executing a build or test, inspect the chosen task and hooks for network calls, credentials, publishing, or shared writes. Use isolated fixtures by default for checks with external effects. Confirm the authorized target before any shared-system check.
 3. Run the smallest relevant check that exercises the changed boundary. Record the snapshot, variant, command, result, and any untested device or service behavior. A successful implementation check is separate from review and release acceptance.
 
-Use native Android/JVM APIs and the project's selected library versions. Keep expected failures typed, programming defects visible, and coroutine cancellation intact. Optional companions are `android-data-layer` for data ownership and `ui-design` for Android error rendering.
+Use native Android/JVM APIs and the project's selected library versions. Keep expected failures typed, programming defects visible, and coroutine cancellation intact. Optional companions are `android-data-layer` for data ownership and `ui-design-android` for Android error rendering.
 
 ## Typed outcomes in the domain module
 

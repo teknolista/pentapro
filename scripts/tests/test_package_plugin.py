@@ -30,6 +30,12 @@ class PluginPackagingTests(unittest.TestCase):
             for name in names:
                 self.assertEqual((output / name / 'LICENSE').read_bytes(), (ROOT / 'LICENSE').read_bytes())
                 self.assertEqual((output / name / 'SKILL.md').read_bytes(), (ROOT / name / 'SKILL.md').read_bytes())
+            for platform in ('web', 'android', 'terminal'):
+                name = 'ui-design-' + platform
+                metadata = Path('skills') / name / 'agents/openai.yaml'
+                self.assertEqual((output / metadata).read_bytes(), (ROOT / metadata).read_bytes())
+                self.assertIn('$' + name, (output / metadata).read_text())
+            self.assertFalse((output / 'skills/ui-design').exists())
             self.assertFalse((output / 'AGENTS.md').exists())
             self.assertFalse((output / 'AGENTS.log').exists())
             self.assertFalse((output / 'docs/agents/lessons-learned.md').exists())
@@ -126,7 +132,7 @@ class PluginPackagingTests(unittest.TestCase):
         result = subprocess.run(['agy', 'plugin', 'validate', '--strict', '--json', str(output)], capture_output=True, text=True, timeout=20)
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         data = json.loads(result.stdout)
-        self.assertEqual(data['components']['skills'], 24)
+        self.assertEqual(data['components']['skills'], 26)
         self.assertEqual(data['components']['hooks'], 0)
 
     @unittest.skipUnless(shutil.which('codex'), 'optional Codex CLI')

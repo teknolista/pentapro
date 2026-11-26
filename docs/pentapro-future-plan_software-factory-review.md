@@ -504,7 +504,7 @@ Avaliando o que o PentaPRO já possui em [software-factory](../skills/software-f
 ### Sugestão 6: Incorporar o Mecanismo de Verificação Visual e o Motor `scroll-craft`
 * **Oportunidade**: A pasta contém a skill completa e a biblioteca `scroll-craft` (focada em landing pages, animações com física, feel sensorial, hierarquia tipográfica e diagnósticos de dispositivo), além do fluxo do `uiverify.ai` para testes de regressão visual via MCP.
 * **Aplicação no PentaPRO**:
-  * Complementar o skill [ui-design](../skills/ui-design/SKILL.md) com as referências sensoriais e de micro-interações do `scroll-craft` para produtos web voltados a conversão e experiência de alto padrão.
+  * Complementar o skill [ui-design](../skills/ui-design-web/SKILL.md) com as referências sensoriais e de micro-interações do `scroll-craft` para produtos web voltados a conversão e experiência de alto padrão.
   * Integrar fluxos de captura de tela/layout no ciclo de verificação de UI (usando as ferramentas de inspeção do Chrome DevTools ou Device Hub já presentes no ecossistema) para validar estados visuais antes do fechamento da change.
 
 ### Sugestão 7: Painel Visual de Observabilidade da Fábrica (`dashboard.html`)

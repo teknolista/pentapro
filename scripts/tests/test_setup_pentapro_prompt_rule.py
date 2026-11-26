@@ -1,5 +1,7 @@
 """Keep Setup PentaPRO's prompt rule complete and in sync with its template."""
 from pathlib import Path
+import json
+import re
 import unittest
 
 
@@ -44,6 +46,17 @@ class SetupPentaProPromptRuleTests(unittest.TestCase):
         self.assertNotIn("Setup status: temporary", section)
         self.assertNotIn("[FILL IN]", section)
         self.assertNotIn("Adapt this template", section)
+
+    def test_template_routes_only_to_shipped_skill_owners(self):
+        shipped = {Path(p).name for p in json.loads((ROOT / 'plugin.json').read_text())['skills']}
+        routed = set()
+        for row in TEMPLATE.read_text().splitlines():
+            if row.startswith('| `'):
+                routed.update(re.findall(r'`([a-z][a-z0-9-]+)`', row.split('|')[1]))
+        self.assertTrue(routed)
+        self.assertFalse(routed - shipped, 'Template routes to missing skill owners')
+        self.assertEqual({n for n in routed if n.startswith('ui-design-')},
+                         {n for n in shipped if n.startswith('ui-design-')})
 
     def test_rule_is_self_contained_and_logs_only_to_agents_log(self):
         rule = prompt_rule(TEMPLATE.read_text(encoding="utf-8"))

@@ -3,7 +3,7 @@ name: behavior-testing
 description: Author automated behavior tests outside native Android. Use when tests are the primary deliverable or test-first implementation is requested.
 license: MIT
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # Test observable behavior
@@ -27,3 +27,7 @@ Use isolated fixtures, disposable services, and synthetic data. Keep real creden
 For a flaky test or a choice between competing test boundaries, use [test design and intermittent failures](references/test-design.md).
 
 Report the behavior and boundary exercised, commands and actual outcomes, baseline or fault-sensitivity evidence where available, and remaining gaps. A mocked response establishes behavior against that substitute. It cannot establish that a live provider meets the contract.
+
+## Recurring defects and evidence
+
+For a demonstrated escaped or recurring defect, reproduce the real failure when feasible and design a regression that rejects that wrong behavior while preserving a valid control. Record the actual failing and passing observations, snapshots, boundaries and limits; a later regression test is not a test-first cycle. If automation is unsuitable, explain the limitation and use a credible independent assessment. Do not create a general rule from an isolated case without evidence.

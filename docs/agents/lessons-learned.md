@@ -90,3 +90,19 @@ Dated persistence/publication notes below describe each entry's original observa
 - Correction/result: compare the complete workflow body for each selected host against its packaged owner; preserve model/effort metadata and explicit custom runtime requirements. Updated known paragraphs and verified matching bodies plus a zero-operation second plan.
 - Proposed prevention: inventory each configured host adapter during collection updates, classify custom differences before writes, and check both package bytes and role-body semantics.
 - Status: correction validated locally; generalized prevention and runtime impact remain unmeasured. Next check: repeat during a later upgrade and inspect real host discovery separately.
+
+## LL-007 — Check named workflow owners against the shipped catalog
+
+- Context/trigger: factory-quality-upgrade split UI ownership; a setup template named nonexistent `ui-design-desktop` while Markdown links passed.
+- Evidence/snapshot: current [review](runs/factory-quality-upgrade/review.md), baseline6eaf9b9; catalog-to-template regression failed on desktop before correction and passed on terminal. UI presentation assets were also restored and tested in all exports.
+- Cause/confidence: confirmed local mismatch; link checks do not parse plain backticked owners or ensure migration asset completeness.
+- Correction/result: compare routed template owners with actual plugin skill paths; require each UI owner and its metadata in exports. Independent re-review found no remaining blocker.
+- Prevention/limits: retain these semantic/export checks during future migrations; they do not prove every prose reference or real host discovery. Next verification: rerun on the next ownership change and inspect any new routing surface.
+
+## LL-008 — Verify timeout, cancellation and blocked reads separately
+
+- Context/trigger: new command receipt wrapper and PTY pilot had distinct process-lifecycle gaps despite timeout tests.
+- Evidence/snapshot: [review](runs/factory-quality-upgrade/review.md), [pilot](runs/factory-quality-upgrade/pilot.md) and final helper/pilot regressions in the current maintenance; baseline6eaf9b9.
+- Cause/confidence: confirmed: SIGINT/SIGTERM did not originally reach a detached child group, and a later communicate timeout could not bound an earlier blocking PTY read.
+- Correction/result: signal-aware owned-group cleanup/reap and interruption receipt/status; monotonic/select PTY deadline and output bound. Negative controls verify no delayed descendant effect after cancellation/timeout.
+- Prevention/limits: test actual failure properties independently, retaining clean controls. POSIX process groups cannot contain intentionally escaped sessions or handle SIGKILL/host crashes. Windows behavior is unvalidated. Next verification: rerun the lifecycle regressions after process-launch/capture changes.

@@ -133,6 +133,10 @@ class ProfileCheckTests(unittest.TestCase):
 
     def test_tracked_checkout_roles_match_the_packaged_body_and_settings(self):
         for host in ('codex', 'github-copilot'):
+            directory = profiles.HOSTS[host][0]
+            tracked = subprocess.check_output(['git', 'ls-files', '--', directory], cwd=ROOT)
+            if not tracked:
+                continue  # Local ignored profiles are user-owned, absent in a fresh clone.
             result, code = profiles.check(ROOT, [host])
             self.assertEqual(code, 0, result)
             self.assertFalse(any(x['metadata_customized'] for x in result['profiles']))

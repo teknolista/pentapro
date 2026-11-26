@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "run_id": "factory-quality-upgrade",
+  "record_version": 5,
+  "objective": "Implement P01–P13 factory quality improvements and full harness review",
+  "contracts": [
+    "pentapro/changes/factory-quality-upgrade/change.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "6eaf9b959abbbd3f98673949ad66b1628ff1d7d2"
+  },
+  "orchestrator": "main-session",
+  "state": "RECORDS",
+  "snapshot": {
+    "fingerprint": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+    "head": "6eaf9b959abbbd3f98673949ad66b1628ff1d7d2"
+  },
+  "gates": [
+    {
+      "id": "spec",
+      "kind": "spec-review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/spec-review.md",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    },
+    {
+      "id": "metadata",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/final-checks.json",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    },
+    {
+      "id": "offline",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/offline-checks-final.json",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    },
+    {
+      "id": "pilot",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/pilot.md",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    },
+    {
+      "id": "review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/review.md",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    },
+    {
+      "id": "verification",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+      "evidence": "docs/agents/runs/factory-quality-upgrade/verification.md",
+      "reason": "Final applicability reconciled: original receipts retain their tested snapshots; executable/helper/test sources unchanged after corrected full suite; final record-only source changes passed fresh static gates. Unchanged PRODUCT/PROJECT/PRODUCTION compared to original reviewed contract."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t2",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t3",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t4",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t5",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t6",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t7",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    },
+    {
+      "id": "t8",
+      "owner": "main-session",
+      "status": "done",
+      "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
+    }
+  ],
+  "operations": [],
+  "blockers": [],
+  "next_action": "Await developer result acceptance. Default explicit result approval authorizes baseline consolidation, archive, reviewed commit and normal push; no consumer rollout/global changes.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "4e941f71e7bd67c41fdbc279b0f993e0e628504475dae65e45d7ea5dd0544182"
+    },
+    {
+      "record_version": 2,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "0ea40b9d5405f25728a242521e48c1a3183bba36d10a264ed11621817f2fe45f"
+    },
+    {
+      "record_version": 3,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "51a26a20a281af2e754bc84c087b82a64a922bbbd890170f5489abf4c728e67b"
+    },
+    {
+      "record_version": 4,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "64e986651a6c73f4949d9a32bcf01a32d6db40b8c759a2a9f6ff802e66274ee0"
+    },
+    {
+      "record_version": 5,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3"
+    }
+  ]
+}

@@ -19,13 +19,13 @@
   },
   {
     "id": "android-di-koin",
-    "description": "Implement or debug Koin bindings, Android ViewModel ownership and application/worker dependency wiring. Use for concrete DI code changes; use peer-review for independent inspection and ui-design for screen design.",
+    "description": "Implement or debug Koin bindings, Android ViewModel ownership and application/worker dependency wiring. Use for concrete DI code changes; use peer-review for independent inspection and ui-design-android for screen design.",
     "path": "skills/android-di-koin/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-error-handling",
-    "description": "Implement or debug typed results and expected domain, HTTP and storage error mapping in native Android Kotlin code. Use for concrete error-handling changes; use peer-review for read-only assessment and ui-design for user-facing error interaction design.",
+    "description": "Implement or debug typed results and expected domain, HTTP and storage error mapping in native Android Kotlin code. Use for concrete error-handling changes; use peer-review for read-only assessment and ui-design-android for user-facing error interaction design.",
     "path": "skills/android-error-handling/SKILL.md",
     "autoinvoke": true
   },
@@ -43,13 +43,13 @@
   },
   {
     "id": "android-ui-testing",
-    "description": "Author, run or debug automated native Android Compose interaction tests on devices/emulators. Use for UI-test implementation; use ui-design for screen design, usability/accessibility critique or visual acceptance, and peer-review for independent code/test review.",
+    "description": "Author, run or debug automated native Android Compose interaction tests on devices/emulators. Use for UI-test implementation; use ui-design-android for screen design, usability/accessibility critique or visual acceptance, and peer-review for independent code/test review.",
     "path": "skills/android-ui-testing/SKILL.md",
     "autoinvoke": true
   },
   {
     "id": "android-unit-testing",
-    "description": "Author, run or debug isolated Kotlin/JVM and Android logic tests using fakes and deterministic coroutine scheduling. Use for test implementation tasks; use peer-review to assess test effectiveness without changing source and ui-design for screen acceptance design.",
+    "description": "Author, run or debug isolated Kotlin/JVM and Android logic tests using fakes and deterministic coroutine scheduling. Use for test implementation tasks; use peer-review to assess test effectiveness without changing source and ui-design-android for screen acceptance design.",
     "path": "skills/android-unit-testing/SKILL.md",
     "autoinvoke": true
   },
@@ -138,9 +138,21 @@
     "autoinvoke": true
   },
   {
-    "id": "ui-design",
-    "description": "Design, specify, prototype, refine, review, or implement web and Android screens and user flows. Maintain the project's screen specification, using PentaPRO PRODUCT when selected.",
-    "path": "skills/ui-design/SKILL.md",
+    "id": "ui-design-android",
+    "description": "Design, specify, refine, review, or implement native Android screens and flows, including Compose and Views. Browser and terminal interfaces have separate owners.",
+    "path": "skills/ui-design-android/SKILL.md",
+    "autoinvoke": true
+  },
+  {
+    "id": "ui-design-terminal",
+    "description": "Design, specify, refine, review, or implement command-line and terminal user interfaces, including interactive TUIs and human-readable command output. Use platform-specific owners for web and native Android screens.",
+    "path": "skills/ui-design-terminal/SKILL.md",
+    "autoinvoke": true
+  },
+  {
+    "id": "ui-design-web",
+    "description": "Design, specify, prototype, refine, review, or implement browser-based screens and flows. Use for HTML, CSS and web frameworks; native Android and terminal interfaces have separate owners.",
+    "path": "skills/ui-design-web/SKILL.md",
     "autoinvoke": true
   }
 ]

@@ -32,7 +32,7 @@ Separate test files per module are not required when observable coverage is indi
 | evals/check_mcp_sdk.py | Optional assertion-based in-process protocol smoke, itself a check; not run because SDK dependencies are absent. No extra unit file is required, but SDK compatibility remains unverified here. |
 | skills/software-factory/scripts/run_state.py | Dedicated record identity, stale evidence/writer, locks, interrupted effects and preservation controls. Optional bookkeeping, not semantic specification validation. |
 | skills/penta-pro/scripts/init_pentapro.py | 14 tests cover output structure, rerun preservation and unsafe path controls. Optional bootstrap only; does not archive, accept or implement a change. |
-| skills/ui-design/scripts/prototype_tools.py | 26 dedicated regressions for bounded inputs, fragment/contrast handling and exports; browser/native accessibility remains separate. |
+| skills/ui-design-web/scripts/prototype_tools.py | 26 dedicated regressions for bounded inputs, fragment/contrast handling and exports; browser/native accessibility remains separate. |
 | skills/pr-quiz/scripts/publish_quiz.py and assets/pr-quiz.yml | 15 Python tests and 27 actual embedded-handler scenarios with API doubles; live permission/event behavior remains separate. |
 | Legacy prompt logger core/CLI | 16 Node tests for formatting/redaction/safe append and CLI; legacy opt-in material is not current mechanical capture enforcement. |
 | Legacy prompt logger host adapter | Core behavior covered indirectly; actual installed-host API remains untested and explicitly legacy. |

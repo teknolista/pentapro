@@ -4,6 +4,12 @@ Roles are task packets for the host's actual subagent tools, not a promise of co
 
 Every factory-role packet also carries its invocation ID and expected outcome. The orchestrator records dispatch requests, observed dispatch identities and returned/failed/interrupted results in the run's event history; roles return the invocation ID, evidence and observed metadata without writing that shared history. Distinguish requested model/effort from host-observed values and report unavailable timestamps/usage as unknown. Follow [invocation events](invocation-events.md), including minimal real runs for standalone roles and preservation after logging failures. Ordinary skill selection is not an agent dispatch.
 
+## Compact packet and return
+
+Carry the objective, exact authority, stop condition, owned paths, contract and relevant criterion/scenario locators, snapshot and checks; link canonical records instead of copying entire histories. Include only relevant prior findings, evidence and verified environment preflight (working commands, versions, caches or permissions where relevant); refresh them when their conditions change. Return changed paths or inspected scope, outcome, actual checks with coverage and gaps, resulting snapshot, next action, invocation ID and available observed runtime/usage. Label configured values separately from host-observed values; unavailable attribution, token and cost data remain unknown. A dispatch or modified file is not a completed result. State facts, hypotheses and unknowns distinctly.
+
+When a genuine decision or missing authority blocks progress, return a concise question, evidence and consequences, viable alternatives (one is sufficient if only one exists), recommendation where supported, exact missing authority and safe independent work. Routine choices and already authorized repairs do not need another approval.
+
 ## Specification reviewer — read-only
 Input: request, applicable policy, PentaPRO baseline and active-change source of truth, existing behavior and proposed acceptance checks. Inspect ambiguities, traceable criteria, data/contract changes, risk, feasibility, scope and alternative simpler solutions. Output blocking issues with evidence and concrete correction, unresolved decisions, checks and coverage. Do not invent product acceptance. Use penta-pro when available.
 

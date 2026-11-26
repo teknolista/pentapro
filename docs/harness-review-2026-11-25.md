@@ -25,7 +25,7 @@ Environment observed: Python 3.12.6; Node `v27.0.0-alpha.0.0.0`. CI specifies No
 | `python3 scripts/package_plugin.py --check` | Generated metadata matches its source owner. |
 | `python3 -m unittest discover -s scripts/tests` | 111 tests passed, no skips reported. Includes preservation/failure controls, evaluator isolation controls and four-host exports. |
 | `python3 -m unittest discover -s skills/penta-pro/scripts/tests` | 14 passed. |
-| `python3 -m unittest discover -s skills/ui-design/scripts/tests` | 26 passed. |
+| `python3 -m unittest discover -s skills/ui-design-web/scripts/tests` | 26 passed. |
 | `python3 -m unittest discover -s skills/pr-quiz/scripts/tests` | 15 passed. |
 | `node skills/pr-quiz/scripts/tests/workflow.cjs` | 27 passed. |
 | `node --test scripts/tests/test_agents_log.mjs scripts/tests/test_opencode_plugin.mjs` | 20 passed in the authorized execution outside the known subprocess restriction. |
@@ -55,7 +55,7 @@ A script does not need its own similarly named test file if a meaningful integra
 | `skills/setup-pentapro/assets/prompt-logging/log-prompt.mjs` | CLI cases in the same Node suite | Real CLI inputs, append/redaction and invalid JSON; appropriate. |
 | `skills/setup-pentapro/assets/prompt-logging/opencode.ts` | No executed host/type/hook integration test | **Coverage gap.** Acceptable only as a clearly optional legacy adapter with unverified host integration. Do not advertise automatic reliable capture or install it by default. A string-presence test would not resolve this gap. |
 | `plugin/opencode.mjs` | `scripts/tests/test_opencode_plugin.mjs` plus export tests | 24 real resources, preservation of customized skills, disposal, older-API error, duplicate/escaping paths; live V2 host integration still separate. |
-| `skills/ui-design/scripts/prototype_tools.py` | Package `scripts/tests/test_prototype_tools.py` | 26 tests for supported local prototype contract; does not establish native Android behavior or complete accessibility. |
+| `skills/ui-design-web/scripts/prototype_tools.py` | Package `scripts/tests/test_prototype_tools.py` | 26 tests for supported local prototype contract; does not establish native Android behavior or complete accessibility. |
 | `skills/pr-quiz/scripts/publish_quiz.py` | Package `scripts/tests/test_publish_quiz.py` | 15 tests with API doubles; live GitHub behavior not exercised here. |
 | `skills/pr-quiz/scripts/tests/workflow.cjs` | Self-contained 27-case workflow suite | Test runner, not an untested production helper; permission, stale-event/head and quiz-binding negative controls matter. |
 | `evals/check_receipts.py` | Pure oracle and runner tests | Seeded tenant/replay/conflict/effect controls; independent oracle remains distinct from generated tests. |

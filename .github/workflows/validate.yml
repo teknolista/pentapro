@@ -32,11 +32,12 @@ jobs:
           python3 scripts/package_plugin.py --check
           python3 scripts/validate_collection.py
           python3 scripts/run_skill_evals.py --check-cases
+          python3 evals/check_factory_journey.py
       - name: Run offline helper tests
         run: |
           python3 -m unittest discover -s scripts/tests -v
           python3 -m unittest discover -s skills/penta-pro/scripts/tests -v
-          python3 -m unittest discover -s skills/ui-design/scripts/tests -v
+          python3 -m unittest discover -s skills/ui-design-web/scripts/tests -v
           python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v
           node skills/pr-quiz/scripts/tests/workflow.cjs
           node --test scripts/tests/test_agents_log.mjs

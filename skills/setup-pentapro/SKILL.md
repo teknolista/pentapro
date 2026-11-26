@@ -3,7 +3,7 @@ name: setup-pentapro
 description: Configure a repository for the PentaPRO skill collection and software factory. Set up prompt persistence, Git defaults, a permanent motivational manifesto, a project README and missing license, tracker and domain guidance, native change directories and agent roles, and a PentaPRO handoff while preserving existing decisions.
 license: MIT
 metadata:
-  version: "2.3.0"
+  version: "2.4.0"
 ---
 
 # Setup PentaPRO

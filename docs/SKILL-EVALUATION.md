@@ -10,7 +10,7 @@ The [final maintenance review](FINAL-SKILL-REVIEW.md) records the subsequent per
 
 ## Coverage and selection
 
-Evaluation is sampled by consequence and changed boundaries, not certified across all 24 skills or every host/model. [Coverage inventory](evaluation-coverage.md) separates authored scenario briefs, registered executable cases, actual trials and helper tests. Prioritize external effects, authorization, irreversible changes and routes changed by maintenance; use matching, ambiguous and nonmatching requests with positive and negative controls. A scenario file is not an executed trial, and passing case definitions does not establish model behavior.
+Evaluation is sampled by consequence and changed boundaries, not certified across all 26 skills or every host/model. [Coverage inventory](evaluation-coverage.md) separates authored scenario briefs, registered executable cases, actual trials and helper tests. Prioritize external effects, authorization, irreversible changes and routes changed by maintenance; use matching, ambiguous and nonmatching requests with positive and negative controls. A scenario file is not an executed trial, and passing case definitions does not establish model behavior.
 
 ## Reproduce the synthetic Codex trials
 

@@ -271,7 +271,7 @@ Improve the flow from specification to implementation across PentaPRO → Softwa
 ### 3.2 Android Skill Integration
 The 14 Android-related skills could better coordinate:
 
-- **Consolidated references**: Android UI Design references (`skills/ui-design/references/android/`) should consistently reference the native implementation procedures from `android-module-structure`
+- **Consolidated references**: Android UI Design references (`skills/ui-design-android/references/android/`) should consistently reference the native implementation procedures from `android-module-structure`
 - **Error handling chain**: `android-error-handling` → `android-data-layer` → `android-integration-testing` should have explicit error propagation patterns
 - **DI-background-data flow**: `android-di-koin` → `android-background` → `android-data-layer` should have initialization ordering guarantees
 - **Test hierarchy**: `android-unit-testing` → `android-integration-testing` → `android-ui-testing` should have clear boundary definitions

@@ -1,0 +1,22 @@
+{
+  "snapshot": {
+    "fingerprint": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
+    "head": "6eaf9b959abbbd3f98673949ad66b1628ff1d7d2"
+  },
+  "collection": {
+    "markdown_files": 325,
+    "links_and_anchors": 1352,
+    "packages": 26,
+    "issues": 0
+  },
+  "evaluation_case_definitions": 20,
+  "python_tests": 185,
+  "node_tests": 47,
+  "all_scripts_and_tests_classified": 46,
+  "root_agents_unchanged": true,
+  "whole_suite_origin": "executed after all R1\u2013R3 and pilot code fixes; final docs/record-only delta independently/static checked; no fabricated rerun",
+  "invocations": 12,
+  "open_invocations": 0,
+  "result_acceptance": "pending",
+  "commit_push": "not performed"
+}

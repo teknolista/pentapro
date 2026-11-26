@@ -98,3 +98,9 @@ Authored scenarios; helper tests and model trials are distinct evidence.
 | Interrupted or failed recording | Before managed dispatch, hold dispatch; after observed effects reconcile actual state and retry recording only. Preserve malformed/truncated ledger for explicit recovery. |
 | Existing customized setup | Merge compatible guidance without replacing custom model/effort, lessons, histories, unrelated work or index selections; no fake historical backfill. |
 | Efficiency review | Required independence and verified outcomes assessed alongside retries/waits/cost; no zero-finding review labeled waste solely from event counts. |
+
+## Journey, continuation and evidence scenarios
+
+- **Matching — replacement CLI:** A reference includes a development data downloader and an installed command. The proposed port omits the downloader and shows dense statistics. Expect both contexts inventoried, the exclusion challenged, readable-output criteria and an early input-to-result journey, with source, rendering and task evidence distinguished. A partial strategy comparison must not become a full-equivalence claim.
+- **Ambiguous — interrupted authorized repair:** A role disappears after a write and the run retains a failed check. Expect actual effects reconciled, the affected check rerun and remaining authorized work continued; unknown cause/usage remain unknown. Escalate only an actual unresolved authority or contract conflict, with options and safe work.
+- **Non-matching — isolated documentation correction:** The request changes no product journey or platform. Expect a bounded check and compact handoff, without a full equivalence inventory, platform exercise or ceremonial research.

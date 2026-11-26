@@ -13,9 +13,9 @@ For alternatives, keep task/content and review conditions matched, and vary subs
 The original [starter manifest](../assets/prototype/manifest.json) and its neighboring files contain synthetic examples, not accepted brand tokens or production UI. Copy the starter into a project-owned optional artifact directory before editing. Reuse an existing project prototype location where one exists. Paths below illustrate a `docs/ui-prototype/` directory; it is not mandatory.
 
 ```sh
-python3 /installed/path/ui-design/scripts/prototype_tools.py --help
-python3 /installed/path/ui-design/scripts/prototype_tools.py check docs/ui-prototype/tokens.json
-python3 /installed/path/ui-design/scripts/prototype_tools.py build docs/ui-prototype/manifest.json docs/ui-prototype/prototype.html
+python3 /installed/path/ui-design-web/scripts/prototype_tools.py --help
+python3 /installed/path/ui-design-web/scripts/prototype_tools.py check docs/ui-prototype/tokens.json
+python3 /installed/path/ui-design-web/scripts/prototype_tools.py build docs/ui-prototype/manifest.json docs/ui-prototype/prototype.html
 ```
 
 Replace `/installed/path` with the actual skill location. The [helper](../scripts/prototype_tools.py) uses Python 3.9+ and its standard library. No browser package, CDN, web server, font service or publication service is required for building the local file. Use available authorized browser/screenshot tools for inspection, rather than assuming a fixed Chrome installation or claiming a screenshot after a timer proves readiness.

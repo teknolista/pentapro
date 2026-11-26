@@ -26,7 +26,9 @@ For a first project pilot, follow the [pilot setup](../README.md#start-a-pilot).
 | --- | --- | --- |
 | A fresh repository to configure for the collection, once per project | [Setup PentaPRO](../skills/setup-pentapro/SKILL.md) | Configures prompt persistence, README and license choices, tracker, domain, native changes and factory roles, and PentaPRO handoff |
 | Requirements, architecture proposal, verification plan or review of specification artifacts | [PentaPRO](../skills/penta-pro/SKILL.md) | Five pillars, including their coherence and implementation readiness |
-| Screen/flow/visual/accessibility design or critique; authorized UI implementation | [UI Design](../skills/ui-design/SKILL.md) | Maintain one cumulative UI contract when documentation is in scope. Load native Android procedures conditionally. |
+| Browser screen/flow/accessibility design or authorized implementation | [UI Design Web](../skills/ui-design-web/SKILL.md) | Browser interaction and rendered task evidence |
+| Native Android screen/flow design or authorized implementation | [UI Design Android](../skills/ui-design-android/SKILL.md) | Native interaction/lifecycle; test authoring remains separate |
+| CLI/TUI output, interaction or usability | [UI Design Terminal](../skills/ui-design-terminal/SKILL.md) | Real viewport, keyboard, structured output and task evidence |
 | Read-only source/PR/test-effectiveness assessment or re-review | [Peer Review](../skills/peer-review/SKILL.md) | Evidence-backed findings; test-authoring is a different implementation task |
 | Threat modeling, security audit, authorized hardening or security gate | [Cybersecurity](../skills/cybersec/SKILL.md) | One threat/control/evidence record, native Android controls loaded conditionally |
 | Ambiguous defect, intermittent failure, or performance regression | [Diagnose Defect](../skills/diagnose-defect/SKILL.md) | Reproduction, cause evidence, and verification of an authorized fix |
@@ -35,7 +37,7 @@ For a first project pilot, follow the [pilot setup](../README.md#start-a-pilot).
 | Concrete MCP server changes | [MCP Server](../skills/mcp-server/SKILL.md) | Protocol capabilities, transport, and actual downstream behavior |
 | Hosted backend deployment plan, infrastructure/pipeline configuration, authorized rollout, live verification or operational recovery | [Production Operations](../skills/production-operations/SKILL.md) | Target identity, deployed revision and operational effects |
 
-The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**, Setup PentaPRO to **23**, and Software Factory to the current **24**. See [upstream dispositions](COLLECTION-REVIEW.md).
+The earlier closure round added four portable owners and brought the collection to **21**. Production Operations brought it to **22**, Setup PentaPRO to **23**, and Software Factory to the then **24**. See [upstream dispositions](COLLECTION-REVIEW.md).
 
 - [Setup PentaPRO](../skills/setup-pentapro/SKILL.md) — Configure prompt persistence, README and license choices, tracker and domain guidance, native changes and factory roles, and a PentaPRO handoff.
 
@@ -54,10 +56,10 @@ Source inventory: the 14 entrypoints in the user-supplied local `android-skills`
 
 | Source | Destination | Decision / requested result |
 | --- | --- | --- |
-| `android-compose-architecture` | [UI Design / Compose architecture](../skills/ui-design/references/android/compose-architecture.md) | Consolidated: screen structure, state, performance and input implementation already fall within UI Design |
-| `android-compose-components` | [UI Design / components](../skills/ui-design/references/android/compose-components.md) | Consolidated: component design/implementation, resources and semantics |
-| `android-presentation-mvi` | [UI Design / presentation](../skills/ui-design/references/android/presentation-mvi.md) | Consolidated: native screen integration; MVI remains a conditional project choice |
-| `android-navigation` | [UI Design / navigation](../skills/ui-design/references/android/navigation.md) | Consolidated: flows and native screen/navigation implementation |
+| `android-compose-architecture` | [UI Design / Compose architecture](../skills/ui-design-android/references/android/compose-architecture.md) | Consolidated: screen structure, state, performance and input implementation already fall within UI Design |
+| `android-compose-components` | [UI Design / components](../skills/ui-design-android/references/android/compose-components.md) | Consolidated: component design/implementation, resources and semantics |
+| `android-presentation-mvi` | [UI Design / presentation](../skills/ui-design-android/references/android/presentation-mvi.md) | Consolidated: native screen integration; MVI remains a conditional project choice |
+| `android-navigation` | [UI Design / navigation](../skills/ui-design-android/references/android/navigation.md) | Consolidated: flows and native screen/navigation implementation |
 | `android-security` | [Cybersecurity / Android controls](../skills/cybersec/references/android-controls.md) | Consolidated: security assessment/hardening already has a generic owner |
 | `android-module-structure` | [Native module implementation](../skills/android-module-structure/SKILL.md) | Retained: concrete Gradle/module changes, not PentaPRO architecture discovery/specification |
 | `android-data-layer` | [Native data implementation](../skills/android-data-layer/SKILL.md) | Retained: repository, network, database and synchronization code |
@@ -123,7 +125,7 @@ Executed checks for the resulting collection:
 
 - All **13** packages passed `skill-creator/scripts/quick_validate.py`; names, README versions, UI metadata, consolidated-entrypoint absence and inactive workflow placement were checked.
 - **77 Markdown files / 498 local links and anchors** passed the local resource check. The 21 files in the original local import source retained their recorded hashes.
-- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/ui-design/scripts/tests -v`: **20 passed**.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/ui-design-web/scripts/tests -v`: **20 passed**.
 - `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s skills/pr-quiz/scripts/tests -v`: **9 passed**.
 - `node skills/pr-quiz/scripts/tests/workflow.cjs`: **19 passed**, executing the actual embedded handler with offline API doubles on local Node 26.10.0. Includes checkbox-event freshness, structured/stale pass caches, author/reviewer eligibility and explanation reflection; no GitHub calls.
 - Re-extracted the current typed-result, repository and Notes fake snippets and compiled them with the installed Kotlin compiler and real coroutine library: **7 behavioral groups plus 4 concurrency/fake conditions passed**. This verifies host orchestration, not AndroidX/Ktor imports, database transactions or TLS behavior.
@@ -161,3 +163,7 @@ PentaPRO names the collection and plugin; `penta-pro` remains the specification 
 ### Durable factory execution state
 
 Software Factory owns the [run-record contract](../skills/software-factory/references/run-records.md) and package-local helper. Setup PentaPRO prepares the directory guide and host pointers; it does not create runs or overwrite customized records. Default to one orchestrator-owned English checkpoint record per substantial run under `docs/agents/runs/`, reusing existing equivalent trackers. Lessons remain separate. Bounded single-agent edits do not acquire a factory run merely because the assets are installed.
+
+## Platform UI ownership migration
+
+The current collection has **26** skills. `ui-design` is retired in source; choose `ui-design-web`, `ui-design-android` or `ui-design-terminal` by outcome and platform. Mixed tasks may use multiple owners for distinct deliverables. [Migration and custom-installation preservation](ui-skill-migration.md) describes resource destinations and safe adoption. Historical integration decisions above retain their dates and original package counts.

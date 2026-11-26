@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Design Terminal"
+  short_description: "Design and verify terminal output and interaction"
+  default_prompt: "Use $ui-design-terminal to specify, review or implement the requested terminal journey within scope, preserving the established contract and reporting actual checks and evidence gaps. In PentaPRO, keep proposed detail in the active change and update root PRODUCT only during approved consolidation."

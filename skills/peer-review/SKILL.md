@@ -3,7 +3,7 @@ name: peer-review
 description: "Reviews code changes, pull requests, commit ranges, selected files, and test effectiveness for substantiated defects. Use for reviews of backend, frontend, Android, or test code, pre-merge checks, independent second opinions, and re-review after fixes; not ordinary implementation or specification review."
 license: MIT
 metadata:
-  version: "1.10.4"
+  version: "1.11.0"
 ---
 
 # Peer Review
@@ -63,3 +63,7 @@ For follow-up passes, use [the focused re-review procedure](references/independe
 For a known defect that escaped previous checks, assess the regression protection and the specific review/process gap using [the learning loop](references/verification.md#learn-from-escaped-defects). Recommend proportionate improvements within the requested scope; a review request does not authorize implementation or pipeline changes.
 
 [Sources](references/sources.md) and [evaluation cases](evals/scenarios.md) are maintainer resources; do not load them for routine reviews.
+
+## Simplicity and changed-risk review
+
+Trace a proposed abstraction, dependency or adjacent refactor to a present requirement or justified boundary and report a concrete failure or maintenance risk, not a style preference. Preserve necessary protections and architecture even when they increase the diff. On re-review compare changed files, contracts and dependencies with prior findings and receipts; revisit affected risk paths, including new interactions, while carrying forward only evidence whose original snapshot and unchanged premises are identified. A focused re-review does not convert an old gate to a new fingerprint.

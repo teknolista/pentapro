@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Design Android"
+  short_description: "Design and verify native Android screen journeys"
+  default_prompt: "Use $ui-design-android to specify, review or implement the requested android journey within scope, preserving the established contract and reporting actual checks and evidence gaps. In PentaPRO, keep proposed detail in the active change and update root PRODUCT only during approved consolidation."

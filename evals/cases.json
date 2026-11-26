@@ -95,5 +95,35 @@
     "owner": "software-delivery",
     "prompt": "Implement the accepted tenant-receipts PentaPRO change in two increments. Verify the handler behavior, update its existing tasks as work is verified, and record evidence. Leave the change active for developer review without archiving or publishing.",
     "grader": "native-sdd-receipts"
+  },
+  "port-journey": {
+    "fixture": "factory-port",
+    "owner": "penta-pro",
+    "prompt": "Plan a faithful port of the reference described in README.md. Identify missing scope, preserve/adapt/exclude decisions, observable checks, one early vertical journey and consequential unknowns. Do not implement or claim acceptance.",
+    "grader": "read-only"
+  },
+  "factory-recovery": {
+    "fixture": "factory-port",
+    "owner": "software-factory",
+    "prompt": "The implementer returned and the verifier found the selected row invisible at 40x12. Fixes are already authorized. Explain the next actions, what evidence can be reused, what must be checked and the real stopping condition. Plan only.",
+    "grader": "read-only"
+  },
+  "ui-terminal-journey": {
+    "fixture": "factory-port",
+    "owner": "ui-design-terminal",
+    "prompt": "Review the terminal acceptance described in README.md. Distinguish text presence, viewport visibility and task completion; specify constrained-size, cancellation and redirected-output checks. Read-only.",
+    "grader": "read-only"
+  },
+  "ui-web-boundary": {
+    "fixture": "factory-port",
+    "owner": "ui-design-web",
+    "prompt": "Plan a browser dashboard for the ledger reference. Define keyboard/loading/error/dense-layout acceptance and useful rendered evidence. Do not apply Android or terminal rendering semantics to the browser or implement code.",
+    "grader": "read-only"
+  },
+  "ui-android-boundary": {
+    "fixture": "factory-port",
+    "owner": "ui-design-android",
+    "prompt": "Plan a native Android ledger screen from this reference. Define native lifecycle, navigation, accessibility, error/loading and task evidence; no HTML mock or source check alone proves device behavior. Plan only.",
+    "grader": "read-only"
   }
 }

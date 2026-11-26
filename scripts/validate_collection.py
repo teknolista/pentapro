@@ -108,7 +108,7 @@ for file in markdown:
 readme = (root / "README.md").read_text()
 labels = {
     "penta-pro":"PentaPRO", "peer-review":"Peer Review", "cybersec":"Cybersecurity",
-    "ui-design":"UI Design", "diagnose-defect":"Diagnose Defect",
+    "ui-design-web":"UI Design Web", "ui-design-android":"UI Design Android", "ui-design-terminal":"UI Design Terminal", "diagnose-defect":"Diagnose Defect",
     "production-operations": "Production Operations",
     "software-delivery":"Software Delivery", "technical-research":"Technical Research", "git-ship":"Git Ship", "setup-pentapro":"Setup PentaPRO", "agent-instructions":"Agent Instructions", "behavior-testing":"Behavior Testing", "http-api":"HTTP API", "mcp-server":"MCP Server",
 }

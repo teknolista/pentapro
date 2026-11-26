@@ -47,7 +47,7 @@ A separate test file per source file is unnecessary when another suite exercises
 | `evals/check_mcp_sdk.py` | Assertion-based in-process SDK smoke, itself a verification script. No separate unit suite is required for this fixture, but its SDK compatibility must be exercised before relying on it. Not run: `mcp` and `httpx2` are absent; no dependencies installed. |
 | `skills/software-factory/scripts/run_state.py` | `test_factory_runs.py`; stale source/gates/writers, identity, locks, uncertain effects, forbidden paths and preservation. The helper validates local records, never the truth of referenced remote evidence. |
 | `skills/penta-pro/scripts/init_pentapro.py` | 11 dedicated tests for initialization, existing content and unsafe paths. Live interviews and migration acceptance remain separate. |
-| `skills/ui-design/scripts/prototype_tools.py` | 26 dedicated tests for inputs, contrast/fragments, injection bounds and exports. No browser/native accessibility certification follows. |
+| `skills/ui-design-web/scripts/prototype_tools.py` | 26 dedicated tests for inputs, contrast/fragments, injection bounds and exports. No browser/native accessibility certification follows. |
 | `skills/pr-quiz/scripts/publish_quiz.py` | 15 dedicated tests with controlled publication/freshness behavior. Live GitHub permissions and concurrent editors remain adoption concerns. |
 | `skills/pr-quiz/assets/pr-quiz.yml` | 27 offline scenarios execute the embedded handler with API doubles, including stale events, eligibility and reflected markers. No hosted workflow executed. |
 | `skills/setup-pentapro/assets/prompt-logging/{core,log-prompt}.mjs` | 16 Node tests for redaction, formatting, safe append and CLI paths. Legacy adapters remain historical opt-in material, not current setup enforcement. |
@@ -63,7 +63,7 @@ Python 3.12.6 and Node 27.0.0-alpha.0.0.0 were available; CI targets Python 3.12
 
 - `python3 -m unittest discover -s scripts/tests`: 72 passed, including local package/discovery and factory-record controls.
 - `python3 -m unittest discover -s skills/penta-pro/scripts/tests`: 11 passed.
-- `python3 -m unittest discover -s skills/ui-design/scripts/tests`: 26 passed.
+- `python3 -m unittest discover -s skills/ui-design-web/scripts/tests`: 26 passed.
 - `python3 -m unittest discover -s skills/pr-quiz/scripts/tests`: 15 passed.
 - `node skills/pr-quiz/scripts/tests/workflow.cjs`: 27 passed.
 - `node --test scripts/tests/test_opencode_plugin.mjs`: four adapter controls passed.

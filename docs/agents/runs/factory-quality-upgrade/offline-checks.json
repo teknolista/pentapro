@@ -1,0 +1,155 @@
+[
+  {
+    "name": "metadata",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/package_plugin.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/metadata.log",
+    "log_sha256": "d5cb9a4a5d1eb16c8c5311e6a8b4d0b72d1ab29c259254ef740b619fcc52b618",
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "collection",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/validate_collection.py"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/collection.log",
+    "log_sha256": "c2d174c0c63da13578c0bf26da6f6036a4a0c5870ce98f632ea44778765ac192",
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "cases",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/run_skill_evals.py",
+      "--check-cases"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/cases.log",
+    "log_sha256": "db9b8d042babfba99d8556e1b1728276a8a5e506019caade834e0c33e7d34b83",
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "root-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/root-python.log",
+    "log_sha256": "1d901057b42c7164c75cf290f3dd7a4e30531795da18d1aa3ae156faecc70129",
+    "tests": 122,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "penta-pro",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/penta-pro/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/penta-pro.log",
+    "log_sha256": "0b3b316bae06b116fc2d79c27efbc011fa8a005b5c437f7da7fa7eacfaedee2f",
+    "tests": 14,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "web-tools",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/ui-design-web/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/web-tools.log",
+    "log_sha256": "0b5f64081463b212a403f6691699aaa5e162a77cd087a7c90f1a0f64d8a7bbfa",
+    "tests": 26,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "quiz-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/pr-quiz/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/quiz-python.log",
+    "log_sha256": "225209fa54adc9d4eaaac76eb6e0ca8179c42c20d9f2ca17a8fa08ff2b397459",
+    "tests": 15,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "quiz-node",
+    "command": [
+      "node",
+      "skills/pr-quiz/scripts/tests/workflow.cjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/quiz-node.log",
+    "log_sha256": "a514a064e199f2797f62562cdf0174195ed754d21af64d2341e7cf3931933839",
+    "tests": 27,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "log-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_agents_log.mjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/log-node.log",
+    "log_sha256": "5735256cb7ceaba1c5ea34d9506d37fb43a2e1be62035daada0e11e2ad72a570",
+    "tests": 16,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "opencode-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_opencode_plugin.mjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/opencode-node.log",
+    "log_sha256": "e4cbc5336e66739cbec2f9412d69f48b5e3397359226f111e257d14558075721",
+    "tests": 4,
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  },
+  {
+    "name": "whitespace",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-quality-checks/whitespace.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence_origin": "executed in this session; source unchanged during suite; later report-only edits need static recheck"
+  }
+]

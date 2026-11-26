@@ -1,9 +1,9 @@
 ---
 name: android-ui-testing
-description: Author, run or debug automated native Android Compose interaction tests on devices/emulators. Use for UI-test implementation; use ui-design for screen design, usability/accessibility critique or visual acceptance, and peer-review for independent code/test review.
+description: Author, run or debug automated native Android Compose interaction tests on devices/emulators. Use for UI-test implementation; use ui-design-android for screen design, usability/accessibility critique or visual acceptance, and peer-review for independent code/test review.
 license: MIT
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Android Compose UI Testing

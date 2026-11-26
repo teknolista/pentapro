@@ -1,9 +1,9 @@
 ---
 name: android-unit-testing
-description: Author, run or debug isolated Kotlin/JVM and Android logic tests using fakes and deterministic coroutine scheduling. Use for test implementation tasks; use peer-review to assess test effectiveness without changing source and ui-design for screen acceptance design.
+description: Author, run or debug isolated Kotlin/JVM and Android logic tests using fakes and deterministic coroutine scheduling. Use for test implementation tasks; use peer-review to assess test effectiveness without changing source and ui-design-android for screen acceptance design.
 license: MIT
 metadata:
-  version: "1.2.4"
+  version: "1.2.5"
 ---
 
 # Android Unit Testing

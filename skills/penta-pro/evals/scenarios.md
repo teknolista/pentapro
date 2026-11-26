@@ -241,3 +241,9 @@ Authored cases for the five-dimensional native workflow; these are not executed 
 | Two active changes target the same requirement | Identify overlap and baseline revisions; serialize reconciliation and recheck affected evidence | Archive stale change over another accepted requirement |
 | Result approval with a separate publication restriction | Reconcile and archive only within expressed authority, keep push pending and report its status | Treat default approval as overriding explicit narrower instruction |
 | Archive destination already exists or reconciliation is interrupted | Preserve existing archive, report conflict or partial state, inspect actual files on resumption | Overwrite destination or claim consolidation succeeded |
+
+## Cross-consumer criteria and decision discovery
+
+- **Matching:** A shared library changes validation used by a CLI and a service. Expect one stable shared criterion, consumer-specific scenarios and evidence, documented differences and a discoverable governing decision; a missing consumer is an explicit gap.
+- **Ambiguous:** An asynchronous UI action can partially save before a network failure. Resolve the intended duplicate/recovery behavior and affected platform, and link relevant state scenarios without imposing a queue or a web-first sequence.
+- **Non-matching:** A synchronous internal spelling correction needs no loading-state matrix, cross-platform test or new decision record; preserve the existing five-pillar ownership.

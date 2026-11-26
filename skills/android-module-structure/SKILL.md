@@ -3,7 +3,7 @@ name: android-module-structure
 description: Implement native Android/Kotlin JVM module boundaries, Gradle conventions and build configuration in an existing or authorized project. Use for concrete module/build changes; use penta-pro for requirements, architecture proposals and readiness specifications, and peer-review for read-only code review.
 license: MIT
 metadata:
-  version: "1.4.0"
+  version: "1.4.1"
 ---
 
 # Native Android Module Structure
@@ -86,7 +86,7 @@ This optional reference stack uses Android/JVM artifacts and Android source sets
 1. Select the smallest useful module boundaries; add chosen modules to `settings.gradle.kts`.
 2. Apply the native conventions and assign a unique namespace where required.
 3. Add explicit permitted dependencies, native resources, and the feature API.
-4. Register the feature in the app’s existing composition root and navigation when required. Use the optional `android-di-koin` and `ui-design` Android navigation examples when they match the project.
+4. Register the feature in the app’s existing composition root and navigation when required. Use the optional `android-di-koin` and `ui-design-android` Android navigation examples when they match the project.
 5. If using Room, configure KSP/schema export and migration coverage in the owning database module.
 6. Run affected unit tests, lint, and a representative debug/release assembly. Run relevant device tests; do not report a documented command as an executed result.
 

@@ -1,0 +1,7 @@
+# Bounded maintenance retrospective
+
+Invocation retrospective-one inspected the compact evidence packet and returned read-only PDSA/lessons without another audit. Independent checks found material flaws despite the initial green suite; fixes added signal/descendant, presentation-asset and semantic-owner controls. The missing executable pilot and duplicated instructions were also corrected. Final verifier and full corrected-code suite subsequently passed; source record reconciliation is the final step.
+
+Both qualitative arms produced useful porting plans; no actual usage/cost/runtime metadata or causal savings were observed. The scripted journey establishes bounded input/report/PT Y/error-recovery properties only. All111 proposal dispositions describe source contracts, retained guards or explicitly scoped experiments; future study items remain excluded. Prompt-log ordering was not consistently followed by several agents even though received tasks were subsequently appended privately; no retrospective rewrite can repair historical ordering. Instruction compliance remains distinct from mechanical capture. No hooks/global instrumentation were installed.
+
+Useful lessons: semantic owner names need catalog validation beyond links; timeout, signal cancellation and blocking-read deadlines need distinct tests; presentation assets belong in migration inventories. Main-session orchestrator persists these lessons in English. Acceptance/consolidation/archive/publication remain pending, not failed implementation or fabricated completion.

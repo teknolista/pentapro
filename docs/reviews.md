@@ -10,3 +10,5 @@ Current sources are the skill packages under `skills/`, packaged role templates,
 - [Evaluation results](../evals/RESULTS.md): actual synthetic trials and environment limits.
 
 Completed execution records stay immutable evidence for their recorded inputs. Later source changes do not justify changing old fingerprints or repeating confirmed operations. Dated statements that receipts were local describe that original observation; consult Git and the current owning run for later publication. Preserve stable report paths and incoming links instead of moving history solely for tidiness.
+
+- [Factory quality maintenance](factory-quality-maintenance.md): current source changes, full proposal dispositions, pilot and test inventory; result acceptance and publication are separate.

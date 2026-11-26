@@ -1,6 +1,6 @@
 {
   "name": "pentapro",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "PentaPRO: software development skills, factory agents and evidence-based continuous improvement.",
   "author": {
     "name": "Teknolista",
@@ -39,6 +39,8 @@
     "./skills/software-delivery",
     "./skills/software-factory",
     "./skills/technical-research",
-    "./skills/ui-design"
+    "./skills/ui-design-android",
+    "./skills/ui-design-terminal",
+    "./skills/ui-design-web"
   ]
 }

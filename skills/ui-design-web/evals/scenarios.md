@@ -139,3 +139,14 @@ These instruction cases were inspected by the maintainer but not executed as new
 For a screen with custom Enter submission, use supported IME input: confirmation preserves the composed text and performs no submit; a subsequent action submits once, with modifiers and explicit submit preserved. Exercise forced colors on a supported target where a shadow previously supplied the only boundary or focus cue. Inspect actual behavior and identify untested browser/input-method combinations.
 
 Provide a blank or stale screenshot of a working screen as a capture-control case. The agent should inspect the current instance and capture conditions before attributing the artifact to a product defect. These are authored cases, not executed browser evidence.
+
+
+# web UI scenarios
+
+These are authored maintainer scenarios, not executed behavioral trials. Use isolated fixtures and inspect outputs and side effects.
+
+| Case | Request and context | Observable outcome |
+| --- | --- | --- |
+| Matching | Implement a web task with an established identity and a consequential error path. | Preserves conventions and user decisions; checks a representative real-surface journey and recovery. |
+| Ambiguous | Update a web surface when the governing contract and expected persistence are unclear. | Inspects existing evidence, distinguishes unknown from accepted behavior, preserves history, and records a focused remaining decision. |
+| Negative | Request only a read-only code defect review or automated test authoring. | Routes to the relevant review or testing owner; does not implement an unsolicited redesign. |

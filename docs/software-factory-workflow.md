@@ -185,7 +185,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** no blocking ambiguity; the contract is accepted or explicitly scoped for incremental specification; every criterion maps to at least one planned check.
 
-**Skills:** [PentaPRO](../skills/penta-pro/SKILL.md), OpenSpec `explore`/`propose`, [UI Design](../skills/ui-design/SKILL.md) when the interface contract changes, [Cybersecurity](../skills/cybersec/SKILL.md) when risk is material.
+**Skills:** [PentaPRO](../skills/penta-pro/SKILL.md), OpenSpec `explore`/`propose`, [UI Design](../skills/ui-design-web/SKILL.md) when the interface contract changes, [Cybersecurity](../skills/cybersec/SKILL.md) when risk is material.
 
 ### G2 — Plan and slice
 
@@ -231,7 +231,7 @@ The pipeline is sequential at the gate level. Some gates fan out and rejoin.
 
 **Exit criterion:** the task check passes; the diff is within the packet's scope; no new behavior is left without a check or a named follow-up.
 
-**Skills:** [Software Delivery](../skills/software-delivery/SKILL.md) plus the domain owner: [UI Design](../skills/ui-design/SKILL.md), [HTTP API](../skills/http-api/SKILL.md), [MCP Server](../skills/mcp-server/SKILL.md), or the relevant native Android helper.
+**Skills:** [Software Delivery](../skills/software-delivery/SKILL.md) plus the domain owner: [UI Design](../skills/ui-design-web/SKILL.md), [HTTP API](../skills/http-api/SKILL.md), [MCP Server](../skills/mcp-server/SKILL.md), or the relevant native Android helper.
 
 ### G4 — Verify
 

@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](skills/penta-pro/references/sources.md), [Peer Review](skills/peer-review/references/sources.md), and [UI Design](skills/ui-design/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record, and the `setup-pentapro` package redistributes adapted upstream text from one upstream skill (see [Setup PentaPRO](#setup-pentapro)). These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
+This repository's newly written instructions and templates were informed by the public methods listed in the [PentaPRO](skills/penta-pro/references/sources.md), [Peer Review](skills/peer-review/references/sources.md), and [UI Design](skills/ui-design-web/references/sources.md) source notes. No implementation from those public research collections is bundled. The separately supplied local Android/PR-quiz import below contains source files and has its own provenance record, and the `setup-pentapro` package redistributes adapted upstream text from one upstream skill (see [Setup PentaPRO](#setup-pentapro)). These notices preserve source attribution and the common MIT permission notice for the MIT-licensed works consulted. Cybersecurity's article attribution and UI Design research attributions appear separately after that notice.
 
 | Work | Copyright notice | License |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Cybersecurity is an original English synthesis; no article text, code, or illust
 
 ## UI Design: researched skills, standards and discovery sources
 
-[UI Design source notes](skills/ui-design/references/sources.md) record the 2026-11-05 survey of all nine previously cited skill repositories, their pinned revisions, relevant entrypoints, additional design collections, adoption decisions and limits. The guidance added from that survey was independently written. The later Android references have a separate [import record](#pl-coding-android-and-pr-quiz-skills). Linked external materials retain their own terms.
+[UI Design source notes](skills/ui-design-web/references/sources.md) record the 2026-11-05 survey of all nine previously cited skill repositories, their pinned revisions, relevant entrypoints, additional design collections, adoption decisions and limits. The guidance added from that survey was independently written. The later Android references have a separate [import record](#pl-coding-android-and-pr-quiz-skills). Linked external materials retain their own terms.
 
 Additional primary sources consulted conceptually:
 
@@ -95,10 +95,10 @@ The affected package directories are the eight `android-*` packages and `pr-quiz
 
 | Repository file | Local bundle source |
 | --- | --- |
-| [Compose architecture](skills/ui-design/references/android/compose-architecture.md) | `android-compose-architecture/SKILL.md` |
-| [Compose components](skills/ui-design/references/android/compose-components.md) | `android-compose-components/SKILL.md` |
-| [Navigation](skills/ui-design/references/android/navigation.md) | `android-navigation/SKILL.md` |
-| [Presentation and MVI](skills/ui-design/references/android/presentation-mvi.md) | `android-presentation-mvi/SKILL.md` |
+| [Compose architecture](skills/ui-design-android/references/android/compose-architecture.md) | `android-compose-architecture/SKILL.md` |
+| [Compose components](skills/ui-design-android/references/android/compose-components.md) | `android-compose-components/SKILL.md` |
+| [Navigation](skills/ui-design-android/references/android/navigation.md) | `android-navigation/SKILL.md` |
+| [Presentation and MVI](skills/ui-design-android/references/android/presentation-mvi.md) | `android-presentation-mvi/SKILL.md` |
 | [Android security controls](skills/cybersec/references/android-controls.md) | `android-security/SKILL.md` |
 
 ## Peer Review: review-coordination article
@@ -110,7 +110,7 @@ Centelha's [Mais agentes, mais PRs: como organizar a revisão](https://www.tabne
 
 On 2026-11-06, screened all 58 skill entrypoints in [pstack/skills](https://github.com/cursor/plugins/tree/2776ddd2355d6d6c8747d3964600f28daf62f049/pstack/skills) at commit `2776ddd2355d6d6c8747d3964600f28daf62f049`. Names/descriptions were screened across the complete tree; relevant architecture, testing, verification, state-model, measurement and writing bodies and selected references were read in detail. The browser's cached directory listing differed from the current tree; the pinned non-truncated Git tree determined this inventory. Supporting resources were retrieved for inspection, not all audited. No upstream code or automation was executed.
 
-The useful methods informed [PentaPRO](skills/penta-pro/references/sources.md#pstack-synthesis--version-250), [Peer Review](skills/peer-review/references/sources.md#pstack-synthesis--version-180), [Cybersecurity](skills/cybersec/references/sources.md#pstack-synthesis--version-140), and [UI Design](skills/ui-design/references/sources.md#pstack-synthesis--version-130). General explanation, catch-up, personalization, setup, orchestration and style workflows did not warrant new dependencies or separate skills. Many principles were already covered and were not repeated merely to enlarge the packages.
+The useful methods informed [PentaPRO](skills/penta-pro/references/sources.md#pstack-synthesis--version-250), [Peer Review](skills/peer-review/references/sources.md#pstack-synthesis--version-180), [Cybersecurity](skills/cybersec/references/sources.md#pstack-synthesis--version-140), and [UI Design](skills/ui-design-web/references/sources.md#pstack-synthesis--version-130). General explanation, catch-up, personalization, setup, orchestration and style workflows did not warrant new dependencies or separate skills. Many principles were already covered and were not repeated merely to enlarge the packages.
 
 The synthesis retains task authority and proportionality. It does not adopt mandatory named models, parallel agents, scripts for every nontrivial edit, run-only findings, unconditional trust of internal types, automatic Git integration, blanket compatibility removal, hard-coded host tooling, or fixed prototype/benchmark counts. Formal verification and measurements remain conditional on the actual risk and evidence needs.
 
@@ -119,7 +119,7 @@ The inspected pstack license is MIT, copyright 2026 Lauren Tan; its notice is pr
 
 ## Local design-skill consolidation — 2026-11-06
 
-At the user's request, inspected all 18 files of the local `android-skills/design` package and consolidated its relevant lessons into UI Design 1.4.0. [The transfer inventory](skills/ui-design/references/design-consolidation.md) records existing coverage, original additions and deliberate exclusions before retirement of the local source skill. Its source text, Python implementation, viewer, styles, templates, palettes and token data are not redistributed here. The optional prototype checker/builder, examples and tests added to UI Design are newly written for this repository. They implement general token-checking and local gallery concepts without a runtime dependency on the source package.
+At the user's request, inspected all 18 files of the local `android-skills/design` package and consolidated its relevant lessons into UI Design 1.4.0. [The transfer inventory](skills/ui-design-web/references/design-consolidation.md) records existing coverage, original additions and deliberate exclusions before retirement of the local source skill. Its source text, Python implementation, viewer, styles, templates, palettes and token data are not redistributed here. The optional prototype checker/builder, examples and tests added to UI Design are newly written for this repository. They implement general token-checking and local gallery concepts without a runtime dependency on the source package.
 
 A bounded source experiment reproduced upstream token-checker omissions; it is recorded as source investigation, not an endorsement or a claim of full source-tool validation. The local source folder is removed only after destination validation, with a recovery copy outside the repositories. Historical research and trial records retain their original dates and scope. The repository license does not grant rights to external source material or imply affiliation.
 
@@ -138,7 +138,7 @@ On 2026-11-07, reviewed the seven [Elephant & Goldfish Model skill entrypoints](
 
 Brainstorm and Draft informed PentaPRO's hypothesis challenge and reuse of decision rationale. Review, Review Loop and Resolve informed reconstruction from saved artifacts, scoped review evidence, finding disposition and rechecking. Drift Report informed targeted comparisons between current claims and the selected source revision. Bootstrap's baseline mapping was assessed against the existing canonical artifact guidance. Its recursive document generation and separate repository contracts did not fit the five-pillar output. This collection uses its existing artifact layout and permission rules rather than adopting EGM's required agent orchestration, reports or fixed loop controls.
 
-See the [PentaPRO](skills/penta-pro/references/sources.md#elephant--goldfish-model--260), [Peer Review](skills/peer-review/references/sources.md#elephant--goldfish-model--191), and [UI Design](skills/ui-design/references/sources.md#elephant--goldfish-model--153) source notes for the adaptations. Cybersecurity already separates threat models, intended controls, source and deployed evidence. The Android implementation/test helpers and PR Quiz keep their existing narrower roles. No independent model comparison or production result is claimed by this research.
+See the [PentaPRO](skills/penta-pro/references/sources.md#elephant--goldfish-model--260), [Peer Review](skills/peer-review/references/sources.md#elephant--goldfish-model--191), and [UI Design](skills/ui-design-web/references/sources.md#elephant--goldfish-model--153) source notes for the adaptations. Cybersecurity already separates threat models, intended controls, source and deployed evidence. The Android implementation/test helpers and PR Quiz keep their existing narrower roles. No independent model comparison or production result is claimed by this research.
 
 ## Peer Review: Claude Code engineering article
 
@@ -188,3 +188,7 @@ Historical Bencium and AccessLint URLs remain provenance records. Their canonica
 ## Native SDD process research
 
 PentaPRO used [OpenSpec](https://github.com/Fission-AI/OpenSpec) and its MIT-licensed workflow skills and artifact templates as references when designing its native change process. Adaptations cover motivation/scope, observable requirements and scenarios, before/after change intent, design rationale and verifiable tasks. Current execution uses PentaPRO agents and ordinary project tools; no upstream SDD CLI or schema engine is required. Existing source attribution and historical evidence above remain applicable to their snapshots.
+
+## Platform UI source reorganization — PentaPRO 3.0.0
+
+The retired `ui-design` package's web prototype resources now belong to `ui-design-web`; the native Android procedures and worked example belong to `ui-design-android`. Applicable common guidance and research/source notices remain package-local. `ui-design-terminal` is original collection guidance informed by the documented ChuteGo retrospective; no third-party terminal library or source is bundled. Existing licenses and upstream attribution above remain applicable to the redistributed Android/common material. Each new standalone package includes the repository MIT notice. This reorganization claims no new upstream refresh or runtime certification.

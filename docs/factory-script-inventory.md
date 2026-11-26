@@ -1,0 +1,56 @@
+# Executable and test inventory
+
+Inventory: all existing Git-eligible Python, JavaScript, TypeScript and shell files, including untracked new source. Embedded quiz workflow JavaScript is exercised by its workflow.cjs suite; generated JSON is checked against its generator. Optional adapter templates and intentionally defective fixtures are classified explicitly. File-level coverage is an audit of relevant tests, not a line/branch-coverage percentage or proof of host behavior.
+
+| File | Tests / classification | Assessment |
+| --- | --- | --- |
+| [evals/check_mcp_sdk.py](../evals/check_mcp_sdk.py) | scripts/tests/test_optional_mcp_smoke.py; optional real-SDK assertions | Covered for documented local behavior; host/environment limits remain. |
+| [evals/check_receipts.py](../evals/check_receipts.py) | scripts/tests/test_receipt_oracle.py; runner controls | Covered for documented local behavior; host/environment limits remain. |
+| [evals/fixtures/receipts/receipts.py](../evals/fixtures/receipts/receipts.py) | Intentionally defective fixture; oracle and fixture controls | Covered for documented local behavior; host/environment limits remain. |
+| [evals/fixtures/receipts/test_receipts.py](../evals/fixtures/receipts/test_receipts.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [evals/fixtures/test-effect/service.py](../evals/fixtures/test-effect/service.py) | Intentionally defective fixture; side-effect sensitivity controls | Covered for documented local behavior; host/environment limits remain. |
+| [evals/overlays/review-clean/receipts.py](../evals/overlays/review-clean/receipts.py) | Clean control; receipt oracle and runner tests | Covered for documented local behavior; host/environment limits remain. |
+| [plugin/opencode.mjs](../plugin/opencode.mjs) | scripts/tests/test_opencode_plugin.mjs; export suite | Covered for documented local behavior; host/environment limits remain. |
+| [scripts/eval_isolation.py](../scripts/eval_isolation.py) | scripts/tests/test_run_skill_evals.py (containment controls) | Covered for documented local behavior; host/environment limits remain. |
+| [scripts/eval_outcomes.py](../scripts/eval_outcomes.py) | scripts/tests/test_run_skill_evals.py; scripts/tests/test_receipt_oracle.py | Covered for documented local behavior; host/environment limits remain. |
+| [scripts/package_plugin.py](../scripts/package_plugin.py) | scripts/tests/test_package_plugin.py | Covered for documented local behavior; host/environment limits remain. |
+| [scripts/run_skill_evals.py](../scripts/run_skill_evals.py) | scripts/tests/test_run_skill_evals.py | Covered for documented local behavior; host/environment limits remain. |
+| [scripts/tests/test_agent_profiles.py](../scripts/tests/test_agent_profiles.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_agents_log.mjs](../scripts/tests/test_agents_log.mjs) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_command_evidence.py](../scripts/tests/test_command_evidence.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_factory_agents.py](../scripts/tests/test_factory_agents.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_factory_events.py](../scripts/tests/test_factory_events.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_factory_runs.py](../scripts/tests/test_factory_runs.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_opencode_plugin.mjs](../scripts/tests/test_opencode_plugin.mjs) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_optional_mcp_smoke.py](../scripts/tests/test_optional_mcp_smoke.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_package_plugin.py](../scripts/tests/test_package_plugin.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_receipt_oracle.py](../scripts/tests/test_receipt_oracle.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_run_skill_evals.py](../scripts/tests/test_run_skill_evals.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_setup_pentapro_git_templates.py](../scripts/tests/test_setup_pentapro_git_templates.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_setup_pentapro_prompt_rule.py](../scripts/tests/test_setup_pentapro_prompt_rule.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_setup_section_plan.py](../scripts/tests/test_setup_section_plan.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/tests/test_validate_collection.py](../scripts/tests/test_validate_collection.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [scripts/validate_collection.py](../scripts/validate_collection.py) | scripts/tests/test_validate_collection.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/penta-pro/scripts/init_pentapro.py](../skills/penta-pro/scripts/init_pentapro.py) | skills/penta-pro/scripts/tests/test_init_pentapro.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/penta-pro/scripts/tests/test_init_pentapro.py](../skills/penta-pro/scripts/tests/test_init_pentapro.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [skills/pr-quiz/scripts/publish_quiz.py](../skills/pr-quiz/scripts/publish_quiz.py) | skills/pr-quiz/scripts/tests/test_publish_quiz.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/pr-quiz/scripts/tests/test_publish_quiz.py](../skills/pr-quiz/scripts/tests/test_publish_quiz.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [skills/pr-quiz/scripts/tests/workflow.cjs](../skills/pr-quiz/scripts/tests/workflow.cjs) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [skills/setup-pentapro/assets/prompt-logging/core.mjs](../skills/setup-pentapro/assets/prompt-logging/core.mjs) | scripts/tests/test_agents_log.mjs | Covered for documented local behavior; host/environment limits remain. |
+| [skills/setup-pentapro/assets/prompt-logging/log-prompt.mjs](../skills/setup-pentapro/assets/prompt-logging/log-prompt.mjs) | CLI cases in scripts/tests/test_agents_log.mjs | Covered for documented local behavior; host/environment limits remain. |
+| [skills/setup-pentapro/assets/prompt-logging/opencode.ts](../skills/setup-pentapro/assets/prompt-logging/opencode.ts) | No executed host/type integration: optional legacy example, not installed automatically | Accepted only as optional unvalidated legacy example; no reliable automatic capture claim. |
+| [skills/setup-pentapro/scripts/check_agent_profiles.py](../skills/setup-pentapro/scripts/check_agent_profiles.py) | scripts/tests/test_agent_profiles.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/setup-pentapro/scripts/merge_git_templates.py](../skills/setup-pentapro/scripts/merge_git_templates.py) | scripts/tests/test_setup_pentapro_git_templates.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/setup-pentapro/scripts/plan_instruction_sections.py](../skills/setup-pentapro/scripts/plan_instruction_sections.py) | scripts/tests/test_setup_section_plan.py (red/green, preservation, conflict, stale input) | Covered for documented local behavior; host/environment limits remain. |
+| [skills/software-factory/scripts/command_evidence.py](../skills/software-factory/scripts/command_evidence.py) | scripts/tests/test_command_evidence.py (red/green, nonzero, timeout descendants, safe output) | Covered for documented local behavior; host/environment limits remain. |
+| [skills/software-factory/scripts/run_events.py](../skills/software-factory/scripts/run_events.py) | scripts/tests/test_factory_events.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/software-factory/scripts/run_state.py](../skills/software-factory/scripts/run_state.py) | scripts/tests/test_factory_runs.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/ui-design-web/scripts/prototype_tools.py](../skills/ui-design-web/scripts/prototype_tools.py) | skills/ui-design-web/scripts/tests/test_prototype_tools.py | Covered for documented local behavior; host/environment limits remain. |
+| [skills/ui-design-web/scripts/tests/test_prototype_tools.py](../skills/ui-design-web/scripts/tests/test_prototype_tools.py) | Test artifact / runner; recursive testing is unnecessary | Retain; evaluate its assertions through the owning suite. |
+| [evals/check_factory_journey.py](../evals/check_factory_journey.py) | scripts/tests/test_factory_journey.py; clean/seeded subprocess and real PTY controls | Covered for the bounded static synthetic slice; Linux/POSIX PTY required. |
+| [evals/fixtures/terminal-journey/app.py](../evals/fixtures/terminal-journey/app.py) | scripts/tests/test_factory_journey.py and independent report/viewport checker | Synthetic clean/defective variant, not a maintained product or full interactive TUI. |
+| [scripts/tests/test_factory_journey.py](../scripts/tests/test_factory_journey.py) | Test artifact / runner | Includes wrong decimal/status, injection diagnostics, viewport and hung-descendant sensitivity controls. |
+
+## Meaningful limits
+
+The legacy optional OpenCode hook needs its actual host/types and integration to establish capture. The MCP helper has diagnostic unit controls but its real SDK smoke is optional and must report missing dependencies. Browser/native Android/terminal UX requires product/toolchain tests. POSIX command cleanup is not validated for Windows. A read-only section plan cannot certify an external manual application's atomicity; recheck the original hash and inspect the applied destination. These are supported-scope limits, not reasons to add superficial string tests.

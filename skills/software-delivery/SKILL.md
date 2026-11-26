@@ -3,7 +3,7 @@ name: software-delivery
 description: Coordinate software implementation across dependent tasks or increments. Use for an existing delivery plan, a cross-component change, or resuming multi-step implementation.
 license: MIT
 metadata:
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Deliver a software change
@@ -24,3 +24,7 @@ Turn an authorized outcome into working, verified software. Use the domain workf
 - **"Linters or formatters passed, so the implementation works":** Static syntax and formatting tools verify code style, not runtime correctness, error handling, or business invariants.
 
 Do not equate task completion with commit, push, tracker closure, merge, deployment, or acceptance. Continue those actions only under their actual authorization. Report outcome, changes, verification and material limits. A trial that succeeded on one platform does not prove every target works.
+
+## Material slices and decisions
+
+Plan a representative vertical slice against the accepted journey and criterion-to-evidence links before broad expansion. For consequential infrastructure decisions, compare existing, mature and custom alternatives for correctness evidence, safety, platform fit, license, integration, operation, maintenance and validation cost; use technical-research when a bounded unknown matters. Record the decision in its existing owner. Choose the simplest solution adequate to present requirements and real boundaries; fewer lines or dependencies alone do not establish simplicity. Preserve required security, accessibility, recovery and maintainability. Escalate only genuine unresolved authority or contract conflicts with evidence, viable options and the work that can continue.

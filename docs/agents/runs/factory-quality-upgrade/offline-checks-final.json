@@ -1,0 +1,166 @@
+[
+  {
+    "name": "metadata",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/package_plugin.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.15,
+    "log": "/tmp/pentapro-quality-checks/metadata.log",
+    "log_sha256": "d5cb9a4a5d1eb16c8c5311e6a8b4d0b72d1ab29c259254ef740b619fcc52b618",
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "collection",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/validate_collection.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.71,
+    "log": "/tmp/pentapro-quality-checks/collection.log",
+    "log_sha256": "e37e6174254569ad07f56ba510b5cb18de700f18aa0443176a65d17c62cdc403",
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "cases",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/run_skill_evals.py",
+      "--check-cases"
+    ],
+    "exit_code": 0,
+    "seconds": 0.11,
+    "log": "/tmp/pentapro-quality-checks/cases.log",
+    "log_sha256": "db9b8d042babfba99d8556e1b1728276a8a5e506019caade834e0c33e7d34b83",
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "root-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 31.05,
+    "log": "/tmp/pentapro-quality-checks/root-python.log",
+    "log_sha256": "661b1a64259152970975ab6d9dc9a5f8fb5197c4d880db7b6173cb081e9869df",
+    "tests": 130,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "penta-pro",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/penta-pro/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.47,
+    "log": "/tmp/pentapro-quality-checks/penta-pro.log",
+    "log_sha256": "835367b6b47a86c15181938f5a558433ef66ef86816fbd68a71554617bd6f798",
+    "tests": 14,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "web-tools",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/ui-design-web/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 3.51,
+    "log": "/tmp/pentapro-quality-checks/web-tools.log",
+    "log_sha256": "8328c31ad88bbae2799d34ede39a80567cf0558fddad64322090ae262b0822ad",
+    "tests": 26,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "quiz-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/pr-quiz/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 0.17,
+    "log": "/tmp/pentapro-quality-checks/quiz-python.log",
+    "log_sha256": "8634692e0f244bf16b01db0feff1d331d2f554985742c193965c3a5530322d5d",
+    "tests": 15,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "quiz-node",
+    "command": [
+      "node",
+      "skills/pr-quiz/scripts/tests/workflow.cjs"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1,
+    "log": "/tmp/pentapro-quality-checks/quiz-node.log",
+    "log_sha256": "0710d7f87e4fca475e18e0f0af170cf97c81271cdd32afe33daa6237ad094b25",
+    "tests": 27,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "log-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_agents_log.mjs"
+    ],
+    "exit_code": 0,
+    "seconds": 0.48,
+    "log": "/tmp/pentapro-quality-checks/log-node.log",
+    "log_sha256": "3d7f567eaad6cacfa2d847d3c20af8d43e978737aa378e04995d5be25232483f",
+    "tests": 16,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "opencode-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_opencode_plugin.mjs"
+    ],
+    "exit_code": 0,
+    "seconds": 0.16,
+    "log": "/tmp/pentapro-quality-checks/opencode-node.log",
+    "log_sha256": "3e364450211aa627ce16cb9d06e7dc6b73e040f504830681a7c8af870b449f83",
+    "tests": 4,
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  },
+  {
+    "name": "whitespace",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.03,
+    "log": "/tmp/pentapro-quality-checks/whitespace.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence_origin": "Executed after all R1\u2013R3 and pilot code fixes. Subsequent reconciliation changes only assessment/PROOF/PROCESS/lessons; static links/metadata rechecked."
+  }
+]
