@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "final-maintenance-shipping-2026-11-26",
-  "record_version": 3,
+  "record_version": 4,
   "objective": "Review and publish the final factory maintenance and preserved pending repository work",
   "contracts": [
     "docs/maintenance-review-2026-11-26.md",
@@ -14,10 +14,10 @@
     "base_commit": "7be471763b322bec91399e8929c36c47fccd69d0"
   },
   "orchestrator": "main-session",
-  "state": "REVIEW",
+  "state": "DONE",
   "snapshot": {
     "fingerprint": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765",
-    "head": "7be471763b322bec91399e8929c36c47fccd69d0"
+    "head": "5264749a719825336b72adb1bc7d675a9ae31d0a"
   },
   "gates": [
     {
@@ -43,8 +43,8 @@
     {
       "id": "review-and-deliver",
       "owner": "factory_shipper",
-      "status": "running",
-      "evidence": null
+      "status": "done",
+      "evidence": "docs/agents/runs/final-maintenance-shipping-2026-11-26/precommit-review.md; primary commit 5264749a719825336b72adb1bc7d675a9ae31d0a; GitHub Actions run 45860812733 passed."
     }
   ],
   "operations": [
@@ -52,21 +52,21 @@
       "id": "primary-commit",
       "kind": "commit",
       "authorization": "Developer directly requested factory_shipper after comprehensive maintenance review; normal review, commit and push authorized.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "5264749a719825336b72adb1bc7d675a9ae31d0a",
+      "observation": "Created primary commit 5264749a719825336b72adb1bc7d675a9ae31d0a on main; post-hook HEAD matched. Whitespace check passed."
     },
     {
       "id": "primary-push",
       "kind": "push",
       "authorization": "Developer directly requested factory_shipper after comprehensive maintenance review; normal review, commit and push authorized.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "5264749a719825336b72adb1bc7d675a9ae31d0a",
+      "observation": "Pushed explicit refspec to origin main; git ls-remote matched 5264749a719825336b72adb1bc7d675a9ae31d0a. GitHub Actions Validate skill collection run 45860812733 passed."
     }
   ],
   "blockers": [],
-  "next_action": "factory_shipper reviews all pending intended work and checks; orchestrator records ready gates before commit.",
+  "next_action": "Primary source delivery is confirmed. Orchestrator may perform the single bounded administrative receipt closeout, then freeze this run.",
   "history": [
     {
       "record_version": 1,
@@ -83,6 +83,12 @@
     {
       "record_version": 3,
       "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
+    },
+    {
+      "record_version": 4,
+      "state": "DONE",
       "orchestrator": "main-session",
       "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
     }
