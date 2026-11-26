@@ -80,7 +80,7 @@ Ou seja: não precisamos importar o modelo de estado, a aceitação humana, as m
 | 6 | Fila por issues com label como autorização | Médio-alto | Médio | trackers GitHub/GitLab, `software-factory` |
 | 7 | Política permanente para automações | Médio-alto | Médio | referência nova em `software-factory` |
 | 8 | Independência por modelo/provider em risco alto | Médio-alto | Médio | `roles.md`, avaliação |
-| 9 | Benchmark de replay de PRs históricos | Alto (evidência) | Médio-alto | `SKILL-EVALUATION.md`, `evals/` |
+| 9 | Benchmark de replay de PRs históricos | Alto (evidência) | Médio-alto | `docs/SKILL-EVALUATION.md`, `evals/` |
 | 10 | Modelo de maturidade da fábrica | Médio-alto (adoção) | Baixo | `README.md` ou guia da fábrica |
 
 ---
@@ -274,11 +274,11 @@ O resultado deve ser `Ready`, `Blocked` ou `Ready with limitations`, com o que f
 
 **Por que.** As notas de `best-software-factory.md` dizem que “the best benchmark is your own history: replay past PRs to compare models and setups on cost versus quality”. Nossa avaliação atual é baseada em cenários sintéticos e casos autorais; replay aumenta validade ecológica e testa o workflow contra defeitos reais.
 
-**Onde encaixa.** `SKILL-EVALUATION.md` e `evals/` (metodologia + um piloto com 3–5 PRs). Não substitui os cenários sintéticos; complementa.
+**Onde encaixa.** `docs/SKILL-EVALUATION.md` e `evals/` (metodologia + um piloto com 3–5 PRs). Não substitui os cenários sintéticos; complementa.
 
 **Cuidados.** PRs públicos podem estar no treino do modelo; usar hold-out, repos privados ou períodos recentes. Evidência de um repositório não vira benchmark universal. Não comparar modelos sem fixar tarefa, ferramentas, permissões, estado inicial e checks.
 
-**Evidência externa.** `best-software-factory.md` e a prática de avaliação do nosso próprio `SKILL-EVALUATION.md`.
+**Evidência externa.** `best-software-factory.md` e a prática de avaliação do nosso próprio `docs/SKILL-EVALUATION.md`.
 
 ---
 
@@ -572,7 +572,7 @@ Relatório de avaliação de `/home/dever/workspace/software-factory` (leitura a
 5. **Medição de custo por job** (`factory/bin/job` `cost_usd`, `DESIGN.md:108-116`): somar tokens de transcrições de subagentes e precificar com `prices_usd_per_mtok`. Métrica direta de "custo por mudança aceita" da `best-software-factory.md:230`.
 6. **Dashboard** (`factory/dashboard.html`): board de jobs com chips de gate/review por round, custo, tempo, links de issue/PR. Boa referência para um painel de observabilidade da fábrica.
 7. **Exemplos de jobs completos** (`examples/jobs/`): `spec.md`, `build.md`, `intake.md`, `decision.md` são ótimos fixtures para treinar/avaliar agentes da fábrica e para documentar o padrão de especificação aceito.
-8. **Princípios de small batches e DoD** (`best-software-factory.md`): fluxo de 10 passos, checklist 0/9 de Definition of Done, métricas DORA-alinhadas e as 3 regras para o pilar PROCESS. Conteúdo direto para enriquecer `PENTAPRO` e `SKILL-EVALUATION.md`.
+8. **Princípios de small batches e DoD** (`best-software-factory.md`): fluxo de 10 passos, checklist 0/9 de Definition of Done, métricas DORA-alinhadas e as 3 regras para o pilar PROCESS. Conteúdo direto para enriquecer `PENTAPRO` e `docs/SKILL-EVALUATION.md`.
 9. **Convenção de arquivos** (`arquivos-projeto.md`): separar `AGENTS.md` (instruções), `MEMORY.md` (estado), ADR (`docs/adr/`), e especificações SDD em `specs/`. Complementa a organização da coleção.
 10. **Karpathy guidelines** (`karpathy-guidelines/SKILL.md`:1-67): diretrizes de simplicidade, mudanças cirúrgicas e critérios de sucesso verificáveis — aplicáveis como skill transversal da coleção PentaPRO.
 11. **Diagrama de fluxo** (`software-factory.jpeg`): Triggers → Triage → Spec → Implement → Review → Verify → Ship (PR/Merge/Deploy) → Monitor, com telemetria (Cost per PR, Cycle time, Human touches per PR) e observer agents. Boa referência visual para documentar nossa fábrica.

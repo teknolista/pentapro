@@ -4,7 +4,7 @@ This historical report records recommendations against earlier package revisions
 
 ## Project Overview
 
-This review considered **22 skills**. The [current catalog](README.md#available-skills) lists the maintained packages. The reviewed collection assisted developers building software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Ship, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
+This review considered **22 skills**. The [current catalog](../README.md#available-skills) lists the maintained packages. The reviewed collection assisted developers building software with AI coding agents. The skills cover the full software development lifecycle: specification (PentaPRO), implementation (HTTP API, MCP, Android), testing (unit, integration, UI), review (Peer Review, Cybersecurity), delivery (Git Ship, Software Delivery, Production Operations), and guidance (Agent Instructions, PR Quiz).
 
 A prior closure review took place on 2026-11-06, with all 21 skill packages passing structural validation and executable checks. This report identifies improvement opportunities to ensure these skills remain the most effective tools for helping developers build high-quality, secure software.
 
@@ -26,7 +26,7 @@ The project mentions the option to incorporate SDD with OpenSpec, but several sk
 ### 1.2 Executable Check Expansion
 Several skills have verification sections but could benefit from more systematic executable check patterns:
 
-- **Peer Review** (`skills/peer-review/SKILL.md`): Expand the "Examine evidence" workflow to include systematic mutation testing probes and automated assertion effectiveness checks. Reference the [verification guide](skills/peer-review/references/verification.md) more explicitly for test effectiveness patterns.
+- **Peer Review** (`skills/peer-review/SKILL.md`): Expand the "Examine evidence" workflow to include systematic mutation testing probes and automated assertion effectiveness checks. Reference the [verification guide](../skills/peer-review/references/verification.md) more explicitly for test effectiveness patterns.
 
 - **Cybersecurity** (`skills/cybersec/SKILL.md`): Add systematic scan integration guidance that distinguishes between "evidence of controls observed in source" vs. "deployed/runtime evidence." Include guidance on when to use static vs. dynamic analysis.
 

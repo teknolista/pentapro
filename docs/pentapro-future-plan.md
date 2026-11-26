@@ -112,7 +112,7 @@ Expected cost/quality benefits are hypotheses. The historical ChuteGo invocation
 - **Potential value:** Evaluate realistic changes against their pre-change state alongside synthetic controls.
 - **Potential conflict:** Solution leakage, known public PRs, grader access, selection bias and unequal environments can produce misleading comparisons. A few web PRs cannot support all-software claims.
 - **Questions to resolve:** What is available to the task model versus the grader? How is the task reconstructed without giving away the accepted implementation? Which cases represent the decision and how are failures/skips retained?
-- **Likely owner / bounded approach:** Existing `SKILL-EVALUATION.md`, package evaluation procedure and isolated `evals/`. Do not start external Codex instances for ordinary work or model trials without a later explicit evaluation scope consistent with host/user constraints.
+- **Likely owner / bounded approach:** Existing `docs/SKILL-EVALUATION.md`, package evaluation procedure and isolated `evals/`. Do not start external Codex instances for ordinary work or model trials without a later explicit evaluation scope consistent with host/user constraints.
 - **Study acceptance and counter-controls:** Behavioral grading accepts a different correct architecture, rejects a seeded regression and includes actual access/isolation checks. Keep tools, permissions, budgets and starting state comparable. Private/recent examples do not prove absence of contamination.
 - **Promotion condition / fallback:** Define isolation and grading before a small diverse pilot; expand only on evidence. Otherwise retain the original matched synthetic/vertical experiment. Report uncertainty and maintain original independent evaluation requirements.
 

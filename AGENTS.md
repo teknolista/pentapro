@@ -30,10 +30,10 @@ Before appending, check the Git index for `AGENTS.log` and `AGENTS.log.*`; if an
 
 - [README.md](README.md) owns the collection catalog, installation guidance, compatibility notes, and maintenance commands.
 - `plugin.json` owns PentaPRO plugin identity/version and its skill paths. `scripts/package_plugin.py` owns generated host metadata and non-destructive local exports; [distribution notes](docs/plugin-distribution.md) record supported routes and actual evidence. Keep the skill sources under `skills/` canonical.
-- [SKILL-ROUTING.md](SKILL-ROUTING.md) owns skill boundaries and integration choices. Select a skill by the requested outcome; keep ordinary edits proportionate.
+- [SKILL-ROUTING.md](docs/SKILL-ROUTING.md) owns skill boundaries and integration choices. Select a skill by the requested outcome; keep ordinary edits proportionate.
 - Each directory under `skills/` owns its `SKILL.md` entrypoint and any package-local `references/`, `assets/`, `agents/`, `scripts/`, and `evals/` resources. Inspect callers before changing shared templates or helpers.
 - [scripts/validate_collection.py](scripts/validate_collection.py) validates collection metadata, links, catalogs, licenses, and standalone package portability. [The CI workflow](.github/workflows/validate.yml) defines automated collection checks.
-- [SKILL-EVALUATION.md](SKILL-EVALUATION.md) owns the evaluation procedure. Root `evals/` contains synthetic fixtures, policy overlays, cases, and recorded trials. Instruction files inside fixtures apply to those simulated projects, not to collection maintenance.
+- [SKILL-EVALUATION.md](docs/SKILL-EVALUATION.md) owns the evaluation procedure. Root `evals/` contains synthetic fixtures, policy overlays, cases, and recorded trials. Instruction files inside fixtures apply to those simulated projects, not to collection maintenance.
 - `skills/software-factory/references/run-records.md` owns execution-record persistence; its package-local helper validates checkpoints. The project directory guide is `docs/agents/runs/README.md`.
 - `docs/` contains developer guides and case studies. [The software-factory design](docs/software-factory-workflow.md) provides design context; [Software Factory](skills/software-factory/SKILL.md) owns the reusable execution workflow. Historical review reports describe their evaluated snapshots; verify current source before reusing their conclusions.
 

@@ -1,10 +1,10 @@
 # Evaluating software development skills
 
-The canonical [evaluation procedure](skills/agent-instructions/references/evaluation.md) is bundled with the portable [Agent Instructions skill](skills/agent-instructions/SKILL.md). It covers candidate screening, matched baseline trials, routing controls, evidence, cost and adoption decisions.
+The canonical [evaluation procedure](../skills/agent-instructions/references/evaluation.md) is bundled with the portable [Agent Instructions skill](../skills/agent-instructions/SKILL.md). It covers candidate screening, matched baseline trials, routing controls, evidence, cost and adoption decisions.
 
 See the [initial assessment](SKILL-ASSESSMENT.md) and [closure review](COLLECTION-REVIEW.md) for executed checks and their limits. Maintenance records are not loaded during ordinary application work.
 
-The [frontier-model trial record](evals/RESULTS.md) reports the first baseline and candidate runs with GPT-6.1 Terra and GPT-6.1 Sol.
+The [frontier-model trial record](../evals/RESULTS.md) reports the first baseline and candidate runs with GPT-6.1 Terra and GPT-6.1 Sol.
 
 The [final maintenance review](FINAL-SKILL-REVIEW.md) records the subsequent per-skill assessment, corrections and verification limits.
 
@@ -69,7 +69,7 @@ The runner records the seed and hashes of the evaluator files with `--grade`. Ea
 
 ## Score the outputs
 
-- **Production target mismatch.** Check that the plan distinguishes the runner's wrong workload target from a legitimate separate federation project, holds all live actions, and gives a usable staging handoff. Require a single resumable migration execution, compatibility with the old writer and proof on a tagged revision before shifting traffic. Check the tool trace for writes and distinguish suggested from observed evidence. See the [package scenarios](skills/production-operations/evals/scenarios.md) for further cases.
+- **Production target mismatch.** Check that the plan distinguishes the runner's wrong workload target from a legitimate separate federation project, holds all live actions, and gives a usable staging handoff. Require a single resumable migration execution, compatibility with the old writer and proof on a tagged revision before shifting traffic. Check the tool trace for writes and distinguish suggested from observed evidence. See the [package scenarios](../skills/production-operations/evals/scenarios.md) for further cases.
 
 - **Stale green deployment.** Distinguish the applied candidate from the revision serving normal traffic. The candidate failed the tagged write check. Expect promotion held, current traffic preserved, and the missing job-effect evidence identified. Verify the assessment used only supplied observations.
 - **Receipt delivery.** Compare changed paths and contract files first. The independent checker exercises tenant and key isolation, exact and conflicting replay, and rejected calls with the registered seed. To grade a retained workspace, substitute its path in the checker command above. Review whether generated regressions catch both seeded defects when run against the original handler inside a suitable execution boundary. Check the claimed results in the event log and compare owner selection and effort separately from correctness.
@@ -99,11 +99,11 @@ For a project pilot, compare changes of similar consequence. Track time spent cl
 
 ## Reproduce the MCP SDK smoke test
 
-In an isolated Python development environment, install the optional pinned SDK with `python3 -m pip install -r evals/requirements-mcp.txt` and run `python3 evals/check_mcp_sdk.py`. The [fixture](evals/check_mcp_sdk.py) uses the official server and a modern SDK client through in-process ASGI, with explicit legacy wire requests and a simulated lost response. Its synthetic principals, in-memory effects, and JSON response mode exercise routing and application checks in that fixture. Deployments still need their actual authentication, persistence, transports, and clients verified.
+In an isolated Python development environment, install the optional pinned SDK with `python3 -m pip install -r evals/requirements-mcp.txt` and run `python3 evals/check_mcp_sdk.py`. The [fixture](../evals/check_mcp_sdk.py) uses the official server and a modern SDK client through in-process ASGI, with explicit legacy wire requests and a simulated lost response. Its synthetic principals, in-memory effects, and JSON response mode exercise routing and application checks in that fixture. Deployments still need their actual authentication, persistence, transports, and clients verified.
 
 
 Missing top-level `mcp` or `httpx2` makes the smoke exit 2 with an incomplete diagnostic; no protocol checks ran. A present but incompatible SDK still fails. Exit 2 is not a passing result. No SDK is installed by ordinary collection validation.
 
 ## Factory persistence controls
 
-The [execution-state validation record](docs/factory-run-persistence.md) reports the local recovery controls for source changes after review, concurrent/stale checkpoints, failed writes and uncertain effects. Root offline tests discover these controls automatically. Their outcomes establish helper behavior on disposable fixtures; authored matching/ambiguous/non-matching agent scenarios and future real host/model trials remain separate evidence.
+The [execution-state validation record](factory-run-persistence.md) reports the local recovery controls for source changes after review, concurrent/stale checkpoints, failed writes and uncertain effects. Root offline tests discover these controls automatically. Their outcomes establish helper behavior on disposable fixtures; authored matching/ambiguous/non-matching agent scenarios and future real host/model trials remain separate evidence.

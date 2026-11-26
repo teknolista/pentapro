@@ -269,6 +269,7 @@ prettierignore.txt
 .vibes/
 .agents/
 .skills/
+.codex/
 .cursor/
 .cursorrules
 .windsurfrules

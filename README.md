@@ -1,6 +1,6 @@
 # PentaPRO — AI software development collection
 
-**PentaPRO** is a collection of reusable skills for developers building software with AI coding agents. Its `penta-pro` specification skill turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](SKILL-ROUTING.md). Each skill can be used independently.
+**PentaPRO** is a collection of reusable skills for developers building software with AI coding agents. Its `penta-pro` specification skill turns intent into an actionable specification; Peer Review checks implementation against requirements and concrete evidence; Cybersecurity assesses security risks and controls across software, DevOps, and IT systems. UI Design turns requirements into screen and interaction specifications for web and Android, with authorized implementation and verification. The collection covers specification, implementation, research, testing, review, security, Git publication, production operations and agent guidance. Optional native Android implementation/test helpers and a generic PR quiz complement them; see [skill ownership](docs/SKILL-ROUTING.md). Each skill can be used independently.
 
 The collection's skill instructions and reusable artifacts are written in English. Conversation uses the developer's preferred language. For a project README, Setup PentaPRO uses the language the developer selects.
 
@@ -204,7 +204,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [Android UI testing](skills/android-ui-testing/SKILL.md) | 1.3.0 | Author/run/debug native device/emulator Compose tests. |
 | [PR Quiz](skills/pr-quiz/SKILL.md) | 2.0.0 | Explicitly requested PR decision-comprehension aid, separate from review approval. |
 
-The [routing and consolidation map](SKILL-ROUTING.md) records the 14 Android/quiz source skills. The [closure review](COLLECTION-REVIEW.md) maps all 54 entrypoints in the two requested upstream repositories. Four Android UI skills are internal UI Design procedures; Android security is a Cybersecurity reference. Those five overlapping names are deliberately not separate installable skills.
+The [routing and consolidation map](docs/SKILL-ROUTING.md) records the 14 Android/quiz source skills. The [closure review](docs/COLLECTION-REVIEW.md) maps all 54 entrypoints in the two requested upstream repositories. Four Android UI skills are internal UI Design procedures; Android security is a Cybersecurity reference. Those five overlapping names are deliberately not separate installable skills.
 
 The current collection contains **24 skills**. It is a curated adaptation, not a mirror of upstream packages. Matt Pocock or Superpowers are not required as separate installations.
 
@@ -239,7 +239,7 @@ For consequential work or when the project requires spec-driven development (SDD
 
 Follow the native change contract at `pentapro/changes/<name>/`. Review the six fixed artifacts before dependent implementation, preserve the maintained baseline while building, and map the accepted scenarios to real entry-point checks. The change remains active until result acceptance, consolidation and archival. [Delivery example](skills/software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd) · [Specification ownership](skills/penta-pro/references/document-maintenance.md#change-ownership)
 
-If you require the entire selected scope specified before coding, say so in the request or project policy. Otherwise settle each increment's behavior, constraints and checks before implementing that increment. Give the agent autonomy over routine implementation choices within the agreed scope. Keep verification and any release authority explicit. For a hosted backend, use [Production Operations](#production-operations) when planning environments, configuring the release pipeline or carrying out an authorized deployment and verifying the running service. The [routing guide](SKILL-ROUTING.md#choose-the-depth-of-the-workflow) shows how to apply this to common tasks.
+If you require the entire selected scope specified before coding, say so in the request or project policy. Otherwise settle each increment's behavior, constraints and checks before implementing that increment. Give the agent autonomy over routine implementation choices within the agreed scope. Keep verification and any release authority explicit. For a hosted backend, use [Production Operations](#production-operations) when planning environments, configuring the release pipeline or carrying out an authorized deployment and verifying the running service. The [routing guide](docs/SKILL-ROUTING.md#choose-the-depth-of-the-workflow) shows how to apply this to common tasks.
 
 ## Start a pilot
 
@@ -247,7 +247,7 @@ If you require the entire selected scope specified before coding, say so in the 
 2. Install the primary skill and any specialist the work needs. For direct work, start with the agreed behavior and focused check. For vibe coding, define what the isolated experiment should demonstrate. Use the [prototype promotion example](skills/software-delivery/references/change-contracts.md#worked-example-of-adopting-a-prototype) if it will become maintained code.
 3. Open or resume a native change with the factory. Link its five-dimensional specification and acceptance scenarios to checks through the actual product entry point; retain revision-bound evidence and pending gates. Use the [delivery example](skills/software-delivery/references/change-contracts.md#worked-example-with-project-native-sdd).
 4. Run a working control and a meaningful failure check where the risk warrants it. Record the command, revision, result and any required check still pending in the project's existing PR or verification record. For consequential changes, follow the project's review, security and release gates. Record what a new session would need to resume.
-5. Use the [pilot measurement procedure](SKILL-EVALUATION.md#score-the-outputs) to compare outcomes and record friction or failures. See the [adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md) for the rationale and sequence.
+5. Use the [pilot measurement procedure](docs/SKILL-EVALUATION.md#score-the-outputs) to compare outcomes and record friction or failures. See the [adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md) for the rationale and sequence.
 
 A pilot can begin with a local test and synthetic inputs. Hosted deployment, native device coverage, third-party integration, and comparative model runs need the corresponding target tools and access.
 
@@ -332,7 +332,7 @@ The core instructions use Markdown and package-local references and templates. S
 5. For a hosted backend, try a plan or staging configuration with `$production-operations`. Use the [deployment brief](skills/production-operations/assets/deployment-brief.md) to identify the exact target, access and permitted effects. Verify the running revision and a critical path if deployment is in scope.
 6. Inspect the actual artifacts and verification evidence. Confirm that the result meets the requested behavior, preserves existing constraints and names untested boundaries. Review and release follow the project's own gates. Resume material work from its saved contracts and evidence.
 
-The collection supplies reusable methods and selected platform procedures. Generic workflows apply across stacks, with implementation procedures for native Android, web UI, HTTP APIs and MCP, and deployment guides for AWS, Azure, Google Cloud, Cloudflare and VPS. Other stacks require their own tooling and applicable documentation. Installation, a generated specification and passing collection tests do not certify the software produced with these skills. Consult the [maintenance review](FINAL-SKILL-REVIEW.md) and [evaluation results](evals/RESULTS.md) for the scope actually checked.
+The collection supplies reusable methods and selected platform procedures. Generic workflows apply across stacks, with implementation procedures for native Android, web UI, HTTP APIs and MCP, and deployment guides for AWS, Azure, Google Cloud, Cloudflare and VPS. Other stacks require their own tooling and applicable documentation. Installation, a generated specification and passing collection tests do not certify the software produced with these skills. Consult the [maintenance review](docs/FINAL-SKILL-REVIEW.md) and [evaluation results](evals/RESULTS.md) for the scope actually checked.
 
 ## Agent and model compatibility
 
@@ -792,7 +792,7 @@ Maintain portable software-development agent guidance. Read [skills/agent-instru
 
 ## Native Android implementation and testing
 
-These helpers implement concrete native Kotlin/JVM/Android changes. They do not create another specification or assessment workflow. Design and implement Android screens through UI Design's conditional Compose/presentation/navigation references; assess Android security through Cybersecurity's Android controls. Review source and test effectiveness through Peer Review. [Ownership and every source destination](SKILL-ROUTING.md) explain the boundaries.
+These helpers implement concrete native Kotlin/JVM/Android changes. They do not create another specification or assessment workflow. Design and implement Android screens through UI Design's conditional Compose/presentation/navigation references; assess Android security through Cybersecurity's Android controls. Review source and test effectiveness through Peer Review. [Ownership and every source destination](docs/SKILL-ROUTING.md) explain the boundaries.
 
 | Helper | Example request | Main supporting resources |
 | --- | --- | --- |
@@ -829,7 +829,7 @@ The template supplies rules for native changes, scoped work, implementation, val
 
 See the [2026-11-25 harness review](docs/harness-review-2026-11-25.md) for the current maintenance checks, script/test inventory and remaining readiness limits.
 
-The PDFs are Portuguese teaching editions dated November 2026. The development guide shows 22 skills and the Castas retrospective shows 21; their five-file PentaPRO examples predate the repository-root topic layout. Follow the current [catalog](#available-skills), [routing map](SKILL-ROUTING.md) and [PentaPRO skill](skills/penta-pro/SKILL.md) for new projects and specification updates. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. These PDFs are historical teaching material; use the native lifecycle and migration guide for current adoption.
+The PDFs are Portuguese teaching editions dated November 2026. The development guide shows 22 skills and the Castas retrospective shows 21; their five-file PentaPRO examples predate the repository-root topic layout. Follow the current [catalog](#available-skills), [routing map](docs/SKILL-ROUTING.md) and [PentaPRO skill](skills/penta-pro/SKILL.md) for new projects and specification updates. The installed `SKILL.md`, this catalog, and the target tool's documentation govern current commands and versions. These PDFs are historical teaching material; use the native lifecycle and migration guide for current adoption.
 
 - [Development with agents](docs/guia-consolidado-desenvolvimento-com-agentes.pdf) covers direct changes, vibe coding and prototype promotion, project-native SDD and OpenSpec, Android, web, desktop, HTTP APIs, MCP servers, workers, and deployment. The revised edition explains OpenSpec 2.0 discovery and distinguishes delta validation from verification of the consolidated capability.
 - [Castas Android retrospective](docs/relatorio-retrospectiva-castas-android.pdf) shows how environment checks, cross-platform parity, device tests and release evidence changed during one project.
@@ -837,7 +837,7 @@ The PDFs are Portuguese teaching editions dated November 2026. The development g
 - [Software factory v1 comparison](docs/software-factory-v1-comparison.md) explains the current portable package and remaining pilot evidence. The [original factory proposal](docs/software-factory-workflow.md) is a dated design record.
 - [Greenfield and brownfield scenarios](docs/pentapro-cenarios-sdd.md) explain the native lifecycle in Portuguese, including authority, bounded correction and resumption.
 - [Guia da fábrica para changes](docs/guia-fabrica-changes.md) is a Portuguese checklist for setting up a project, requesting a change, reviewing delivery and conducting the retrospective.
-- [Adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md), [evaluation procedure](SKILL-EVALUATION.md) and [maintenance review](FINAL-SKILL-REVIEW.md) describe how to adopt or evaluate changes to the collection.
+- [Adoption plan](docs/ANTHROPIC-ADOPTION-PLAN.md), [evaluation procedure](docs/SKILL-EVALUATION.md) and [maintenance review](docs/FINAL-SKILL-REVIEW.md) describe how to adopt or evaluate changes to the collection.
 
 ## Repository structure
 
@@ -852,19 +852,13 @@ pentapro/
 ├── .github/agents/            Tracked Copilot role definitions
 ├── LICENSE
 ├── THIRD-PARTY-NOTICES.md
-├── SKILL-ROUTING.md
-├── SKILL-EVALUATION.md
-├── SKILL-ASSESSMENT.md
-├── COLLECTION-REVIEW.md
-├── FINAL-SKILL-REVIEW.md
-├── REVIEW-REPORT.md
 ├── plugin.json                 PentaPRO package identity and source skill list
 ├── package.json                Generated OpenCode Git/local package metadata
 ├── plugin/                     OpenCode adapter and generated skill catalog
 ├── .codex-plugin/              Codex compatibility manifest
 ├── .antigravity-plugin/        Antigravity overlay
 ├── .claude-plugin/             Compatibility marketplace catalog
-├── docs/                       Guides, reviews and docs/agents/ records
+├── docs/                       Guides, routing, reviews and docs/agents/ records
 ├── .github/workflows/validate.yml
 ├── evals/
 ├── scripts/
@@ -938,7 +932,7 @@ The documentation and maintenance directories serve different readers:
 
 - `docs/` holds the [guides and case studies](#guides-and-case-studies) for developers and maintainers.
 - `evals/` holds [evaluation cases](evals/cases.json), synthetic project fixtures, project-policy overlays, independent checks, and [trial results](evals/RESULTS.md). These let maintainers compare agent behavior on the same tasks and inspect the resulting artifacts.
-- `scripts/` holds the [collection validator](scripts/validate_collection.py), its dependency list, the [evaluation runner](scripts/run_skill_evals.py), and offline validator/runner tests. Use the [validation instructions](#validation-and-improvement) and [evaluation procedure](SKILL-EVALUATION.md) from a checkout of the collection. A full repository clone includes both directories.
+- `scripts/` holds the [collection validator](scripts/validate_collection.py), its dependency list, the [evaluation runner](scripts/run_skill_evals.py), and offline validator/runner tests. Use the [validation instructions](#validation-and-improvement) and [evaluation procedure](docs/SKILL-EVALUATION.md) from a checkout of the collection. A full repository clone includes both directories.
 
 Inside a skill package, `SKILL.md` contains metadata and runtime instructions. Optional `agents/` files adapt host presentation, `assets/` holds output templates, and `references/` holds conditional detail. Some packages also carry their own `evals/` maintenance cases or `scripts/` helpers and tests. These nested directories belong to the package and can accompany its installation. For example, UI Design carries its [local prototype helper](skills/ui-design/scripts/prototype_tools.py). Create only the directories a skill needs.
 
@@ -948,9 +942,9 @@ Authoring was checked against [OpenAI's skill guide](https://learn.chatgpt.com/d
 
 ### Validation and improvement
 
-Install the maintainer dependency with `python3 -m pip install -r scripts/requirements-validation.txt` in a development environment. Run `python3 scripts/validate_collection.py` from this repository root. It checks frontmatter, local inline links and ATX-heading anchors outside fenced examples, catalog versions, licenses, installation coverage, and supported optional `agents/openai.yaml` fields. Relative links in shipped packages must resolve inside the package, including after a standalone install. Refer to optional companions by name and give maintainers upstream links for provenance. The [validation workflow](.github/workflows/validate.yml) runs the collection gate and offline Python and Node helper tests. Model trials and runtime compatibility checks use the [evaluation procedure](SKILL-EVALUATION.md).
+Install the maintainer dependency with `python3 -m pip install -r scripts/requirements-validation.txt` in a development environment. Run `python3 scripts/validate_collection.py` from this repository root. It checks frontmatter, local inline links and ATX-heading anchors outside fenced examples, catalog versions, licenses, installation coverage, and supported optional `agents/openai.yaml` fields. Relative links in shipped packages must resolve inside the package, including after a standalone install. Refer to optional companions by name and give maintainers upstream links for provenance. The [validation workflow](.github/workflows/validate.yml) runs the collection gate and offline Python and Node helper tests. Model trials and runtime compatibility checks use the [evaluation procedure](docs/SKILL-EVALUATION.md).
 
-To reproduce the local collection checks, use a POSIX development environment with Git, Python 3.12+ and Node.js 24, matching the CI runtime family. After installing the dependency above, run these commands from the collection root. The validator tests use disposable Git inventories. The root suite also runs isolated execution-state recovery controls, with source-change, failed-write and uncertain-effect cases; see [persistence evidence](docs/factory-run-persistence.md). The evaluator isolation cases need Linux with Bubblewrap and libseccomp, and native SDD fixtures need only the documented local test prerequisites. Check the test summary for skips. The quiz tests use API doubles. [Evaluation prerequisites](SKILL-EVALUATION.md)
+To reproduce the local collection checks, use a POSIX development environment with Git, Python 3.12+ and Node.js 24, matching the CI runtime family. After installing the dependency above, run these commands from the collection root. The validator tests use disposable Git inventories. The root suite also runs isolated execution-state recovery controls, with source-change, failed-write and uncertain-effect cases; see [persistence evidence](docs/factory-run-persistence.md). The evaluator isolation cases need Linux with Bubblewrap and libseccomp, and native SDD fixtures need only the documented local test prerequisites. Check the test summary for skips. The quiz tests use API doubles. [Evaluation prerequisites](docs/SKILL-EVALUATION.md)
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/package_plugin.py --check
@@ -966,11 +960,11 @@ node --test scripts/tests/test_opencode_plugin.mjs
 git diff --check
 ```
 
-These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](SKILL-EVALUATION.md).
+These are collection-maintenance prerequisites, not requirements for reading or installing each skill manually. Model trials and the optional MCP SDK smoke test have separate setup and evidence limits in the [evaluation procedure](docs/SKILL-EVALUATION.md).
 
 See the [script/test and readiness assessment](docs/harness-review-2026-11-23.md) and [review history index](docs/reviews.md) for the current evidence and historical report scope.
 
-Use the [evaluation procedure and synthetic Codex trials](SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [review-report follow-up](docs/review-followup-2026-11-22.md) records the latest bounded corrections, fresh checks and limits. The [native SDD maintenance review](docs/native-sdd-review.md) preserves its migration checks and limits. The [earlier maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md) preserves its evaluated snapshot. The [earlier closing maintenance audit](docs/maintenance-review-2026-11-21.md) records its evaluated snapshot; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](SKILL-ASSESSMENT.md) and [collection review](COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
+Use the [evaluation procedure and synthetic Codex trials](docs/SKILL-EVALUATION.md) to decide whether to add, revise, or retire a skill. The [review-report follow-up](docs/review-followup-2026-11-22.md) records the latest bounded corrections, fresh checks and limits. The [native SDD maintenance review](docs/native-sdd-review.md) preserves its migration checks and limits. The [earlier maintenance follow-up](docs/maintenance-final-follow-up-2026-11-21.md) preserves its evaluated snapshot. The [earlier closing maintenance audit](docs/maintenance-review-2026-11-21.md) records its evaluated snapshot; historical reports and exported PDFs retain their original snapshot and do not establish current behavior. The [software factory assessment](docs/SKILL-ASSESSMENT.md) and [collection review](docs/COLLECTION-REVIEW.md) retain earlier source decisions and validation limits. The [final maintenance review](docs/FINAL-SKILL-REVIEW.md) records the later per-package assessment and distribution review.
 
 Git Ship was renamed from `git-delivery` in version 2.0.0. The package directory, frontmatter `name` and invocation are `git-ship`. The earlier name is not retained as a forwarding alias, because a second entrypoint would create duplicate discovery. Remove an older `git-delivery` copy when upgrading a project and update references that invoke it.
 
@@ -982,9 +976,9 @@ The Elephant & Goldfish Model informed PentaPRO's hypothesis challenge and revie
 
 Use each skill's evaluation cases before expanding its instructions. Compare matched tasks with and without the skill on the models and hosts actually used. Check activation, preserved decisions, invented facts, unnecessary questions, substantiated defects, false positives, material misses, coverage honesty, and unintended actions. Record actual time and usage when available, and retest after relevant model or instruction changes.
 
-The collection review on 2026-11-06 strengthened handoffs across all 13 skills, retained project-owned contracts and made sample stacks conditional. Android corrections clarify Koin worker parameters, periodic-work termination, account-scoped commit races, pure StateFlow updates and version-sensitive build/test configuration. The optional PR quiz now separates reflected text from bot control markers, rejects ambiguous blocks/keys, renders question text literally and pins its action dependency to an official release commit with narrower permissions. Its grading remains an educational aid. Existing guidance covers safe test execution, staged versus working-file review, type/model limits, design fidelity and companion-document ownership. See the [validation scope and maintenance record](SKILL-ROUTING.md#validation-scope) for actual results and remaining limits; these checks do not establish reliability on every model.
+The collection review on 2026-11-06 strengthened handoffs across all 13 skills, retained project-owned contracts and made sample stacks conditional. Android corrections clarify Koin worker parameters, periodic-work termination, account-scoped commit races, pure StateFlow updates and version-sensitive build/test configuration. The optional PR quiz now separates reflected text from bot control markers, rejects ambiguous blocks/keys, renders question text literally and pins its action dependency to an official release commit with narrower permissions. Its grading remains an educational aid. Existing guidance covers safe test execution, staged versus working-file review, type/model limits, design fidelity and companion-document ownership. See the [validation scope and maintenance record](docs/SKILL-ROUTING.md#validation-scope) for actual results and remaining limits; these checks do not establish reliability on every model.
 
-The closing audit additionally corrected external specification/task ownership, effective built-in Kotlin mode, literal-query and update/cascade semantics, final-write account isolation, conditional Android UI examples and strict JSON input handling in both helpers. Regression checks and a bounded PentaPRO forward trial are recorded in [the closure audit](SKILL-ROUTING.md#closing-audit-after-sdd-and-layered-review-integration--2026-11-06). These changes clarify concrete decisions and failure modes without adding mandatory stages or another framework dependency.
+The closing audit additionally corrected external specification/task ownership, effective built-in Kotlin mode, literal-query and update/cascade semantics, final-write account isolation, conditional Android UI examples and strict JSON input handling in both helpers. Regression checks and a bounded PentaPRO forward trial are recorded in [the closure audit](docs/SKILL-ROUTING.md#closing-audit-after-sdd-and-layered-review-integration--2026-11-06). These changes clarify concrete decisions and failure modes without adding mandatory stages or another framework dependency.
 
 Keep active versions in `SKILL.md`, this README, and any versioned output template aligned. When behavior changes, reconcile descriptions, UI metadata, templates, references, and evaluation cases. Validate local links and anchors from each file's location. Retain historical research dates and trial versions with their original scope; a package update does not rerun or broaden earlier evidence.
 

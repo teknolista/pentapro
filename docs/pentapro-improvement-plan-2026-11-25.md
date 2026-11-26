@@ -270,7 +270,7 @@ These are starting points, not an authorization to change every listed file. Ins
 | Alternatives and context discipline | `skills/technical-research/SKILL.md`, `skills/agent-instructions/SKILL.md` | relevant decision templates and assignment contracts |
 | Setup and safe installation updates | `skills/setup-pentapro/SKILL.md`, existing package/update helpers | permanent-section templates, installed baseline/lock handling, preservation tests |
 | Three UI packages | current `skills/ui-design/` source, then the three replacements | all skill/role consumers, package-local references/assets/tools/tests and notices |
-| Routing, distribution, and evaluation | `SKILL-ROUTING.md`, `README.md`, `plugin.json`, `SKILL-EVALUATION.md` | `scripts/package_plugin.py`, collection validation, eval cases, generated host metadata, CI |
+| Routing, distribution, and evaluation | `docs/SKILL-ROUTING.md`, `README.md`, `plugin.json`, `docs/SKILL-EVALUATION.md` | `scripts/package_plugin.py`, collection validation, eval cases, generated host metadata, CI |
 
 Do not silently impose new model tiers. Preserve configured role identities/model/effort by host; a role template is not evidence of host availability or actual selection. Use one record per real execution and the current invocation-event contract, not a new project-wide parallel log.
 
