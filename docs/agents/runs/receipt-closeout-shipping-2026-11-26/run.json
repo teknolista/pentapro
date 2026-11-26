@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "receipt-closeout-shipping-2026-11-26",
-  "record_version": 3,
+  "record_version": 4,
   "objective": "Review and publish the bounded receipt-closeout maintenance",
   "contracts": [
     "pentapro/changes/receipt-closeout/change.md",
@@ -14,10 +14,10 @@
     "base_commit": "d1746784a41c0f745fb5a101f318d0cee3c793d2"
   },
   "orchestrator": "main-session",
-  "state": "VERIFY",
+  "state": "RECORDS",
   "snapshot": {
     "fingerprint": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12",
-    "head": "d1746784a41c0f745fb5a101f318d0cee3c793d2"
+    "head": "1b0a205f4f982a0e3493ef8b137e031815d2502f"
   },
   "gates": [
     {
@@ -43,8 +43,8 @@
     {
       "id": "review-deliver",
       "owner": "factory_shipper",
-      "status": "running",
-      "evidence": null
+      "status": "done",
+      "evidence": "docs/agents/runs/receipt-closeout-shipping-2026-11-26/precommit-review.md; https://github.com/teknolista/pentapro/actions/runs/45855028836"
     }
   ],
   "operations": [
@@ -52,21 +52,21 @@
       "id": "primary-commit",
       "kind": "commit",
       "authorization": "Developer explicitly requested factory_shipper; review, commit and normal push are authorized.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "1b0a205f4f982a0e3493ef8b137e031815d2502f",
+      "observation": "Primary source commit 1b0a205f4f982a0e3493ef8b137e031815d2502f; GitHub Actions run 45855028836 succeeded."
     },
     {
       "id": "primary-push",
       "kind": "push",
       "authorization": "Developer explicitly requested factory_shipper; review, commit and normal push are authorized.",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "1b0a205f4f982a0e3493ef8b137e031815d2502f",
+      "observation": "git ls-remote verified origin/main at 1b0a205f4f982a0e3493ef8b137e031815d2502f; GitHub Actions run 45855028836 succeeded."
     }
   ],
   "blockers": [],
-  "next_action": "Pre-commit gates recorded. Shipper may recheck and stage the exact reviewed snapshot, then publish primary commit and push.",
+  "next_action": "Complete the single optional receipt-only administrative closeout, verify its remote ref and lightweight CI, then freeze tracked run records.",
   "history": [
     {
       "record_version": 1,
@@ -83,6 +83,12 @@
     {
       "record_version": 3,
       "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12"
+    },
+    {
+      "record_version": 4,
+      "state": "RECORDS",
       "orchestrator": "main-session",
       "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12"
     }
