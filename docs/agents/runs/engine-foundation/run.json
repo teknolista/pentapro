@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "engine-foundation",
-  "record_version": 12,
+  "record_version": 13,
   "objective": "Specify the complete Rust Engine and deliver the first reviewed CLI increment while preserving the skill collection",
   "contracts": [
     "pentapro/changes/archive/2026-11-26_engine-foundation/change.md"
@@ -15,7 +15,7 @@
   "state": "SHIP",
   "snapshot": {
     "fingerprint": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
-    "head": "5b39b1bd2c760a4d1c96bd9d05bd28f72dcec6ad"
+    "head": "6feafd52228c41b9603bb3c07d07b9f2436d95a6"
   },
   "gates": [
     {
@@ -78,21 +78,21 @@
       "id": "i1-commit",
       "kind": "commit",
       "authorization": "Developer approval 2026-11-26",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "6feafd52228c41b9603bb3c07d07b9f2436d95a6",
+      "observation": "Commit inspected and remote origin main confirmed exact SHA; CI 45895498934 and 45895498776 succeeded."
     },
     {
       "id": "i1-push",
       "kind": "push",
       "authorization": "Developer approval 2026-11-26",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "6feafd52228c41b9603bb3c07d07b9f2436d95a6",
+      "observation": "Commit inspected and remote origin main confirmed exact SHA; CI 45895498934 and 45895498776 succeeded."
     }
   ],
   "blockers": [],
-  "next_action": "Shipper stages reviewed I1 source and archive, commits and pushes approved snapshot; verify primary remote and CI.",
+  "next_action": "Primary publication and both CI checks confirmed; perform bounded receipt-only closeout.",
   "history": [
     {
       "record_version": 1,
@@ -162,6 +162,12 @@
     },
     {
       "record_version": 12,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51"
+    },
+    {
+      "record_version": 13,
       "state": "SHIP",
       "orchestrator": "main-session",
       "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51"
