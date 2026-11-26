@@ -54,3 +54,7 @@ Choose the project's retention and sanitized Git versioning policy explicitly. N
 ## Using the evidence
 
 At change completion, the retrospective can inspect repeated assignments, rework, handoff waits, overlapping scope and available cost per verified result. Required independent checks retain their purpose even with no findings; fewer calls alone is not greater efficiency. Link useful observations into proposed lessons with context, cause confidence, correction, limits and a next experiment. A successful helper test or synthetic pilot does not establish a motivational effect, all-host capture completeness or a universal process improvement.
+
+## Final receipt boundary
+
+A completed primary shipper invocation is recorded by its orchestrator before the [single administrative closeout](delivery-closeout.md). Administrative commit/push is direct bookkeeping, not another role invocation or event that requires another tracked confirmation. Finish all requested role returns first; freeze tracked records at the administrative push and use Git refs/CI plus the conversation to confirm that final publication. Preserve unknown/failed outcomes and resume only the unfinished operation. This exception never suppresses a real new role invocation or permits fabricated success.

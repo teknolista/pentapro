@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "factory-quality-upgrade",
-  "record_version": 5,
+  "record_version": 6,
   "objective": "Implement P01–P13 factory quality improvements and full harness review",
   "contracts": [
     "pentapro/changes/factory-quality-upgrade/change.md"
@@ -15,7 +15,7 @@
   "state": "RECORDS",
   "snapshot": {
     "fingerprint": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3",
-    "head": "6eaf9b959abbbd3f98673949ad66b1628ff1d7d2"
+    "head": "d1746784a41c0f745fb5a101f318d0cee3c793d2"
   },
   "gates": [
     {
@@ -123,9 +123,26 @@
       "evidence": "pentapro/changes/factory-quality-upgrade/proof.md"
     }
   ],
-  "operations": [],
+  "operations": [
+    {
+      "id": "source-commit",
+      "kind": "commit",
+      "authorization": "Developer explicitly requested factory_shipper after review; normal commit and branch push authorized separately from result acceptance.",
+      "status": "confirmed",
+      "expected_revision": "d1746784a41c0f745fb5a101f318d0cee3c793d2",
+      "observation": "git rev-parse HEAD equals d1746784a41c0f745fb5a101f318d0cee3c793d2"
+    },
+    {
+      "id": "source-push",
+      "kind": "push",
+      "authorization": "Developer explicitly requested factory_shipper after review; normal commit and branch push authorized separately from result acceptance.",
+      "status": "confirmed",
+      "expected_revision": "d1746784a41c0f745fb5a101f318d0cee3c793d2",
+      "observation": "Independent git ls-remote git@github.com:teknolista/pentapro.git refs/heads/main equals d1746784a41c0f745fb5a101f318d0cee3c793d2; validate CI run https://github.com/teknolista/pentapro/actions/runs/45812960519 succeeded"
+    }
+  ],
   "blockers": [],
-  "next_action": "Await developer result acceptance. Default explicit result approval authorizes baseline consolidation, archive, reviewed commit and normal push; no consumer rollout/global changes.",
+  "next_action": "Source commit/push and CI confirmed. Await developer result acceptance before baseline consolidation/archive. These late orchestrator receipts stay local for a future authorized commit; do not repeat confirmed push or create publication solely to update receipts.",
   "history": [
     {
       "record_version": 1,
@@ -153,6 +170,12 @@
     },
     {
       "record_version": 5,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3"
+    },
+    {
+      "record_version": 6,
       "state": "RECORDS",
       "orchestrator": "main-session",
       "snapshot": "9d533d3209ed579b0d8884e5c4ddd225cccf4d8d398f54c845e2e34e4c5729b3"

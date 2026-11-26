@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "run_id": "receipt-closeout-shipping-2026-11-26",
+  "record_version": 3,
+  "objective": "Review and publish the bounded receipt-closeout maintenance",
+  "contracts": [
+    "pentapro/changes/receipt-closeout/change.md",
+    "skills/git-ship/SKILL.md",
+    "skills/software-factory/references/delivery-closeout.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "d1746784a41c0f745fb5a101f318d0cee3c793d2"
+  },
+  "orchestrator": "main-session",
+  "state": "VERIFY",
+  "snapshot": {
+    "fingerprint": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12",
+    "head": "d1746784a41c0f745fb5a101f318d0cee3c793d2"
+  },
+  "gates": [
+    {
+      "id": "source-checks",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12",
+      "evidence": "pentapro/changes/receipt-closeout/checks.json",
+      "reason": "Shipper reconfirmed snapshot-bound Python/Node suites, metadata, collection, eval cases, factory journey, and whitespace checks; see this run precommit-review.md for exact counts and boundaries."
+    },
+    {
+      "id": "shipping-review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12",
+      "evidence": "docs/agents/runs/receipt-closeout-shipping-2026-11-26/precommit-review.md",
+      "reason": "Configured factory_shipper reviewed intended diff, destination, privacy and index; no blocker. Self-review only, not an independent review."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "review-deliver",
+      "owner": "factory_shipper",
+      "status": "running",
+      "evidence": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "primary-commit",
+      "kind": "commit",
+      "authorization": "Developer explicitly requested factory_shipper; review, commit and normal push are authorized.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "primary-push",
+      "kind": "push",
+      "authorization": "Developer explicitly requested factory_shipper; review, commit and normal push are authorized.",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "Pre-commit gates recorded. Shipper may recheck and stage the exact reviewed snapshot, then publish primary commit and push.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12"
+    },
+    {
+      "record_version": 2,
+      "state": "REVIEW",
+      "orchestrator": "main-session",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12"
+    },
+    {
+      "record_version": 3,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "1644eba0cf88e331a6817d0b1bf16a0c67111bd0447e2cdbca49dc574fe42e12"
+    }
+  ]
+}

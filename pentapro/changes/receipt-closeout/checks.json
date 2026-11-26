@@ -1,0 +1,144 @@
+[
+  {
+    "name": "metadata",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/package_plugin.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/metadata.log",
+    "log_sha256": "d5cb9a4a5d1eb16c8c5311e6a8b4d0b72d1ab29c259254ef740b619fcc52b618"
+  },
+  {
+    "name": "collection",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/validate_collection.py"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/collection.log",
+    "log_sha256": "20709efc5f9ec3cd2585d4f82bcdef0d7434618ee847bcacd04608362fc10418"
+  },
+  {
+    "name": "cases",
+    "command": [
+      "/usr/bin/python3",
+      "scripts/run_skill_evals.py",
+      "--check-cases"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/cases.log",
+    "log_sha256": "db9b8d042babfba99d8556e1b1728276a8a5e506019caade834e0c33e7d34b83"
+  },
+  {
+    "name": "root-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/root-python-final.log",
+    "tests": 157,
+    "log_sha256": "d6d2781b97367b075f1691abfc5100dc0c0614111078a19d8d9afd52725c3c28"
+  },
+  {
+    "name": "penta-pro",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/penta-pro/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/penta-pro.log",
+    "tests": 14,
+    "log_sha256": "90bc70b2c1da5324516350ed7d6f02d6759b69497a1e4923c5b69e557643d289"
+  },
+  {
+    "name": "web-tools",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/ui-design-web/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/web-tools.log",
+    "tests": 26,
+    "log_sha256": "164843d9bbbcfb99dfed339cfe9aeb9d4b90eaba42988dd3a4de118f0eba4c58"
+  },
+  {
+    "name": "quiz-python",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "skills/pr-quiz/scripts/tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/quiz-python.log",
+    "tests": 15,
+    "log_sha256": "a8cf2b4e688efb17620d035c4c4a2f39e6db6ccef9a1d2918d8568a196eb3743"
+  },
+  {
+    "name": "quiz-node",
+    "command": [
+      "node",
+      "skills/pr-quiz/scripts/tests/workflow.cjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/quiz-node.log",
+    "tests": 27,
+    "log_sha256": "78b0c32363d5baa112d849f0141389efe79ff4d46674e72c8201b1703b9771e5"
+  },
+  {
+    "name": "log-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_agents_log.mjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/log-node.log",
+    "tests": 16,
+    "log_sha256": "13b993edffb40f044844c4f64c6d0c945cad526c79da16a5f302e79d39afc0e3"
+  },
+  {
+    "name": "opencode-node",
+    "command": [
+      "node",
+      "--test",
+      "scripts/tests/test_opencode_plugin.mjs"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/opencode-node.log",
+    "tests": 4,
+    "log_sha256": "800df26d51f78840177ee53a91e5cc3b5e356538814e5c669fba65386247efbb"
+  },
+  {
+    "name": "whitespace",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "log": "/tmp/pentapro-receipt-checks/whitespace.log",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

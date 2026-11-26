@@ -50,6 +50,8 @@ Inventory: all existing Git-eligible Python, JavaScript, TypeScript and shell fi
 | [evals/check_factory_journey.py](../evals/check_factory_journey.py) | scripts/tests/test_factory_journey.py; clean/seeded subprocess and real PTY controls | Covered for the bounded static synthetic slice; Linux/POSIX PTY required. |
 | [evals/fixtures/terminal-journey/app.py](../evals/fixtures/terminal-journey/app.py) | scripts/tests/test_factory_journey.py and independent report/viewport checker | Synthetic clean/defective variant, not a maintained product or full interactive TUI. |
 | [scripts/tests/test_factory_journey.py](../scripts/tests/test_factory_journey.py) | Test artifact / runner | Includes wrong decimal/status, injection diagnostics, viewport and hung-descendant sensitivity controls. |
+| [skills/software-factory/scripts/check_delivery_receipts.py](../skills/software-factory/scripts/check_delivery_receipts.py) | scripts/tests/test_delivery_receipts.py | Actual Git-index/tree classification and schema/identity/append-only/primary-publication controls; recorded remote claims still need external verification. |
+| [scripts/tests/test_delivery_receipts.py](../scripts/tests/test_delivery_receipts.py) | Test artifact / disposable Git histories | Covers source/mixed paths, modes, renames, bad JSON, interrupted runs, preserved operations and read-only validation. |
 
 ## Meaningful limits
 

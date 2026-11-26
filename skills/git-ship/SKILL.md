@@ -3,7 +3,7 @@ name: git-ship
 description: Review and package a requested Git commit, normal branch push, or pull request, preserving unrelated work and verifying the published revision. Use for commit, ship, push, or PR preparation. Implementation completion alone does not authorize publication, merge, or deployment.
 license: MIT
 metadata:
-  version: "2.1.1"
+  version: "2.2.0"
 ---
 
 # Ship reviewed Git changes
@@ -43,6 +43,12 @@ Record the reviewed commit ID and destination branch ref before push. Query the 
 Check the outgoing range for credentials and private data, including values introduced and then deleted before the tip. If discovered, stop publication and report the affected path and revision without the value. Coordinate revocation or rotation and any history repair under the actual authority for those actions.
 
 After push, query the actual push destination and compare its branch ID with the intended commit; a success message alone is insufficient. Confirm this without changing local state. Query `git ls-remote --heads <resolved-push-url> refs/heads/<branch>` and compare the result with the recorded commit ID. Use a secret-safe transport or tool when the endpoint contains credentials. A later change to local HEAD does not change the commit expected at the destination. If the push fails, retain the local commit and report the error. If remote confirmation is unavailable, report publication as unverified. A no-op requires evidence that the intended branch already points to the commit.
+
+## Managed factory receipt closeout
+
+When a factory orchestrator owns execution records, a direct shipping request also permits its one optional receipt-only follow-up unless explicitly narrowed. Return the verified primary commit/ref/CI and actual role outcome first; the orchestrator serializes final records and uses git-ship directly for that administrative commit/push, without another agent invocation or approval. Follow the installed software-factory closeout procedure when available; standalone Git work with no managed records needs no extra commit.
+
+Only existing run.json/events.jsonl in the selected run qualify. Inspect actual staged bytes, schemas, original primary SHA, immutable gates/source identity, append-only histories, scope and whitespace. Use an available reviewed receipt checker or equivalent validation; absent a deliberately configured lightweight lane, preserve existing required CI. The message explains the follow-up, primary SHA, run and files. Publish at most one nonempty administrative commit; verify its exact remote SHA/checks, report externally and freeze tracked delivery records. Do not append its own confirmation or another lesson/event that triggers a third commit. Preserve unrelated work and stop/reconcile real failures; retry the same unfinished commit/push rather than repeating confirmed source delivery. A path outside this narrow metadata scope uses ordinary review and applicable full checks, with actual authority.
 
 ## Environment and failure handling
 

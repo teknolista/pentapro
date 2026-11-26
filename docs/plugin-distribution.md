@@ -75,3 +75,7 @@ Software Factory 1.1.0 adds a separate versioned invocation-event ledger and per
 ## Installed-profile diagnostics 2.3.0
 
 Setup PentaPRO 2.3.0 adds an optional package-local read-only checker and a reviewed refresh procedure. Matching workflow bodies and custom host metadata are separate outcomes; custom bodies require review and are never deleted or automatically overwritten. Current host syntax/discovery and actual model selection remain separate checks. The bundle also improves sampled scenario coverage and optional SDK smoke diagnostics. No new host, runtime permission or model policy is introduced. These source changes are not published merely by regenerating metadata.
+
+## Receipt closeout bundle 3.1.0
+
+Git Ship 2.2.0, Software Factory 1.3.0 and Setup PentaPRO 2.5.0 coordinate one optional administrative receipt commit after primary delivery. The parent orchestrator owns this stage and freezes its tracked records afterward, using external refs/CI/conversation for the final confirmation. The source validate job has an actual-diff receipt lane; source/mixed changes retain full checks. The packaged checker supports staged local validation and committed CI validation without installing dependencies or executing record text. Read the [bounded procedure](../skills/software-factory/references/delivery-closeout.md). No consumer workflow, global setting or customized local role is updated automatically. Hosted adoption and publication remain separately observed effects.

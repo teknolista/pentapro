@@ -14,19 +14,31 @@ jobs:
     timeout-minutes: 10
     env:
       PYTHONDONTWRITEBYTECODE: '1'
+      BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Classify actual change scope
+        id: scope
+        run: |
+          python3 skills/software-factory/scripts/check_delivery_receipts.py --base "$BASE_REVISION" --head HEAD --github-output >> "$GITHUB_OUTPUT"
+      - name: Validate final delivery receipts
+        if: steps.scope.outputs.receipts_only == 'true'
+        run: |
+          python3 skills/software-factory/scripts/check_delivery_receipts.py --base "$BASE_REVISION" --head HEAD --validate
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        if: steps.scope.outputs.receipts_only != 'true'
         with:
           python-version: '3.12'
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: steps.scope.outputs.receipts_only != 'true'
         with:
           node-version: '24'
           package-manager-cache: false
       - name: Validate metadata and links
+        if: steps.scope.outputs.receipts_only != 'true'
         run: |
           python3 -m pip install --only-binary=:all: -r scripts/requirements-validation.txt
           python3 scripts/package_plugin.py --check
@@ -34,6 +46,7 @@ jobs:
           python3 scripts/run_skill_evals.py --check-cases
           python3 evals/check_factory_journey.py
       - name: Run offline helper tests
+        if: steps.scope.outputs.receipts_only != 'true'
         run: |
           python3 -m unittest discover -s scripts/tests -v
           python3 -m unittest discover -s skills/penta-pro/scripts/tests -v

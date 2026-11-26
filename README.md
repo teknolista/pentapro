@@ -179,7 +179,7 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 
 | Skill | Version | Purpose |
 | --- | --- | --- |
-| [Setup PentaPRO](#setup-pentapro) | 2.4.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
+| [Setup PentaPRO](#setup-pentapro) | 2.5.0 | Set up prompt persistence, README and license choices, tracker and domain guidance, project-local factory agents, native change records and a PentaPRO handoff. |
 | [PentaPRO](#pentapro) | 4.1.0 | Explore, create, resume, update, or review software specifications across PRODUCT, PROJECT, PRODUCTION, PROOF, and PROCESS. |
 | [Peer Review](#peer-review) | 1.11.0 | Review backend, frontend, Android, and test code for substantiated defects and meaningful regression protection. |
 | [Cybersecurity](#cybersecurity) | 1.6.1 | Model threats, assess security controls, and verify authorized hardening across web/API, desktop/mobile, DevOps, cloud, and IT projects. |
@@ -191,10 +191,10 @@ The Codex catalog advertises a plugin; availability alone does not establish ins
 | [HTTP API](#http-api) | 1.2.0 | Implement HTTP API changes and verify compatibility, authorization, and write effects. |
 | [MCP Server](#mcp-server) | 1.2.1 | Implement and verify Model Context Protocol server capabilities and transport boundaries. |
 | [Software Delivery](#software-delivery) | 2.1.0 | Coordinate dependent implementation tasks and verify their integrated result against the agreed change. |
-| [Software Factory](skills/software-factory/SKILL.md) | 1.2.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
+| [Software Factory](skills/software-factory/SKILL.md) | 1.3.0 | Coordinate an explicitly requested multi-agent run across specification, implementation, independent review, authorized delivery and retrospective. |
 | [Production Operations](#production-operations) | 1.0.2 | Plan and configure hosted backends, deploy verified artifacts, and operate or recover the service. |
 | [Technical Research](#technical-research) | 1.2.0 | Resolve technical uncertainty with traceable evidence. |
-| [Git Ship](#git-ship) | 2.1.1 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
+| [Git Ship](#git-ship) | 2.2.0 | Review, commit, publish or prepare the PR for the authorized Git snapshot. |
 | [Agent Instructions](#agent-instructions) | 1.2.0 | Maintain portable software-development agent guidance. |
 | [Android modules](skills/android-module-structure/SKILL.md) | 1.4.1 | Implement native Gradle/module configuration; specification belongs to PentaPRO. |
 | [Android data](skills/android-data-layer/SKILL.md) | 1.3.0 | Implement repositories, Ktor/OkHttp, Room, DataStore and sync. |
@@ -1014,3 +1014,9 @@ This repository uses project-local PentaPRO skills, factory profiles and the nat
 Setup's [instruction-section planner](skills/setup-pentapro/scripts/plan_instruction_sections.py) can propose canonical manifesto and prompt-policy insertion while preserving adjacent text and rejecting conflicts. It writes a proposal to stdout, never the project file: `python3 /installed/setup-pentapro/scripts/plan_instruction_sections.py --root /actual/project`. Review the proposal privately, recheck the original hash and target before separately applying it; never redirect stdout onto the original AGENTS.md. A plan is not proof of setup or an atomic upgrade.
 
 Factory's [command receipt helper](skills/software-factory/scripts/command_evidence.py) is optional POSIX bookkeeping for explicitly trusted commands. It records actual failure/timeout/interruption and input snapshot without raw arguments/output; read the [receipt contract](skills/software-factory/references/run-records.md#optional-command-receipts) for authority, privacy, process-group and receipt limits.
+
+### Finite shipping closeout
+
+A direct factory_shipper request includes primary source delivery plus one optional administrative commit/push by the orchestrator for that run's final existing run.json/events.jsonl. It requires no second approval or agent invocation. The follow-up message identifies the primary SHA, reason and contained files. The orchestrator validates staged receipts, then freezes tracked records after final push and reports the closing SHA externally; this ends the delivery without residual delivery-owned edits or a recursive third commit. Read the [bounded closeout contract](skills/software-factory/references/delivery-closeout.md) for scope, safe staging and interrupted-operation recovery.
+
+This repository retains the validate job and selects lightweight receipt/schema/append-only checks only when the actual Git diff modifies those two regular record files in one existing run. Source/mixed/new/renamed/mode-changing paths or uncertain history run full CI. Invalid receipts fail the lightweight lane. Commit messages never select the lane. Consumer projects retain their required checks until reviewed CI integration; no workflow or global installation is changed automatically.

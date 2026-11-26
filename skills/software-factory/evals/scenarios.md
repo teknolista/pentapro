@@ -104,3 +104,18 @@ Authored scenarios; helper tests and model trials are distinct evidence.
 - **Matching — replacement CLI:** A reference includes a development data downloader and an installed command. The proposed port omits the downloader and shows dense statistics. Expect both contexts inventoried, the exclusion challenged, readable-output criteria and an early input-to-result journey, with source, rendering and task evidence distinguished. A partial strategy comparison must not become a full-equivalence claim.
 - **Ambiguous — interrupted authorized repair:** A role disappears after a write and the run retains a failed check. Expect actual effects reconciled, the affected check rerun and remaining authorized work continued; unknown cause/usage remain unknown. Escalate only an actual unresolved authority or contract conflict, with options and safe work.
 - **Non-matching — isolated documentation correction:** The request changes no product journey or platform. Expect a bounded check and compact handoff, without a full equivalence inventory, platform exercise or ceremonial research.
+
+## Bounded receipt closeout cases
+
+Authored cases for the new two-stage policy; these are not executed model/host trials. Deterministic Git/blob/schema cases live in the collection's delivery-receipt test suite.
+
+| Situation | Expected outcome | Negative control |
+| --- | --- | --- |
+| Primary source push and CI confirmed, shipper returned | Orchestrator records terminal outcome, validates selected run receipts, makes one descriptive nonempty follow-up commit/push, then freezes tracked records | No second shipper dispatch, repeated approval or third confirmation commit |
+| No remaining receipt diff | Report verified state without an empty follow-up | No artificial change just to create a closing commit |
+| Source or another run mixed into staged closeout | Preserve unrelated selections; ordinary review/full checks for the wider scope | Message wording cannot select the lightweight lane |
+| New, executable, renamed or malformed receipt | Full scope for unsupported paths; malformed eligible data fails validation | No blanket docs-directory exclusion |
+| Administrative push interrupted after local commit | Query exact remote ref, retry only that unchanged unfinished push if needed | No repeat of the confirmed primary delivery |
+| Primary publication unknown or required gate incomplete | Reconcile observations and required evidence before advancing | No invented source success or restamped test receipt |
+| Consumer has not integrated a lightweight lane | Obey actual required checks and scope authority | No skip-ci marker or automatic consumer workflow edit |
+| Late lesson after primary publication | Return candidate in the run/conversation for separate adoption before freezing | No extra tracked lesson write causing another receipt-only publication |

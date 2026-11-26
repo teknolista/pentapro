@@ -36,3 +36,7 @@ Input: prompt, ledger, stage outcomes and evidence, authorized history and final
 ## PDSA handoff for every packet
 
 Include project protocol/lessons paths, relevant lesson IDs, brief contextual plan, expected checks and corrective-attempt limit. Require an outcome, actual evidence and gaps, PDSA summary and optional lesson candidates at completion or blockage. Agents return candidates without editing the shared record. The orchestrator is the sole recording owner, including after an isolated invocation, and reports saved versus pending lessons and publication status separately. Persist every lesson in English regardless of the project specification language. Read-only roles route source corrections to the implementer.
+
+## Administrative closeout by the invoking orchestrator
+
+After the shipper returns primary publication evidence, the orchestrator completes all requested run recording/retrospective, validates only the selected run's existing `run.json`/`events.jsonl`, and makes one optional descriptive receipt-only commit/push under the same shipping authority. Follow [bounded delivery closeout](delivery-closeout.md). This is administrative git-ship work, not another factory-role dispatch: no new run, recursive event or repeated approval. Freeze the tracked records after the final push; report its remote SHA/check externally. Preserve unrelated work and existing consumer CI policy.
