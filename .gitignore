@@ -279,3 +279,6 @@ skills-lock.json
 # Local append-only prompt log (mandatory) and its log-file rotated variants (see AGENTS.md)
 /AGENTS.log
 /AGENTS.log.*
+
+# Rust build output
+/target/

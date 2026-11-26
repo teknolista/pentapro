@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "run_id": "engine-foundation",
+  "record_version": 12,
+  "objective": "Specify the complete Rust Engine and deliver the first reviewed CLI increment while preserving the skill collection",
+  "contracts": [
+    "pentapro/changes/archive/2026-11-26_engine-foundation/change.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "5b39b1bd2c760a4d1c96bd9d05bd28f72dcec6ad"
+  },
+  "orchestrator": "main-session",
+  "state": "SHIP",
+  "snapshot": {
+    "fingerprint": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+    "head": "5b39b1bd2c760a4d1c96bd9d05bd28f72dcec6ad"
+  },
+  "gates": [
+    {
+      "id": "contract",
+      "kind": "spec-review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+      "evidence": "pentapro/changes/archive/2026-11-26_engine-foundation/spec-rereview.md",
+      "reason": "Post-archive shipper rechecked links and collection plus Rust checks; independent reports apply to unchanged I1 implementation; archive and baseline reconciliation reviewed separately."
+    },
+    {
+      "id": "rust-tests",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+      "evidence": "docs/agents/runs/engine-foundation/verification-final.md",
+      "reason": "Post-archive shipper rechecked links and collection plus Rust checks; independent reports apply to unchanged I1 implementation; archive and baseline reconciliation reviewed separately."
+    },
+    {
+      "id": "collection",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+      "evidence": "docs/agents/runs/engine-foundation/verification-final.md",
+      "reason": "Post-archive shipper rechecked links and collection plus Rust checks; independent reports apply to unchanged I1 implementation; archive and baseline reconciliation reviewed separately."
+    },
+    {
+      "id": "verification",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+      "evidence": "docs/agents/runs/engine-foundation/verification-final.md",
+      "reason": "Post-archive shipper rechecked links and collection plus Rust checks; independent reports apply to unchanged I1 implementation; archive and baseline reconciliation reviewed separately."
+    },
+    {
+      "id": "review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51",
+      "evidence": "docs/agents/runs/engine-foundation/review-final.md",
+      "reason": "Post-archive shipper rechecked links and collection plus Rust checks; independent reports apply to unchanged I1 implementation; archive and baseline reconciliation reviewed separately."
+    }
+  ],
+  "tasks": [],
+  "operations": [
+    {
+      "id": "i1-archive",
+      "kind": "archive",
+      "authorization": "Developer approval 2026-11-26",
+      "status": "confirmed",
+      "expected_revision": null,
+      "observation": "Archive exists at pentapro/changes/archive/2026-11-26_engine-foundation; baseline reconciled and links checked."
+    },
+    {
+      "id": "i1-commit",
+      "kind": "commit",
+      "authorization": "Developer approval 2026-11-26",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "i1-push",
+      "kind": "push",
+      "authorization": "Developer approval 2026-11-26",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "Shipper stages reviewed I1 source and archive, commits and pushes approved snapshot; verify primary remote and CI.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "5dd490db6ff0736522763940ad7daeedf5b27ab24ba422fa01392714a3c34765"
+    },
+    {
+      "record_version": 2,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "c57af679dd4c08785add8f4db60165b159163935e8f2b4001b68ea59399d56f0"
+    },
+    {
+      "record_version": 3,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "8ef19310d50ec6757f96ba61961ca3c4eb850bc898a05175936639773e0456c3"
+    },
+    {
+      "record_version": 4,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "956245dfd6acd0f180379e3b5e7ce018cc2849e807022d122ee301328b70a188"
+    },
+    {
+      "record_version": 5,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "b763856543d87f0e306b909719218a90d64eacc4535c16939e1f5d58d4e12809"
+    },
+    {
+      "record_version": 6,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "b763856543d87f0e306b909719218a90d64eacc4535c16939e1f5d58d4e12809"
+    },
+    {
+      "record_version": 7,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "4e1d6e2b83dcee29bdcc6f4964ba7c80b616010df423117325dd430c8ed49ebc"
+    },
+    {
+      "record_version": 8,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "4e1d6e2b83dcee29bdcc6f4964ba7c80b616010df423117325dd430c8ed49ebc"
+    },
+    {
+      "record_version": 9,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "4e1d6e2b83dcee29bdcc6f4964ba7c80b616010df423117325dd430c8ed49ebc"
+    },
+    {
+      "record_version": 10,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "4e1d6e2b83dcee29bdcc6f4964ba7c80b616010df423117325dd430c8ed49ebc"
+    },
+    {
+      "record_version": 11,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51"
+    },
+    {
+      "record_version": 12,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Engine I1 implementation result
+
+- Run: `engine-foundation`; invocation: `implement-01`.
+- Input: run record version 4, fingerprint `956245dfd6acd0f180379e3b5e7ce018cc2849e807022d122ee301328b70a188`.
+- Result fingerprint observed: `b763856543d87f0e306b909719218a90d64eacc4535c16939e1f5d58d4e12809` (whole source inventory; other orchestrator documentation may change it). HEAD remains `5b39b1bd2c760a4d1c96bd9d05bd28f72dcec6ad`.
+- Owned changes: `Cargo.toml`, `Cargo.lock`, `src/{main,native,manifest}.rs`, `test/cli.rs`, `.github/workflows/engine.yml`, additive `.gitignore` and README Engine section.
+- Native commands init/new/list/show/validate implement versioned JSON output, root discovery, structure checks, existing-content preservation, operation lock, staged new changes, static symlink checks and archive name collision refusal. Help/version and plain human output provided.
+- Toolchain: rustc 1.100.0 and cargo 1.100.0, Linux 6.8.0-151-generic x86_64. Locked direct resolved dependencies: clap 4.6.10, serde 1.0.229, serde_json 1.0.154. Release build performed in temporary source copy of identical implementation.
+- In actual repository: `cargo fmt --check`, `cargo clippy --locked --all-targets -- -D warnings`, `cargo test --locked` passed; 8 real-binary integration tests, including full init/new/list/show/validate failure/repair journey, preservation, nested discovery, invalid names, symlinks, lock, concurrency, archive collisions and invalid UTF-8. `git diff --check` passed. Tests were added alongside implementation, not observed RED/GREEN.
+- Temporary source: `cargo build --release --locked` passed. Lightweight local samples: 10 changes, 60 change files, 30 process invocations each, output discarded; median/p95 ms version 1.984/2.864, list 2.166/2.437, validate 3.257/3.858. Single local host; no baseline, warmup control, memory measurement or claim of comparative performance.
+- PDSA: planned a reviewed native CLI vertical slice; built and exercised real entry points; corrected formatting and added concurrency/preflight checks; integrated only assigned files. No new lesson identified.
+- Limitations: no upstream OpenSpec parity implemented or claimed, no external network/model behavior, no macOS/Windows or power-failure verification. Static symlink checks and advisory lock are not protection against a hostile concurrent writer. Independent review and verification are pending. Role-model setting gpt-6.1-terra/high requested by host, independent runtime/usage evidence unavailable.

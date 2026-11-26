@@ -20,3 +20,8 @@ The collection supports a five-dimensional specification and an agent-guided cha
 | REQ-SDD-10 / SC-SDD-10 | Preserve | Host model/effort choices, read-only review boundaries, privacy/prompt rules, independent grading and safe package export continue; a template/model label is not runtime evidence. |
 
 The [completed change](../changes/archive/2026-11-22_native-sdd-process/product.md) retains the original change-intent context. The requirements/scenario IDs above are preserved as the accepted scoped baseline; later work must preserve unaffected behavior.
+
+
+## Engine I1 — accepted 2026-11-26
+
+Requirements ENG-001–005, ENG-027 and ENG-028 for the bounded first increment are implemented by the local Rust `pentapro` CLI: native initialization, change creation/list/show and structural validation with human/JSON output. See the [accepted contract](../changes/archive/2026-11-26_engine-foundation/product.md) for exact behavior and scenarios. Validation is structural, not human acceptance. Full OpenSpec compatibility and additional deterministic factory capabilities remain pending future increments; the linked inventories are research, not evidence of delivered behavior.

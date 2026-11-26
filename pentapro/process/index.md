@@ -17,3 +17,8 @@ The [documentation reconciliation](documentation-reconciliation.md) and [tooling
 ## Current report-driven maintenance
 
 The [harness-review-hardening change](../changes/harness-review-hardening/change.md) owns the authorized new helper, tests and documentation corrections. The [current assessment](../../docs/harness-review-2026-11-23.md) records recommendation dispositions and executable coverage; finished-result acceptance and publication are separate. Completed earlier run fingerprints and evidence were preserved.
+
+
+## Engine delivery
+
+The developer approved the reviewed Engine I1 result and its consolidation/archive/commit/normal-push scope on 2026-11-26. [Engine I1 history and future roadmap](../changes/archive/2026-11-26_engine-foundation/process.md) retain the distinction between accepted native CLI behavior and pending full compatibility and automation. Publication is confirmed separately in the [run record](../../docs/agents/runs/engine-foundation/run.json); do not infer success from approval.

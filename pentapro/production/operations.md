@@ -9,3 +9,8 @@ Adopt updates deliberately at project scope. Preserve customized guidance/profil
 Archive uses the developer's local date and refuses collisions. Reconcile actual source/target/effect state before resuming interrupted consolidation, archive or publication. Cancelled changes preserve partial effects/recovery decisions, never silently promote abandoned intent or roll back source. Publication failure preserves successful local work. Merge, deployment, release, force push and rewriting history retain their own authority.
 
 Collection-local installed copies/profiles have been reconciled with source; former empty planning scaffolds remain dated history and former local workflow copies were moved outside discovery. Other consuming projects are outside this accepted change's scope. Runtime discovery and application-specific checks remain adoption requirements where applicable.
+
+
+## Engine I1 operation
+
+Build and run the local Engine using the Rust commands in the [repository README](../../README.md#pentapro-engine-early-development). The first increment targets observed Linux behavior; other platforms and hosted CI remain unverified. Managed files are preserved, and interrupted lock/staging state requires inspection. Installation/removal does not migrate or delete project records. [Operating contract](../changes/archive/2026-11-26_engine-foundation/production.md).

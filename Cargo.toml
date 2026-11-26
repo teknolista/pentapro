@@ -1,0 +1,20 @@
+[package]
+name = "pentapro-engine"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.100"
+license = "MIT"
+description = "Deterministic local PentaPRO software factory engine"
+
+[[bin]]
+name = "pentapro"
+path = "src/main.rs"
+
+[[test]]
+name = "cli"
+path = "test/cli.rs"
+
+[dependencies]
+clap = { version = "4.6", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

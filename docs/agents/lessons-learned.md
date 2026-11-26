@@ -106,3 +106,13 @@ Dated persistence/publication notes below describe each entry's original observa
 - Cause/confidence: confirmed: SIGINT/SIGTERM did not originally reach a detached child group, and a later communicate timeout could not bound an earlier blocking PTY read.
 - Correction/result: signal-aware owned-group cleanup/reap and interruption receipt/status; monotonic/select PTY deadline and output bound. Negative controls verify no delayed descendant effect after cancellation/timeout.
 - Prevention/limits: test actual failure properties independently, retaining clean controls. POSIX process groups cannot contain intentionally escaped sessions or handle SIGKILL/host crashes. Windows behavior is unvalidated. Next verification: rerun the lifecycle regressions after process-launch/capture changes.
+
+
+## LL-009 — Check every static root component before canonicalization
+
+- Date: 2026-11-26. Source: Engine I1 independent reviewer/verifier and implement-02.
+- Trigger and evidence: the first Engine implementation rejected a symlink as the selected root but accepted a symlink in an intermediate component, writing 22 scaffold files at its destination. An ordinary nested file named pentapro also incorrectly stopped ancestor discovery. See [first review](runs/engine-foundation/review-first.md) and [correction](runs/engine-foundation/correction.md).
+- Cause/confidence: confirmed in this local implementation; checking only the final path component before canonicalization hid earlier symlink traversal, and marker detection conflated files with specification directories.
+- Correction/result: inspect root components before canonicalization and distinguish ordinary marker files from unsafe symlink markers. Regression assertions failed before correction and passed afterward; 11 integration tests passed in the implementer run. Final independent gates remain separately recorded.
+- Proposed prevention/limits: test absolute and relative intermediate links, link-plus-parent traversal, and executable-directory discovery at the actual CLI boundary. Static checks and cooperating locks do not provide a sandbox against hostile concurrent replacement.
+- Status: correction validated locally; prevention across future writers remains proposed. Next check: final independent corrected-snapshot verification and later descriptor-relative hardening.

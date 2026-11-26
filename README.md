@@ -11,6 +11,24 @@ The collection's skill instructions and reusable artifacts are written in Englis
 >
 > Feedback from actual use, constructive criticism, and suggestions are very welcome through [GitHub Issues](https://github.com/teknolista/pentapro/issues).
 
+## PentaPRO Engine (early development)
+
+The Rust Engine provides an initial local, noninteractive CLI for native PentaPRO specifications. It initializes pending pillar scaffolds, creates and lists changes, shows their files, and performs structural validation. Its results do not establish semantic readiness or approval. The full OpenSpec compatibility and factory automation described in the [Engine I1 change](pentapro/changes/archive/2026-11-26_engine-foundation/change.md) remain in development.
+
+From the repository root, with Rust 1.100.0 and Cargo installed:
+
+```sh
+cargo build --locked
+cargo test --locked
+cargo run --locked -- --help
+cargo install --path . --locked
+```
+
+For example, from a writable project directory run `pentapro init`, `pentapro new my-change`, `pentapro list`, `pentapro show my-change`, and `pentapro validate my-change`. Use `--root PATH` to select a project and `--json` for versioned machine output; both options work before or after the subcommand. Argument errors and help use the standard human-readable CLI output even with `--json`. Initialization preserves existing managed files and does not require Git. Only Linux has been exercised so far.
+
+Mutating operations use `.pentapro-engine.lock` in the selected project root. After an interrupted operation, inspect any remaining lock and `.pentapro-stage-*` directory before manual recovery; the Engine does not automatically remove stale state. Do not use this initial version against a root writable by an untrusted concurrent process. Removing the binary does not remove project specifications.
+
+
 ## Install PentaPRO
 
 PentaPRO is the collection/package name; the repository is `teknolista/pentapro` and the specification skill remains `penta-pro`. Choose **one installation method per host/project**. Installing both the plugin and copied skills can advertise duplicates. The bundle contains all 26 current skills and the six factory-agent templates; setup creates the actual selected-host agents in each project. Installing the plugin does not run setup, enable prompt hooks, select a model, or publish Git changes.

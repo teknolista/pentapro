@@ -9,3 +9,8 @@ The integrated migration passed 130 Python tests, 47 Node controls, isolated gra
 Three agent-constructed synthetic artifact walkthroughs exercised specification-only, cancellation with partial effects, and local consolidation/archive. A separate verifier inspected their saved effects and reran two fixture tests; their provenance and limits are recorded. The first closure attempt without implementation tests remains incomplete evidence, not a passing gate. These are not all-host benchmarks, controlled model comparisons or real developer approvals.
 
 Exact CI Node 24 execution, native inference in all six clients, optional MCP SDK smoke, consuming Android/browser/accessibility journeys and live deployed security/PR-workflow behavior were not established. Historical evidence retains its tested scope. No universal correctness, security, reliability or savings claim follows.
+
+
+## Engine I1 verification
+
+The independent [verification](../../docs/agents/runs/engine-foundation/verification-final.md) and [review](../../docs/agents/runs/engine-foundation/review-final.md) passed on fingerprint `4e1d6e2b83dcee29bdcc6f4964ba7c80b616010df423117325dd430c8ed49ebc`: 11 CLI integration tests, fmt, clippy, release build, native journey and collection controls. Two earlier path-resolution defects were corrected with observed failing and passing regression assertions. This evidence does not establish OpenSpec parity, other OS support, hostile-race safety or hosted CI.
