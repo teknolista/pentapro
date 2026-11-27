@@ -294,3 +294,27 @@ fn discovery_rejects_symlink_marker() {
     let o = run(&t.0.join("nested"), &["list", "--json"]);
     assert_eq!(err(&o)["error"]["code"], "unsafe-path");
 }
+
+#[test]
+fn compat_list_real_project_json() {
+    let guard = Temp::new();
+    let dir = &guard.0;
+    std::fs::create_dir_all(dir.join("openspec/specs/alpha")).unwrap();
+    std::fs::write(dir.join("openspec/specs/alpha/spec.md"), "# Alpha\n\n## Purpose\n\nA capability.\n\n## Requirements\n\n### Requirement: Login\n\nThe system SHALL allow access.\n").unwrap();
+    let out = std::process::Command::new(env!("CARGO_BIN_EXE_pentapro"))
+        .current_dir(dir)
+        .env("HOME", dir)
+        .env_remove("XDG_CONFIG_HOME")
+        .env_remove("XDG_DATA_HOME")
+        .args(["compat", "openspec", "list", "--specs", "--json"])
+        .output()
+        .unwrap();
+    assert!(
+        out.status.success(),
+        "{}",
+        String::from_utf8_lossy(&out.stderr)
+    );
+    let v: serde_json::Value = serde_json::from_slice(&out.stdout).unwrap();
+    assert_eq!(v["specs"][0]["id"], "alpha");
+    assert_eq!(v["specs"][0]["requirementCount"], 1);
+}

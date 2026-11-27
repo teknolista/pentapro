@@ -25,3 +25,8 @@ The [completed change](../changes/archive/2026-11-22_native-sdd-process/product.
 ## Engine I1 — accepted 2026-11-26
 
 Requirements ENG-001–005, ENG-027 and ENG-028 for the bounded first increment are implemented by the local Rust `pentapro` CLI: native initialization, change creation/list/show and structural validation with human/JSON output. See the [accepted contract](../changes/archive/2026-11-26_engine-foundation/product.md) for exact behavior and scenarios. Validation is structural, not human acceptance. Full OpenSpec compatibility and additional deterministic factory capabilities remain pending future increments; the linked inventories are research, not evidence of delivered behavior.
+
+
+## OpenSpec read compatibility I2 — accepted 2026-11-27
+
+The Engine provides the limited read-only `compat openspec list --specs [--json]` and `compat openspec show ID --type spec [--json]` forms, with explicit refusals for unsupported commands, root configurations, identifier ordering and operating systems as defined in the [accepted contract](../changes/archive/2026-11-27_openspec-reading/product.md). It does not implement OpenSpec validation or full parity. In the explicitly documented compatibility behavior, a selected capability directory symlink may expose an external `spec.md`; the composed final-file link fallback has additional containment requirements.

@@ -14,3 +14,8 @@ Decisions DEC-SDD-1 through DEC-SDD-6, alternatives and risks are preserved in t
 ## Rust Engine boundary
 
 The optional Rust Engine lives alongside the skill collection at repository root, with executable `pentapro`. Native CLI services, filesystem controls and presentation do not make existing skills or factory operation depend on the binary. The [accepted I1 architecture](../changes/archive/2026-11-26_engine-foundation/project.md) records the JSON contract, guarded filesystem scope and limitations; OpenSpec compatibility remains future work. The statement above that no replacement SDD utility is required remains true for the skills-only route.
+
+
+## OpenSpec read adapter I2
+
+The Rust CLI has a separate read-only compatibility adapter and spec parser. Its limited root preflight, external directory-link behavior, pinned upstream semantics and intended refusal boundaries are in the [accepted architecture](../changes/archive/2026-11-27_openspec-reading/project.md) and [behavior contract](../changes/archive/2026-11-27_openspec-reading/product.md). Native I1 behavior and the skills-only route remain independent.

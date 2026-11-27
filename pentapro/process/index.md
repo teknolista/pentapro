@@ -22,3 +22,8 @@ The [harness-review-hardening change](../changes/harness-review-hardening/change
 ## Engine delivery
 
 The developer approved the reviewed Engine I1 result and its consolidation/archive/commit/normal-push scope on 2026-11-26. [Engine I1 history and future roadmap](../changes/archive/2026-11-26_engine-foundation/process.md) retain the distinction between accepted native CLI behavior and pending full compatibility and automation. Publication is confirmed separately in the [run record](../../docs/agents/runs/engine-foundation/run.json); do not infer success from approval.
+
+
+## OpenSpec reader I2 delivery
+
+The developer approved the reviewed limited OpenSpec reader on 2026-11-27, including consolidation, archival, commit and normal push. The [archived I2 change](../changes/archive/2026-11-27_openspec-reading/change.md) records the accepted scope and explicitly pending broader compatibility. Publication status is recorded separately in the [execution record](../../docs/agents/runs/engine-openspec-read/run.json). Continue future increments as new changes; never infer full parity from I2.

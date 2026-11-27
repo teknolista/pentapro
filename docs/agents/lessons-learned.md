@@ -116,3 +116,19 @@ Dated persistence/publication notes below describe each entry's original observa
 - Correction/result: inspect root components before canonicalization and distinguish ordinary marker files from unsafe symlink markers. Regression assertions failed before correction and passed afterward; 11 integration tests passed in the implementer run. Final independent gates remain separately recorded.
 - Proposed prevention/limits: test absolute and relative intermediate links, link-plus-parent traversal, and executable-directory discovery at the actual CLI boundary. Static checks and cooperating locks do not provide a sandbox against hostile concurrent replacement.
 - Status: correction validated locally; prevention across future writers remains proposed. Next check: final independent corrected-snapshot verification and later descriptor-relative hardening.
+
+## LL-010 — Verify source-language parser semantics with a pinned oracle
+
+- Date: 2026-11-27. Source: Engine OpenSpec read compatibility, independent review and provisional retrospective.
+- Context/evidence: [first review](runs/engine-openspec-read/review-first.md), [correction](runs/engine-openspec-read/correction.md), [final review](runs/engine-openspec-read/review-final.md). Rust whitespace and line-separator behavior differed from JavaScript in observable requirement parsing; the initially passing corpus missed those cases.
+- Cause/confidence: source-language lexical behavior was not fully represented in the initial fixtures; confirmed for U+FEFF, U+0085, U+2028 and U+2029 on this port.
+- Correction/result: source-compatible handling and differential RED/GREEN regressions passed locally against the pinned OpenSpec reference. Finite examples do not prove complete parser equivalence.
+- Proposed prevention: prepare a source-language lexical semantics corpus before the next parser or delta port and compare real executable boundaries. Status: proposed; next verification: exercise the controls on the next parser change and retain any counterexamples.
+
+## LL-011 — Bind differential tests to an identified oracle and isolated fixtures
+
+- Date: 2026-11-27. Source: Engine OpenSpec read compatibility, independent verification and provisional retrospective.
+- Context/evidence: [first verification](runs/engine-openspec-read/verification-first.md), [second correction](runs/engine-openspec-read/correction-second.md), [final verification](runs/engine-openspec-read/verification-final.md). The initial harness accepted an arbitrary oracle and reused a project root despite requirements for pinned source and independent fixtures.
+- Cause/confidence: harness requirements were incompletely implemented; confirmed by source inspection in this run.
+- Correction/result: the harness checks the upstream SHA and clean checkout, records binary/build and Node identities, and compares independent fixtures; wrong-revision and dirty-checkout controls passed. Hashes identify bytes but do not establish build provenance.
+- Proposed prevention: make oracle identity, independent fixtures and mutation controls fail closed before comparing outcomes. Status: proposed; next verification: repeat wrong-ref, dirty-ref and mutation controls after a future harness change. Evidence is local to Linux and does not establish general effectiveness.

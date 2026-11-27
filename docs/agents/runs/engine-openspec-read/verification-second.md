@@ -1,0 +1,17 @@
+# Independent verification — verify-i2-03
+
+**Result: required differential harness criterion remains unmet.** Run engine-openspec-read record v13; actual source fingerprint `08a7c16af990d2a0d60d1a318f09c7d77e0720b5994124bde76c37dc08a1a015`; HEAD `d17b923bf0c274334f0fbe1812ecefd567367fa2`. Linux, rustc/cargo 1.100.0, Node 26.10.0. Source and index were not modified.
+
+- `cargo fmt --check`, offline locked Clippy (`--all-targets -- -D warnings`) and offline locked `cargo test` using `/tmp/i2-verify-final`: passed; 12 native/CLI and 10 compatibility tests.
+- Collection validator: 371 Markdown, 1438 local links/anchors, 26 version checks, zero issues. Evaluation case checker: 20 passed; plugin metadata freshness and `git diff --check` passed.
+- Rebuilt OpenSpec v2.2.0 SHA `f1cd852f4edce22b8df9548a4df889172ca8ff25` with frozen dependencies/no install scripts in `/tmp` using Node 26. `test/differential.py` passed 23 actual executable comparisons. It prints checkout SHA, CLI/dist/lock hashes, Node version/hash and Engine hash; correctly discloses these measurements do not prove build provenance or dependency integrity.
+- Independent negative controls cloned reference into a temporary checkout: untracked file caused exit 2 `upstream tracked or untracked source changes present`; different commit caused exit 2 `upstream SHA mismatch`. No global user settings were changed.
+- Explicit external capability-directory symlink fixture: Engine and reference produced byte-identical show text, show JSON and list output. Both show commands returned the synthetic external sentinel; list excluded it. This is the newly documented I2-005 behavior, not physical-root containment; the user may expose readable data by explicitly showing an untrusted external capability link.
+
+## Remaining required evidence gap
+
+The updated identity preflight resolves prior V1 for clean-checkout SHA and recorded identities. However `test/differential.py` creates one temporary project and runs reference then Engine in the **same** cwd for each comparison; PROOF explicitly requires separate equivalent temporary roots. Snapshot checking after each invocation is useful but does not satisfy that isolation requirement. Its 23-call fixture also omits several required controls, including automatic external-directory list and text-show comparisons, internal-directory and contained-file symlink controls and mixed-depth refusal; the manual external fixture above covers only the first two for this execution. Correct the portable harness to use separate equivalent roots with only path normalization, and add required fixture controls or explicitly track genuinely unavailable cases. Do not mark the acceptance evidence complete from these 23 calls alone.
+
+The full pinned parser semantics, all permission modes and Node24/Windows/macOS remain unproven. A file snapshot cannot detect transient writes or effects outside observed roots; SHA/build measurements do not authenticate runtime dependency bytes. Review and final acceptance remain separate gates.
+
+PDSA: planned tests against reviewed criteria, executed clean-reference and negative identity controls, studied source/harness against PROOF and reported gap for correction; no source changes. Previous V2 ambiguity is resolved by explicit documented I2-005 trust boundary and tested synthetic link. No new lesson identified. Runtime model/effort and usage independently unobserved.

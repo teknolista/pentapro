@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "run_id": "engine-openspec-read",
+  "record_version": 23,
+  "objective": "Recover and implement a verified read-only OpenSpec compatibility journey for existing specifications",
+  "contracts": [
+    "pentapro/changes/archive/2026-11-27_openspec-reading/change.md"
+  ],
+  "repository": {
+    "root": "/home/dever/workspace/teknolista/pentapro",
+    "branch": "main",
+    "base_commit": "d17b923bf0c274334f0fbe1812ecefd567367fa2"
+  },
+  "orchestrator": "main-session",
+  "state": "SHIP",
+  "snapshot": {
+    "fingerprint": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af",
+    "head": "d17b923bf0c274334f0fbe1812ecefd567367fa2"
+  },
+  "gates": [
+    {
+      "id": "spec-review",
+      "kind": "spec-review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af",
+      "evidence": "docs/agents/runs/engine-openspec-read/spec-reconciled.md",
+      "reason": "Shipper reviewed post-archive candidate and exact license whitespace-only correction, reran affected checks; source/test behavior unchanged from independent evidence."
+    },
+    {
+      "id": "verification",
+      "kind": "check",
+      "required": true,
+      "status": "passed",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af",
+      "evidence": "docs/agents/runs/engine-openspec-read/verification-reconciled.md",
+      "reason": "Shipper reviewed post-archive candidate and exact license whitespace-only correction, reran affected checks; source/test behavior unchanged from independent evidence."
+    },
+    {
+      "id": "review",
+      "kind": "review",
+      "required": true,
+      "status": "passed",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af",
+      "evidence": "docs/agents/runs/engine-openspec-read/review-reconciled.md",
+      "reason": "Shipper reviewed post-archive candidate and exact license whitespace-only correction, reran affected checks; source/test behavior unchanged from independent evidence."
+    }
+  ],
+  "tasks": [],
+  "operations": [
+    {
+      "id": "i2-archive",
+      "kind": "archive",
+      "authorization": "Developer approval 2026-11-27",
+      "status": "confirmed",
+      "expected_revision": null,
+      "observation": "Archived pentapro/changes/archive/2026-11-27_openspec-reading; five pillars reconciled and links validated."
+    },
+    {
+      "id": "i2-commit",
+      "kind": "commit",
+      "authorization": "Developer approval 2026-11-27",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    },
+    {
+      "id": "i2-push",
+      "kind": "push",
+      "authorization": "Developer approval 2026-11-27",
+      "status": "planned",
+      "expected_revision": null,
+      "observation": null
+    }
+  ],
+  "blockers": [],
+  "next_action": "Stage updated run record, commit reviewed approved I2 and verify remote/CI.",
+  "history": [
+    {
+      "record_version": 1,
+      "state": "INTAKE",
+      "orchestrator": "main-session",
+      "snapshot": "5e24d1e8941dcfa63f6efa53c2697e9135acbae5caee7409e5ddd963e7bd5b51"
+    },
+    {
+      "record_version": 2,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "4c27441d1a4af193e697ede4bb6501000b6cacf22b6f031acd0c49ec5bdadce5"
+    },
+    {
+      "record_version": 3,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "a8d3a9063ef3672e2185d7e837cf272d683778587be571d88456433ccf94d3ea"
+    },
+    {
+      "record_version": 4,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "12e6ebf4f02993beeca1e8cfc688006bfde8b78c5ee40976b1eabfc0710d39bc"
+    },
+    {
+      "record_version": 5,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "d323c419f39a63fe57c0dc426c605f7e283911a88f425906de2274c060dc5dd6"
+    },
+    {
+      "record_version": 6,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "e19460d33e26bed8f2d630955990da853e522fe16fa80bfa7e6179f2127e9264"
+    },
+    {
+      "record_version": 7,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "3bff0fc9fb87e6c222c80bf60f42f287ab7383adf03c037ee0c9f093073e3ca0"
+    },
+    {
+      "record_version": 8,
+      "state": "CONTRACT",
+      "orchestrator": "main-session",
+      "snapshot": "a4c85ff1f7d01e893b7bc449b63955977b25ef188ad2e1517ed0c0d0a0f04295"
+    },
+    {
+      "record_version": 9,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "a4c85ff1f7d01e893b7bc449b63955977b25ef188ad2e1517ed0c0d0a0f04295"
+    },
+    {
+      "record_version": 10,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "a310a001766459b35498b62e4728eb2362d18f2f70eeb9b1cb44ad85add75bae"
+    },
+    {
+      "record_version": 11,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "a310a001766459b35498b62e4728eb2362d18f2f70eeb9b1cb44ad85add75bae"
+    },
+    {
+      "record_version": 12,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "a310a001766459b35498b62e4728eb2362d18f2f70eeb9b1cb44ad85add75bae"
+    },
+    {
+      "record_version": 13,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "08a7c16af990d2a0d60d1a318f09c7d77e0720b5994124bde76c37dc08a1a015"
+    },
+    {
+      "record_version": 14,
+      "state": "BUILD",
+      "orchestrator": "main-session",
+      "snapshot": "08a7c16af990d2a0d60d1a318f09c7d77e0720b5994124bde76c37dc08a1a015"
+    },
+    {
+      "record_version": 15,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "09f59c1940f0eb08f658c9b02a99054afa5a85b153bb644830a8bfd089385d47"
+    },
+    {
+      "record_version": 16,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "39a8bfe92ac1b6ab505d9065b942a4fad8374175f5009b69cdccf3b736858985"
+    },
+    {
+      "record_version": 17,
+      "state": "VERIFY",
+      "orchestrator": "main-session",
+      "snapshot": "bcc12d2a4fefc6fa009286f9acdb1bc58d7caa45c7bdaa17413d65dd8369f3ad"
+    },
+    {
+      "record_version": 18,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "bcc12d2a4fefc6fa009286f9acdb1bc58d7caa45c7bdaa17413d65dd8369f3ad"
+    },
+    {
+      "record_version": 19,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "bcc12d2a4fefc6fa009286f9acdb1bc58d7caa45c7bdaa17413d65dd8369f3ad"
+    },
+    {
+      "record_version": 20,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "b6afd2eef7d02e2a4574d6a0550aaa84d00fe0de1fde834fff341891206ef2e4"
+    },
+    {
+      "record_version": 21,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "b6afd2eef7d02e2a4574d6a0550aaa84d00fe0de1fde834fff341891206ef2e4"
+    },
+    {
+      "record_version": 22,
+      "state": "RECORDS",
+      "orchestrator": "main-session",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af"
+    },
+    {
+      "record_version": 23,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af"
+    }
+  ]
+}

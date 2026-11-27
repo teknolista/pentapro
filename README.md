@@ -29,6 +29,9 @@ For example, from a writable project directory run `pentapro init`, `pentapro ne
 Mutating operations use `.pentapro-engine.lock` in the selected project root. After an interrupted operation, inspect any remaining lock and `.pentapro-stage-*` directory before manual recovery; the Engine does not automatically remove stale state. Do not use this initial version against a root writable by an untrusted concurrent process. Removing the binary does not remove project specifications.
 
 
+
+The experimental read-only compatibility slice supports `pentapro compat openspec list --specs [--json]` and `pentapro compat openspec show ID --type spec [--json]`. It has deliberate restrictions on root configuration, operating system and spec identifier ordering; it rejects unsupported conditions instead of silently switching formats. It does not implement OpenSpec validation or other compatibility commands. See the [compatibility contract](pentapro/changes/archive/2026-11-27_openspec-reading/product.md) and [OpenSpec license notice](src/OPENSPEC-LICENSE).
+
 ## Install PentaPRO
 
 PentaPRO is the collection/package name; the repository is `teknolista/pentapro` and the specification skill remains `penta-pro`. Choose **one installation method per host/project**. Installing both the plugin and copied skills can advertise duplicates. The bundle contains all 26 current skills and the six factory-agent templates; setup creates the actual selected-host agents in each project. Installing the plugin does not run setup, enable prompt hooks, select a model, or publish Git changes.

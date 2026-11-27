@@ -1,0 +1,320 @@
+[
+  {
+    "name": "empty-list-json",
+    "fixture": "valid schema config; empty specs and changes",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"specs\": [],\n  \"root\": {\n    \"path\": \"<TMP>/empty\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "empty-list-text",
+    "fixture": "same empty project",
+    "argv": [
+      "list",
+      "--specs"
+    ],
+    "exit": 0,
+    "stdout": "No specs found.\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "empty-missing",
+    "fixture": "same empty project",
+    "argv": [
+      "show",
+      "missing",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Spec 'missing' not found at <TMP>/empty/openspec/specs/missing/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "no-project",
+    "fixture": "empty cwd, no openspec directory or config",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"specs\": [],\n  \"root\": null,\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"no_openspec_root\",\n      \"message\": \"No OpenSpec root found from the current directory.\",\n      \"target\": \"openspec.root\",\n      \"fix\": \"Run openspec init to create a root here.\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "markdown-list",
+    "fixture": "alpha spec.md bytes EF BB BF + BOM Markdown, CRLF, fenced fake requirement then real requirement; see script",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"alpha\",\n      \"requirementCount\": 1\n    }\n  ],\n  \"root\": {\n    \"path\": \"<TMP>/markdown\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "markdown-show-json",
+    "fixture": "same BOM/CRLF/fenced alpha",
+    "argv": [
+      "show",
+      "alpha",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"id\": \"alpha\",\n  \"title\": \"alpha\",\n  \"overview\": \"BOM and CRLF description.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Real\",\n      \"text\": \"The system SHALL work.\",\n      \"scenarios\": [\n        {\n          \"name\": \"Test\",\n          \"rawText\": \"- **WHEN** called\\n- **THEN** works\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<TMP>/markdown\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "markdown-show-text",
+    "fixture": "same BOM/CRLF/fenced alpha",
+    "argv": [
+      "show",
+      "alpha",
+      "--type",
+      "spec"
+    ],
+    "exit": 0,
+    "stdout": "\ufeff# Spec\r\n\r\n## Purpose\r\n\r\nBOM and CRLF description.\r\n\r\n## Requirements\r\n\r\n```markdown\r\n### Requirement: Fake\r\n```\r\n\r\n### Requirement: Real\r\n\r\nThe system SHALL work.\r\n\r\n#### Scenario: Test\r\n\r\n- **WHEN** called\r\n- **THEN** works\r\n\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "invalid-utf8-list",
+    "fixture": "alpha contains invalid raw byte FF in purpose",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"alpha\",\n      \"requirementCount\": 1\n    }\n  ],\n  \"root\": {\n    \"path\": \"<TMP>/badutf8\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "invalid-utf8-show",
+    "fixture": "same invalid byte",
+    "argv": [
+      "show",
+      "alpha",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"id\": \"alpha\",\n  \"title\": \"alpha\",\n  \"overview\": \"Invalid \ufffd bytes.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"A\",\n      \"text\": \"The system SHALL work.\",\n      \"scenarios\": []\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<TMP>/badutf8\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "bad-config-list",
+    "fixture": "config.yaml is schema: [broken; alpha spec only # Alpha",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"alpha\",\n      \"requirementCount\": 0\n    }\n  ],\n  \"root\": {\n    \"path\": \"<TMP>/malformed\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "bad-config-show",
+    "fixture": "same malformed config",
+    "argv": [
+      "show",
+      "alpha",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Spec must have a Purpose section\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "symlink-list",
+    "fixture": "inside/spec.md -> ../real/spec.md; outside/spec.md -> external file; broken/spec.md -> missing.md; directory-link -> real",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"specs\": [],\n  \"root\": null,\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"list_error\",\n      \"message\": \"Path is outside the allowed directory: <TMP>/links/openspec/specs/outside/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "symlink-inside",
+    "fixture": "same link fixture",
+    "argv": [
+      "show",
+      "inside",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Path is outside the allowed directory: <TMP>/links/openspec/specs/outside/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "symlink-outside",
+    "fixture": "same link fixture",
+    "argv": [
+      "show",
+      "outside",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Path is outside the allowed directory: <TMP>/links/openspec/specs/outside/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "symlink-broken",
+    "fixture": "same link fixture",
+    "argv": [
+      "show",
+      "broken",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Path is outside the allowed directory: <TMP>/links/openspec/specs/outside/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "symlink-dir",
+    "fixture": "same link fixture",
+    "argv": [
+      "show",
+      "directory-link",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Path is outside the allowed directory: <TMP>/links/openspec/specs/outside/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "without-outside-list",
+    "fixture": "external link removed; internal, dangling and directory links remain",
+    "argv": [
+      "list",
+      "--specs",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"inside\",\n      \"requirementCount\": 1\n    },\n    {\n      \"id\": \"real\",\n      \"requirementCount\": 1\n    }\n  ],\n  \"root\": {\n    \"path\": \"<TMP>/links\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "without-outside-inside",
+    "fixture": "external link removed",
+    "argv": [
+      "show",
+      "inside",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"id\": \"inside\",\n  \"title\": \"inside\",\n  \"overview\": \"Example\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Exists\",\n      \"text\": \"Requirement: Exists\",\n      \"scenarios\": []\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<TMP>/links\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "without-outside-broken",
+    "fixture": "external link removed",
+    "argv": [
+      "show",
+      "broken",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 1,
+    "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Cannot verify dangling symbolic link: <TMP>/links/openspec/specs/broken/spec.md\"\n    }\n  ]\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "without-outside-dir",
+    "fixture": "external link removed",
+    "argv": [
+      "show",
+      "directory-link",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"id\": \"directory-link\",\n  \"title\": \"directory-link\",\n  \"overview\": \"Example\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Exists\",\n      \"text\": \"Requirement: Exists\",\n      \"scenarios\": []\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<TMP>/links\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  },
+  {
+    "name": "bad-config-valid-show",
+    "fixture": "malformed config, valid spec with purpose and requirement",
+    "argv": [
+      "show",
+      "valid",
+      "--type",
+      "spec",
+      "--json"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"id\": \"valid\",\n  \"title\": \"valid\",\n  \"overview\": \"A valid purpose.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"A\",\n      \"text\": \"The system SHALL work.\",\n      \"scenarios\": []\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<TMP>/malformed\",\n    \"source\": \"nearest\"\n  }\n}\n",
+    "stderr": "",
+    "changed": false,
+    "changed_paths": []
+  }
+]

@@ -1,0 +1,216 @@
+{
+  "node": "v27.0.0-alpha.0.0.0",
+  "commit": "f1cd852f4edce22b8df9548a4df889172ca8ff25",
+  "fixture_markdown": "# Alpha\n\n## Purpose\n\nExplain the alpha capability for testing.\n\n## Requirements\n\n### Requirement: Login\n\nThe system SHALL support login.\n\n#### Scenario: Success\n\n- **GIVEN** an account\n- **WHEN** login is requested\n- **THEN** login succeeds\n",
+  "results": [
+    {
+      "argv": [
+        "list",
+        "--specs"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "Specs:\n  alpha                requirements 1\n  platform/session     requirements 1\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "list",
+        "--specs",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"alpha\",\n      \"requirementCount\": 1\n    },\n    {\n      \"id\": \"platform/session\",\n      \"requirementCount\": 1\n    }\n  ],\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "list",
+        "--specs",
+        "--json"
+      ],
+      "cwd": "nested",
+      "exit": 0,
+      "stdout": "{\n  \"specs\": [\n    {\n      \"id\": \"alpha\",\n      \"requirementCount\": 1\n    },\n    {\n      \"id\": \"platform/session\",\n      \"requirementCount\": 1\n    }\n  ],\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "alpha",
+        "--type",
+        "spec"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "# Alpha\n\n## Purpose\n\nExplain the alpha capability for testing.\n\n## Requirements\n\n### Requirement: Login\n\nThe system SHALL support login.\n\n#### Scenario: Success\n\n- **GIVEN** an account\n- **WHEN** login is requested\n- **THEN** login succeeds\n\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "alpha",
+        "--type",
+        "spec",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "{\n  \"id\": \"alpha\",\n  \"title\": \"alpha\",\n  \"overview\": \"Explain the alpha capability for testing.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Login\",\n      \"text\": \"The system SHALL support login.\",\n      \"scenarios\": [\n        {\n          \"name\": \"Success\",\n          \"rawText\": \"- **GIVEN** an account\\n- **WHEN** login is requested\\n- **THEN** login succeeds\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "platform/session",
+        "--type",
+        "spec",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "{\n  \"id\": \"platform/session\",\n  \"title\": \"platform/session\",\n  \"overview\": \"Nested session specification for testing.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Session\",\n      \"text\": \"The system SHALL support sessions.\",\n      \"scenarios\": [\n        {\n          \"name\": \"Start\",\n          \"rawText\": \"- **WHEN** a session starts\\n- **THEN** it is active\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "missing",
+        "--type",
+        "spec",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 1,
+      "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Spec 'missing' not found at <PROJECT>/openspec/specs/missing/spec.md\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "missing",
+        "--json",
+        "--no-interactive"
+      ],
+      "cwd": "project",
+      "exit": 1,
+      "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"unknown_item\",\n      \"message\": \"Unknown item 'missing'. Did you mean: alpha, platform/session?\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "list",
+        "--specs",
+        "--all",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 1,
+      "stdout": "{\n  \"specs\": [],\n  \"root\": null,\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"list_error\",\n      \"message\": \"--archived and --all can only be used when listing changes.\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "alpha",
+        "--type",
+        "spec",
+        "--json",
+        "--requirements"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "{\n  \"id\": \"alpha\",\n  \"title\": \"alpha\",\n  \"overview\": \"Explain the alpha capability for testing.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Login\",\n      \"text\": \"The system SHALL support login.\",\n      \"scenarios\": []\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "alpha",
+        "--type",
+        "spec",
+        "--json",
+        "--requirement",
+        "1"
+      ],
+      "cwd": "project",
+      "exit": 0,
+      "stdout": "{\n  \"id\": \"alpha\",\n  \"title\": \"alpha\",\n  \"overview\": \"Explain the alpha capability for testing.\",\n  \"requirementCount\": 1,\n  \"requirements\": [\n    {\n      \"name\": \"Login\",\n      \"text\": \"The system SHALL support login.\",\n      \"scenarios\": [\n        {\n          \"name\": \"Success\",\n          \"rawText\": \"- **GIVEN** an account\\n- **WHEN** login is requested\\n- **THEN** login succeeds\"\n        }\n      ]\n    }\n  ],\n  \"metadata\": {\n    \"version\": \"1.0.0\",\n    \"format\": \"openspec\"\n  },\n  \"root\": {\n    \"path\": \"<PROJECT>\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    },
+    {
+      "argv": [
+        "show",
+        "../alpha",
+        "--type",
+        "spec",
+        "--json"
+      ],
+      "cwd": "project",
+      "exit": 1,
+      "stdout": "{\n  \"status\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"show_error\",\n      \"message\": \"Path is outside the allowed directory: <PROJECT>/openspec/alpha/spec.md\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "changed": false,
+      "diff": {
+        "/tmp/engine-oracle-o0dqt76b/project": [],
+        "/tmp/engine-oracle-o0dqt76b/home": []
+      }
+    }
+  ]
+}
