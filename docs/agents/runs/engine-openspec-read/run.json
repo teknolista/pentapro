@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "run_id": "engine-openspec-read",
-  "record_version": 23,
+  "record_version": 24,
   "objective": "Recover and implement a verified read-only OpenSpec compatibility journey for existing specifications",
   "contracts": [
     "pentapro/changes/archive/2026-11-27_openspec-reading/change.md"
@@ -15,7 +15,7 @@
   "state": "SHIP",
   "snapshot": {
     "fingerprint": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af",
-    "head": "d17b923bf0c274334f0fbe1812ecefd567367fa2"
+    "head": "81ba7e454d41ba40be9ce2f24038f719c04ef617"
   },
   "gates": [
     {
@@ -60,21 +60,21 @@
       "id": "i2-commit",
       "kind": "commit",
       "authorization": "Developer approval 2026-11-27",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "81ba7e454d41ba40be9ce2f24038f719c04ef617",
+      "observation": "Commit and origin/main exact SHA confirmed; hosted CI 46025590703 and 46025590177 succeeded."
     },
     {
       "id": "i2-push",
       "kind": "push",
       "authorization": "Developer approval 2026-11-27",
-      "status": "planned",
-      "expected_revision": null,
-      "observation": null
+      "status": "confirmed",
+      "expected_revision": "81ba7e454d41ba40be9ce2f24038f719c04ef617",
+      "observation": "Commit and origin/main exact SHA confirmed; hosted CI 46025590703 and 46025590177 succeeded."
     }
   ],
   "blockers": [],
-  "next_action": "Stage updated run record, commit reviewed approved I2 and verify remote/CI.",
+  "next_action": "Primary commit and CI verified; perform bounded receipt-only closeout; freeze tracked run thereafter.",
   "history": [
     {
       "record_version": 1,
@@ -210,6 +210,12 @@
     },
     {
       "record_version": 23,
+      "state": "SHIP",
+      "orchestrator": "main-session",
+      "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af"
+    },
+    {
+      "record_version": 24,
       "state": "SHIP",
       "orchestrator": "main-session",
       "snapshot": "d624c71ba19a3ce667a672dc65e3db2a6fbf4fddcaddc1ab429383d6c9cc30af"
